@@ -1,0 +1,35 @@
+# Lo que NO va al repo: el material de investigacion.
+#
+# Criterio, y sale del precedente de los otros repos del catalogo:
+# kick-drops-highlighter commitea sus fixtures y sus pruebas, y ninguno
+# commitea notas de trabajo. Asi que aqui va lo que hace falta para que
+# `docs/prueba-jsdom.js` corra en un clon limpio, y las capturas del README.
+#
+# Lo ignorado NO se borra: sigue en el disco. Los 33 volcados que no usan las
+# pruebas son la base de prueba de `analisis-2026-08-21.md` —cada cifra que ese
+# documento afirma se puede volver a comprobar SOLO mientras su volcado exista—,
+# y perderlos convertiria el analisis de verificable en creible.
+*
+!.gitignore
+!prueba-jsdom.js
+!sanear-volcado.js
+!screenshot-panel.png
+!screenshot-giveaway.png
+!screenshot-vault.png
+!dom-account-arp-log-completo-2026-08.html
+!dom-account-arp-log-streak-2026-08.html
+!dom-battle-pass-2026-08.html
+!dom-battle-pass-closed-2026-08.html
+!dom-control-center-2026-08-24.html
+!dom-control-center-2026-08.html
+!dom-control-center-daily-completed-2026-08.html
+!dom-control-center-streak-monthly-2026-08.html
+!dom-control-center-twitch-completed-2026-08.html
+!dom-control-center-twitch-progress-2026-08.html
+!dom-game-vault-2026-08.html
+!dom-game-vault-auction-2026-08.html
+!dom-giveaway-post-2026-08.html
+!dom-giveaway-post-claimable-2026-08.html
+!dom-homepage-src-2026-08.html
+!dom-intel-gamer-days-2026-08-day-1.html
+!dom-marketplace-2026-08.html
