@@ -18,8 +18,8 @@ const fs = require('fs');
 const path = require('path');
 const { JSDOM, VirtualConsole } = require(process.env.JSDOM || 'jsdom');
 
-const DOCS = '/Users/usuario/code/scripts/alienware-arena-arp-tracker/docs';
-const SCRIPT = fs.readFileSync('/Users/usuario/code/scripts/alienware-arena-arp-tracker/alienware-arena-arp-tracker.user.js', 'utf8');
+const DOCS = __dirname;
+const SCRIPT = fs.readFileSync(__dirname + '/../alienware-arena-arp-tracker.user.js', 'utf8');
 
 let ok = 0, fail = 0;
 function check(name, cond, extra) {
@@ -469,7 +469,7 @@ console.log('\n=== 17. Idioma: la preferencia manda sobre el sitio ===');
 
 console.log('\n=== 18. Ningún idioma con claves ausentes ni inglés copiado ===');
 {
-  const fuente = fs.readFileSync('/Users/usuario/code/scripts/alienware-arena-arp-tracker/alienware-arena-arp-tracker.user.js', 'utf8');
+  const fuente = fs.readFileSync(__dirname + '/../alienware-arena-arp-tracker.user.js', 'utf8');
   const bloque = fuente.slice(fuente.indexOf('const I18N = {'), fuente.indexOf('function t(key, vars)'));
   const idiomas = ['en', 'es', 'de', 'fr', 'pt', 'br', 'zh', 'hi'];
   const claves = {};
@@ -1829,7 +1829,7 @@ console.log('\n=== 40. El ⟳ no puede perder la racha ni el mes ===');
 
 console.log('\n=== 21. Las traducciones no son inglés copiado ===');
 {
-  const fuente = fs.readFileSync('/Users/usuario/code/scripts/alienware-arena-arp-tracker/alienware-arena-arp-tracker.user.js', 'utf8');
+  const fuente = fs.readFileSync(__dirname + '/../alienware-arena-arp-tracker.user.js', 'utf8');
   // Se comparan las frases largas (los tooltips y el modal), que son las que
   // delatan un idioma sin traducir. Las cortas coinciden de forma legítima:
   // «Twitch» o «{v} ARP» son iguales en los ocho.
@@ -2111,9 +2111,9 @@ console.log('\n=== 46. El consejo del mismo juego, en las tres superficies y en 
   // restaurarlo después— el comando se quedó a medias y dejó dos frases fuera durante
   // varios turnos, con un «310 en verde» de antes del recorte como única prueba.
   const RUTA = process.env.AWA_FUENTE
-    || '/Users/usuario/code/scripts/alienware-arena-arp-tracker/alienware-arena-arp-tracker.user.js';
+    || __dirname + '/../alienware-arena-arp-tracker.user.js';
   const fuente = fs.readFileSync(RUTA, 'utf8');
-  const readme = fs.readFileSync('/Users/usuario/code/scripts/alienware-arena-arp-tracker/README.md', 'utf8');
+  const readme = fs.readFileSync(__dirname + '/../README.md', 'utf8');
 
   // Un trozo distintivo de cada traducción. Se comprueba que cae en la LÍNEA de su
   // clave, no solo en el fichero: si alguien lo mueve de tipSteam a otra clave, esto
@@ -2190,7 +2190,7 @@ console.log('\n=== 47. El @icon va incrustado, no apuntando a un favicon ajeno =
   // URL remota sin saber que eso ya rompió una publicación.
   // Misma parametrización que §46, para poder hacer el control negativo sobre una copia.
   const fuenteIcono = fs.readFileSync(process.env.AWA_FUENTE
-    || '/Users/usuario/code/scripts/alienware-arena-arp-tracker/alienware-arena-arp-tracker.user.js', 'utf8');
+    || __dirname + '/../alienware-arena-arp-tracker.user.js', 'utf8');
   const cab = fuenteIcono.slice(0, fuenteIcono.indexOf('==/UserScript=='));
   const icon = (cab.match(/@icon\s+(\S+)/) || [])[1] || '';
   check('hay @icon', !!icon);
