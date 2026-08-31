@@ -2177,6 +2177,32 @@ console.log('\n=== 46. El consejo del mismo juego, en las tres superficies y en 
     new Set(ocho).size === 8 && ocho.every((x) => x.length > 0), String(new Set(ocho).size));
 }
 
+console.log('\n=== 47. El @icon va incrustado, no apuntando a un favicon ajeno ===');
+{
+  // El 2026-08-31 OpenUserJS respondió 500 al sincronizar 1.1.1:
+  //   «`@icon` unsupported file type: undefined (file: undefined)»
+  // con `@icon https://www.alienwarearena.com/favicon.ico`. La causa exacta nunca se
+  // determinó —hay scripts publicados allí con un `.ico` remoto que sí funcionan, y el
+  // fichero de AWA es casi idéntico al de Amazon: mismo magic, 3 iconos, 32 bpp, ~15 KB—.
+  // Así que se eligió la opción que no depende de conocer la causa: un data: URI, que no
+  // se descarga, no se olfatea y declara su tipo. Precedente vivo: openuserjs.org/scripts/
+  // Juampi_Mix/EmuParadise_1up. Esta comprobación existe para que nadie lo revierta a una
+  // URL remota sin saber que eso ya rompió una publicación.
+  // Misma parametrización que §46, para poder hacer el control negativo sobre una copia.
+  const fuenteIcono = fs.readFileSync(process.env.AWA_FUENTE
+    || '/Users/usuario/code/scripts/alienware-arena-arp-tracker/alienware-arena-arp-tracker.user.js', 'utf8');
+  const cab = fuenteIcono.slice(0, fuenteIcono.indexOf('==/UserScript=='));
+  const icon = (cab.match(/@icon\s+(\S+)/) || [])[1] || '';
+  check('hay @icon', !!icon);
+  check('es un data: URI de PNG, no una URL remota',
+    /^data:image\/png;base64,[A-Za-z0-9+/=]+$/.test(icon),
+    icon.slice(0, 60));
+  const crudo = Buffer.from(icon.replace(/^data:image\/png;base64,/, ''), 'base64');
+  check('y decodifica a un PNG de verdad',
+    crudo.length > 500 && crudo[0] === 0x89 && crudo[1] === 0x50 && crudo[2] === 0x4e && crudo[3] === 0x47,
+    crudo.length + ' bytes, magic ' + [...crudo.slice(0, 4)].map((b) => b.toString(16)).join(' '));
+}
+
 console.log('\n' + (fail ? '✗ ' : '✓ ') + ok + ' comprobaciones pasadas, ' + fail + ' fallidas\n');
 process.exit(fail ? 1 : 0);
 }
