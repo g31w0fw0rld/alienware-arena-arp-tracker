@@ -2098,6 +2098,85 @@ console.log('\n=== 45. El panel en una página de quest de Steam ===');
   check('el panel aguanta igual', !!w.document.getElementById('awa-arp-widget'));
 }
 
+console.log('\n=== 46. El consejo del mismo juego, en las tres superficies y en los ocho idiomas ===');
+{
+  // Un dato que vive en UNA sola de las tres superficies —tooltip, ficha «Saber más»
+  // y README— es como acaba mintiendo un tooltip: pasó con el canal de Discord, que
+  // estaba en el tooltip y en el README pero no en la ficha. Aquí se comprueba que el
+  // consejo del §41.4 («si el juego de la quest fija sale en el selector de la que te
+  // deja elegir, elígelo») está en las tres, y en los ocho idiomas, no solo en inglés.
+  // `AWA_FUENTE` permite apuntar a una COPIA del script para el control negativo:
+  // recortar el consejo de una copia y ver fallar estas comprobaciones, sin tocar el
+  // fichero rastreado. La primera vez que se hizo a lo bruto —recortar el de verdad y
+  // restaurarlo después— el comando se quedó a medias y dejó dos frases fuera durante
+  // varios turnos, con un «310 en verde» de antes del recorte como única prueba.
+  const RUTA = process.env.AWA_FUENTE
+    || '/Users/usuario/code/scripts/alienware-arena-arp-tracker/alienware-arena-arp-tracker.user.js';
+  const fuente = fs.readFileSync(RUTA, 'utf8');
+  const readme = fs.readFileSync('/Users/usuario/code/scripts/alienware-arena-arp-tracker/README.md', 'utf8');
+
+  // Un trozo distintivo de cada traducción. Se comprueba que cae en la LÍNEA de su
+  // clave, no solo en el fichero: si alguien lo mueve de tipSteam a otra clave, esto
+  // se entera. (En hindi el trozo del tooltip también aparece dentro del de la ficha,
+  // así que la comprobación por línea es la única que distingue las dos.)
+  const CONSEJO = {
+    en: ['pick it: the same hour counts for both', 'picking it makes the same hour count for both'],
+    es: ['elígelo: la misma hora cuenta para las dos', 'elegirlo hace que la misma hora cuente para las dos'],
+    de: ['dieselbe Stunde zählt für beide', 'dann zählt dieselbe Stunde für beide'],
+    fr: ['la même heure compte pour les deux', 'le choisir fait compter la même heure pour les deux'],
+    pt: ['escolhe-o: a mesma hora conta para as duas', 'escolhê-lo faz a mesma hora contar para as duas'],
+    br: ['escolha ele: a mesma hora conta para as duas', 'escolher ele faz a mesma hora contar para as duas'],
+    zh: ['同一个小时对两个任务都算数', '选它就能让同一个小时对两个都算数'],
+    hi: ['वही एक घंटा दोनों में गिना जाता है', 'उसे चुनने से वही एक घंटा दोनों में गिना जाता है'],
+  };
+  // La segunda mitad del consejo: el juego gratis que no tienes (§42.5). Va en las
+  // mismas dos claves, así que se comprueba igual y por separado — si alguien recorta
+  // el tooltip por largo, esto dice exactamente qué mitad se perdió y en qué idioma.
+  const GRATIS = {
+    en: ['add it to your Steam library and see whether it turns up', 'adding it to your Steam library may be enough'],
+    es: ['añádelo a tu biblioteca de Steam y mira si aparece', 'añadirlo a tu biblioteca de Steam puede bastar'],
+    de: ['füge es deiner Steam-Bibliothek hinzu und schau', 'es der Steam-Bibliothek hinzuzufügen'],
+    fr: ['ajoute-le à ta bibliothèque Steam et regarde', 'l’ajouter à ta bibliothèque Steam peut suffire'],
+    pt: ['adiciona-o à tua biblioteca Steam e vê se aparece', 'adicioná-lo à tua biblioteca Steam pode bastar'],
+    br: ['adicione ele à sua biblioteca da Steam e veja se aparece', 'adicionar ele à sua biblioteca da Steam pode bastar'],
+    zh: ['先把它加进 Steam 库', '把它加进 Steam 库可能就足以'],
+    hi: ['अपनी Steam लाइब्रेरी में जोड़ें', 'Steam लाइब्रेरी में जोड़ना ही'],
+  };
+  const lineas = fuente.split('\n');
+  const lineaDe = (clave, n) => lineas.filter((l) => l.trim().indexOf(clave + ':') === 0)[n] || '';
+  const idiomas = Object.keys(CONSEJO);
+  const sinTip = [];
+  const sinFicha = [];
+  idiomas.forEach((l, i) => {
+    if (lineaDe('tipSteam', i).indexOf(CONSEJO[l][0]) < 0) sinTip.push(l);
+    if (lineaDe('infoDescriptionText', i).indexOf(CONSEJO[l][1]) < 0) sinFicha.push(l);
+  });
+  check('está en el tooltip de Steam en los ocho', sinTip.length === 0, 'faltan: ' + sinTip.join(','));
+  check('está en la ficha «Saber más» en los ocho', sinFicha.length === 0, 'faltan: ' + sinFicha.join(','));
+  check('y en el README, en los dos idiomas',
+    readme.indexOf('the same hour count for both') > 0 && readme.indexOf('la misma hora cuente para las dos') > 0);
+
+  const sinTipG = [];
+  const sinFichaG = [];
+  idiomas.forEach((l, i) => {
+    if (lineaDe('tipSteam', i).indexOf(GRATIS[l][0]) < 0) sinTipG.push(l);
+    if (lineaDe('infoDescriptionText', i).indexOf(GRATIS[l][1]) < 0) sinFichaG.push(l);
+  });
+  check('el juego gratis está en el tooltip en los ocho', sinTipG.length === 0, 'faltan: ' + sinTipG.join(','));
+  check('el juego gratis está en la ficha en los ocho', sinFichaG.length === 0, 'faltan: ' + sinFichaG.join(','));
+  check('y en el README, en los dos idiomas',
+    readme.indexOf('adding it to your Steam library may be enough') > 0 &&
+    readme.indexOf('añadirlo a tu biblioteca de Steam puede bastar') > 0);
+
+  // Control negativo del propio lector: si `lineaDe` no estuviera leyendo la línea de
+  // la clave, las comprobaciones de arriba pasarían por casualidad al buscar en cadena
+  // vacía... no, fallarían; lo que sí pasaría desapercibido es que leyera SIEMPRE la
+  // misma línea. Por eso se comprueba que las ocho líneas de tipSteam son distintas.
+  const ocho = idiomas.map((l, i) => lineaDe('tipSteam', i));
+  check('el lector coge ocho líneas distintas, no ocho veces la misma',
+    new Set(ocho).size === 8 && ocho.every((x) => x.length > 0), String(new Set(ocho).size));
+}
+
 console.log('\n' + (fail ? '✗ ' : '✓ ') + ok + ' comprobaciones pasadas, ' + fail + ' fallidas\n');
 process.exit(fail ? 1 : 0);
 }
