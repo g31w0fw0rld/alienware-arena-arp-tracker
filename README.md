@@ -23,7 +23,7 @@ It changes **three** places. Nothing else on the site is touched.
 **1. On any page — the panel.** Your balance, your tier and the two login counts, then one line per source of daily ARP:
 
 - **Time on site** and **Twitch**, which reset at 00:00 UTC. When Twitch is at zero the panel says why: watching alone earns nothing, the AWA widget has to be active on a Hive or Nexus channel with your Twitch account linked.
-- **Discord**, the only source with no counter anywhere on the site — it is read from your own ARP log, filtered to today. It only pays **Monday to Friday**, so at the weekend the line stops asking for it.
+- **Discord**, the only source with no counter anywhere on the site — it is read from your own ARP log, filtered to today. It only pays **Monday to Friday**, so at the weekend the line stops asking for it. Clicking it opens the **Arena Connect** channel of Alienware's Discord in a new tab — the one where the polls are voted.
 - **Daily quests**, which are single use: when the window closes they are gone, done or not.
 - **Steam quests**, which run **Monday to Monday**, not daily.
 - **The campaign calendar**, which may have a day waiting to be claimed.
@@ -56,7 +56,7 @@ Cambia **tres** sitios. No toca nada más de la web.
 **1. En cualquier página — el panel.** Tu saldo, tu nivel y las dos cuentas de inicio de sesión, y luego una línea por cada fuente de ARP diario:
 
 - **Tiempo en el sitio** y **Twitch**, que se reinician a las 00:00 UTC. Cuando Twitch está a cero el panel dice por qué: ver no basta, tiene que estar activo el widget de AWA en un canal de Hive o Nexus y tu cuenta de Twitch enlazada.
-- **Discord**, la única fuente sin contador en ninguna parte del sitio — se lee de tu propio registro de ARP, filtrado a hoy. Solo paga de **lunes a viernes**, así que el fin de semana la línea deja de pedirlo.
+- **Discord**, la única fuente sin contador en ninguna parte del sitio — se lee de tu propio registro de ARP, filtrado a hoy. Solo paga de **lunes a viernes**, así que el fin de semana la línea deja de pedirlo. Al pulsarla abre en una pestaña nueva el canal **Arena Connect** del Discord de Alienware, que es donde se vota en las encuestas.
 - **Quests diarias**, que son de un solo uso: cuando se cierra su ventana desaparecen, hechas o no.
 - **Quests de Steam**, que van de **lunes a lunes**, no por días.
 - **El calendario de campaña**, que puede tener un día esperando a que lo reclames.

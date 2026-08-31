@@ -1747,7 +1747,7 @@ const llevaA = (w, re) => { const f = filaDe(w, re); return !!f && /--go/.test(f
   // de Discord (ver DISCORD_URL). Se comprueba entero y no «que contenga
   // discord», porque un id equivocado abre un servidor ajeno.
   check('al servidor de Alienware, directo y sin opener',
-    abierta[0] === 'https://discord.com/channels/97149047281827840'
+    abierta[0] === 'https://discord.com/channels/97149047281827840/1069815226045833296'
     && abierta[1] === '_blank' && /noopener/.test(abierta[2] || ''),
     JSON.stringify(abierta));
   check('y ya no pasa por la invitación', !/discord\.gg/.test(abierta[0] || ''),
@@ -2058,6 +2058,44 @@ console.log('\n=== 44. El panel sigue al idioma del sitio SIN esperar al reloj =
   await Promise.resolve(); await Promise.resolve();
   check('y cambiar el del sitio NO se lo lleva por delante',
     lines(w).some((l) => /Temps sur le site/.test(l[0])), lines(w).map((x) => x[0]).join(' / '));
+}
+
+console.log('\n=== 45. El panel en una página de quest de Steam ===');
+{
+  // `dom-steam-quest-choose-unstarted-2026-08.html` es el estado que llevaba
+  // abierto desde el 21: tipo A, Steam conectado y SIN empezar, con `#userGames`.
+  // Para el panel es una página cualquiera, y eso es justo lo que se comprueba:
+  // que no confunda su contenido con el del Centro de control.
+  //
+  // El riesgo era real y concreto: `readDaily` cuenta quests diarias con
+  // `.card-table-row` + `a.quest-title[data-quest-id]`, y una página de quest
+  // podría traer filas parecidas. No las trae —cero de las dos—, pero sin una
+  // prueba eso es una observación de hoy y no una garantía de mañana.
+  const w = mount('dom-steam-quest-choose-unstarted-2026-08.html',
+    '/steam/quests/choose-your-own-game-169'); await tick(); await tick();
+  check('el panel se inyecta también aquí', !!w.document.getElementById('awa-arp-widget'));
+  check('la página trae el selector de juego', !!w.document.getElementById('userGames'));
+  check('y el botón de empezar', !!w.document.querySelector('.btn-start-quest'));
+  // Sin contadores propios, tiene que salir a buscarlos.
+  check('pide el Centro de control, que aquí no está en la página',
+    w.fetched.some((u) => /control-center$/.test(u)), JSON.stringify(w.fetched));
+  const L = lines(w);
+  check('NO inventa una línea de quests diarias',
+    !L.some((l) => /[Qq]uests diarias|Daily quests/.test(l[0])), L.map((x) => x[0]).join(' / '));
+  // El calendario de campaña sí está en todas las páginas, así que esa línea sí sale.
+  check('el calendario de campaña sí sale, que va en todas las páginas',
+    L.some((l) => /[Cc]alendario|calendar/i.test(l[0])), L.map((x) => x[0]).join(' / '));
+}
+{
+  // El segundo estado nuevo: juego FIJO, en propiedad y sin empezar. Ningún
+  // volcado anterior lo tenía —los ocho que había eran «sin tener el juego»,
+  // «en curso» o «completada»—, así que la tabla de estados de §7 se queda sin
+  // ninguna fila por observar.
+  const w = mount('dom-steam-quest-fixed-unstarted-2026-08.html',
+    '/steam/quests/marvel-rivals-7'); await tick(); await tick();
+  check('el fijo sin empezar trae botón de empezar y NO selector',
+    !!w.document.querySelector('.btn-start-quest') && !w.document.getElementById('userGames'));
+  check('el panel aguanta igual', !!w.document.getElementById('awa-arp-widget'));
 }
 
 console.log('\n' + (fail ? '✗ ' : '✓ ') + ok + ' comprobaciones pasadas, ' + fail + ' fallidas\n');
