@@ -79,6 +79,30 @@ const reglas = [
   // Claves de juego. En /account/my-rewards la lista la pinta el JS, asi que un view-source no las
   // trae; pero un volcado del DOM ya renderizado SI llevaria las claves reales del usuario.
   ['clave de juego', /\b[A-Z0-9]{5}-[A-Z0-9]{5}-[A-Z0-9]{5}(?:-[A-Z0-9]{5})?\b/g, 'REDACTADO-CLAVE'],
+
+  // --- identificadores de los pixeles de anuncios (X, Meta, Google)
+  // Anadidos el 2026-09-01, con los volcados de las dos subastas. No son credenciales —no
+  // abren nada— pero son lo mismo que el `/Users/agavemg` que se limpio el 2026-08-31: atan
+  // el material publicado a la persona. El que de verdad correlaciona es `twpid`, que salio
+  // IDENTICO en cinco volcados de agosto y en los dos de septiembre: es un id de anuncios
+  // persistente por navegador, asi que enlaza entre si todos los volcados del repo y con
+  // cualquier otro sitio donde ese id aparezca.
+  //
+  // `hme` es el parametro de emparejamiento del pixel de Meta. NO se afirma que sea el correo:
+  // su valor cambio entre agosto y septiembre, y un hash de un correo estable no cambia. Se
+  // redacta porque no aporta nada al volcado, no porque se sepa lo que es.
+  //
+  // Ojo con `email_address` del pixel de X: el valor observado es el SHA-256 de la CADENA
+  // VACIA (e3b0c442…b855), o sea que X no recibio ningun correo. Se redacta igual, porque
+  // desde fuera un hash vacio y uno real se leen exactamente igual.
+  ['twpid (id de anuncios de X)', /twpid=tw\.\d+\.\d+/g,                'twpid=REDACTADO-TWPID'],
+  ['tw_session_id',               /tw_session_id=\d{10,}-\d+/g,           'tw_session_id=REDACTADO'],
+  ['pl_id / event_id de X',       /\b(pl_id|event_id)=[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/g, '$1=REDACTADO-UUID'],
+  ['hash de emparejamiento (hme / email_address)', /\b(hme|email_address)=[0-9a-f]{64}/g, '$1=REDACTADO-HASH'],
+  // Huella del navegador: zona horaria, idiomas, plataforma, resolucion y profundidad de
+  // color, todo en un solo parametro. Por forma (tz%2Fciudad%26...) y no por el valor, para
+  // no escribir aqui la zona horaria del usuario, que es justo lo que se quiere quitar.
+  ['huella del navegador (dv=)',  /\bdv=[A-Za-z]+%2F[A-Za-z_]+%26[^&"'\s]*/g, 'dv=REDACTADO-HUELLA'],
 ];
 
 const cuentas = [];
@@ -124,6 +148,9 @@ const cabecera =
   `<!-- Volcado de alienwarearena.com (view-source / outerHTML), sesion iniciada.\n` +
   (nota ? `     ${nota.split('\n').join('\n     ')}\n` : '') +
   `     Saneado: JWT, uuid, user_id, login_id, _csrf_token, api_key de Weglot, tokens de anuncio\n` +
+  `     y los identificadores de los pixeles de X, Meta y Google (twpid, tw_session_id, pl_id,\n` +
+  `     event_id, hme, email_address) mas la huella del navegador de \`dv=\` (zona horaria,\n` +
+  `     idiomas, plataforma y resolucion),\n` +
   `     y nombre de usuario. steamId enmascarado conservando los 17 digitos (lo que importa es\n` +
   `     que no sea 0, ver dom-steam-quest-2026-08.html, sin vincular).\n` +
   `     Recortado: bloques <style> inline y <noscript>. -->\n`;
@@ -153,6 +180,14 @@ const sospechas = [
   ['_csrf_token',    /name="_csrf_token"[^>]*?value="(?!REDACTADO)[^"]+"/],
   ['token de anuncio', /token:\s*'[A-Za-z0-9]{2,}\.[A-Za-z0-9_-]{20,}\./],
   ['clave de juego',  /\b[A-Z0-9]{5}-[A-Z0-9]{5}-[A-Z0-9]{5}\b/],
+  // Estas van deliberadamente mas anchas que sus reglas: la de `dv=` caza CUALQUIER valor
+  // largo (la redaccion deja 'REDACTADO-HUELLA', 16 caracteres, por debajo del umbral), y las
+  // de los hashes cazan desde 40 hex en vez de exigir los 64 exactos.
+  ['twpid de X',       /twpid=tw\.\d/],
+  ['tw_session_id',    /tw_session_id=\d/],
+  ['pl_id / event_id', /\b(?:pl_id|event_id)=[0-9a-f]{8}-[0-9a-f]{4}-/],
+  ['hash de pixel',    /\b(?:hme|email_address)=[0-9a-f]{40,}/],
+  ['huella dv=',       /\bdv=[^&"'\s]{20,}/],
 ];
 const restos = sospechas.filter(([, re]) => re.test(s));
 
