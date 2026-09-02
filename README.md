@@ -14,6 +14,10 @@ Tampermonkey userscript that shows, on every Alienware Arena page, what ARP you 
 
 *In the Marketplace and the Vault, one tag per card, from the price, stock and tier the card itself carries. / En el Marketplace y la Bóveda, una etiqueta por tarjeta, del precio, el stock y el nivel que trae la propia tarjeta.*
 
+![Two auction cards tagged Bid from 300 ARP and Bid from 100 ARP, and under the site's own countdown a notice reading Opens Friday, September 18, 2026 at 12:00 PM, your local time, next to a Cancel reminder button](docs/screenshot-vault-unstarted.png)
+
+*The Vault before it opens: each auction shows its minimum bid instead of «auction over», and under the site's own countdown, the exact opening time in your clock — with the bell already armed. / La Bóveda antes de abrir: cada subasta enseña su puja mínima en vez de «subasta terminada», y bajo la cuenta atrás del propio sitio, la hora exacta de apertura en tu reloj — con la campana ya armada.*
+
 ## English
 
 ### What it does
