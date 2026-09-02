@@ -35,7 +35,9 @@ It can also warn you three times: half an hour before the day ends, six hours be
 
 **2. On a giveaway page — the key notice.** Above the buttons, it says whether there are keys **for your country and your tier**, read from the giveaway's own inventory before you press anything. Three states: keys for you, no keys for your country, or keys that need a higher tier.
 
-**3. In the Marketplace and the Vault — one tag per card.** You can afford it, you are N ARP short, it needs tier N, or it is sold out — from the price, stock and tier the card itself carries. Blind auctions are read apart, because there the site's own price and stock mean something different: the tag shows the minimum bid while the auction is open, and says it is over when it is not.
+**3. In the Marketplace and the Vault — one tag per card.** You can afford it, you are N ARP short, it needs tier N, or it is sold out — from the price, stock and tier the card itself carries. Blind auctions are read apart, because there the site's own price and stock mean something different: the tag shows the minimum bid, and it tells the three states apart — open, over, and **not open yet**, which is the one that used to be labelled «auction over» by mistake.
+
+**4. When the Vault is closed — the opening date, and a bell.** The site already counts down to the opening; what it does not give is the exact moment in **your** clock, so the notice next to its banner says it. And the bell arms a reminder: when the Vault opens, it warns you on **any** page where the script runs, with the same dialog, tab mark and panel band as the rest, and the band takes you straight to the Vault. It is its own opt-in — the checkbox at the foot of the panel does not govern it — and clicking the bell again cancels it. It never bids: bidding goes through a captcha.
 
 **What it does not do:** it never claims, bids or enters anything. All of that goes through a captcha, and automating it is what gets accounts banned. It only reads.
 
@@ -68,7 +70,9 @@ También puede avisarte tres veces: media hora antes de que acabe el día, seis 
 
 **2. En la ficha de un sorteo — el aviso de claves.** Encima de los botones, dice si hay claves **para tu país y tu nivel**, leído del inventario del propio sorteo antes de pulsar nada. Tres estados: hay claves para ti, no hay para tu país, o las hay pero piden más nivel.
 
-**3. En el Marketplace y en la Bóveda — una etiqueta por tarjeta.** Te alcanza, te faltan N ARP, pide nivel N, o está agotado — del precio, el stock y el nivel que trae la propia tarjeta. Las subastas a ciegas se leen aparte, porque ahí el precio y el stock del sitio significan otra cosa: la etiqueta enseña la puja mínima mientras la subasta está abierta, y dice que terminó cuando no lo está.
+**3. En el Marketplace y en la Bóveda — una etiqueta por tarjeta.** Te alcanza, te faltan N ARP, pide nivel N, o está agotado — del precio, el stock y el nivel que trae la propia tarjeta. Las subastas a ciegas se leen aparte, porque ahí el precio y el stock del sitio significan otra cosa: la etiqueta enseña la puja mínima, y distingue los tres estados — abierta, terminada y **aún sin abrir**, que es el que hasta ahora salía rotulado «subasta terminada» por error.
+
+**4. Con la Bóveda cerrada — la fecha de apertura, y una campana.** El sitio ya pone su cuenta atrás; lo que no da es el momento exacto en **tu** reloj, así que el aviso que va junto a su banner lo dice. Y la campana arma un recordatorio: cuando la Bóveda abra, te avisa en **cualquier** página donde corra el script, con el mismo diálogo, la misma marca en la pestaña y la misma banda del panel que el resto, y esa banda te lleva directo a la Bóveda. Es su propio permiso —la casilla del pie del panel no la gobierna— y volver a pulsarla lo cancela. No puja nunca: pujar pasa por un captcha.
 
 **Lo que no hace:** no reclama, no puja y no participa en nada. Todo eso pasa por un captcha, y automatizarlo es lo que hace que baneen cuentas. Solo lee.
 

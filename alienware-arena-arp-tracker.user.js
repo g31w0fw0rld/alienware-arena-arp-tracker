@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Alienware Arena ARP Tracker
 // @namespace    http://tampermonkey.net/
-// @version      1.1.2
+// @version      1.2.0
 // @description  Panel de ARP para Alienware Arena. En cualquier página muestra lo que caduca y cuándo: tiempo en el sitio y Twitch a las 00:00 UTC, quests diarias de un solo uso, las de Steam de lunes a lunes, Discord solo en laborables, el calendario de campaña y las fichas del pase, que se borran al cerrar la temporada. En un sorteo dice si hay claves para tu país y nivel antes de pulsar nada; en el Marketplace y la Bóveda marca cada tarjeta. Avisa antes del reinicio. Ocho idiomas. Solo lee: no reclama nada.
 // @icon         data:image/png;base64,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
 // @match        https://www.alienwarearena.com/*
@@ -16,7 +16,7 @@
 (function () {
     'use strict';
 
-    const SCRIPT_VERSION = '1.1.2';
+    const SCRIPT_VERSION = '1.2.0';
 
     // ------------------------------------------------------------------
     // Idiomas
@@ -97,7 +97,7 @@
     // medio en inglés sin que se note.
     const I18N = {
         en: {
-            goCC: 'Click this line to go to the Control Center.', goPass: 'Click this line to go to the Battle Pass.', goStore: 'Click this line to go to the Battle Store.',
+            goCC: 'Click this line to go to the Control Center.', goPass: 'Click this line to go to the Battle Pass.', goStore: 'Click this line to go to the Battle Store.', goVault: 'Click this line to go to the Game Vault and bid. It also marks the warning as seen.',
             goDiscord: 'Click this line to open the «Arena Connect» channel of Alienware’s Discord in a NEW TAB — the one where the polls that pay this ARP are voted. It goes straight in, so you need to be a member of the server already.',
             aviMudo: 'You can turn these warnings off with the box at the bottom of the panel, or mark this one as seen by clicking its band there.', aviday: 'The day is ending', aviweek: 'The Steam week is ending', avidawn: 'A new day has started', aviSeen: 'Mark as seen',
             title: 'ARP today', balance: '{v} ARP', tier: 'Tier {n}', streak: 'Day {n} streak', streakOf: 'Streak {v}/{c}', monthOf: 'Days {v}/{c}',
@@ -117,7 +117,7 @@
             keysFor: '{n} keys for your country at tier {t}', keysNone: 'No keys for your country ({c})',
             keysTier: 'Keys only from tier {t} — you are tier {u}',
             tipKeys: 'Read from the giveaway’s own per-country, per-tier stock, before pressing anything.',
-            afford: 'You can afford this', short: '{v} ARP short', tierShort: 'Needs tier {t}', soldOut: 'Sold out', bidFrom: 'Bid from {v} ARP', bidOpen: 'Auction open', bidOver: 'Auction over', tipAuction: 'A blind auction is not a purchase: you place ONE bid and only the highest ones win, so the panel shows the entry price and not what it will end up costing. In the Dinoblade auction the entry was 100 ARP and the ten winning bids ran from 7,000 to 8,500. The site marks these cards as out of stock even while they are open, which is why they are read apart from the rest.',
+            afford: 'You can afford this', short: '{v} ARP short', tierShort: 'Needs tier {t}', soldOut: 'Sold out', bidFrom: 'Bid from {v} ARP', bidOpen: 'Auction open', bidOver: 'Auction over', bidPending: 'Not open yet', tipOpensAt: 'It opens on {d}, your local time. ', vaultOpens: '🔓 Opens {d}, your local time', aviauction: 'The Game Vault is open', bidRemind: '🔔 Remind me', bidUnremind: '🔕 Cancel reminder', tipRemind: 'Warns you when the Game Vault opens, on ANY page where the script runs — you do not have to be in the Vault. It is the same warning as the rest: a dialog you have to close, a 👽 on the tab, and a band in the panel. There is no sound: the browser refuses to play one on this site, see the script information. It does not bid for you: bidding goes through a captcha. It fires WHEN IT OPENS because what runs out first-come are the keys on the ordinary cards. For the auctions there is no rush: the site gives you 24 h to bid, the highest bid wins and not the fastest, and it locks your ARP the moment you bid — so bidding early only takes away balance you could claim a vault game with. Click again to cancel.', tipAuction: 'A blind auction is not a purchase: you place ONE bid and only the highest ones win, so the panel shows the entry price and not what it will end up costing. In the Dinoblade auction the entry was 100 ARP and the ten winning bids ran from 7,000 to 8,500. The site marks these cards as out of stock even while they are open, which is why they are read apart from the rest.',
             mTitle: 'What this panel reads', mIntro: 'Everything here is read from the page. The script never claims, bids or enters anything: those all go through a captcha, and doing them by script is what gets accounts banned.',
             mDaily: 'Resets at 00:00 UTC: time on site, Twitch, the calendar day and the login streak. That hour comes from the site’s own code, not from a guess.',
             mQuests: 'Quests do not reset. Each one is single use with its own window: the daily ones vanish when it ends, and the Steam ones run Monday to Monday.',
@@ -140,7 +140,7 @@
             infoPrivacyText: 'Your settings —language, panel corner, the warning— stay in your browser only. The script reads the page you are on and, at most, asks the site once for your own Control Center, reusing your session. No third parties, and nothing is sent to the script author.',
         },
         es: {
-            goCC: 'Pulsa esta línea para ir al Centro de control.', goPass: 'Pulsa esta línea para ir al pase de batalla.', goStore: 'Pulsa esta línea para ir a la tienda de batalla.',
+            goCC: 'Pulsa esta línea para ir al Centro de control.', goPass: 'Pulsa esta línea para ir al pase de batalla.', goStore: 'Pulsa esta línea para ir a la tienda de batalla.', goVault: 'Pulsa esta línea para ir a la Bóveda y pujar. Además marca el aviso como visto.',
             goDiscord: 'Pulsa esta línea para abrir el canal «Arena Connect» del Discord de Alienware en una PESTAÑA NUEVA —el canal donde se vota en las encuestas que pagan este ARP—. Va directo, así que hay que ser miembro del servidor ya.',
             aviMudo: 'Puedes desactivar estos avisos con la casilla del pie del panel, o marcar este como visto pulsando su banda ahí mismo.', aviday: 'Se acaba el día', aviweek: 'Se acaba la semana de Steam', avidawn: 'Empieza un día nuevo', aviSeen: 'Marcar como visto',
             title: 'ARP de hoy', balance: '{v} ARP', tier: 'Nivel {n}', streak: 'Racha día {n}', streakOf: 'Racha {v}/{c}', monthOf: 'Días {v}/{c}',
@@ -160,7 +160,7 @@
             keysFor: '{n} claves para tu país en el nivel {t}', keysNone: 'Sin claves para tu país ({c})',
             keysTier: 'Claves solo desde el nivel {t} — tú eres nivel {u}',
             tipKeys: 'Leído del inventario por país y por nivel del propio sorteo, antes de pulsar nada.',
-            afford: 'Te alcanza', short: 'te faltan {v} ARP', tierShort: 'Pide nivel {t}', soldOut: 'Agotado', bidFrom: 'Puja desde {v} ARP', bidOpen: 'Subasta abierta', bidOver: 'Subasta terminada', tipAuction: 'Una subasta a ciegas no es una compra: pones UNA puja y solo ganan las más altas, así que el panel enseña la entrada y no lo que va a acabar costando. En la de Dinoblade la entrada eran 100 ARP y las diez ganadoras fueron de 7.000 a 8.500. El sitio marca estas tarjetas como agotadas incluso con la subasta abierta, y por eso se leen aparte de las demás.',
+            afford: 'Te alcanza', short: 'te faltan {v} ARP', tierShort: 'Pide nivel {t}', soldOut: 'Agotado', bidFrom: 'Puja desde {v} ARP', bidOpen: 'Subasta abierta', bidOver: 'Subasta terminada', bidPending: 'Aún no abre', tipOpensAt: 'Abre el {d}, en tu hora local. ', vaultOpens: '🔓 Abre el {d}, en tu hora local', aviauction: 'El Game Vault está abierto', bidRemind: '🔔 Avísame', bidUnremind: '🔕 No avisar', tipRemind: 'Te avisa cuando el Game Vault abra, en CUALQUIER página donde corra el script — no hace falta que estés en la Bóveda. Es el mismo aviso que el resto: un diálogo que hay que cerrar, un 👽 en la pestaña y una banda en el panel. No hay sonido: el navegador se niega a reproducirlo en este sitio, lo cuenta la información del script. No puja por ti: pujar pasa por un captcha. Salta AL ABRIR porque lo que se agota por orden de llegada son las claves de las tarjetas normales. Para las subastas no corre prisa: el sitio da 24 h para pujar, gana la puja más alta y no la más rápida, y te bloquea el ARP en cuanto pujas — así que pujar pronto solo te quita saldo para reclamar un juego de la bóveda. Vuelve a pulsar para cancelarlo.', tipAuction: 'Una subasta a ciegas no es una compra: pones UNA puja y solo ganan las más altas, así que el panel enseña la entrada y no lo que va a acabar costando. En la de Dinoblade la entrada eran 100 ARP y las diez ganadoras fueron de 7.000 a 8.500. El sitio marca estas tarjetas como agotadas incluso con la subasta abierta, y por eso se leen aparte de las demás.',
             mTitle: 'Qué lee este panel', mIntro: 'Todo lo de aquí se lee de la página. El script no reclama, no puja y no participa en nada: todo eso pasa por un captcha, y hacerlo por script es lo que hace que baneen cuentas.',
             mDaily: 'Se reinician a las 00:00 UTC: el tiempo en el sitio, Twitch, el día del calendario y la racha de login. Esa hora sale del código del propio sitio, no de una suposición.',
             mQuests: 'Las quests no se reinician. Cada una es de un solo uso con su ventana: las diarias desaparecen al acabarla, y las de Steam van de lunes a lunes.',
@@ -183,7 +183,7 @@
             infoPrivacyText: 'Tus ajustes —idioma, esquina del panel, el aviso— se guardan solo en tu navegador. El script lee la página en la que estás y, como mucho, le pide al sitio una vez tu propio Centro de control, reusando tu sesión. No hay terceros y no se envía nada al autor del script.',
         },
         de: {
-            goCC: 'Klicke auf diese Zeile, um zum Control Center zu gehen.', goPass: 'Klicke auf diese Zeile, um zum Battle Pass zu gehen.', goStore: 'Klicke auf diese Zeile, um zum Battle Store zu gehen.',
+            goCC: 'Klicke auf diese Zeile, um zum Control Center zu gehen.', goPass: 'Klicke auf diese Zeile, um zum Battle Pass zu gehen.', goStore: 'Klicke auf diese Zeile, um zum Battle Store zu gehen.', goVault: 'Klicke auf diese Zeile, um zum Game Vault zu gehen und zu bieten. Sie markiert die Warnung außerdem als gesehen.',
             goDiscord: 'Klicke auf diese Zeile, um den Kanal «Arena Connect» in Alienwares Discord in einem NEUEN TAB zu öffnen — den Kanal, in dem über die Umfragen abgestimmt wird, die dieses ARP zahlen. Er führt direkt hinein, du musst also schon Mitglied des Servers sein.',
             aviMudo: 'Du kannst diese Warnungen mit dem Kästchen unten im Panel abschalten oder diese hier als gesehen markieren, indem du dort auf ihr Band klickst.', aviday: 'Der Tag geht zu Ende', aviweek: 'Die Steam-Woche geht zu Ende', avidawn: 'Ein neuer Tag hat begonnen', aviSeen: 'Als gesehen markieren',
             title: 'ARP heute', balance: '{v} ARP', tier: 'Stufe {n}', streak: 'Tag {n} in Folge', streakOf: 'Serie {v}/{c}', monthOf: 'Tage {v}/{c}',
@@ -203,7 +203,7 @@
             keysFor: '{n} Keys für dein Land auf Stufe {t}', keysNone: 'Keine Keys für dein Land ({c})',
             keysTier: 'Keys erst ab Stufe {t} — du hast Stufe {u}',
             tipKeys: 'Aus dem Bestand des Gewinnspiels nach Land und Stufe gelesen, ohne etwas anzuklicken.',
-            afford: 'Kannst du dir leisten', short: '{v} ARP fehlen', tierShort: 'Braucht Stufe {t}', soldOut: 'Ausverkauft', bidFrom: 'Gebot ab {v} ARP', bidOpen: 'Auktion offen', bidOver: 'Auktion beendet', tipAuction: 'Eine Blindauktion ist kein Kauf: du gibst EIN Gebot ab und nur die höchsten gewinnen, also zeigt das Panel den Einstieg und nicht den Endpreis. Bei Dinoblade lag der Einstieg bei 100 ARP und die zehn Gewinngebote zwischen 7.000 und 8.500. Die Seite markiert diese Karten als ausverkauft, auch solange sie offen sind — deshalb werden sie getrennt gelesen.',
+            afford: 'Kannst du dir leisten', short: '{v} ARP fehlen', tierShort: 'Braucht Stufe {t}', soldOut: 'Ausverkauft', bidFrom: 'Gebot ab {v} ARP', bidOpen: 'Auktion offen', bidOver: 'Auktion beendet', bidPending: 'Noch nicht offen', tipOpensAt: 'Sie öffnet am {d}, deine Ortszeit. ', vaultOpens: '🔓 Öffnet am {d}, deine Ortszeit', aviauction: 'Der Game Vault ist offen', bidRemind: '🔔 Erinnere mich', bidUnremind: '🔕 Nicht erinnern', tipRemind: 'Warnt dich, wenn der Game Vault öffnet, auf JEDER Seite, auf der das Skript läuft — du musst nicht im Vault sein. Es ist dieselbe Warnung wie die übrigen: ein Dialog, den du schließen musst, ein 👽 im Tab und ein Band im Panel. Ton gibt es keinen: der Browser spielt auf dieser Seite keinen ab, siehe Skript-Informationen. Es bietet nicht für dich: Bieten läuft über ein Captcha. Sie kommt BEIM ÖFFNEN, weil das, was nach Reihenfolge ausgeht, die Keys der normalen Karten sind. Bei den Auktionen eilt nichts: die Seite gibt dir 24 h zum Bieten, es gewinnt das höchste Gebot und nicht das schnellste, und sie sperrt dein ARP, sobald du bietest — früh zu bieten nimmt dir also nur Guthaben, mit dem du ein Vault-Spiel holen könntest. Zum Abbrechen erneut klicken.', tipAuction: 'Eine Blindauktion ist kein Kauf: du gibst EIN Gebot ab und nur die höchsten gewinnen, also zeigt das Panel den Einstieg und nicht den Endpreis. Bei Dinoblade lag der Einstieg bei 100 ARP und die zehn Gewinngebote zwischen 7.000 und 8.500. Die Seite markiert diese Karten als ausverkauft, auch solange sie offen sind — deshalb werden sie getrennt gelesen.',
             mTitle: 'Was dieses Panel liest', mIntro: 'Alles hier wird von der Seite gelesen. Das Skript holt nichts ab, bietet nicht und nimmt an nichts teil: das läuft alles über ein Captcha, und per Skript ist es der Grund, warum Konten gesperrt werden.',
             mDaily: 'Reset um 00:00 UTC: Zeit auf der Seite, Twitch, der Kalendertag und die Login-Serie. Diese Uhrzeit stammt aus dem Code der Seite, nicht aus einer Vermutung.',
             mQuests: 'Quests werden nicht zurückgesetzt. Jede ist einmalig mit eigenem Zeitfenster: Tagesquests verschwinden am Ende, Steam-Quests laufen von Montag zu Montag.',
@@ -226,7 +226,7 @@
             infoPrivacyText: 'Deine Einstellungen —Sprache, Panel-Ecke, die Warnung— bleiben nur in deinem Browser. Das Skript liest die Seite, auf der du bist, und fragt höchstens einmal dein eigenes Control Center ab, mit deiner bestehenden Sitzung. Keine Dritten, und an den Autor des Skripts wird nichts gesendet.',
         },
         fr: {
-            goCC: 'Clique sur cette ligne pour aller au Centre de contrôle.', goPass: 'Clique sur cette ligne pour aller au pass de combat.', goStore: 'Clique sur cette ligne pour aller à la boutique de combat.',
+            goCC: 'Clique sur cette ligne pour aller au Centre de contrôle.', goPass: 'Clique sur cette ligne pour aller au pass de combat.', goStore: 'Clique sur cette ligne pour aller à la boutique de combat.', goVault: 'Clique sur cette ligne pour aller au Game Vault et enchérir. Elle marque aussi l’alerte comme vue.',
             goDiscord: 'Clique sur cette ligne pour ouvrir le salon «Arena Connect» du Discord d’Alienware dans un NOUVEL ONGLET — celui où l’on vote aux sondages qui paient cet ARP. Il y mène directement : il faut donc déjà être membre du serveur.',
             aviMudo: 'Tu peux désactiver ces alertes avec la case en bas du panneau, ou marquer celle-ci comme vue en cliquant sur son bandeau.', aviday: 'La journée se termine', aviweek: 'La semaine Steam se termine', avidawn: 'Un nouveau jour commence', aviSeen: 'Marquer comme vu',
             title: 'ARP du jour', balance: '{v} ARP', tier: 'Niveau {n}', streak: 'Série jour {n}', streakOf: 'Série {v}/{c}', monthOf: 'Jours {v}/{c}',
@@ -246,7 +246,7 @@
             keysFor: '{n} clés pour ton pays au niveau {t}', keysNone: 'Aucune clé pour ton pays ({c})',
             keysTier: 'Clés seulement à partir du niveau {t} — tu es niveau {u}',
             tipKeys: 'Lu dans le stock par pays et par niveau du tirage lui-même, sans rien cliquer.',
-            afford: 'Tu peux te le permettre', short: 'il manque {v} ARP', tierShort: 'Demande le niveau {t}', soldOut: 'Épuisé', bidFrom: 'Enchère dès {v} ARP', bidOpen: 'Enchère ouverte', bidOver: 'Enchère terminée', tipAuction: 'Une enchère à l’aveugle n’est pas un achat : tu poses UNE enchère et seules les plus hautes gagnent, donc le panneau affiche l’entrée et non le prix final. Pour Dinoblade l’entrée était à 100 ARP et les dix enchères gagnantes allaient de 7 000 à 8 500. Le site marque ces cartes comme épuisées même quand elles sont ouvertes ; c’est pourquoi elles sont lues à part.',
+            afford: 'Tu peux te le permettre', short: 'il manque {v} ARP', tierShort: 'Demande le niveau {t}', soldOut: 'Épuisé', bidFrom: 'Enchère dès {v} ARP', bidOpen: 'Enchère ouverte', bidOver: 'Enchère terminée', bidPending: 'Pas encore ouverte', tipOpensAt: 'Elle ouvre le {d}, à ton heure locale. ', vaultOpens: '🔓 Ouvre le {d}, à ton heure locale', aviauction: 'Le Game Vault est ouvert', bidRemind: '🔔 Préviens-moi', bidUnremind: '🔕 Annuler le rappel', tipRemind: 'Te prévient quand le Game Vault ouvre, sur N’IMPORTE QUELLE page où le script tourne — tu n’as pas besoin d’être dans le Vault. C’est la même alerte que les autres : une boîte de dialogue à fermer, un 👽 sur l’onglet et un bandeau dans le panneau. Il n’y a pas de son : le navigateur refuse d’en jouer sur ce site, voir les informations du script. Il n’enchérit pas à ta place : enchérir passe par un captcha. Elle arrive À L’OUVERTURE parce que ce qui part dans l’ordre d’arrivée, ce sont les clés des cartes ordinaires. Pour les enchères rien ne presse : le site donne 24 h pour enchérir, c’est l’enchère la plus haute qui gagne et non la plus rapide, et il bloque ton ARP dès que tu enchéris — enchérir tôt ne fait donc que te retirer du solde pour réclamer un jeu du Vault. Clique à nouveau pour annuler.', tipAuction: 'Une enchère à l’aveugle n’est pas un achat : tu poses UNE enchère et seules les plus hautes gagnent, donc le panneau affiche l’entrée et non le prix final. Pour Dinoblade l’entrée était à 100 ARP et les dix enchères gagnantes allaient de 7 000 à 8 500. Le site marque ces cartes comme épuisées même quand elles sont ouvertes ; c’est pourquoi elles sont lues à part.',
             mTitle: 'Ce que lit ce panneau', mIntro: 'Tout ici est lu depuis la page. Le script ne récupère rien, n’enchérit pas et ne participe à rien : tout cela passe par un captcha, et le faire par script est ce qui fait bannir des comptes.',
             mDaily: 'Réinitialisation à 00:00 UTC : temps sur le site, Twitch, le jour du calendrier et la série de connexions. Cette heure vient du code du site, pas d’une supposition.',
             mQuests: 'Les quêtes ne se réinitialisent pas. Chacune est à usage unique avec sa fenêtre : celles du jour disparaissent à la fin, celles de Steam vont de lundi à lundi.',
@@ -269,7 +269,7 @@
             infoPrivacyText: 'Tes réglages —langue, coin du panneau, l’alerte— restent uniquement dans ton navigateur. Le script lit la page où tu es et, au plus, demande une fois ton propre Centre de contrôle au site, en réutilisant ta session. Aucun tiers, et rien n’est envoyé à l’auteur du script.',
         },
         pt: {
-            goCC: 'Prime esta linha para ires ao Centro de controlo.', goPass: 'Prime esta linha para ires ao passe de batalha.', goStore: 'Prime esta linha para ires à loja de batalha.',
+            goCC: 'Prime esta linha para ires ao Centro de controlo.', goPass: 'Prime esta linha para ires ao passe de batalha.', goStore: 'Prime esta linha para ires à loja de batalha.', goVault: 'Prime esta linha para ires ao Cofre e licitar. Marca também o aviso como visto.',
             goDiscord: 'Prime esta linha para abrir o canal «Arena Connect» do Discord da Alienware num SEPARADOR NOVO — aquele onde se vota nos inquéritos que pagam este ARP. Vai direto, por isso já tens de ser membro do servidor.',
             aviMudo: 'Podes desativar estes avisos na caixa ao fundo do painel, ou marcar este como visto premindo a sua faixa aí mesmo.', aviday: 'O dia está a acabar', aviweek: 'A semana de Steam está a acabar', avidawn: 'Começou um dia novo', aviSeen: 'Marcar como visto',
             title: 'ARP de hoje', balance: '{v} ARP', tier: 'Nível {n}', streak: 'Sequência dia {n}', streakOf: 'Sequência {v}/{c}', monthOf: 'Dias {v}/{c}',
@@ -289,7 +289,7 @@
             keysFor: '{n} chaves para o teu país no nível {t}', keysNone: 'Sem chaves para o teu país ({c})',
             keysTier: 'Chaves só a partir do nível {t} — tu és nível {u}',
             tipKeys: 'Lido do stock por país e por nível do próprio sorteio, antes de premir nada.',
-            afford: 'Dá-te para isto', short: 'faltam-te {v} ARP', tierShort: 'Pede nível {t}', soldOut: 'Esgotado', bidFrom: 'Licitação desde {v} ARP', bidOpen: 'Leilão aberto', bidOver: 'Leilão terminado', tipAuction: 'Um leilão às cegas não é uma compra: fazes UMA licitação e só as mais altas ganham, por isso o painel mostra a entrada e não o que vai acabar por custar. No de Dinoblade a entrada eram 100 ARP e as dez vencedoras foram de 7.000 a 8.500. O site marca estas cartas como esgotadas mesmo com o leilão aberto, e por isso são lidas à parte.',
+            afford: 'Dá-te para isto', short: 'faltam-te {v} ARP', tierShort: 'Pede nível {t}', soldOut: 'Esgotado', bidFrom: 'Licitação desde {v} ARP', bidOpen: 'Leilão aberto', bidOver: 'Leilão terminado', bidPending: 'Ainda não abriu', tipOpensAt: 'Abre a {d}, na tua hora local. ', vaultOpens: '🔓 Abre a {d}, na tua hora local', aviauction: 'O Cofre está aberto', bidRemind: '🔔 Avisa-me', bidUnremind: '🔕 Não avisar', tipRemind: 'Avisa-te quando o Cofre abrir, em QUALQUER página onde o script corra — não precisas de estar no Cofre. É o mesmo aviso que os outros: uma caixa de diálogo que tens de fechar, um 👽 no separador e uma faixa no painel. Não há som: o navegador recusa-se a tocá-lo neste site, di-lo a informação do script. Não licita por ti: licitar passa por um captcha. Salta AO ABRIR porque o que se esgota por ordem de chegada são as chaves dos cartões normais. Para os leilões não há pressa: o site dá 24 h para licitar, ganha a licitação mais alta e não a mais rápida, e bloqueia o teu ARP assim que licitas — por isso licitar cedo só te tira saldo para reclamar um jogo do Cofre. Prime outra vez para cancelar.', tipAuction: 'Um leilão às cegas não é uma compra: fazes UMA licitação e só as mais altas ganham, por isso o painel mostra a entrada e não o que vai acabar por custar. No de Dinoblade a entrada eram 100 ARP e as dez vencedoras foram de 7.000 a 8.500. O site marca estas cartas como esgotadas mesmo com o leilão aberto, e por isso são lidas à parte.',
             mTitle: 'O que este painel lê', mIntro: 'Tudo aqui é lido da página. O script não reclama, não licita e não participa em nada: isso passa todo por um captcha, e fazê-lo por script é o que faz banir contas.',
             mDaily: 'Reiniciam às 00:00 UTC: o tempo no site, o Twitch, o dia do calendário e a sequência de login. Essa hora vem do código do próprio site, não de um palpite.',
             mQuests: 'As missões não reiniciam. Cada uma é de uso único com a sua janela: as diárias desaparecem no fim, e as de Steam vão de segunda a segunda.',
@@ -312,7 +312,7 @@
             infoPrivacyText: 'As tuas preferências —idioma, canto do painel, o aviso— ficam só no teu navegador. O script lê a página onde estás e, no máximo, pede uma vez ao site o teu próprio Centro de controlo, reusando a tua sessão. Sem terceiros, e nada é enviado ao autor do script.',
         },
         br: {
-            goCC: 'Clique nesta linha para ir ao Centro de controle.', goPass: 'Clique nesta linha para ir ao passe de batalha.', goStore: 'Clique nesta linha para ir à loja de batalha.',
+            goCC: 'Clique nesta linha para ir ao Centro de controle.', goPass: 'Clique nesta linha para ir ao passe de batalha.', goStore: 'Clique nesta linha para ir à loja de batalha.', goVault: 'Clique nesta linha para ir ao Cofre e dar lance. Também marca o aviso como visto.',
             goDiscord: 'Clique nesta linha para abrir o canal «Arena Connect» do Discord da Alienware em uma ABA NOVA — aquele onde se vota nas enquetes que pagam esse ARP. Vai direto, então você já precisa ser membro do servidor.',
             aviMudo: 'Você pode desativar estes avisos na caixa no rodapé do painel, ou marcar este como visto clicando na faixa dele ali mesmo.', aviday: 'O dia está acabando', aviweek: 'A semana da Steam está acabando', avidawn: 'Começou um dia novo', aviSeen: 'Marcar como visto',
             title: 'ARP de hoje', balance: '{v} ARP', tier: 'Nível {n}', streak: 'Sequência dia {n}', streakOf: 'Sequência {v}/{c}', monthOf: 'Dias {v}/{c}',
@@ -332,7 +332,7 @@
             keysFor: '{n} chaves para o seu país no nível {t}', keysNone: 'Sem chaves para o seu país ({c})',
             keysTier: 'Chaves só a partir do nível {t} — você é nível {u}',
             tipKeys: 'Lido do estoque por país e por nível do próprio sorteio, antes de clicar em nada.',
-            afford: 'Dá para você', short: 'faltam {v} ARP', tierShort: 'Exige nível {t}', soldOut: 'Esgotado', bidFrom: 'Lance a partir de {v} ARP', bidOpen: 'Leilão aberto', bidOver: 'Leilão encerrado', tipAuction: 'Um leilão às cegas não é uma compra: você dá UM lance e só os mais altos ganham, então o painel mostra o lance de entrada e não o que vai custar no fim. No do Dinoblade a entrada era 100 ARP e os dez lances vencedores ficaram entre 7.000 e 8.500. O site marca esses cards como esgotados mesmo com o leilão aberto, e é por isso que eles são lidos separados dos outros.',
+            afford: 'Dá para você', short: 'faltam {v} ARP', tierShort: 'Exige nível {t}', soldOut: 'Esgotado', bidFrom: 'Lance a partir de {v} ARP', bidOpen: 'Leilão aberto', bidOver: 'Leilão encerrado', bidPending: 'Ainda não abriu', tipOpensAt: 'Abre em {d}, no seu horário local. ', vaultOpens: '🔓 Abre em {d}, no seu horário local', aviauction: 'O Cofre está aberto', bidRemind: '🔔 Me avise', bidUnremind: '🔕 Não avisar', tipRemind: 'Te avisa quando o Cofre abrir, em QUALQUER página onde o script rodar — você não precisa estar no Cofre. É o mesmo aviso dos outros: uma caixa de diálogo que você precisa fechar, um 👽 na aba e uma faixa no painel. Não tem som: o navegador se recusa a tocar um neste site, as informações do script explicam. Ele não dá lance por você: dar lance passa por captcha. Dispara AO ABRIR porque o que acaba por ordem de chegada são as chaves dos cards normais. Para os leilões não tem pressa: o site dá 24 h para dar lance, ganha o lance mais alto e não o mais rápido, e bloqueia seu ARP assim que você dá o lance — então dar lance cedo só tira saldo que você usaria para resgatar um jogo do Cofre. Clique de novo para cancelar.', tipAuction: 'Um leilão às cegas não é uma compra: você dá UM lance e só os mais altos ganham, então o painel mostra o lance de entrada e não o que vai custar no fim. No do Dinoblade a entrada era 100 ARP e os dez lances vencedores ficaram entre 7.000 e 8.500. O site marca esses cards como esgotados mesmo com o leilão aberto, e é por isso que eles são lidos separados dos outros.',
             mTitle: 'O que este painel lê', mIntro: 'Tudo aqui é lido da página. O script não resgata, não dá lances e não participa de nada: isso tudo passa por captcha, e fazer por script é o que faz banir contas.',
             mDaily: 'Resetam às 00:00 UTC: tempo no site, Twitch, o dia do calendário e a sequência de login. Esse horário vem do código do próprio site, não de um chute.',
             mQuests: 'As missões não resetam. Cada uma é de uso único com a sua janela: as diárias desaparecem no fim, e as da Steam vão de segunda a segunda.',
@@ -355,7 +355,7 @@
             infoPrivacyText: 'Suas configurações —idioma, canto do painel, o aviso— ficam só no seu navegador. O script lê a página em que você está e, no máximo, pede uma vez ao site o seu próprio Centro de controle, reusando sua sessão. Sem terceiros, e nada é enviado ao autor do script.',
         },
         zh: {
-            goCC: '点击本行前往控制中心。', goPass: '点击本行前往战斗通行证。', goStore: '点击本行前往战斗商店。',
+            goCC: '点击本行前往控制中心。', goPass: '点击本行前往战斗通行证。', goStore: '点击本行前往战斗商店。', goVault: '点击本行前往宝库出价。同时会把该提醒标记为已看。',
             goDiscord: '点击本行在新标签页中打开 Alienware Discord 的「Arena Connect」频道——就是投票领取这份 ARP 的那个频道。它直接进入，所以你需要已经是该服务器的成员。',
             aviMudo: '你可以用面板底部的复选框关闭这些提醒，或者点击面板上这条提醒的横幅把它标记为已看。', aviday: '这一天要结束了', aviweek: 'Steam 周期要结束了', avidawn: '新的一天开始了', aviSeen: '标记为已看',
             title: '今日 ARP', balance: '{v} ARP', tier: '等级 {n}', streak: '连续第 {n} 天', streakOf: '连续 {v}/{c}', monthOf: '天数 {v}/{c}',
@@ -375,7 +375,7 @@
             keysFor: '你所在国家等级 {t} 有 {n} 个密钥', keysNone: '你所在国家（{c}）没有密钥',
             keysTier: '密钥仅限等级 {t} 起 — 你是等级 {u}',
             tipKeys: '直接读取该赠品按国家和等级的库存，无需点击任何按钮。',
-            afford: '你买得起', short: '还差 {v} ARP', tierShort: '需要等级 {t}', soldOut: '已售完', bidFrom: '起拍 {v} ARP', bidOpen: '竞拍进行中', bidOver: '竞拍已结束', tipAuction: '盲拍不是购买：你只出一次价，只有最高的几个才中标，所以面板显示的是起拍价，而不是最终成交价。Dinoblade 那场起拍 100 ARP，十个中标价在 7,000 到 8,500 之间。即使竞拍还开着，站点也把这些卡片标成已售完，所以它们要跟其他卡片分开读。',
+            afford: '你买得起', short: '还差 {v} ARP', tierShort: '需要等级 {t}', soldOut: '已售完', bidFrom: '起拍 {v} ARP', bidOpen: '竞拍进行中', bidOver: '竞拍已结束', bidPending: '尚未开始', tipOpensAt: '将于 {d}（你的本地时间）开始。', vaultOpens: '🔓 {d}开放（你的本地时间）', aviauction: '宝库已开放', bidRemind: '🔔 提醒我', bidUnremind: '🔕 取消提醒', tipRemind: '宝库开放时会提醒你，在脚本运行的任何页面上都可以——你不必待在宝库里。提醒方式和其他的一样：一个必须关闭的对话框、标签页上的 👽，以及面板上的一条横幅。没有声音：浏览器在这个站点上拒绝播放，脚本信息里有说明。它不会替你出价：出价要过验证码。它在开放的那一刻提醒，因为按先到先得消耗的是普通卡片的密钥。竞拍则不必着急：站点给你 24 小时出价，赢的是最高价而不是最快的，而且你一出价它就锁住你的 ARP——所以早出价只会占用你本可以用来领取宝库游戏的余额。再点一次即可取消。', tipAuction: '盲拍不是购买：你只出一次价，只有最高的几个才中标，所以面板显示的是起拍价，而不是最终成交价。Dinoblade 那场起拍 100 ARP，十个中标价在 7,000 到 8,500 之间。即使竞拍还开着，站点也把这些卡片标成已售完，所以它们要跟其他卡片分开读。',
             mTitle: '这个面板读取什么', mIntro: '这里的一切都从页面读取。脚本不会领取、不会出价、也不会参与任何活动：这些都要过验证码，用脚本去做正是账号被封的原因。',
             mDaily: 'UTC 00:00 重置：在站时间、Twitch、日历当天和登录连续天数。这个时间点来自站点自己的代码，不是猜测。',
             mQuests: '任务不会重置。每个任务都是一次性的，各有窗口：每日任务结束即消失，Steam 任务从周一到周一。',
@@ -398,7 +398,7 @@
             infoPrivacyText: '你的设置——语言、面板位置、提醒——只保存在你的浏览器里。脚本读取你当前所在的页面，最多复用你的会话向站点请求一次你自己的控制中心。不涉及任何第三方，也不会向脚本作者发送任何内容。',
         },
         hi: {
-            goCC: 'कंट्रोल सेंटर पर जाने के लिए इस पंक्ति पर क्लिक करें।', goPass: 'बैटल पास पर जाने के लिए इस पंक्ति पर क्लिक करें।', goStore: 'बैटल स्टोर पर जाने के लिए इस पंक्ति पर क्लिक करें।',
+            goCC: 'कंट्रोल सेंटर पर जाने के लिए इस पंक्ति पर क्लिक करें।', goPass: 'बैटल पास पर जाने के लिए इस पंक्ति पर क्लिक करें।', goStore: 'बैटल स्टोर पर जाने के लिए इस पंक्ति पर क्लिक करें।', goVault: 'Game Vault पर जाकर बोली लगाने के लिए इस पंक्ति पर क्लिक करें। यह चेतावनी को देखा हुआ भी चिह्नित कर देता है।',
             goDiscord: 'Alienware के Discord का «Arena Connect» चैनल नए टैब में खोलने के लिए इस पंक्ति पर क्लिक करें — वही चैनल जहाँ उन पोल में वोट किया जाता है जो यह ARP देते हैं। यह सीधे वहीं ले जाता है, इसलिए आपका पहले से सर्वर का सदस्य होना ज़रूरी है।',
             aviMudo: 'आप पैनल के नीचे वाले चेकबॉक्स से ये चेतावनियाँ बंद कर सकते हैं, या वहीं इसकी पट्टी पर क्लिक करके इसे देखा हुआ चिह्नित कर सकते हैं।', aviday: 'दिन खत्म हो रहा है', aviweek: 'Steam का हफ़्ता खत्म हो रहा है', avidawn: 'नया दिन शुरू हो गया', aviSeen: 'देखा हुआ चिह्नित करें',
             title: 'आज का ARP', balance: '{v} ARP', tier: 'स्तर {n}', streak: 'लगातार {n}वाँ दिन', streakOf: 'लगातार {v}/{c}', monthOf: 'दिन {v}/{c}',
@@ -418,7 +418,7 @@
             keysFor: 'आपके देश में स्तर {t} पर {n} कुंजियाँ', keysNone: 'आपके देश ({c}) के लिए कोई कुंजी नहीं',
             keysTier: 'कुंजियाँ केवल स्तर {t} से — आप स्तर {u} हैं',
             tipKeys: 'कुछ भी दबाने से पहले, गिववे के अपने देश-और-स्तर वाले स्टॉक से पढ़ा गया।',
-            afford: 'आप ले सकते हैं', short: '{v} ARP कम हैं', tierShort: 'स्तर {t} चाहिए', soldOut: 'खत्म', bidFrom: 'बोली {v} ARP से', bidOpen: 'नीलामी चालू', bidOver: 'नीलामी समाप्त', tipAuction: 'अंधी नीलामी ख़रीद नहीं है: आप एक ही बोली लगाते हैं और सिर्फ़ सबसे ऊँची बोलियाँ जीतती हैं, इसलिए पैनल शुरुआती रकम दिखाता है, आख़िरी क़ीमत नहीं। Dinoblade वाली में शुरुआत 100 ARP से थी और दस जीतने वाली बोलियाँ 7,000 से 8,500 के बीच रहीं। नीलामी खुली होने पर भी साइट इन कार्डों को «ख़त्म» दिखाती है, इसीलिए इन्हें बाक़ी से अलग पढ़ा जाता है।',
+            afford: 'आप ले सकते हैं', short: '{v} ARP कम हैं', tierShort: 'स्तर {t} चाहिए', soldOut: 'खत्म', bidFrom: 'बोली {v} ARP से', bidOpen: 'नीलामी चालू', bidOver: 'नीलामी समाप्त', bidPending: 'अभी शुरू नहीं हुई', tipOpensAt: 'यह {d} को खुलेगी, आपके स्थानीय समय के अनुसार। ', vaultOpens: '🔓 {d} को खुलेगा, आपके स्थानीय समय के अनुसार', aviauction: 'Game Vault खुल गया है', bidRemind: '🔔 मुझे बताएँ', bidUnremind: '🔕 याद न दिलाएँ', tipRemind: 'Game Vault खुलते ही आपको बता देगा, हर उस पेज पर जहाँ स्क्रिप्ट चलती है — वॉल्ट में होना ज़रूरी नहीं। चेतावनी बाकियों जैसी ही है: एक डायलॉग जिसे बंद करना पड़ता है, टैब पर 👽, और पैनल में एक पट्टी। आवाज़ नहीं है: ब्राउज़र इस साइट पर बजाने से मना करता है, स्क्रिप्ट की जानकारी में यह लिखा है। यह आपकी ओर से बोली नहीं लगाता: बोली कैप्चा से होकर जाती है। यह खुलते ही आता है, क्योंकि पहले-आओ-पहले-पाओ के हिसाब से ख़त्म होने वाली चीज़ सामान्य कार्डों की कुंजियाँ हैं। नीलामियों में जल्दी नहीं है: साइट बोली लगाने के लिए 24 घंटे देती है, जीतती है सबसे ऊँची बोली, सबसे तेज़ नहीं, और बोली लगाते ही आपका ARP रोक देती है — यानी जल्दी बोली लगाना सिर्फ़ वह बैलेंस छीनता है जिससे आप वॉल्ट का कोई गेम ले सकते थे। रद्द करने के लिए फिर से दबाएँ।', tipAuction: 'अंधी नीलामी ख़रीद नहीं है: आप एक ही बोली लगाते हैं और सिर्फ़ सबसे ऊँची बोलियाँ जीतती हैं, इसलिए पैनल शुरुआती रकम दिखाता है, आख़िरी क़ीमत नहीं। Dinoblade वाली में शुरुआत 100 ARP से थी और दस जीतने वाली बोलियाँ 7,000 से 8,500 के बीच रहीं। नीलामी खुली होने पर भी साइट इन कार्डों को «ख़त्म» दिखाती है, इसीलिए इन्हें बाक़ी से अलग पढ़ा जाता है।',
             mTitle: 'यह पैनल क्या पढ़ता है', mIntro: 'यहाँ सब कुछ पेज से पढ़ा जाता है। यह स्क्रिप्ट कुछ नहीं लेती, बोली नहीं लगाती और किसी चीज़ में भाग नहीं लेती: वह सब कैप्चा से होकर जाता है, और स्क्रिप्ट से करना ही खाते बैन होने की वजह है।',
             mDaily: '00:00 UTC पर रीसेट: साइट पर समय, Twitch, कैलेंडर का दिन और लॉगिन की लगातार गिनती। यह समय साइट के ही कोड से आता है, अनुमान से नहीं।',
             mQuests: 'क्वेस्ट रीसेट नहीं होतीं। हर एक अपनी समय-सीमा वाली, एक बार की चीज़ है: दैनिक वाली खत्म होते ही गायब, Steam वाली सोमवार से सोमवार।',
@@ -489,6 +489,12 @@
         giveawayActions: '#giveaway-actions',
         marketCard: '.product-card',
         vaultCard: '.gamevault-marketplace-product',
+        // El contador de apertura del Game Vault. Es UNO para toda la seccion —vive en su
+        // banner, no en las tarjetas— y es el unico sitio donde el sitio publica CUANDO abre:
+        // `data-unlock-date` en ISO con zona horaria. El texto que pinta al lado («16 days 19
+        // hours») no se lee: lo traduce Weglot y ademas viene redondeado.
+        vaultTimer: '#game-vault-timer[data-unlock-date]',
+        vaultBanner: '.gv-section-banner',
     };
 
     const WIDGET_ID = 'awa-arp-widget';
@@ -496,6 +502,9 @@
     const PASS_KEY = 'awa-arp-pass';
     const PASS_URL = '/control-center/battle-pass/1';
     const STORE_URL = '/battle-store';
+    // El destino del aviso de la boveda. Mismo trato que el pase o la tienda: el
+    // panel dice QUE pasa y ademas te deja a un clic de DONDE se hace.
+    const VAULT_URL = '/marketplace/game-vault';
     // La Tienda de Batalla cambia fichas por ARP a precio fijo, y las fichas se
     // BORRAN al cerrar la temporada: es la única fuente con fecha límite que el
     // panel no decía, y la mayor del historial (200 ARP, §14.5).
@@ -550,6 +559,12 @@
     const VISTO_DAWN_KEY = 'awa-arp-visto-amanecer';
     const VISTO_SEMANA_KEY = 'awa-arp-visto-semana';
     const CLAVES_VIEJAS = ['awa-arp-alert-done', 'awa-arp-alert-dawn', 'awa-arp-alert-week'];
+    // La campana del Game Vault. Guarda el INSTANTE de apertura, no un booleano: asi
+    // el aviso lo decide el reloj y no hace falta recordar aparte cuando tocaba. Un
+    // solo valor y no una lista por subasta, porque `data-unlock-date` es UNO para
+    // toda la seccion — cuando abre, abren todas. No es una marca de «visto» como las
+    // tres de arriba: esas las pone el usuario al marcar, y esta se BORRA al marcar.
+    const VAULT_ALERT_KEY = 'awa-arp-vault-aviso';
     // Publicado por el propio sitio en `/faq-contact` («You can earn a total of 15
     // ARP a day») y en `/whatisarena` («up to 15 ARPs… every day»). Hasta el
     // 2026-08-25 esto iba comentado —y dicho en el tooltip— como «observado, no
@@ -746,6 +761,56 @@
         const m = Math.floor((s % 3600) / 60);
         if (d > 0) return d + 'd ' + h + 'h';
         return h > 0 ? h + 'h ' + String(m).padStart(2, '0') + 'm' : m + 'm';
+    }
+
+    // El instante exacto, escrito en el reloj DEL USUARIO. La cuenta atras dice
+    // cuanto falta, que sirve para hacerse una idea; esto dice a que hora hay que
+    // estar delante, que es otra cosa. El sitio solo publica la fecha en UTC
+    // (`data-unlock-date`), y 18:00 UTC no son las 18:00 de nadie en particular.
+    function fechaLocal(ms) {
+        try {
+            return new Intl.DateTimeFormat(LOCALE, { dateStyle: 'full', timeStyle: 'short' }).format(new Date(ms));
+        } catch (e) {
+            return new Date(ms).toLocaleString();
+        }
+    }
+
+    // Cuando abre el Game Vault, en ms, o null si esta pagina no lo dice. Se lee
+    // del banner de la seccion y no de la tarjeta: el dato es uno para todas.
+    function vaultUnlockMs() {
+        const nodo = document.querySelector(SEL.vaultTimer);
+        const crudo = nodo && nodo.getAttribute('data-unlock-date');
+        const ms = crudo ? Date.parse(crudo) : NaN;
+        return Number.isFinite(ms) ? ms : null;
+    }
+
+    // -------- La campana del Game Vault --------
+    // Armarla guarda el instante de apertura. A partir de ahi el aviso lo decide el
+    // reloj del panel, que corre en TODAS las paginas del sitio: por eso avisa
+    // estes donde estes y no hace falta volver a la Boveda a mirar.
+    function vaultArmado() {
+        const v = Number(recall(VAULT_ALERT_KEY));
+        if (!Number.isFinite(v) || !v) return null;
+        // Una semana despues de abrir ya no hay nada que recordar: se limpia sola en
+        // vez de quedarse en el almacen para siempre.
+        if (Date.now() - v > 7 * 24 * 60 * 60 * 1000) { store(VAULT_ALERT_KEY, null); return null; }
+        return v;
+    }
+
+    function armarVault(ms) { store(VAULT_ALERT_KEY, String(ms)); }
+    function desarmarVault() { store(VAULT_ALERT_KEY, null); }
+
+    // El aviso de la boveda, si esta armada y la hora ya paso. Va aparte de
+    // `avisosVivos` porque no depende de la casilla general: lo armo el usuario
+    // pulsando ESTA campana, que es un permiso mas explicito que una casilla
+    // marcada hace semanas. Y porque no necesita ningun dato leido: solo el reloj.
+    function avisoVault(now) {
+        const abre = vaultArmado();
+        if (abre === null || now.getTime() < abre) return [];
+        // La ventana es un dia desde que abre: pasado eso, recordarlo ya no ayuda.
+        // Insiste cada media hora, como el de la semana de Steam.
+        return [{ tipo: 'auction', etiquetas: [], hasta: abre + 24 * 60 * 60 * 1000,
+            cada: ALERT_REPEAT_WEEK_MS }];
     }
 
     // El filtro del registro va en YYYY-MM-DD y por el día del SITIO, que es UTC.
@@ -1319,7 +1384,7 @@
     const TIP_MARGIN = 8;
     // Solo lo nuestro. Un `title` de AWA sigue saliendo con la caja del
     // navegador, como hasta ahora.
-    const TIP_SCOPE = '#' + WIDGET_ID + ', .awa-keys, .awa-tag, .awa-modal';
+    const TIP_SCOPE = '#' + WIDGET_ID + ', .awa-keys, .awa-tag, .awa-vault, .awa-modal';
     const TIP_SELECTOR = '[title], [' + TIP_STASH + ']';
 
     let _tipEl = null;
@@ -1635,6 +1700,10 @@
                 if (x.tipo === 'dawn') store(VISTO_DAWN_KEY, utcStamp(now.getTime()));
                 else if (x.tipo === 'day') store(VISTO_DIA_KEY, utcStamp(now.getTime()));
                 else if (x.tipo === 'week') store(VISTO_SEMANA_KEY, utcDate(now.getTime() + msToWeekReset(now)));
+                // La boveda no lleva marca de «visto»: se DESARMA. El recordatorio
+                // era para un instante concreto y ese instante ya pasó, asi que
+                // guardarlo como visto seria dejar basura que nadie vuelve a mirar.
+                else if (x.tipo === 'auction') desarmarVault();
             });
         }
         store(AVISO_KEY, null);
@@ -1646,6 +1715,9 @@
 
     // Lo contrario de marcarVisto: borra las tres marcas y la constancia, de modo
     // que los avisos que tocarían ahora vuelven a tocar. Lo usa la casilla.
+    // Ojo: esto NO toca la campana del Game Vault. La casilla del pie y la campana
+    // son dos permisos separados (ver evaluarAvisos), asi que apagar y encender la
+    // casilla no puede desarmar un recordatorio que el usuario puso aparte.
     function olvidarVistos() {
         store(VISTO_DAWN_KEY, null);
         store(VISTO_DIA_KEY, null);
@@ -1756,9 +1828,14 @@
     // Decide si suena. Devuelve true cuando ha sonado, para que el panel repinte:
     // la banda del aviso no existía cuando se dibujó.
     function evaluarAvisos(daily, cal, pass, discord, pendientes) {
-        if (!alertsOn()) return false;
         const now = new Date();
-        const vivos = avisosVivos(daily, pass, pendientes, now);
+        // Dos consentimientos distintos, y por eso se suman en vez de compartir
+        // guarda: los avisos del dia dependen de la casilla del pie, y el de la
+        // boveda depende de que hayas pulsado SU campana. Pedir las dos cosas
+        // haria que armar la campana no sirviera de nada con la casilla apagada,
+        // que es justo lo contrario de lo que armarla significa.
+        const vivos = (alertsOn() ? avisosVivos(daily, pass, pendientes, now) : [])
+            .concat(avisoVault(now));
         const guardado = leerAviso();
 
         if (!vivos.length) {
@@ -2053,9 +2130,12 @@
     // Un destino del propio sitio. Devuelve null si YA ESTÁS AHÍ, y por eso no
     // devuelve la función directamente: una flecha que no te mueve es peor que
     // ninguna flecha, porque promete algo y no pasa nada.
+    function yaEstoyEn(ruta) {
+        return location.pathname.replace(/\/+$/, '') === ruta.replace(/\/+$/, '');
+    }
+
     function irA(ruta) {
-        const aqui = location.pathname.replace(/\/+$/, '');
-        if (aqui === ruta.replace(/\/+$/, '')) return null;
+        if (yaEstoyEn(ruta)) return null;
         return () => { location.href = ruta; };
     }
 
@@ -2108,7 +2188,38 @@
             // semana de Steam y el fin del día se solapan. Van los dos, y un solo
             // «visto» los calla a los dos.
             aviso.avisos.forEach((a) => {
-                textos.appendChild(el('div', null, textoAviso(a)));
+                // El de la boveda es el UNICO aviso con un sitio al que ir, y por eso
+                // es el unico que se enlaza: los otros tres avisan de cosas que se
+                // cumplen en varios sitios —o en ninguno concreto— y una flecha que
+                // no sabe a donde lleva es peor que ninguna flecha.
+                //
+                // Y va como <a href> DE VERDAD, no como un div con listener: asi
+                // funcionan el clic central, «abrir en pestaña nueva», «copiar
+                // dirección» y el foco de teclado, que un div se come todos. El resto
+                // del panel usa listeners porque sus filas son etiqueta+valor y no
+                // texto enlazable; esta si lo es.
+                //
+                // No se pinta estando YA en la boveda: prometer un salto que no mueve
+                // nada es lo que `yaEstoyEn` existe para evitar.
+                const enlazable = a.tipo === 'auction' && !yaEstoyEn(VAULT_URL);
+                const fila = el(enlazable ? 'a' : 'div', null, textoAviso(a));
+                if (enlazable) {
+                    fila.href = VAULT_URL;
+                    fila.classList.add('awa-w__alert-go');
+                    fila.appendChild(el('span', 'awa-w__go', ' ↗'));
+                    tip(fila, t('goVault'));
+                    fila.addEventListener('click', (e) => {
+                        // stopPropagation, pero NO preventDefault: la navegacion la
+                        // hace el <a> por su cuenta, incluidos el clic central y el
+                        // ctrl+clic, que nunca llegan aqui como navegacion. Lo unico
+                        // que se anade es marcarlo visto —irte alli es acusar recibo—
+                        // sin que ademas lo marque la banda, que hace lo mismo.
+                        e.stopPropagation();
+                        marcarVisto();
+                        hideTip();
+                    });
+                }
+                textos.appendChild(fila);
             });
 
             // El diálogo va CON LA BANDA y no con la decisión de avisar, porque
@@ -2285,11 +2396,23 @@
         return cal ? cal.hechos + '/' + cal.total + (cal.claimable ? '!' : '') : '';
     }
 
+    // La fecha no cambia, asi que aqui no hay nada que repintar cada 30 s —esa era
+    // la version con cuenta atras—. Lo que si hace falta es RETIRARLO cuando la hora
+    // llega: un cartel que dice «abre el jueves a las 12:00» con la boveda ya
+    // abierta es informacion caducada, y quien habla a partir de ahi es la campana.
+    function refreshVaultBanner() {
+        const box = document.querySelector('.awa-vault');
+        if (!box) return;
+        const abre = vaultUnlockMs();
+        if (abre === null || abre <= Date.now()) box.remove();
+    }
+
     function refreshClocks(relojes) {
         const now = new Date();
         const nodes = relojes.querySelectorAll('.awa-w__clock');
         if (nodes[0]) nodes[0].textContent = t('dailyReset', { v: fmtCountdown(msToDailyReset(now)) });
         if (nodes[1]) nodes[1].textContent = t('weekReset', { v: fmtCountdown(msToWeekReset(now)) });
+        refreshVaultBanner();
         pintarEdad();
     }
 
@@ -2375,30 +2498,128 @@
     //     entre 7.000 y 8.500, o sea que un «te faltan N ARP» contra 2400 no
     //     significaba nada.
     //
-    // Se reconoce por `data-is-blind-auction`, y el estado por `data-auction-active`,
-    // que son suyos y no se solapan con los de una tarjeta normal.
-    function tagAuction(card) {
+    // Se reconoce por `data-is-blind-auction`, y el estado por `data-auction-active`
+    // MAS `data-auction-ended`, que son suyos y no se solapan con los de una tarjeta
+    // normal.
+    //
+    // Los dos atributos hacen falta porque los estados son TRES, no dos. Hasta 1.1.2
+    // esto leia solo `data-auction-active` y daba por terminada cualquier subasta que
+    // no estuviera abierta, asi que una que AUN NO HABIA ABIERTO salia rotulada
+    // «Subasta terminada». No era hipotetico: el 2026-09-01 el Game Vault tenia dos
+    // subastas con `active="false"` y `ended="false"` —STALKER 2 y Cronos, con el vault
+    // cerrado hasta el 18 de septiembre— y el script las tachaba a las dos durante
+    // diecisiete dias. No se habia visto porque ningun volcado tenia ese estado: el de
+    // agosto solo traia `ended="true"`, o sea el final (ver
+    // docs/dom-marketplace-auction-unstarted-2026-09-01.html).
+    //
+    // `unlockMs` llega de fuera —lo lee `paintVault` una sola vez— porque el dato es
+    // uno para toda la seccion y no vive en la tarjeta.
+    function tagAuction(card, unlockMs) {
         if (card.querySelector('.awa-tag')) return;
         const activa = card.getAttribute('data-auction-active') === 'true';
+        const attrFin = card.getAttribute('data-auction-ended');
+        // Si el marcado NO trae `data-auction-ended`, se cae al criterio de antes
+        // («no activa» = terminada). Es la lectura conservadora: da por cerrado lo
+        // que no puede fechar, en vez de prometer una apertura que no consta.
+        const terminada = attrFin === null ? !activa : attrFin === 'true';
         const minimo = num(card.getAttribute('data-min-bid-amount'));
         const tag = noTraducir(el('div', 'awa-tag'));
+        let masTip = '';
         if (activa && minimo !== null) {
             tag.classList.add('awa-tag--bid');
             tag.textContent = t('bidFrom', { v: nf.format(minimo) });
         } else if (activa) {
             tag.classList.add('awa-tag--bid');
             tag.textContent = t('bidOpen');
+        } else if (!terminada) {
+            tag.classList.add('awa-tag--soon');
+            const falta = unlockMs === null || unlockMs === undefined ? null : unlockMs - Date.now();
+            // La cuenta atras NO se pinta aqui: la pinta el SITIO, en el banner de la
+            // seccion («Game Vault abre en: 16 days 16 hours»). Y no es que se decida
+            // no competir con el: es que `vaultUnlockMs()` lee justo ese elemento, o
+            // sea que si sabemos la fecha es porque el contador esta en pantalla. Un
+            // segundo contador diciendo lo mismo dos lineas mas arriba es ruido.
+            if (falta !== null && falta > 0) {
+                // Lo que SI es de la tarjeta es la puja minima, que ya se conoce antes
+                // de abrir (300 y 100 ARP en las dos del 2026-09-01) y es el dato con
+                // el que se decide si ahorrar ARP para llegar. Antes solo se ensenaba
+                // con la subasta abierta.
+                tag.textContent = minimo !== null
+                    ? t('bidFrom', { v: nf.format(minimo) })
+                    : t('bidPending');
+                // La fecha exacta va al aviso de la tarjeta: es lo que el contador del
+                // sitio no da —el suyo va redondeado a horas y en su huso—, y ahi no
+                // ocupa sitio en pantalla.
+                masTip = t('tipOpensAt', { d: fechaLocal(unlockMs) });
+            } else {
+                // Consta que no ha abierto, pero no hay fecha (o ya paso y la pagina
+                // no se ha recargado). Se dice eso y no se inventa una cuenta atras.
+                tag.textContent = t('bidPending');
+            }
         } else {
             tag.classList.add('awa-tag--out');
             tag.textContent = t('bidOver');
         }
-        tip(tag, t('tipAuction'));
+        tip(tag, masTip + t('tipAuction'));
         card.appendChild(tag);
     }
 
+    // El aviso general de la Boveda. NO lleva cuenta atras, y eso es deliberado: el
+    // sitio ya pinta la suya justo encima («Game Vault abre en: 16 days 16 hours»),
+    // asi que repetirla era un segundo contador diciendo lo mismo. Aqui va solo lo
+    // que el suyo NO da:
+    //
+    //   - La FECHA EXACTA en el reloj del usuario. El contador del sitio viene
+    //     redondeado a horas, y su dato de origen esta en UTC: 18:00 UTC no son las
+    //     18:00 de nadie en particular, y para estar delante hace falta la hora.
+    //   - La CAMPANA, que es el unico control del script que arma algo en vez de
+    //     solo informar.
+    //
+    // Vale para las DIECIOCHO tarjetas —`data-unlock-date` es uno para toda la
+    // seccion y hasta que llegue todas van con `data-product-disabled="true"`—, y
+    // por eso se dice una vez y no dieciocho.
+    function paintVaultBanner(unlockMs) {
+        if (unlockMs === null || unlockMs <= Date.now()) return;
+        const host = document.querySelector(SEL.vaultBanner);
+        if (!host || document.querySelector('.awa-vault')) return;
+
+        const box = noTraducir(el('div', 'awa-vault'));
+        const txt = el('div', 'awa-vault__txt');
+        txt.appendChild(el('span', 'awa-vault__when', t('vaultOpens', { d: fechaLocal(unlockMs) })));
+        box.appendChild(txt);
+
+        const campana = el('button', 'awa-vault__bell');
+        const pintarCampana = () => {
+            const on = vaultArmado() !== null;
+            campana.textContent = on ? t('bidUnremind') : t('bidRemind');
+            campana.classList.toggle('awa-vault__bell--on', on);
+            // El aviso se reescribe con el estado, y por eso va con setAttribute y
+            // no una sola vez: el tooltip propio devuelve el `title` al cerrarse,
+            // asi que el que quede puesto tiene que ser el del estado actual.
+            campana.setAttribute('title', t('tipRemind'));
+        };
+        campana.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (vaultArmado() !== null) desarmarVault(); else armarVault(unlockMs);
+            hideTip();
+            pintarCampana();
+        });
+        pintarCampana();
+        tip(campana, t('tipRemind'));
+        box.appendChild(campana);
+        // DETRAS del banner y no dentro: `.gv-section-banner` es la caja de la
+        // imagen, con su overlay posicionado encima, asi que un hijo mas quedaba
+        // invisible. Como hermano cae debajo, en el flujo, donde se lee.
+        host.insertAdjacentElement('afterend', box);
+    }
+
     function paintVault(acc) {
+        // Una sola lectura para todas las tarjetas: el contador es de la seccion.
+        const unlockMs = vaultUnlockMs();
+        paintVaultBanner(unlockMs);
         document.querySelectorAll(SEL.vaultCard).forEach((card) => {
-            if (card.getAttribute('data-is-blind-auction') === 'true') { tagAuction(card); return; }
+            if (card.getAttribute('data-is-blind-auction') === 'true') { tagAuction(card, unlockMs); return; }
             const stock = card.getAttribute('data-product-in-stock');
             tagCard(card, num(card.getAttribute('data-product-price')),
                 num(card.getAttribute('data-arp-tier')),
@@ -2461,6 +2682,12 @@
             W + ' .awa-w__alert:focus-visible{outline:1px solid #4b72d4;outline-offset:2px;}',
             W + ' .awa-w__alert-txt{flex:1 1 auto;font-weight:600;}',
             W + ' .awa-w__alert-x{flex:0 0 auto;opacity:.7;}',
+            // La fila que lleva a algun sitio, dentro de la banda. Subrayado al pasar
+            // y no un color distinto: la banda ya es cyan entera y otro tono ahi no se
+            // leeria como «esto se pulsa», se leeria como «esto es otra cosa».
+            W + ' .awa-w__alert-go{cursor:pointer;color:inherit;text-decoration:none;display:block;}',
+            W + ' .awa-w__alert-go:hover{text-decoration:underline;}',
+            W + ' .awa-w__alert-go:focus-visible{outline:1px solid #4b72d4;outline-offset:2px;}',
             W + ' .awa-w__note{margin:3px 0 6px;padding:5px 7px;border-radius:5px;',
             'background:rgba(255,207,102,.10);border:1px solid rgba(255,207,102,.35);color:#ffcf66;font-size:11px;}',
             W + ' .awa-w__clocks{margin-top:8px;padding-top:7px;border-top:1px solid #2b3644;}',
@@ -2551,6 +2778,25 @@
             // Azul y no verde: «puedes pujar» no es «te alcanza». Lo que cuesta de
             // verdad una subasta no se sabe hasta que cierra (ver tagAuction).
             '.awa-tag--bid{background:rgba(102,181,255,.14);color:#66b5ff;}',
+            // El mismo azul, apagado: sigue siendo una subasta —de ahi la familia—
+            // pero todavia no se puede pujar, asi que no puede leerse igual de viva
+            // que `--bid`. Y no es roja: no ha terminado, no ha empezado.
+            '.awa-tag--soon{background:rgba(102,181,255,.07);color:#7f9dbf;}',
+            // Aviso general de la Boveda. Cyan y no ambar: informa de cuando abre,
+            // no reclama nada ahora; el ambar del panel esta reservado a lo que
+            // vence hoy. Se pega al banner de la seccion, ancho completo.
+            '.awa-vault{display:flex;align-items:center;justify-content:space-between;gap:12px;',
+            'flex-wrap:wrap;margin:10px 0 14px;padding:8px 12px;border-radius:8px;',
+            'font:13px/1.35 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#01f5ff;',
+            'background:rgba(1,245,255,.10);border:1px solid rgba(1,245,255,.45);}',
+            '.awa-vault__txt{min-width:0;}',
+            '.awa-vault__when{font-weight:600;}',
+            '.awa-vault__bell{flex:0 0 auto;font:inherit;cursor:pointer;padding:5px 12px;',
+            'border-radius:6px;border:1px solid #01f5ff;background:transparent;color:#01f5ff;}',
+            '.awa-vault__bell:hover{background:rgba(1,245,255,.18);}',
+            // Armada: el relleno la separa de la version «pulsable» de un vistazo,
+            // que es lo que hace falta para no armarla dos veces sin darse cuenta.
+            '.awa-vault__bell--on{background:rgba(1,245,255,.22);font-weight:600;}',
         ].join('');
         document.head.appendChild(css);
     }

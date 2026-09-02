@@ -19,7 +19,11 @@ const path = require('path');
 const { JSDOM, VirtualConsole } = require(process.env.JSDOM || 'jsdom');
 
 const DOCS = __dirname;
-const SCRIPT = fs.readFileSync(__dirname + '/../alienware-arena-arp-tracker.user.js', 'utf8');
+// Igual que en §46 y §47: la fuente se puede apuntar a otra copia con AWA_FUENTE, que
+// es como se corren los controles negativos —las mismas pruebas contra el codigo de
+// antes del cambio—. Una prueba que pasa igual con el codigo viejo no mide lo que dice.
+const SCRIPT = fs.readFileSync(process.env.AWA_FUENTE
+  || __dirname + '/../alienware-arena-arp-tracker.user.js', 'utf8');
 
 let ok = 0, fail = 0;
 function check(name, cond, extra) {
@@ -2201,6 +2205,189 @@ console.log('\n=== 47. El @icon va incrustado, no apuntando a un favicon ajeno =
   check('y decodifica a un PNG de verdad',
     crudo.length > 500 && crudo[0] === 0x89 && crudo[1] === 0x50 && crudo[2] === 0x4e && crudo[3] === 0x47,
     crudo.length + ' bytes, magic ' + [...crudo.slice(0, 4)].map((b) => b.toString(16)).join(' '));
+}
+
+console.log('\n=== 48. Una subasta que AUN NO ABRE no se rotula como terminada ===');
+{
+  // El caso que hasta 1.1.2 salia mal. El volcado tiene el Game Vault cerrado hasta
+  // el 18/09 con dos subastas en `active="false"` + `ended="false"`, que es el tercer
+  // estado que el codigo viejo no distinguia: leia solo `active` y las daba por
+  // terminadas. La fecha del volcado esta congelada, asi que la cuenta atras se mide
+  // contra un "ahora" fijo ANTERIOR a la apertura; sin eso, la prueba empezaria a
+  // fallar sola el 18 de septiembre y por el motivo equivocado.
+  const ANTES = Date.parse('2026-09-01T22:00:00Z');
+  const w = mount('dom-marketplace-auction-unstarted-2026-09-01.html', '/marketplace/game-vault',
+    (win) => { const D = win.Date; win.Date = class extends D {
+      constructor(...a) { return a.length ? new D(...a) : new D(ANTES); }
+      static now() { return ANTES; } }; });
+  await tick();
+  // Solo las tarjetas de SUBASTA. Filtrar por clase de etiqueta no sirve: las 16
+  // tarjetas normales de la boveda estan agotadas y salen `--out` con toda la razon,
+  // asi que se colaban en el recuento y hacian fallar la prueba con el codigo bueno.
+  const SUB = '.gamevault-marketplace-product[data-is-blind-auction="true"] .awa-tag';
+  const subastas = Array.from(w.document.querySelectorAll(SUB)).map((x) => x.className + '::' + x.textContent);
+
+  check('las dos subastas se etiquetan', subastas.length === 2, subastas.join(' , '));
+  check('NINGUNA sale como terminada', !subastas.some((x) => /--out/.test(x)), subastas.join(' , '));
+  check('salen con el tono de "aun no abre"', subastas.every((x) => /--soon/.test(x)), subastas.join(' , '));
+  // La cuenta atras NO se repite en la tarjeta: la dice el aviso general de arriba,
+  // porque la fecha es una para toda la seccion. Repetirla aqui la ponia tres veces
+  // en la misma pantalla.
+  check('la tarjeta NO repite la cuenta atras', !subastas.some((x) => /16d 20h/.test(x)), subastas.join(' , '));
+  check('ni la repite el aviso general: eso ya lo pinta el sitio',
+    !/16d 20h/.test((w.document.querySelector('.awa-vault__when') || {}).textContent || ''),
+    (w.document.querySelector('.awa-vault__when') || {}).textContent);
+  check('y el contador del propio sitio sigue intacto',
+    /16 days 19 hours/.test(w.document.querySelector('#game-vault-timer').textContent));
+  // Lo que si es de la tarjeta: la puja minima, que ya se conoce antes de abrir.
+  check('la tarjeta lleva su puja minima', subastas.some((x) => /300/.test(x)) && subastas.some((x) => /100/.test(x)),
+    subastas.join(' , '));
+
+  const tip = (w.document.querySelector('.awa-tag--soon') || {}).getAttribute
+    ? w.document.querySelector('.awa-tag--soon').getAttribute('title') : '';
+  check('el tooltip lleva la fecha en hora local', /2026/.test(tip) && /18/.test(tip), tip.slice(0, 90));
+
+  // Control negativo: el MISMO codigo, sobre el volcado de agosto, tiene que seguir
+  // diciendo «terminada». Si esta pasara igual que la de arriba, la rama nueva se
+  // habria comido la vieja y la prueba no mediria nada.
+  const v = mount('dom-game-vault-auction-2026-08.html', '/marketplace/game-vault'); await tick();
+  const viejas = Array.from(v.document.querySelectorAll(SUB)).map((x) => x.className + '::' + x.textContent);
+  check('control negativo: la subasta de agosto SIGUE saliendo terminada',
+    viejas.some((x) => /--out/.test(x)) && !viejas.some((x) => /--soon/.test(x)), viejas.join(' , '));
+}
+
+console.log('\n=== 49. La Boveda cerrada: cuenta atras general y campana que alterna ===');
+{
+  const ANTES = Date.parse('2026-09-01T22:00:00Z');
+  const congelar = (win) => { const D = win.Date; win.Date = class extends D {
+    constructor(...a) { return a.length ? new D(...a) : new D(ANTES); }
+    static now() { return ANTES; } }; };
+  const w = mount('dom-marketplace-auction-unstarted-2026-09-01.html', '/marketplace/game-vault', congelar);
+  await tick();
+
+  const aviso = w.document.querySelector('.awa-vault');
+  check('sale UN aviso general, no uno por tarjeta',
+    !!aviso && w.document.querySelectorAll('.awa-vault').length === 1,
+    'salieron ' + w.document.querySelectorAll('.awa-vault').length);
+  // DETRAS del banner y no dentro: dentro quedaba invisible (es la caja de la
+  // imagen, con overlay encima). Se vio en el navegador, no en la prueba.
+  check('cuelga DETRAS del banner, como hermano',
+    !!(aviso && aviso.previousElementSibling
+       && /gv-section-banner/.test(aviso.previousElementSibling.className)),
+    aviso && aviso.previousElementSibling && aviso.previousElementSibling.className);
+  check('NO va dentro del banner (ahi no se veia)', !(aviso && aviso.closest('.gv-section-banner')));
+  const cuando = aviso && aviso.querySelector('.awa-vault__when').textContent;
+  check('dice la fecha en el reloj del usuario', /2026/.test(cuando || '') && /18/.test(cuando || ''), cuando);
+  check('y NO repite la cuenta atras del sitio', !/16d/.test(cuando || ''), cuando);
+
+  // La campana: arma, alterna y desarma. Es lo unico del script que ARMA algo.
+  const bell = aviso && aviso.querySelector('.awa-vault__bell');
+  check('la campana empieza SIN armar', !!bell && !/awa-vault__bell--on/.test(bell.className), bell && bell.className);
+  bell.dispatchEvent(new w.Event('click', { bubbles: true }));
+  check('al pulsarla queda armada', /awa-vault__bell--on/.test(bell.className), bell.className);
+  check('y guarda la hora de apertura, no un booleano',
+    w.localStorage.getItem('awa-arp-vault-aviso') === String(Date.parse('2026-09-18T18:00:00Z')),
+    w.localStorage.getItem('awa-arp-vault-aviso'));
+  const armado = bell.textContent;
+  bell.dispatchEvent(new w.Event('click', { bubbles: true }));
+  check('el MISMO boton la desarma', !/awa-vault__bell--on/.test(bell.className)
+    && bell.textContent !== armado && !w.localStorage.getItem('awa-arp-vault-aviso'),
+    bell.className + ' | ' + bell.textContent);
+}
+
+console.log('\n=== 50. Con la boveda ya abierta, el aviso salta en CUALQUIER pagina ===');
+{
+  // El punto de la campana: el aviso no vive en la Boveda, vive en el reloj del
+  // panel, que corre en todas las paginas. Se arma y se comprueba desde OTRA.
+  const DESPUES = Date.parse('2026-09-18T18:00:30Z');
+  const w = mount('dom-control-center-2026-08.html', '/control-center', (win) => {
+    win.localStorage.setItem('awa-arp-vault-aviso', String(Date.parse('2026-09-18T18:00:00Z')));
+    // La casilla general APAGADA a proposito: la campana es su propio permiso.
+    win.localStorage.removeItem('awa-arp-alert');
+    const D = win.Date; win.Date = class extends D {
+      constructor(...a) { return a.length ? new D(...a) : new D(DESPUES); }
+      static now() { return DESPUES; } };
+  });
+  await tick();
+  const banda = w.document.querySelector('#awa-arp-widget .awa-w__alert');
+  check('la banda del aviso sale fuera de la Boveda', !!banda, banda && banda.textContent);
+  check('y con la casilla general apagada', !w.localStorage.getItem('awa-arp-alert'));
+  check('marca la pestana con el 👽', /👽/.test(w.document.title), w.document.title);
+
+  // La fila del aviso LLEVA a la boveda, que es el sitio donde se puja. Es el
+  // unico de los cuatro avisos con un destino, y por eso el unico con flecha.
+  const filaGo = w.document.querySelector('#awa-arp-widget .awa-w__alert-go');
+  check('el aviso de la boveda lleva a la boveda', !!filaGo, banda.textContent);
+  check('y lo dice con la flecha del resto del panel',
+    !!(filaGo && /↗/.test(filaGo.textContent)), filaGo && filaGo.textContent);
+  // Un <a href> DE VERDAD, no un div con listener: es lo que hace que funcionen el
+  // clic central, «abrir en pestaña nueva» y «copiar dirección».
+  check('es un <a> y no un div', !!filaGo && filaGo.tagName === 'A', filaGo && filaGo.tagName);
+  check('con el href de la boveda',
+    !!filaGo && filaGo.getAttribute('href') === '/marketplace/game-vault',
+    filaGo && filaGo.getAttribute('href'));
+
+  // Pulsar LA FILA hace las dos cosas: la descarta y ademas navega. Lo que se
+  // comprueba aqui es el descarte —que la campana queda desarmada y la banda se
+  // va—; la navegacion en si no la puede asegurar el arnes, porque jsdom no navega.
+  filaGo.dispatchEvent(new w.Event('click', { bubbles: true }));
+  check('pulsar la fila descarta el aviso', !w.localStorage.getItem('awa-arp-vault-aviso'),
+    w.localStorage.getItem('awa-arp-vault-aviso'));
+  check('y quita el 👽 al descartarlo desde la fila', !/👽/.test(w.document.title), w.document.title);
+
+  // Darlo por visto DESARMA la campana: el instante ya pasó, no hay nada que vigilar.
+  banda.dispatchEvent(new w.Event('click', { bubbles: true }));
+  check('darlo por visto desarma la campana',
+    !w.localStorage.getItem('awa-arp-vault-aviso'), w.localStorage.getItem('awa-arp-vault-aviso'));
+  check('y quita el 👽 del titulo', !/👽/.test(w.document.title), w.document.title);
+
+  // Y ESTANDO YA en la boveda la flecha no sale: `irA` devuelve null cuando ya
+  // estas ahi, y prometer un salto que no mueve nada es justo lo que ese helper
+  // existe para evitar. La banda si sigue saliendo — el aviso no deja de ser cierto.
+  const enBoveda = mount('dom-marketplace-auction-unstarted-2026-09-01.html', '/marketplace/game-vault',
+    (win) => {
+      win.localStorage.setItem('awa-arp-vault-aviso', String(Date.parse('2026-09-18T18:00:00Z')));
+      const D = win.Date; win.Date = class extends D {
+        constructor(...a) { return a.length ? new D(...a) : new D(DESPUES); }
+        static now() { return DESPUES; } };
+    });
+  await tick();
+  check('en la propia boveda sigue saliendo la banda',
+    !!enBoveda.document.querySelector('#awa-arp-widget .awa-w__alert'));
+  check('pero SIN flecha: ya estas ahi',
+    !enBoveda.document.querySelector('#awa-arp-widget .awa-w__alert-go'));
+
+  // Control negativo: sin armar, esa misma pagina y esa misma hora NO avisan.
+  const v = mount('dom-control-center-2026-08.html', '/control-center', (win) => {
+    win.localStorage.removeItem('awa-arp-vault-aviso');
+    win.localStorage.removeItem('awa-arp-alert');
+    const D = win.Date; win.Date = class extends D {
+      constructor(...a) { return a.length ? new D(...a) : new D(DESPUES); }
+      static now() { return DESPUES; } };
+  });
+  await tick();
+  check('control negativo: sin armar no hay aviso',
+    !v.document.querySelector('#awa-arp-widget .awa-w__alert'));
+}
+
+console.log('\n=== 51. El aviso se retira cuando la boveda abre ===');
+{
+  const enTiempo = (iso) => (win) => { const D = win.Date; const T = Date.parse(iso);
+    win.Date = class extends D {
+      constructor(...a) { return a.length ? new D(...a) : new D(T); }
+      static now() { return T; } }; };
+  const c = mount('dom-marketplace-auction-unstarted-2026-09-01.html', '/marketplace/game-vault',
+    enTiempo('2026-09-18T18:00:30Z')); await tick();
+  check('pasada la hora de apertura no se pinta', !c.document.querySelector('.awa-vault'));
+  check('y el contador del propio sitio no se toca',
+    /16 days 19 hours/.test(c.document.querySelector('#game-vault-timer').textContent));
+  // La fecha se calcula del dato, no se copia del texto: el volcado dice «16 days
+  // 19 hours» y el aviso dice el 18 de septiembre.
+  const a = mount('dom-marketplace-auction-unstarted-2026-09-01.html', '/marketplace/game-vault',
+    enTiempo('2026-09-01T22:00:00Z')); await tick();
+  const txt = (a.document.querySelector('.awa-vault__when') || {}).textContent || '';
+  check('la fecha sale de data-unlock-date, no del texto del sitio',
+    /18/.test(txt) && /2026/.test(txt) && !/19 hours/.test(txt), txt);
 }
 
 console.log('\n' + (fail ? '✗ ' : '✓ ') + ok + ' comprobaciones pasadas, ' + fail + ' fallidas\n');
