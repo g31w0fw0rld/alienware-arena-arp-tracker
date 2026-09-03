@@ -1,6 +1,6 @@
 # Alienware Arena ARP Tracker
 
-Tampermonkey userscript that shows, on every Alienware Arena page, what ARP you still have to earn today and when it expires. / Userscript de Tampermonkey que muestra, en cualquier página de Alienware Arena, qué ARP te queda por ganar hoy y cuándo caduca.
+Userscript that shows, on every Alienware Arena page, what ARP you still have to earn today and when it expires. / Userscript que muestra, en cualquier página de Alienware Arena, qué ARP te queda por ganar hoy y cuándo caduca.
 
 ![The panel in the top right corner of the Control Center, listing the daily ARP sources with their counts, two countdowns and how old the data is](docs/screenshot-panel.png)
 
@@ -48,7 +48,7 @@ It can also warn you three times: half an hour before the day ends, six hours be
 **Language:** eight, following the site — English, Spanish, German, French, Portuguese, Brazilian Portuguese, Chinese and Hindi. You can also pin one from the panel.
 
 **Install:**
-1. Install [Tampermonkey](https://www.tampermonkey.net/).
+1. Install a userscript manager: [Violentmonkey](https://violentmonkey.github.io/) (open source, Chrome/Edge/Firefox) or [Tampermonkey](https://www.tampermonkey.net/). On Chrome and Edge, also turn on **Allow user scripts** on the extension's own page in `chrome://extensions` — without it nothing runs.
 2. Open the installer: [alienware-arena-arp-tracker.user.js](https://github.com/g31w0fw0rld/alienware-arena-arp-tracker/raw/main/alienware-arena-arp-tracker.user.js) (also on [GreasyFork](https://greasyfork.org/es-419/users/1590477-g31w) and [OpenUserJS](https://openuserjs.org/users/g31w0fw0rldgmail.com/scripts)).
 
 **Sites:** `www.alienwarearena.com/*`, `na.alienwarearena.com/*`
@@ -83,7 +83,7 @@ También puede avisarte tres veces: media hora antes de que acabe el día, seis 
 **Idioma:** ocho, siguiendo al del sitio — inglés, español, alemán, francés, portugués, portugués de Brasil, chino e hindi. También puedes fijar uno desde el panel.
 
 **Instalación:**
-1. Instala [Tampermonkey](https://www.tampermonkey.net/).
+1. Instala un gestor de userscripts: [Violentmonkey](https://violentmonkey.github.io/) (código abierto, Chrome/Edge/Firefox) o [Tampermonkey](https://www.tampermonkey.net/). En Chrome y Edge, activa además **Allow user scripts** en la página de la propia extensión en `chrome://extensions`; sin eso no se ejecuta nada.
 2. Abre el instalador: [alienware-arena-arp-tracker.user.js](https://github.com/g31w0fw0rld/alienware-arena-arp-tracker/raw/main/alienware-arena-arp-tracker.user.js) (también en [GreasyFork](https://greasyfork.org/es-419/users/1590477-g31w) y [OpenUserJS](https://openuserjs.org/users/g31w0fw0rldgmail.com/scripts)).
 
 **Sitios:** `www.alienwarearena.com/*`, `na.alienwarearena.com/*`
