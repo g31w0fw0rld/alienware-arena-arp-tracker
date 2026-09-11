@@ -223,11 +223,13 @@ console.log('\n=== 1. Centro de control con Twitch completado (24 ago) ===');
   const tos = L.find(l => /Tiempo|Time/.test(l[0]));
   check('tiempo en el sitio completo: 5/5 con marca', tos && tos[1] === '5/5 ✅', tos && tos.join(' | '));
   check('sin aviso de widget cuando ya está completo', !w.document.querySelector('.awa-w__note'));
-  // Lo del día se lee del propio documento; el pase vive en otra página, así que
-  // esa sí se pide —una vez al día, no por carga: ver la prueba de la caché—.
-  check('estando en el Centro de control se piden solo el pase y el registro',
-    w.fetched.length === 2 && w.fetched.some((u) => /battle-pass/.test(u))
-      && w.fetched.some((u) => /arp-log/.test(u)), JSON.stringify(w.fetched));
+  // Lo del día se lee del propio documento; el pase y el índice de eventos viven
+  // en otra página, así que esas sí se piden —una vez al día cada una, no por
+  // carga: ver la prueba de la caché—.
+  check('estando en el Centro de control se piden el pase, el registro y los eventos',
+    w.fetched.length === 3 && w.fetched.some((u) => /battle-pass/.test(u))
+      && w.fetched.some((u) => /arp-log/.test(u))
+      && w.fetched.some((u) => /\/steam\/events$/.test(u)), JSON.stringify(w.fetched));
 }
 
 console.log('\n=== 2. Twitch a medias (2 de 15) ===');
@@ -337,12 +339,15 @@ console.log('\n=== 12. Fuera, se piden dos cosas y una sola vez cada una ===');
 {
   const w = mount('dom-homepage-src-2026-08.html', '/'); await tick();
   check('el panel se inyecta igual', !!w.document.getElementById('awa-arp-widget'));
-  // Tres peticiones como mucho, una de cada, y las tres con su propia caché:
-  // el dia (5 min), el pase (un dia) y el registro (5 min hasta cobrar Discord).
-  check('el Centro de control, el pase y el registro: uno de cada',
-    w.fetched.length === 3 && w.fetched.filter((u) => /control-center$/.test(u)).length === 1
+  // Cuatro peticiones como mucho, una de cada, y las cuatro con su propia caché:
+  // el dia (5 min), el pase (un dia), el registro (5 min hasta cobrar Discord) y
+  // el indice de eventos (un dia). Sin evento vivo el indice se queda en UNA: la
+  // pagina del evento solo se pide si el indice dice que hay alguno.
+  check('el Centro de control, el pase, el registro y los eventos: uno de cada',
+    w.fetched.length === 4 && w.fetched.filter((u) => /control-center$/.test(u)).length === 1
       && w.fetched.filter((u) => /battle-pass/.test(u)).length === 1
-      && w.fetched.filter((u) => /arp-log/.test(u)).length === 1, JSON.stringify(w.fetched));
+      && w.fetched.filter((u) => /arp-log/.test(u)).length === 1
+      && w.fetched.filter((u) => /\/steam\/events$/.test(u)).length === 1, JSON.stringify(w.fetched));
 }
 {
   // Con la caché del día puesta, el pase no se vuelve a pedir. Es lo que hace que
@@ -707,9 +712,10 @@ console.log('\n=== 22. Pase de batalla ===');
 {
   // Fuera del pase se pide una vez, y solo una: la del día y la del pase.
   const w = mount('dom-homepage-src-2026-08.html', '/'); await tick();
-  check('pide el Centro de control, el pase y el registro',
-    w.fetched.length === 3 && w.fetched.some((u) => /control-center$/.test(u))
-      && w.fetched.some((u) => /battle-pass/.test(u)) && w.fetched.some((u) => /arp-log/.test(u)),
+  check('pide el Centro de control, el pase, el registro y los eventos',
+    w.fetched.length === 4 && w.fetched.some((u) => /control-center$/.test(u))
+      && w.fetched.some((u) => /battle-pass/.test(u)) && w.fetched.some((u) => /arp-log/.test(u))
+      && w.fetched.some((u) => /\/steam\/events$/.test(u)),
     JSON.stringify(w.fetched));
 }
 
@@ -2388,6 +2394,357 @@ console.log('\n=== 51. El aviso se retira cuando la boveda abre ===');
   const txt = (a.document.querySelector('.awa-vault__when') || {}).textContent || '';
   check('la fecha sale de data-unlock-date, no del texto del sitio',
     /18/.test(txt) && /2026/.test(txt) && !/19 hours/.test(txt), txt);
+}
+
+
+// El mismo reloj congelable de §51, aqui arriba porque estas pruebas lo necesitan
+// en varios bloques. Congelar la fecha NO es un adorno: el evento del volcado va
+// del 10 al 18 de septiembre de 2026, asi que sin congelarla estas pruebas
+// pasarian hoy y empezarian a fallar solas el dia 19 —y el fallo se leeria como un
+// bug del script—.
+const enFecha = (iso) => (win) => {
+  const D = win.Date; const T = Date.parse(iso);
+  win.Date = class extends D {
+    constructor(...a) { return a.length ? new D(...a) : new D(T); }
+    static now() { return T; } };
+};
+const leerDoc = (f) => fs.readFileSync(path.join(DOCS, f), 'utf8');
+
+console.log('\n=== 52. La pagina del evento: los tres estados ===');
+// Estando en la pagina del evento el estado sale del documento, pero el INDICE
+// se pide igual: es lo unico que sabe si ese evento sigue vivo (ver el bloque del
+// evento terminado, al final). Lo que no se pide es la pagina del evento, que es
+// justo en la que estas.
+const RUTA_EVENTO = '/steam/community-event/idle-champions-of-the-forgotten-realms-community-event';
+const enElEvento = (dump, iso) => mount(dump,
+  RUTA_EVENTO,
+  (win) => {
+    enFecha(iso || '2026-09-12T10:00:00Z')(win);
+    win.__respuestas = { '/steam/events': leerDoc('dom-steam-events-index-2026-09-10.html') };
+  });
+const titulos = (w) => Array.from(w.document.querySelectorAll('#awa-arp-widget .awa-w__line'))
+  .map((l) => l.getAttribute('title') || '').join(' ');
+{
+  // Sin poseer el juego. El sitio pinta el sincronizador y NO el boton de unirse.
+  const w = enElEvento('dom-steam-community-event-live-unowned-2026-09-09.html');
+  await tick(); await tick();
+  const e = lines(w).find((l) => /Evento|Event/.test(l[0]));
+  check('sale la linea del evento', !!e, lines(w).map((x) => x[0]).join(' / '));
+  check('dice que falta el juego', e && /falta el juego|game missing/.test(e[1]), e && e.join(' | '));
+  check('en ambar, que hay algo que hacer', e && /--todo/.test(e[2]), e && e[2]);
+  // El hallazgo del 2026-09-10 entregado donde hace falta: si el juego es F2P, el
+  // sitio no lo ve hasta que lo abres.
+  check('el aviso explica lo del Free to Play', /Free to Play/.test(titulos(w)), '');
+  // La pagina del evento NO se pide: es la que estas viendo.
+  check('no se vuelve a pedir la pagina del evento',
+    !w.fetched.some((u) => /community-event/.test(u)), JSON.stringify(w.fetched));
+}
+{
+  // Con el juego y SIN unirse. Es el caso que costo el tiempo de la primera noche.
+  const w = enElEvento('dom-steam-community-event-live-owned-unjoined-2026-09-10.html');
+  await tick(); await tick();
+  const e = lines(w).find((l) => /Evento|Event/.test(l[0]));
+  check('avisa de que no te has unido', e && /sin unirte|not joined/.test(e[1]), e && e.join(' | '));
+  check('y va en ambar', e && /--todo/.test(e[2]), e && e[2]);
+  check('el aviso dice que el tiempo de antes NO cuenta',
+    /antes de unirte se tira|thrown away/.test(titulos(w)), '');
+}
+{
+  // Ya dentro. El panel pasa a contar minutos hacia el siguiente hito.
+  const w = enElEvento('dom-steam-community-event-live-joined-2026-09-10.html');
+  await tick(); await tick();
+  const e = lines(w).find((l) => /Evento|Event/.test(l[0]));
+  check('unido: cuenta minutos hacia el primer hito', e && /^0\/60 min$/.test(e[1]), e && e.join(' | '));
+  // En MINUTOS y no en horas a proposito: el sitio pinta floor(min/60), asi que
+  // por debajo de una hora enseña 0 y no se distingue de no haber jugado.
+  check('y NO en horas, que es lo que oculta el progreso', e && !/\bh\b/.test(e[1]), e && e[1]);
+  check('sin ambar: el evento no vence hoy', e && !/--todo/.test(e[2]), e && e[2]);
+}
+{
+  // El mismo estado con el primer hito ya desbloqueado POR LA COMUNIDAD. Lo que
+  // el panel enseña no cambia —la meta personal sigue sin cumplirse— y eso es
+  // justo lo que hay que comprobar: que no lee el candado de la comunidad como si
+  // fuera el tuyo.
+  const w = enElEvento('dom-steam-community-event-live-joined-milestone-1-2026-09-10.html');
+  await tick(); await tick();
+  const e = lines(w).find((l) => /Evento|Event/.test(l[0]));
+  check('el hito de la comunidad no se confunde con el tuyo',
+    e && /^0\/60 min$/.test(e[1]), e && e.join(' | '));
+}
+{
+  // Y el caso que obliga a pedir el indice aunque estes en la pagina: un evento ya
+  // TERMINADO. Su pagina sigue existiendo y se ve igual —el «EN VIVO» es texto que
+  // Weglot traduce, y no hay volcado de uno cerrado con el que saber que cambia en
+  // la estructura—, asi que fiarse del documento pintaria en ambar «no te has
+  // unido» a algo que acabo el mes pasado.
+  const w = enElEvento('dom-steam-community-event-live-owned-unjoined-2026-09-10.html',
+    '2026-09-19T00:30:00Z');
+  await tick(); await tick();
+  check('en la pagina de un evento terminado no se pinta nada',
+    !lines(w).find((l) => /Evento|Event/.test(l[0])), lines(w).map((x) => x[0]).join(' / '));
+  check('y el indice si se pidio, o sea que la prueba mide la comprobacion',
+    w.fetched.some((u) => /\/steam\/events$/.test(u)), JSON.stringify(w.fetched));
+}
+
+{
+  // El acumulado NO se reinicia al pasar de hito: los umbrales son totales
+  // (60/120/180/240/300 min) y el sitio los mide todos contra el MISMO
+  // `personalPlaytime`. Con 90 minutos, el siguiente hito es el de 120 y la fila
+  // dice 90/120 —no 30/60—, que es la pregunta que esto contesta.
+  // Ojo al fabricar el caso: `personalPlaytime = 0` aparece DOS veces en el
+  // volcado, y la primera esta en la nota de la cabecera que escribio el
+  // saneador. Sin el `let` delante, el replace cambia el comentario y deja el
+  // codigo intacto — y la prueba mide entonces el volcado sin tocar.
+  const conNoventa = leerDoc('dom-steam-community-event-live-joined-milestone-1-2026-09-10.html')
+    .replace(/let personalPlaytime = 0/, 'let personalPlaytime = 90')
+    .replace(/<i class="fas fa-lock"\s+id="milestone-554-personal-status"/,
+             '<i class="fas fa-square-check text-success" id="milestone-554-personal-status"');
+  fs.writeFileSync(path.join(DOCS, '.tmp-90min.html'), conNoventa);
+  const w = mount('.tmp-90min.html', RUTA_EVENTO, (win) => {
+    enFecha('2026-09-12T10:00:00Z')(win);
+    win.__respuestas = { '/steam/events': leerDoc('dom-steam-events-index-2026-09-10.html') };
+  }); await tick(); await tick();
+  const e = lines(w).find((l) => /Evento|Event/.test(l[0]));
+  check('con el primer hito hecho, apunta al SIGUIENTE umbral acumulado',
+    e && /^90\/120 min$/.test(e[1]), e && e.join(' | '));
+  fs.unlinkSync(path.join(DOCS, '.tmp-90min.html'));
+}
+{
+  // Los iconos de estado personal son IRRELEVANTES para el panel desde el arreglo
+  // del 2026-09-11: se derivan de los minutos, como hace el propio sitio. Taparlos
+  // no debe cambiar nada. Antes esta prueba comprobaba el caso contrario —que sin
+  // iconos no se diera el evento por terminado—, y se quedo sin sentido con el
+  // arreglo, asi que ahora comprueba la propiedad que lo sustituye.
+  const sinIconos = leerDoc('dom-steam-community-event-live-joined-2026-09-10.html')
+    .replace(/id="milestone-\d+-personal-status"/g, 'id="tapado"');
+  fs.writeFileSync(path.join(DOCS, '.tmp-sin-iconos.html'), sinIconos);
+  const w = mount('.tmp-sin-iconos.html', RUTA_EVENTO, (win) => {
+    enFecha('2026-09-12T10:00:00Z')(win);
+    win.__respuestas = { '/steam/events': leerDoc('dom-steam-events-index-2026-09-10.html') };
+  }); await tick(); await tick();
+  const e = lines(w).find((l) => /Evento|Event/.test(l[0]));
+  check('sin iconos de estado NO se da por terminado',
+    e && !/todos los hitos|all milestones/.test(e[1]), e && e.join(' | '));
+  // Y sigue diciendo exactamente lo mismo que con ellos: 0 minutos, primer hito de
+  // 60. El icono ya no participa en la cuenta.
+  check('taparlos no cambia nada, porque ya no se leen',
+    e && /^0\/60 min$/.test(e[1]), e && e.join(' | '));
+  fs.unlinkSync(path.join(DOCS, '.tmp-sin-iconos.html'));
+}
+
+console.log('\n=== 53. El indice decide por FECHAS, no por el encabezado ===');
+{
+  const respuestas = (win) => {
+    win.__respuestas = {
+      '/steam/events': leerDoc('dom-steam-events-index-2026-09-10.html'),
+      '/steam/community-event/': leerDoc('dom-steam-community-event-live-owned-unjoined-2026-09-10.html'),
+    };
+  };
+  // Dentro de la ventana del evento (10-18 de septiembre).
+  const w = mount('dom-homepage-src-2026-08.html', '/', (win) => {
+    enFecha('2026-09-12T10:00:00Z')(win); respuestas(win);
+  }); await tick(); await tick();
+  const e = lines(w).find((l) => /Evento|Event/.test(l[0]));
+  check('con el evento vivo, sale la linea', !!e, lines(w).map((x) => x[0]).join(' / '));
+  check('leyendo el estado de la pagina del evento',
+    e && /sin unirte|not joined/.test(e[1]), e && e.join(' | '));
+  check('pide el indice y luego el evento, uno de cada',
+    w.fetched.filter((u) => /\/steam\/events$/.test(u)).length === 1
+      && w.fetched.filter((u) => /community-event/.test(u)).length === 1, JSON.stringify(w.fetched));
+  const relojes = Array.from(w.document.querySelectorAll('#awa-arp-widget .awa-w__clock'))
+    .map((n) => n.textContent);
+  check('y un tercer reloj con lo que queda de evento',
+    relojes.some((r) => /Evento|Event/.test(r)), relojes.join(' / '));
+}
+{
+  // Pasado el evento. El ultimo dia va incluido entero, asi que el 18 sigue vivo y
+  // el 19 ya no: se comprueban los dos lados del limite, que es donde un
+  // «off by one» se esconde.
+  const dia18 = mount('dom-homepage-src-2026-08.html', '/', (win) => {
+    enFecha('2026-09-18T23:30:00Z')(win);
+    win.__respuestas = { '/steam/events': leerDoc('dom-steam-events-index-2026-09-10.html'),
+      '/steam/community-event/': leerDoc('dom-steam-community-event-live-joined-2026-09-10.html') };
+  }); await tick(); await tick();
+  check('el ultimo dia del evento sigue contando',
+    !!lines(dia18).find((l) => /Evento|Event/.test(l[0])), lines(dia18).map((x) => x[0]).join(' / '));
+
+  const dia19 = mount('dom-homepage-src-2026-08.html', '/', (win) => {
+    enFecha('2026-09-19T00:30:00Z')(win);
+    win.__respuestas = { '/steam/events': leerDoc('dom-steam-events-index-2026-09-10.html'),
+      '/steam/community-event/': leerDoc('dom-steam-community-event-live-joined-2026-09-10.html') };
+  }); await tick(); await tick();
+  check('terminado el evento, no hay linea',
+    !lines(dia19).find((l) => /Evento|Event/.test(l[0])), lines(dia19).map((x) => x[0]).join(' / '));
+  check('y no se pide la pagina del evento para nada',
+    !dia19.fetched.some((u) => /community-event/.test(u)), JSON.stringify(dia19.fetched));
+}
+{
+  // Control negativo del parseo: el indice SIN <noscript> no debe dar ningun
+  // evento vivo. Sin esto, «no sale la linea» podria estar pasando por el motivo
+  // equivocado —que el fetch fallara— y las dos pruebas de arriba se leerian igual.
+  const sinNoscript = leerDoc('dom-steam-events-index-2026-09-10.html')
+    .replace(/<noscript[\s\S]*?<\/noscript>/gi, '');
+  const w = mount('dom-homepage-src-2026-08.html', '/', (win) => {
+    enFecha('2026-09-12T10:00:00Z')(win);
+    win.__respuestas = { '/steam/events': sinNoscript };
+  }); await tick(); await tick();
+  check('sin <noscript> no se inventa ningun evento',
+    !lines(w).find((l) => /Evento|Event/.test(l[0])), lines(w).map((x) => x[0]).join(' / '));
+  check('y el indice si se llego a pedir, o sea que la prueba mide el parseo',
+    w.fetched.some((u) => /\/steam\/events$/.test(u)), JSON.stringify(w.fetched));
+}
+
+console.log('\n=== 55. El icono personal lo pinta el JS del sitio, no el servidor ===');
+// El fallo real del 2026-09-11: con una hora jugada el panel decia «60/120 min» en la pagina del
+// evento y «60/60 min» en el Centro de control. La causa es que el servidor manda los cinco
+// iconos personales con `fa-lock` SIEMPRE y los pone en verde el JS de la propia pagina, que en
+// una copia de DOMParser no corre nunca.
+//
+// Ojo al fabricar el caso, porque aqui esta la leccion de fondo: un volcado es el DOM YA
+// RENDERIZADO, con el JS del sitio ejecutado, pero `pedir()` recibe el HTML DEL SERVIDOR. Para
+// probar el camino del fetch hay que DESHACER lo que el JS hizo —devolver los iconos personales a
+// `fa-lock`—, o el fixture esconde justo el fallo que se busca.
+const comoLoMandaElServidor = (f) => leerDoc(f)
+  .replace(/class="fas fa-square-check text-success"(\s+id="milestone-\d+-personal-status")/g,
+           'class="fas fa-lock"$1');
+{
+  const servidor = comoLoMandaElServidor('dom-steam-community-event-live-joined-awarded-2026-09-11.html');
+  // Control del propio fixture: si el replace no hubiera hecho nada, la prueba pasaria por el
+  // motivo equivocado y no mediria nada.
+  check('el fixture simula de verdad el HTML del servidor',
+    !/fa-square-check[^>]*id="milestone-\d+-personal-status"/.test(servidor)
+      && /let personalPlaytime = 60/.test(servidor), '');
+
+  const w = mount('dom-homepage-src-2026-08.html', '/', (win) => {
+    enFecha('2026-09-12T10:00:00Z')(win);
+    win.__respuestas = {
+      '/steam/events': leerDoc('dom-steam-events-index-2026-09-10.html'),
+      '/steam/community-event/': servidor,
+    };
+  }); await tick(); await tick();
+  const e = lines(w).find((l) => /Evento|Event/.test(l[0]));
+  check('fuera del evento, con 60 min, apunta al hito de 120',
+    e && /^60\/120 min$/.test(e[1]), e && e.join(' | '));
+  check('y NO a 60/60, que es lo que salia leyendo el icono',
+    e && !/^60\/60 min$/.test(e[1]), e && e.join(' | '));
+}
+{
+  // Y en la propia pagina del evento, donde el JS del sitio SI corrio, el resultado tiene que
+  // ser el mismo. Antes coincidia por casualidad; ahora coincide porque no se lee el icono.
+  const w = enElEvento('dom-steam-community-event-live-joined-awarded-2026-09-11.html');
+  await tick(); await tick();
+  const e = lines(w).find((l) => /Evento|Event/.test(l[0]));
+  check('en la pagina del evento sale lo mismo', e && /^60\/120 min$/.test(e[1]), e && e.join(' | '));
+}
+{
+  // `aria-valuenow` vale 0 SIEMPRE, incluso con 60 minutos acreditados: era la antigua reserva
+  // de lectura y devolvia una cifra falsa. Sin el literal del script, ahora no se inventa nada.
+  const sinLiteral = leerDoc('dom-steam-community-event-live-joined-awarded-2026-09-11.html')
+    .replace(/let personalPlaytime = 60/, 'let otraCosa = 60');
+  const w = mount('dom-homepage-src-2026-08.html', '/', (win) => {
+    enFecha('2026-09-12T10:00:00Z')(win);
+    win.__respuestas = { '/steam/events': leerDoc('dom-steam-events-index-2026-09-10.html'),
+      '/steam/community-event/': sinLiteral };
+  }); await tick(); await tick();
+  const e = lines(w).find((l) => /Evento|Event/.test(l[0]));
+  check('sin los minutos no se inventa un 0 con el aria',
+    e && !/^0\//.test(e[1]) && /en marcha|under way/.test(e[1]), e && e.join(' | '));
+}
+
+{
+  // Un hito se cobra con las DOS condiciones. Si cumples tus cinco horas pero la
+  // comunidad no ha llegado a las suyas, el evento NO esta terminado y el panel no
+  // puede decir que si: serian premios que aun no has ganado.
+  const cincoHoras = leerDoc('dom-steam-community-event-live-joined-awarded-2026-09-11.html')
+    .replace(/let personalPlaytime = 60/, 'let personalPlaytime = 300');
+  check('el fixture pone las cinco horas', /let personalPlaytime = 300/.test(cincoHoras), '');
+  // En ese volcado la comunidad solo ha desbloqueado los hitos 1 y 2: del 3 al 5
+  // siguen con fa-lock, que es justo el caso.
+  const w = mount('dom-homepage-src-2026-08.html', '/', (win) => {
+    enFecha('2026-09-12T10:00:00Z')(win);
+    win.__respuestas = { '/steam/events': leerDoc('dom-steam-events-index-2026-09-10.html'),
+      '/steam/community-event/': cincoHoras };
+  }); await tick(); await tick();
+  const e = lines(w).find((l) => /Evento|Event/.test(l[0]));
+  check('con tus horas hechas pero la comunidad corta, NO se da por terminado',
+    e && !/todos los hitos|all milestones/.test(e[1]), e && e.join(' | '));
+  check('lo dice como «en marcha»', e && /en marcha|under way/.test(e[1]), e && e.join(' | '));
+}
+
+console.log('\n=== 54. El evento NO entra en el aviso de fin de dia ===');
+{
+  // Sale en ambar porque hay algo que hacer, pero dura ocho dias: meterlo en el
+  // aviso nocturno seria repetirlo cada noche por algo que no vence hoy. Es el
+  // mismo trato que ya tenia `qSteam`.
+  const w = mount('dom-steam-community-event-live-owned-unjoined-2026-09-10.html',
+    '/steam/community-event/idle-champions-of-the-forgotten-realms-community-event',
+    (win) => {
+      enFecha('2026-09-12T23:45:00Z')(win);
+      win.localStorage.setItem('awa-arp-alert', '1');
+      win.__respuestas = { '/steam/events': leerDoc('dom-steam-events-index-2026-09-10.html') };
+    });
+  await tick(); await tick(); await tick();
+  const e = lines(w).find((l) => /Evento|Event/.test(l[0]));
+  check('la fila sigue en ambar', e && /--todo/.test(e[2]), e && e[2]);
+  const banda = w.document.querySelector('#awa-arp-widget .awa-w__alert');
+  check('pero el aviso de fin de dia no lo nombra',
+    !banda || !/Evento comunitario|Community event/.test(banda.textContent),
+    banda && banda.textContent);
+}
+
+console.log('\n=== 56. Lo del evento, en las tres superficies y en los ocho idiomas ===');
+{
+  // Norma acordada el 2026-09-11: si algo no cabe en la @description —499 de 500 antes de esto—
+  // NO se recorta lo que ya hay. Lo nuevo se cuenta en los comentarios del script, en la ficha
+  // «Saber más» y en el README. Esta prueba es lo que hace que esa norma no sea una intencion:
+  // el dato que se quedo fuera de la descripcion tiene que estar de verdad en las otras
+  // superficies, y en los ocho idiomas, no solo en ingles.
+  const RUTA56 = process.env.AWA_FUENTE || __dirname + '/../alienware-arena-arp-tracker.user.js';
+  const fuente = fs.readFileSync(RUTA56, 'utf8');
+  const readme = fs.readFileSync(__dirname + '/../README.md', 'utf8');
+  const lineas = fuente.split('\n');
+  // Ojo: el buscador de §46 exige que la clave ABRA la linea, y funciona alli porque esas claves
+  // van solas. Las del evento van agrupadas varias por linea, como el resto del bloque, asi que
+  // aqui se ancla con regex al principio de linea o tras una coma. Sin eso, `lineaDe` devolvia
+  // cadena vacia para todos los idiomas y las comprobaciones fallaban sin que faltara nada — por
+  // eso hay abajo un control de que la linea no esta vacia.
+  const lineaDe = (clave, n) => {
+    const re = new RegExp('(^|[,{]\\s*)' + clave + ':\\s');
+    return lineas.filter((l) => re.test(l.trim()))[n] || '';
+  };
+  // El hecho que mas caro sale ignorar: sin unirse, lo jugado no cuenta.
+  const TIRA = {
+    en: ['thrown away', 'thrown away'],
+    es: ['antes de unirte se tira', 'antes de unirte se tira'],
+    de: ['von vor dem Beitritt wird verworfen', 'von vorher wird verworfen'],
+    fr: ['avant de rejoindre est perdu', 'avant est perdu'],
+    pt: ['antes de participares é deitado fora', 'antes é deitado fora'],
+    br: ['antes de entrar é descartado', 'antes é descartado'],
+    zh: ['加入之前的游戏时长会被丢弃', '加入之前的游戏时长会被丢弃'],
+    hi: ['बेकार चला जाता है', 'बेकार चला जाता है'],
+  };
+  const idiomas = Object.keys(TIRA);
+  const sinTip = [], sinFicha = [];
+  idiomas.forEach((l, i) => {
+    if (lineaDe('tipEvJoin', i).indexOf(TIRA[l][0]) < 0) sinTip.push(l);
+    if (lineaDe('mEvento', i).indexOf(TIRA[l][1]) < 0) sinFicha.push(l);
+  });
+  check('está en el tooltip del evento en los ocho', sinTip.length === 0, 'faltan: ' + sinTip.join(','));
+  check('está en la ficha «Saber más» en los ocho', sinFicha.length === 0, 'faltan: ' + sinFicha.join(','));
+  check('y en el README, en los dos idiomas',
+    readme.indexOf('thrown away') > 0 && readme.indexOf('antes de unirte se tira') > 0);
+  // Y lo del Free to Play, que es el otro hallazgo que no cabia en la descripcion.
+  const F2P = { en: 'Free to Play', es: 'Free to Play', de: 'Free-to-Play', fr: 'Free to Play',
+    pt: 'Free to Play', br: 'Free to Play', zh: '免费游戏', hi: 'Free to Play' };
+  const sinF2P = [];
+  idiomas.forEach((l, i) => { if (lineaDe('tipEvOwn', i).indexOf(F2P[l]) < 0) sinF2P.push(l); });
+  check('lo del Free to Play está en el tooltip en los ocho', sinF2P.length === 0, 'faltan: ' + sinF2P.join(','));
+  check('y en el README', readme.indexOf('Free to Play') > 0);
+  // Control del propio metodo: si se busca una frase que NO esta, esto tiene que fallar.
+  // Sin esto, un `lineaDe` que devolviera siempre '' daria todo por bueno al reves.
+  check('control: una frase inventada NO se encuentra',
+    lineaDe('tipEvJoin', 1).indexOf('esta frase no existe en ningun idioma') < 0
+      && lineaDe('tipEvJoin', 1).length > 0, 'la linea de tipEvJoin[es] esta vacia');
 }
 
 console.log('\n' + (fail ? '✗ ' : '✓ ') + ok + ' comprobaciones pasadas, ' + fail + ' fallidas\n');

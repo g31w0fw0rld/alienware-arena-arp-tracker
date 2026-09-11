@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Alienware Arena ARP Tracker
 // @namespace    http://tampermonkey.net/
-// @version      1.2.0
+// @version      1.3.0
 // @description  Panel de ARP para Alienware Arena. En cualquier página muestra lo que caduca y cuándo: tiempo en el sitio y Twitch a las 00:00 UTC, quests diarias de un solo uso, las de Steam de lunes a lunes, Discord solo en laborables, el calendario de campaña y las fichas del pase, que se borran al cerrar la temporada. En un sorteo dice si hay claves para tu país y nivel antes de pulsar nada; en el Marketplace y la Bóveda marca cada tarjeta. Avisa antes del reinicio. Ocho idiomas. Solo lee: no reclama nada.
 // @icon         data:image/png;base64,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
 // @match        https://www.alienwarearena.com/*
@@ -16,7 +16,7 @@
 (function () {
     'use strict';
 
-    const SCRIPT_VERSION = '1.2.0';
+    const SCRIPT_VERSION = '1.3.0';
 
     // ------------------------------------------------------------------
     // Idiomas
@@ -126,6 +126,9 @@
             mVersion: 'Version {v}',
             discord: 'Discord', tipDiscord: 'The site says Discord pays for two things — the polls and the «Arena Adventures» — and states no amount for either. The 5 here is what a day has been seen to pay; if a day pays more, this line shows it. There is no counter for it anywhere on the site, so it is read from your own ARP log, filtered to today. It only pays MONDAY TO FRIDAY: at the weekend the line goes quiet instead of asking you for something you cannot do.',
             store: 'Battle Store', storePack: '{a} ARP for {f}', storeShort: '{n} tokens short', qPass: 'Battle Pass', passNone: 'not started', passClosed: 'season over', passClaim: '{n} to claim',
+            evento: "Community event", evJoin: "not joined", evOwn: "game missing", evMin: "{v}/{c} min", evAll: "all milestones", evEnds: "Event: {v}", goEvento: "Click this line to go to the event page.", tipEv: "Steam community events pay ARP for playtime, in milestones that need TWO things at once: the whole community reaching a total of hours, and you reaching your own. Your progress is shown in MINUTES because the site rounds to hours, so anything under one hour reads as 0 there and you cannot tell it apart from nothing at all.", tipEvJoin: "The event is live and you are NOT in it. Joining is a button on the event page, and until you press it nothing counts: playtime from before you join is thrown away — that is measured, not guessed. Joining is one way only, there is no leave button.", tipEvOwn: "The event needs the game and the site does not think you have it. If the game is Free to Play that is expected: Steam only reports free games you have actually PLAYED, so open it for a few minutes and close it. The site then takes up to an hour to notice. The «sync games» button is capped at once per hour and does not fix this on its own.",
+            evOn: "under way",
+            mEvento: "Steam community events pay for playtime in milestones, and each one needs the whole community to reach a total of hours AND you to reach your own. Nothing counts until you press Join on the event page, and playtime from before you join is thrown away — so the panel warns you when an event is live and you are not in it.",
             tipPass: 'The pass advances with ARP from any source, milestone by milestone, and it has to be STARTED by hand when a season opens. Unclaimed milestones are handed out at the end of the season, but the battle tokens are wiped: those are the ones with a deadline.',
             tipStore: 'The Battle Store swaps Battle Tokens for ARP at a fixed rate — 25 tokens for 100 ARP, 45 for 200, 90 for 500 — and this line shows the best pack your tokens already reach. It matters because the tokens are WIPED when the season closes, so they are ARP with an expiry date. It is deliberately not amber: it does not run out today, so it never feeds the end-of-day warning.',
             fold: 'Fold the panel', tipAcct: 'Your balance, tier and the two login counts. The streak of 7 and the calendar of 28 are NOT the same number, and neither one is the day of the month: the streak breaks if you miss a day, while the calendar counts the days you have logged in, whenever they fall. The site says so itself — its rewards go by total login days, not by the date. So you can be on streak day 1 with 8 days logged in. Both only exist in the Control Center, so on other pages they arrive a moment later.',
@@ -169,6 +172,9 @@
             mVersion: 'Versión {v}',
             discord: 'Discord', tipDiscord: 'El sitio dice que Discord paga por dos cosas —las encuestas y las «Arena Adventures»— y no publica el importe de ninguna. Los 5 de aquí son lo que se ha visto pagar en un día; si un día paga más, la línea lo enseña. No hay contador para esto en ninguna parte del sitio, así que se lee de tu propio registro de ARP, filtrado a hoy. Solo paga de LUNES A VIERNES: el fin de semana la línea se calla en vez de pedirte algo que no se puede hacer.',
             store: 'Tienda de batalla', storePack: '{a} ARP por {f}', storeShort: 'faltan {n} fichas', qPass: 'Pase de batalla', passNone: 'sin empezar', passClosed: 'temporada cerrada', passClaim: '{n} por reclamar',
+            evento: "Evento comunitario", evJoin: "sin unirte", evOwn: "falta el juego", evMin: "{v}/{c} min", evAll: "todos los hitos", evEnds: "Evento: {v}", goEvento: "Pulsa esta línea para ir a la página del evento.", tipEv: "Los eventos comunitarios de Steam pagan ARP por tiempo jugado, en hitos que exigen DOS cosas a la vez: que toda la comunidad llegue a un total de horas y que llegues tú a las tuyas. Tu progreso va en MINUTOS porque el sitio redondea a horas, así que por debajo de una hora él muestra 0 y no se distingue de no haber jugado nada.", tipEvJoin: "El evento está en vivo y NO estás dentro. Unirse es un botón de la página del evento, y hasta que lo pulsas no cuenta nada: el tiempo jugado antes de unirte se tira — está medido, no supuesto. Unirse es de ida: no hay botón para salirse.", tipEvOwn: "El evento pide el juego y el sitio no cree que lo tengas. Si el juego es Free to Play es lo esperable: Steam solo informa de los juegos gratis que has JUGADO de verdad, así que ábrelo unos minutos y ciérralo. El sitio tarda hasta una hora en enterarse. El botón de «sincronizar juegos» está limitado a una vez por hora y por sí solo no arregla esto.",
+            evOn: "en marcha",
+            mEvento: "Los eventos comunitarios de Steam pagan por tiempo jugado en hitos, y cada uno exige que la comunidad entera llegue a un total de horas Y que llegues tú a las tuyas. No cuenta nada hasta que pulsas «unirse» en la página del evento, y el tiempo jugado antes de unirte se tira — por eso el panel avisa cuando hay un evento vivo y no estás dentro.",
             tipPass: 'El pase avanza con ARP de cualquier fuente, hito a hito, y hay que EMPEZARLO a mano cuando abre una temporada. Los hitos sin reclamar se entregan al cerrar, pero las fichas de batalla se borran: esas son las que tienen prisa.',
             tipStore: 'La Tienda de Batalla cambia fichas por ARP a precio fijo —25 fichas por 100 ARP, 45 por 200, 90 por 500— y esta línea enseña el mejor paquete que ya alcanzan tus fichas. Importa porque las fichas SE BORRAN al cerrar la temporada, así que son ARP con fecha de caducidad. No sale en amarillo a propósito: no vence hoy, así que nunca alimenta el aviso de fin de día.',
             fold: 'Plegar el panel', tipAcct: 'Tu saldo, tu nivel y las dos cuentas de inicio de sesión. La racha de 7 y el calendario de 28 NO son el mismo número, y ninguno es el día del mes: la racha se rompe si fallas un día, mientras que el calendario cuenta los días que has entrado, caigan cuando caigan. Lo dice el propio sitio: sus recompensas van por días de conexión acumulados, no por la fecha. Así que puedes ir por el día 1 de racha con 8 días entrados. Los dos solo están en el Centro de control, así que en otras páginas llegan un momento después.',
@@ -212,6 +218,9 @@
             mVersion: 'Version {v}',
             discord: 'Discord', tipDiscord: 'Laut Seite zahlt Discord für zwei Dinge — die Umfragen und die «Arena Adventures» — und nennt für keines einen Betrag. Die 5 hier sind das, was ein Tag bisher gebracht hat; bringt ein Tag mehr, zeigt die Zeile es. Einen Zähler dafür gibt es auf der Seite nirgends, also wird aus deinem eigenen ARP-Log gelesen, auf heute gefiltert. Es zahlt nur von MONTAG BIS FREITAG: am Wochenende schweigt die Zeile, statt dich um etwas Unmögliches zu bitten.',
             store: 'Battle Store', storePack: '{a} ARP für {f}', storeShort: '{n} Marken fehlen', qPass: 'Battle Pass', passNone: 'nicht gestartet', passClosed: 'Saison beendet', passClaim: '{n} abzuholen',
+            evento: "Community-Event", evJoin: "nicht beigetreten", evOwn: "Spiel fehlt", evMin: "{v}/{c} Min.", evAll: "alle Meilensteine", evEnds: "Event: {v}", goEvento: "Klicke auf diese Zeile, um zur Event-Seite zu gehen.", tipEv: "Steam-Community-Events zahlen ARP für Spielzeit, in Meilensteinen, die ZWEI Dinge gleichzeitig verlangen: dass die ganze Community eine Gesamtstundenzahl erreicht und dass du deine eigene erreichst. Dein Fortschritt steht in MINUTEN, weil die Seite auf Stunden rundet — unter einer Stunde zeigt sie 0 an, ununterscheidbar von gar nichts.", tipEvJoin: "Das Event läuft und du bist NICHT dabei. Der Beitritt ist ein Knopf auf der Event-Seite, und bis du ihn drückst, zählt nichts: Spielzeit von vor dem Beitritt wird verworfen — gemessen, nicht vermutet. Der Beitritt ist endgültig, es gibt keinen Austritt.", tipEvOwn: "Das Event verlangt das Spiel und die Seite glaubt nicht, dass du es hast. Bei einem Free-to-Play-Spiel ist das zu erwarten: Steam meldet kostenlose Spiele nur, wenn du sie wirklich GESPIELT hast. Öffne es also ein paar Minuten und schließe es. Die Seite braucht danach bis zu einer Stunde. Der Knopf «Spiele synchronisieren» ist auf einmal pro Stunde begrenzt und löst das allein nicht.",
+            evOn: "läuft",
+            mEvento: "Steam-Community-Events zahlen für Spielzeit in Meilensteinen, und jeder verlangt, dass die ganze Community eine Gesamtstundenzahl erreicht UND dass du deine eigene erreichst. Nichts zählt, bevor du auf der Event-Seite auf «Beitreten» drückst, und Spielzeit von vorher wird verworfen — deshalb warnt das Panel, wenn ein Event läuft und du nicht dabei bist.",
             tipPass: 'Der Pass läuft mit ARP aus jeder Quelle, Meilenstein für Meilenstein, und muss bei Saisonstart von Hand GESTARTET werden. Nicht abgeholte Meilensteine gibt es am Saisonende, die Battle-Token werden aber gelöscht: die haben es eilig.',
             tipStore: 'Der Battle Store tauscht Marken gegen ARP zu festen Preisen — 25 Marken für 100 ARP, 45 für 200, 90 für 500 — und diese Zeile zeigt das beste Paket, das deine Marken schon erreichen. Wichtig ist es, weil die Marken beim Saisonende GELÖSCHT werden: es sind ARP mit Verfallsdatum. Bewusst nicht gelb: es läuft nicht heute ab und speist deshalb nie die Tageswarnung.',
             fold: 'Panel einklappen', tipAcct: 'Dein Guthaben, deine Stufe und die zwei Login-Zähler. Die 7-Tage-Serie und der 28-Tage-Kalender sind NICHT dieselbe Zahl, und keine davon ist der Tag des Monats: die Serie reißt, wenn du einen Tag auslässt, während der Kalender die Tage zählt, an denen du dich angemeldet hast, wann immer sie liegen. Die Seite sagt es selbst — ihre Belohnungen richten sich nach den gesamten Login-Tagen, nicht nach dem Datum. Du kannst also bei Serientag 1 und 8 Login-Tagen stehen. Beide gibt es nur im Control Center, auf anderen Seiten kommen sie einen Moment später.',
@@ -255,6 +264,9 @@
             mVersion: 'Version {v}',
             discord: 'Discord', tipDiscord: 'Le site dit que Discord paie pour deux choses — les sondages et les «Arena Adventures» — et n’annonce le montant d’aucune. Le 5 ici est ce qu’une journée a rapporté jusqu’ici ; si une journée rapporte plus, la ligne l’affiche. Il n’y a de compteur pour ça nulle part sur le site, donc c’est lu depuis ton propre journal d’ARP, filtré sur aujourd’hui. Ça ne paie que du LUNDI AU VENDREDI : le week-end, la ligne se tait au lieu de te demander l’impossible.',
             store: 'Boutique de combat', storePack: '{a} ARP pour {f}', storeShort: 'il manque {n} jetons', qPass: 'Pass de combat', passNone: 'pas démarré', passClosed: 'saison terminée', passClaim: '{n} à récupérer',
+            evento: "Événement communautaire", evJoin: "non rejoint", evOwn: "jeu manquant", evMin: "{v}/{c} min", evAll: "tous les paliers", evEnds: "Événement : {v}", goEvento: "Cliquez sur cette ligne pour aller à la page de l’événement.", tipEv: "Les événements communautaires Steam paient de l’ARP pour le temps de jeu, par paliers qui exigent DEUX choses à la fois : que toute la communauté atteigne un total d’heures et que vous atteigniez les vôtres. Votre progression est en MINUTES parce que le site arrondit aux heures : en dessous d’une heure il affiche 0, impossible à distinguer de rien du tout.", tipEvJoin: "L’événement est en cours et vous n’y êtes PAS. Rejoindre est un bouton sur la page de l’événement, et tant que vous ne l’avez pas pressé rien ne compte : le temps joué avant de rejoindre est perdu — c’est mesuré, pas supposé. Rejoindre est sans retour : il n’y a pas de bouton pour quitter.", tipEvOwn: "L’événement demande le jeu et le site ne pense pas que vous l’ayez. Si le jeu est Free to Play, c’est normal : Steam ne signale les jeux gratuits que si vous y avez vraiment JOUÉ. Ouvrez-le quelques minutes puis fermez-le. Le site met ensuite jusqu’à une heure à s’en apercevoir. Le bouton « synchroniser les jeux » est limité à une fois par heure et ne règle pas ça à lui seul.",
+            evOn: "en cours",
+            mEvento: "Les événements communautaires Steam paient le temps de jeu par paliers, et chacun exige que toute la communauté atteigne un total d’heures ET que vous atteigniez le vôtre. Rien ne compte tant que vous n’avez pas cliqué sur « rejoindre » sur la page de l’événement, et le temps joué avant est perdu — c’est pourquoi le panneau vous prévient quand un événement est en cours et que vous n’y êtes pas.",
             tipPass: 'Le pass avance avec l’ARP de n’importe quelle source, palier par palier, et il faut le DÉMARRER à la main quand une saison ouvre. Les paliers non récupérés sont remis à la fin, mais les jetons de combat sont effacés : ce sont eux qui pressent.',
             tipStore: 'La Boutique de combat échange des jetons contre des ARP à prix fixe — 25 jetons pour 100 ARP, 45 pour 200, 90 pour 500 — et cette ligne montre le meilleur lot que tes jetons atteignent déjà. C’est important parce que les jetons sont EFFACÉS à la fin de la saison : ce sont des ARP avec une date de péremption. Volontairement pas en jaune : ça n’expire pas aujourd’hui, donc ça n’alimente jamais l’alerte de fin de journée.',
             fold: 'Replier le panneau', tipAcct: 'Ton solde, ton niveau et les deux compteurs de connexion. La série de 7 et le calendrier de 28 ne sont PAS le même nombre, et aucun des deux n’est le jour du mois : la série se casse si tu sautes un jour, tandis que le calendrier compte les jours où tu t’es connecté, quels qu’ils soient. Le site le dit lui-même : ses récompenses suivent le total de jours de connexion, pas la date. Tu peux donc être au jour 1 de série avec 8 jours connectés. Les deux n’existent que dans le Centre de contrôle ; ailleurs ils arrivent un instant plus tard.',
@@ -298,6 +310,9 @@
             mVersion: 'Versão {v}',
             discord: 'Discord', tipDiscord: 'O site diz que o Discord paga por duas coisas —os inquéritos e as «Arena Adventures»— e não publica o valor de nenhuma. Os 5 daqui são o que se viu um dia pagar; se um dia pagar mais, a linha mostra-o. Não há contador para isto em lado nenhum do site, por isso lê-se do teu próprio registo de ARP, filtrado a hoje. Só paga de SEGUNDA A SEXTA: ao fim de semana a linha cala-se em vez de te pedir algo que não dá para fazer.',
             store: 'Loja de batalha', storePack: '{a} ARP por {f}', storeShort: 'faltam {n} fichas', qPass: 'Passe de batalha', passNone: 'por começar', passClosed: 'temporada fechada', passClaim: '{n} a reclamar',
+            evento: "Evento da comunidade", evJoin: "sem participar", evOwn: "falta o jogo", evMin: "{v}/{c} min", evAll: "todos os marcos", evEnds: "Evento: {v}", goEvento: "Clica nesta linha para ir à página do evento.", tipEv: "Os eventos da comunidade de Steam pagam ARP por tempo de jogo, em marcos que exigem DUAS coisas ao mesmo tempo: que toda a comunidade chegue a um total de horas e que chegues tu às tuas. O teu progresso vai em MINUTOS porque o site arredonda para horas, por isso abaixo de uma hora mostra 0 e não se distingue de não teres jogado nada.", tipEvJoin: "O evento está a decorrer e NÃO estás dentro. Participar é um botão na página do evento, e até o carregares nada conta: o tempo jogado antes de participares é deitado fora — está medido, não suposto. Participar é só de ida: não há botão para sair.", tipEvOwn: "O evento pede o jogo e o site não acha que o tenhas. Se o jogo for Free to Play é o esperado: a Steam só reporta jogos gratuitos que tenhas mesmo JOGADO, por isso abre-o uns minutos e fecha-o. O site demora depois até uma hora a dar por isso. O botão de «sincronizar jogos» está limitado a uma vez por hora e por si só não resolve isto.",
+            evOn: "a decorrer",
+            mEvento: "Os eventos da comunidade de Steam pagam por tempo de jogo em marcos, e cada um exige que toda a comunidade chegue a um total de horas E que chegues tu aos teus. Nada conta até carregares em «participar» na página do evento, e o tempo jogado antes é deitado fora — por isso o painel avisa quando há um evento a decorrer e não estás dentro.",
             tipPass: 'O passe avança com ARP de qualquer fonte, marco a marco, e tem de ser INICIADO à mão quando abre uma temporada. Os marcos por reclamar são entregues no fim, mas as fichas de batalha são apagadas: essas é que têm pressa.',
             tipStore: 'A Loja de Batalha troca fichas por ARP a preço fixo —25 fichas por 100 ARP, 45 por 200, 90 por 500— e esta linha mostra o melhor pacote que as tuas fichas já alcançam. Importa porque as fichas SÃO APAGADAS ao fechar a temporada, por isso são ARP com prazo. De propósito não fica amarela: não vence hoje, logo nunca alimenta o aviso de fim de dia.',
             fold: 'Recolher o painel', tipAcct: 'O teu saldo, o teu nível e as duas contagens de login. A sequência de 7 e o calendário de 28 NÃO são o mesmo número, e nenhum deles é o dia do mês: a sequência quebra se falhares um dia, enquanto o calendário conta os dias em que entraste, caiam quando caírem. O próprio site o diz: as suas recompensas seguem o total de dias de ligação, não a data. Por isso podes ir no dia 1 de sequência com 8 dias entrados. Ambos só existem no Centro de controlo; noutras páginas chegam um momento depois.',
@@ -341,6 +356,9 @@
             mVersion: 'Versão {v}',
             discord: 'Discord', tipDiscord: 'O site diz que o Discord paga por duas coisas —as enquetes e as «Arena Adventures»— e não informa o valor de nenhuma. Os 5 daqui são o que já se viu um dia pagar; se um dia pagar mais, a linha mostra. Não existe contador para isso em lugar nenhum do site, então é lido do seu próprio registro de ARP, filtrado para hoje. Só paga de SEGUNDA A SEXTA: no fim de semana a linha se cala em vez de pedir algo que não dá para fazer.',
             store: 'Loja de batalha', storePack: '{a} ARP por {f}', storeShort: 'faltam {n} fichas', qPass: 'Passe de batalha', passNone: 'não iniciado', passClosed: 'temporada encerrada', passClaim: '{n} para resgatar',
+            evento: "Evento da comunidade", evJoin: "sem entrar", evOwn: "falta o jogo", evMin: "{v}/{c} min", evAll: "todos os marcos", evEnds: "Evento: {v}", goEvento: "Clique nesta linha para ir à página do evento.", tipEv: "Os eventos da comunidade da Steam pagam ARP por tempo de jogo, em marcos que exigem DUAS coisas ao mesmo tempo: a comunidade inteira chegar a um total de horas e você chegar às suas. Seu progresso aparece em MINUTOS porque o site arredonda para horas, então abaixo de uma hora ele mostra 0 e não dá para diferenciar de não ter jogado nada.", tipEvJoin: "O evento está no ar e você NÃO está dentro. Entrar é um botão na página do evento, e até você clicar nada conta: o tempo jogado antes de entrar é descartado — isso está medido, não suposto. Entrar é só de ida: não existe botão para sair.", tipEvOwn: "O evento pede o jogo e o site não acha que você tem. Se o jogo for Free to Play, isso é o esperado: a Steam só informa jogos gratuitos que você realmente JOGOU, então abra por alguns minutos e feche. Depois disso o site leva até uma hora para perceber. O botão «sincronizar jogos» é limitado a uma vez por hora e sozinho não resolve.",
+            evOn: "em andamento",
+            mEvento: "Os eventos da comunidade da Steam pagam por tempo de jogo em marcos, e cada um exige que a comunidade inteira chegue a um total de horas E que você chegue aos seus. Nada conta até você clicar em «entrar» na página do evento, e o tempo jogado antes é descartado — por isso o painel avisa quando há um evento no ar e você não está dentro.",
             tipPass: 'O passe avança com ARP de qualquer fonte, marco a marco, e precisa ser INICIADO na mão quando abre uma temporada. Os marcos não resgatados são entregues no fim, mas as fichas de batalha são apagadas: essas é que têm prazo.',
             tipStore: 'A Loja de Batalha troca fichas por ARP a preço fixo —25 fichas por 100 ARP, 45 por 200, 90 por 500— e esta linha mostra o melhor pacote que suas fichas já alcançam. Importa porque as fichas SÃO APAGADAS quando a temporada fecha, então são ARP com prazo de validade. De propósito ela não fica amarela: não vence hoje, então nunca alimenta o aviso de fim de dia.',
             fold: 'Recolher o painel', tipAcct: 'Seu saldo, seu nível e as duas contagens de login. A sequência de 7 e o calendário de 28 NÃO são o mesmo número, e nenhum dos dois é o dia do mês: a sequência quebra se você falhar um dia, enquanto o calendário conta os dias em que você entrou, caiam quando caírem. O próprio site diz isso: as recompensas dele seguem o total de dias de login, não a data. Então você pode estar no dia 1 de sequência com 8 dias entrados. Os dois só existem no Centro de controle; em outras páginas chegam um instante depois.',
@@ -384,6 +402,9 @@
             mVersion: '版本 {v}',
             discord: 'Discord', tipDiscord: '站点说 Discord 有两件事给 ARP——投票和「Arena Adventures」——但两者都没公布金额。这里的 5 是目前见过的一天所得；若某天给得更多，这一行会照实显示。站点上任何地方都没有它的计数器，所以是从你自己的 ARP 记录里读的，按今天过滤。它只在周一至周五发放：周末这一行会安静下来，而不是要求你做不到的事。',
             store: '战斗商店', storePack: '{f} 换 {a} ARP', storeShort: '还差 {n} 代币', qPass: '战斗通行证', passNone: '尚未开始', passClosed: '赛季已结束', passClaim: '{n} 待领取',
+            evento: "社区活动", evJoin: "未参加", evOwn: "缺少游戏", evMin: "{v}/{c} 分钟", evAll: "全部里程碑", evEnds: "活动：{v}", goEvento: "点击此行前往活动页面。", tipEv: "Steam 社区活动按游戏时长发放 ARP，分为若干里程碑，每个都需要同时满足两个条件：整个社区达到总时长，以及你自己达到个人时长。这里用分钟显示你的进度，因为站点会向下取整到小时——不足一小时它显示 0，和完全没玩无法区分。", tipEvJoin: "活动正在进行，而你并未加入。加入是活动页面上的一个按钮，在你按下之前一切都不计数：加入之前的游戏时长会被丢弃——这是实测结果，不是猜测。加入是单向的，没有退出按钮。", tipEvOwn: "活动需要该游戏，而站点认为你没有。如果是免费游戏，这是正常的：Steam 只会报告你真正玩过的免费游戏，所以打开它玩几分钟再关掉。之后站点最多需要一小时才会察觉。「同步游戏」按钮每小时只能用一次，单靠它解决不了这个问题。",
+            evOn: "进行中",
+            mEvento: "Steam 社区活动按游戏时长分里程碑发放奖励，每个里程碑都要求整个社区达到总时长，并且你自己也要达到个人时长。在活动页面点击「加入」之前一切都不计数，加入之前的游戏时长会被丢弃——所以当活动正在进行而你尚未加入时，面板会提醒你。",
             tipPass: '通行证靠任何来源的 ARP 逐个里程碑推进，赛季开始时必须手动「开始」。未领取的里程碑会在赛季结束时发放，但战斗代币会被清空——有时限的是代币。',
             tipStore: '战斗商店以固定价格把代币换成 ARP——25 代币换 100 ARP，45 换 200，90 换 500——这一行显示你的代币已经够得着的最划算的一档。它重要是因为赛季结束时代币会被清空：这是有保质期的 ARP。这里刻意不用黄色：它今天不会过期，所以永远不会触发当日提醒。',
             fold: '折叠面板', tipAcct: '你的余额、等级，以及两个登录计数。7 天连续和 28 天日历不是同一个数字，两者都不是当月的日期：漏一天连续就断，而日历统计的是你登录过的天数，无论它们落在哪一天。网站自己也这么说——奖励看的是累计登录天数，不是日期。所以你可能连续第 1 天，却已登录 8 天。两者只存在于控制中心，在别的页面上会晚一点才到。',
@@ -427,6 +448,9 @@
             mVersion: 'संस्करण {v}',
             discord: 'Discord', tipDiscord: 'साइट कहती है कि Discord दो चीज़ों के लिए ARP देता है — पोल और «Arena Adventures» — और दोनों की रकम नहीं बताती। यहाँ का 5 वह है जो एक दिन में मिलते देखा गया है; किसी दिन ज़्यादा मिले तो यह पंक्ति वही दिखाएगी। साइट पर इसका काउंटर कहीं नहीं है, इसलिए यह आपके ही ARP रजिस्टर से पढ़ी जाती है, आज पर फ़िल्टर करके। यह सिर्फ़ सोमवार से शुक्रवार तक देता है: सप्ताहांत में यह पंक्ति चुप रहती है, बजाय ऐसा कुछ माँगने के जो किया ही नहीं जा सकता।',
             store: 'बैटल स्टोर', storePack: '{f} में {a} ARP', storeShort: '{n} टोकन कम हैं', qPass: 'बैटल पास', passNone: 'शुरू नहीं किया', passClosed: 'सीज़न खत्म', passClaim: '{n} लेना बाकी',
+            evento: "कम्युनिटी इवेंट", evJoin: "शामिल नहीं हुए", evOwn: "गेम नहीं है", evMin: "{v}/{c} मिनट", evAll: "सभी माइलस्टोन", evEnds: "इवेंट: {v}", goEvento: "इवेंट पेज पर जाने के लिए इस पंक्ति पर क्लिक करें।", tipEv: "Steam के कम्युनिटी इवेंट खेले गए समय के बदले ARP देते हैं, माइलस्टोन के रूप में, जिनमें एक साथ दो शर्तें पूरी करनी होती हैं: पूरी कम्युनिटी का कुल घंटों तक पहुँचना, और आपका अपने घंटों तक पहुँचना। आपकी प्रगति मिनटों में दिखती है क्योंकि साइट घंटों में पूर्णांकित करती है — एक घंटे से कम पर वह 0 दिखाती है, जो बिलकुल न खेलने से अलग नहीं लगता।", tipEvJoin: "इवेंट चल रहा है और आप उसमें शामिल नहीं हैं। शामिल होना इवेंट पेज का एक बटन है, और जब तक आप उसे नहीं दबाते कुछ नहीं गिना जाता: शामिल होने से पहले खेला गया समय बेकार चला जाता है — यह मापा गया है, अनुमान नहीं। शामिल होना एकतरफ़ा है: बाहर निकलने का कोई बटन नहीं है।", tipEvOwn: "इवेंट को गेम चाहिए और साइट को नहीं लगता कि वह आपके पास है। अगर गेम Free to Play है तो यही अपेक्षित है: Steam केवल वही मुफ़्त गेम बताता है जिन्हें आपने सचमुच खेला हो, इसलिए उसे कुछ मिनट खोलें और बंद करें। इसके बाद साइट को समझने में एक घंटे तक लग सकता है। «गेम सिंक करें» बटन घंटे में एक बार तक सीमित है और अकेले यह इसे ठीक नहीं करता।",
+            evOn: "चल रहा है",
+            mEvento: "Steam के कम्युनिटी इवेंट खेले गए समय के बदले माइलस्टोन में भुगतान करते हैं, और हर माइलस्टोन के लिए पूरी कम्युनिटी को कुल घंटों तक पहुँचना होता है और आपको अपने घंटों तक। इवेंट पेज पर «शामिल हों» दबाने तक कुछ नहीं गिना जाता, और उससे पहले खेला गया समय बेकार चला जाता है — इसीलिए जब कोई इवेंट चल रहा हो और आप उसमें न हों तो पैनल चेतावनी देता है।",
             tipPass: 'पास किसी भी स्रोत के ARP से, एक-एक पड़ाव करके आगे बढ़ता है, और सीज़न खुलने पर उसे हाथ से शुरू करना पड़ता है। बिना लिए पड़ाव सीज़न के अंत में मिल जाते हैं, पर बैटल टोकन मिट जाते हैं — जल्दी उन्हीं की है।',
             tipStore: 'बैटल स्टोर तय दाम पर टोकन को ARP में बदलता है — 25 टोकन के 100 ARP, 45 के 200, 90 के 500 — और यह पंक्ति वह सबसे अच्छा पैक दिखाती है जिस तक आपके टोकन पहले से पहुँचते हैं। यह मायने रखता है क्योंकि सीज़न बंद होते ही टोकन मिटा दिए जाते हैं: ये समय-सीमा वाले ARP हैं। इसे जानबूझकर पीला नहीं रखा गया: यह आज ख़त्म नहीं होता, इसलिए दिन-के-अंत की चेतावनी में कभी नहीं जुड़ता।',
             fold: 'पैनल समेटें', tipAcct: 'आपका बैलेंस, स्तर और लॉगिन की दो गिनतियाँ। 7 दिन की लगातार गिनती और 28 दिन का कैलेंडर एक ही संख्या नहीं हैं, और इनमें से कोई भी महीने की तारीख़ नहीं है: एक दिन चूकने पर लगातार गिनती टूट जाती है, जबकि कैलेंडर उन दिनों को गिनता है जिनमें आपने लॉगिन किया, चाहे वे कभी भी पड़ें। साइट ख़ुद यही कहती है — उसके इनाम कुल लॉगिन दिनों से चलते हैं, तारीख़ से नहीं। इसलिए आप लगातार दिन 1 पर हो सकते हैं और 8 दिन लॉगिन कर चुके हों। ये दोनों सिर्फ़ कंट्रोल सेंटर में हैं, बाकी पेजों पर थोड़ी देर बाद आते हैं।',
@@ -495,12 +519,41 @@
         // hours») no se lee: lo traduce Weglot y ademas viene redondeado.
         vaultTimer: '#game-vault-timer[data-unlock-date]',
         vaultBanner: '.gv-section-banner',
+        // --- Eventos comunitarios de Steam ---------------------------------
+        // El estado del usuario en un evento NO esta en ningun dato: se deduce de
+        // QUE boton pinta el servidor, y son tres excluyentes. Verificado con los
+        // cuatro volcados de la serie `dom-steam-community-event-live-*`.
+        //
+        //   #sync-button              -> el sitio no cree que tengas el juego
+        //   .enter-event-btn          -> lo tienes y NO te has unido
+        //   a[href^="steam://run/"]   -> ya estas dentro
+        //
+        // Ojo al medirlo: `.enter-event-btn` tambien aparece dentro del <script>
+        // que le cuelga el manejador en LOS TRES estados, asi que solo vale
+        // buscarlo con querySelector (que ve elementos) y nunca sobre el HTML en
+        // crudo, que daria positivo siempre.
+        evSync: '#sync-button',
+        evJoinBtn: '.enter-event-btn',
+        evRun: 'a[href^="steam://run/"]',
+        // Cada hito lleva su umbral personal en MINUTOS (`data-playtime`) aunque
+        // la interfaz hable de horas.
+        evMilestone: '.milestone-progress[data-milestone][data-playtime]',
+        // El banner del evento en el Centro de control. No es una fila de la tabla
+        // de misiones: es un <a> hermano de la tarjeta, y su unica marca estable es
+        // la clase —el estado («EN VIVO») lo traduce Weglot y el color va en un
+        // style inline—.
+        evBanner: 'a[href^="/steam/community-event/"] .community-event-banner',
     };
 
     const WIDGET_ID = 'awa-arp-widget';
     const CACHE_KEY = 'awa-arp-daily';
     const PASS_KEY = 'awa-arp-pass';
     const PASS_URL = '/control-center/battle-pass/1';
+    // El indice de eventos comunitarios. Se lee UNA VEZ AL DIA, como el pase, y por
+    // la misma razon: su dato cambia despacio (un evento dura una o dos semanas) y
+    // cada peticion de mas es una peticion de mas en todas las paginas del sitio.
+    const EVENTS_URL = '/steam/events';
+    const EVENT_KEY = 'awa-arp-evento';
     const STORE_URL = '/battle-store';
     // El destino del aviso de la boveda. Mismo trato que el pase o la tienda: el
     // panel dice QUE pasa y ademas te deja a un clic de DONDE se hace.
@@ -1198,6 +1251,213 @@
     }
 
     // ------------------------------------------------------------------
+    // Eventos comunitarios de Steam
+    // ------------------------------------------------------------------
+    // Pagan ARP por tiempo jugado en hitos, y cada hito exige DOS cosas a la vez:
+    // que la comunidad entera llegue a un total de horas y que llegues tu a las
+    // tuyas. Es la unica fuente del panel donde se puede perder ARP sin hacer nada
+    // mal: si no pulsas «unirse», el tiempo que juegues NO cuenta —medido el
+    // 2026-09-10, no supuesto— y unirse es de ida, no hay boton para salirse.
+    //
+    // Se lee en dos saltos y UNA VEZ AL DIA, como el pase:
+    //   1. /steam/events dice QUE evento esta vivo y entre que fechas.
+    //   2. la pagina de ese evento dice en que estado estas tu.
+    //
+    // El indice se lee del <noscript>, y eso necesita explicacion porque parece al
+    // reves. Su DOM renderizado es sopa de estilos en linea de un maquetador: ni
+    // una clase, ni un id, ni un encabezado de seccion, y los eventos actuales y
+    // los pasados salen del mismo molde. El <noscript>, en cambio, trae un bloque
+    // limpio por evento y SIN traducir por Weglot. Con JS activo su contenido no se
+    // renderiza pero SI esta en el DOM como texto, asi que se lee con textContent y
+    // se vuelve a parsear.
+    //
+    // Aun asi, cual esta vivo NO se decide por el encabezado «Current Events» que
+    // el <noscript> trae, sino por las FECHAS: asi no depende de que ese texto siga
+    // en ingles ni de que la seccion exista cuando no hay ninguno.
+    const EV_MESES = ['january', 'february', 'march', 'april', 'may', 'june',
+        'july', 'august', 'september', 'october', 'november', 'december'];
+
+    // «September 18th, 2026» -> ms del comienzo de ese dia en UTC. El dia de AWA
+    // empieza a las 00:00 UTC, como todo lo demas en este script.
+    function evFecha(texto) {
+        const m = /([A-Za-z]+)\s+(\d{1,2})(?:st|nd|rd|th)?,\s*(\d{4})/.exec(String(texto || ''));
+        if (!m) return null;
+        const mes = EV_MESES.indexOf(m[1].toLowerCase());
+        if (mes < 0) return null;
+        return Date.UTC(Number(m[3]), mes, Number(m[2]));
+    }
+
+    // Un <noscript> NO se parsea igual en todas partes, y esto costo una prueba en
+    // rojo: depende de si el documento tiene scripting habilitado.
+    //   - En el `document` de la pagina (scripting ON) su contenido es TEXTO en
+    //     crudo, asi que hay que volver a parsearlo para poder consultarlo.
+    //   - En un documento de `DOMParser` (scripting OFF por definicion, y ese es
+    //     justo el camino por el que llega el indice cuando se pide con fetch) su
+    //     contenido son ELEMENTOS de verdad, y entonces `textContent` devuelve solo
+    //     el texto —sin marcado— y volver a parsearlo no encuentra ningun enlace.
+    // Se aceptan las dos formas porque las dos ocurren de verdad, cada una por su
+    // camino.
+    function readEventosIndice(doc) {
+        let dentro = null;
+        const cajas = doc.querySelectorAll('noscript');
+        for (let i = 0; i < cajas.length; i++) {
+            const caja = cajas[i];
+            if (caja.querySelector && caja.querySelector('a[href^="/steam/community-event/"]')) {
+                dentro = caja;
+                break;
+            }
+            const txt = caja.textContent || '';
+            if (txt.indexOf('/steam/community-event/') < 0) continue;
+            dentro = new DOMParser().parseFromString(txt, 'text/html');
+            break;
+        }
+        if (!dentro) return null;
+        const ahora = Date.now();
+        const enlaces = dentro.querySelectorAll('a[href^="/steam/community-event/"]');
+        for (let i = 0; i < enlaces.length; i++) {
+            const a = enlaces[i];
+            const caja = a.parentElement;
+            if (!caja) continue;
+            const fechas = caja.querySelector('p');
+            const nombre = caja.querySelector('h4');
+            const partes = String(fechas ? fechas.textContent : '').split('-');
+            if (partes.length < 2) continue;
+            const desde = evFecha(partes[0]);
+            // El ultimo dia va INCLUIDO: se suma un dia al que nombra el rango. El
+            // sitio no publica la hora de cierre en ninguna parte —solo la de
+            // apertura, y en un contador que ni siquiera pinta cuando el evento ya
+            // arranco—, asi que esto es la lectura generosa y no un dato leido.
+            const hasta = evFecha(partes[1]);
+            if (desde === null || hasta === null) continue;
+            const fin = hasta + 24 * 60 * 60 * 1000;
+            if (ahora < desde || ahora >= fin) continue;
+            return {
+                url: a.getAttribute('href'),
+                nombre: nombre ? String(nombre.textContent).replace(/\s+/g, ' ').trim() : null,
+                desde: desde,
+                hasta: fin,
+            };
+        }
+        return null;
+    }
+
+    // Los minutos jugados que el evento te cuenta. Sale del literal que el servidor
+    // incrusta en el <script> de la pagina, que es de donde el propio sitio saca
+    // TODO lo que pinta: el contador de horas y el ancho de cada barra.
+    //
+    // NO hay reserva, y es a proposito. Aqui hubo una que leia el `aria-valuenow`
+    // de la barra, con la nota de que «seguir al tiempo real es lo esperable, no
+    // algo comprobado». Comprobado el 2026-09-11: **`aria-valuenow` vale 0
+    // SIEMPRE**, incluso con `personalPlaytime = 60` y el hito ya concedido. O sea
+    // que esa reserva no devolvia «no se», devolvia CERO, que es una cifra falsa y
+    // ademas indistinguible de la verdad cuando de verdad llevas 0 minutos. Un
+    // null se ve y se maneja; un 0 inventado se cuela hasta el panel.
+    function evMinutos(doc) {
+        const scripts = doc.querySelectorAll('script');
+        for (let i = 0; i < scripts.length; i++) {
+            const m = /personalPlaytime\s*=\s*(\d+)/.exec(scripts[i].textContent || '');
+            if (m) return Number(m[1]);
+        }
+        return null;
+    }
+
+    function readEventoPagina(doc) {
+        const sync = doc.querySelector(SEL.evSync);
+        const unirse = doc.querySelector(SEL.evJoinBtn);
+        const jugar = doc.querySelector(SEL.evRun);
+        if (!sync && !unirse && !jugar) return null;   // no es la pagina de un evento
+        // El orden importa y es el del servidor: si pinta el sincronizador es que
+        // no te ve el juego, y entonces el resto no aplica. Los tres son
+        // excluyentes en los cuatro volcados; el orden solo decide un caso que no
+        // se ha visto nunca.
+        const estado = sync ? 'unowned' : (unirse ? 'unjoined' : 'joined');
+        const minutos = evMinutos(doc);
+        const hitos = [];
+        const barras = doc.querySelectorAll(SEL.evMilestone);
+        for (let i = 0; i < barras.length; i++) {
+            const b = barras[i];
+            const id = b.getAttribute('data-milestone');
+            const com = doc.getElementById('milestone-' + id + '-community-status');
+            const meta = num(b.getAttribute('data-playtime'));
+            hitos.push({
+                meta: meta,
+                // EL ICONO PERSONAL NO SE LEE, y esto costo un bug visible: el
+                // servidor manda los cinco con `fa-lock` SIEMPRE, y es el JS de la
+                // propia pagina el que los pone en verde
+                // (`removeClass('fa-lock').addClass('fa-square-check text-success')`
+                // cuando `personalPlaytime >= milestonePlaytime`). Asi que el icono
+                // dice la verdad en la pagina que estas mirando —donde ese JS ya
+                // corrio— y MIENTE en una copia traida con fetch y DOMParser, donde
+                // no corre nada. Sintoma del 2026-09-11: con una hora jugada, el
+                // panel decia «60/120 min» en la pagina del evento y «60/60 min» en
+                // el Centro de control, o sea el mismo dato leido de dos sitios y
+                // contradiciendose.
+                // Se calcula igual que lo calcula el sitio, que para eso publica el
+                // umbral y los minutos.
+                personal: minutos === null ? null : minutos >= meta,
+                // El de COMUNIDAD si se lee: ese lo pinta el servidor y el JS de la
+                // pagina no lo toca nunca.
+                comunidad: com ? !com.classList.contains('fa-lock') : null,
+            });
+        }
+        return { hay: true, estado: estado, minutos: minutos, hitos: hitos, at: Date.now() };
+    }
+
+    function getEvento(forzar) {
+        let guardado = null;
+        try { guardado = JSON.parse(recall(EVENT_KEY) || 'null'); } catch (e) { /* cache ilegible */ }
+        // El estado que cuenta la pagina en la que estas, SI es una pagina de
+        // evento. Puede ser null.
+        const aqui = readEventoPagina(document);
+        // ...pero estar en la pagina de un evento no significa que ese evento este
+        // vivo: las de los pasados siguen ahi y se ven igual. El sitio lo dice en
+        // texto («¡Este evento esta EN VIVO!»), que Weglot traduce, y no hay ningun
+        // volcado de uno terminado con el que saber que cambia en la estructura.
+        // Asi que quien decide si hay evento vivo es SIEMPRE el indice, por fechas,
+        // y el documento solo aporta TU estado dentro del que el indice ya dio por
+        // vivo. Sin esta comprobacion, abrir el evento del mes pasado pintaba la
+        // fila en ambar diciendo que no te has unido a algo que ya termino.
+        const esElVivo = (v) => !!(v && v.hay && v.url && yaEstoyEn(v.url));
+
+        if (!forzar) {
+            if (aqui && esElVivo(guardado)) {
+                // Las fechas y el nombre no estan en la pagina en forma fiable —el
+                // rango va traducido—, asi que se conservan los del indice.
+                const dato = Object.assign({}, guardado, aqui);
+                store(EVENT_KEY, JSON.stringify(dato));
+                return Promise.resolve(dato);
+            }
+            if (guardado && utcStamp(guardado.at) === utcStamp(Date.now())) return Promise.resolve(guardado);
+        }
+        return pedir(EVENTS_URL)
+            .then((html) => {
+                const vivo = readEventosIndice(new DOMParser().parseFromString(html, 'text/html'));
+                if (!vivo) {
+                    // Que no haya evento es un dato, y se guarda: si no, cada carga
+                    // de cada pagina volveria a pedir el indice para no encontrar
+                    // nada, que es el caso normal la mayor parte del mes.
+                    const nada = { hay: false, at: Date.now() };
+                    store(EVENT_KEY, JSON.stringify(nada));
+                    return nada;
+                }
+                // Si el vivo resulta ser justo la pagina en la que estas, su estado
+                // ya lo tienes delante: una peticion menos.
+                if (aqui && yaEstoyEn(vivo.url)) {
+                    const dato = Object.assign({ hay: true, at: Date.now() }, vivo, aqui);
+                    store(EVENT_KEY, JSON.stringify(dato));
+                    return dato;
+                }
+                return pedir(vivo.url).then((h) => {
+                    const est = readEventoPagina(new DOMParser().parseFromString(h, 'text/html'));
+                    const dato = Object.assign({ hay: true, at: Date.now() }, vivo, est || {});
+                    store(EVENT_KEY, JSON.stringify(dato));
+                    return dato;
+                });
+            })
+            .catch(() => null);
+    }
+
+    // ------------------------------------------------------------------
     // Los TRES calendarios de Alienware Arena
     // ------------------------------------------------------------------
     // Descubierto el 2026-08-28 al mirar dos volcados nuevos, y hasta entonces el
@@ -1790,7 +2050,12 @@
         //    su propio aviso, y meterlo aquí sonaría cada noche de la semana por
         //    algo que no vence hasta el lunes.
         if (left <= ventana && recall(VISTO_DIA_KEY) !== hoy) {
-            const delDia = pendientes.filter((k) => k !== 'qSteam');
+            // Ni lo de Steam ni el evento comunitario: los dos salen en amarillo
+            // porque hay algo que hacer, pero ninguno de los dos vence ESTA noche.
+            // El evento dura una o dos semanas, asi que meterlo aqui seria repetir
+            // el mismo aviso cada noche durante ocho dias por algo que no corre
+            // prisa hoy — que es exactamente lo que se evito con `qSteam`.
+            const delDia = pendientes.filter((k) => k !== 'qSteam' && k !== 'evento');
             // La única cosa que urge sin salir en amarillo: los hitos del pase se
             // entregan solos al cerrar, pero las FICHAS se borran. Si la temporada
             // cierra esta noche y quedan sin gastar, son 100, 200 o 500 ARP.
@@ -1920,7 +2185,7 @@
             [t('infoDescription'), [t('infoDescriptionText')]],
             // Los cinco párrafos de «cómo funciona esto» viven aquí, que es donde
             // caben: son lo que no se puede explicar en un tooltip de una línea.
-            [t('title'), [t('mDaily'), t('mQuests'), t('mTwitch'), t('mLate')]],
+            [t('title'), [t('mDaily'), t('mQuests'), t('mEvento'), t('mTwitch'), t('mLate')]],
             [t('infoPrivacy'), [t('infoPrivacyText'), t('mIntro')]],
         ].forEach(([titulo, parrafos], n) => {
             const h = el('div', 'awa-modal__h');
@@ -2154,7 +2419,7 @@
         return clave ? base + ' ' + t(clave) : base;
     }
 
-    function renderDaily(list, relojes, daily, cal, pass, discord, acc) {
+    function renderDaily(list, relojes, daily, cal, pass, discord, evento, acc) {
         list.textContent = '';
         relojes.textContent = '';
         pintarSub(acc, daily);
@@ -2374,12 +2639,71 @@
             }
         }
 
+        // El evento comunitario. Solo existe la linea si hay uno vivo: fuera de esa
+        // ventana no hay nada que decir, y una linea permanente en gris seria
+        // ruido once meses al ano.
+        if (evento && evento.hay) {
+            const aEvento = evento.url ? irA(evento.url) : null;
+            let valor, tono, cualTip;
+            if (evento.estado === 'unowned') {
+                valor = t('evOwn'); tono = 'todo'; cualTip = 'tipEvOwn';
+            } else if (evento.estado === 'unjoined') {
+                valor = t('evJoin'); tono = 'todo'; cualTip = 'tipEvJoin';
+            } else {
+                // El siguiente hito que TE falta a ti. El de la comunidad no se
+                // muestra: no depende de ti y no hay nada que hacer con el dato.
+                //
+                // `personal` vale null cuando el icono de estado no se pudo leer, y
+                // eso NO es lo mismo que «cumplido». Filtrando solo por `=== false`,
+                // un dia en que AWA renombrara esas clases dejaria la lista vacia y
+                // la fila diria «todos los hitos ✅»: anunciar el evento terminado
+                // justo cuando el script se ha quedado ciego. Asi que se separa lo
+                // LEIDO de lo cumplido, y solo se da por terminado si de verdad se
+                // leyeron todos y ninguno queda.
+                const hitos = evento.hitos || [];
+                const leidos = hitos.filter((h) => h.personal !== null);
+                const falta = leidos.length === hitos.length
+                    ? leidos.filter((h) => !h.personal)[0]
+                    : hitos[hitos.length - 1];   // sin minutos fiables, el ultimo umbral
+                // Un hito se COBRA con las dos condiciones, no solo con la tuya: si
+                // la comunidad no ha llegado a sus horas, tu hora no paga nada
+                // todavia. Por eso «todos los hitos ✅» exige tambien que la parte
+                // de la comunidad este cumplida donde se haya podido leer. Sin esto,
+                // alguien que juegue sus cinco horas la primera semana veria el
+                // evento por terminado con premios que aun no ha ganado.
+                const faltaComunidad = hitos.some((h) => h.comunidad === false);
+                cualTip = 'tipEv';
+                if (!hitos.length || (!falta && leidos.length !== hitos.length)) { valor = t('evOn'); tono = 'done'; }
+                else if (!falta && faltaComunidad) { valor = t('evOn'); tono = 'done'; }
+                else if (!falta) { valor = t('evAll') + OK_MARK; tono = 'done'; }
+                else if (evento.minutos === null || evento.minutos === undefined) { valor = t('evOn'); tono = 'done'; }
+                else {
+                    // En MINUTOS a proposito. El sitio pinta Math.floor(min/60), asi
+                    // que por debajo de una hora enseña 0 y no se distingue de no
+                    // haber jugado nada: es justo el numero que no sirve para saber
+                    // si te esta contando el tiempo.
+                    valor = t('evMin', { v: nf.format(evento.minutos), c: nf.format(falta.meta) });
+                    tono = 'done';
+                }
+            }
+            enlazar(pinta('evento', t('evento'), valor,
+                tipMas(t(cualTip), aEvento && 'goEvento'), tono), aEvento);
+        }
+
         // Los dos relojes, separados: no caduca lo mismo a la misma hora.
         const now = new Date();
         relojes.appendChild(tip(el('div', 'awa-w__clock', t('dailyReset', { v: fmtCountdown(msToDailyReset(now)) })), t('tipReset')));
         if (daily && daily.steamPending !== null) {
             relojes.appendChild(tip(el('div', 'awa-w__clock awa-w__clock--week',
                 t('weekReset', { v: fmtCountdown(msToWeekReset(now)) })), t('tipSteam')));
+        }
+        // El tercer reloj solo aparece con un evento vivo, y por eso no rompe la
+        // regla de arriba: no son «dos relojes» siempre, son los que tengan algo
+        // que contar. Su fin NO es a las 00:00 UTC como los otros dos: sale de las
+        // fechas del indice, y el ultimo dia va incluido entero.
+        if (evento && evento.hay && evento.hasta) {
+            relojes.appendChild(tip(el('div', 'awa-w__clock',
+                t('evEnds', { v: fmtCountdown(evento.hasta - now.getTime()) })), t('tipEv')));
         }
         // La edad del dato, que es lo único que distingue una caché de una
         // lectura fresca cuando no hay consola —la lección de bing-rewards—. Sin
@@ -2829,7 +3153,7 @@
         // borrar el panel: dejarlo en blanco por un fetch caído se lee como «no
         // queda nada» —y además apagaría el aviso, que necesita `daily` para
         // decidir—. Es mejor un dato de hace un rato, con su edad a la vista.
-        const ultimo = { daily: null, pass: null, discord: null };
+        const ultimo = { daily: null, pass: null, discord: null, evento: null };
 
         // Lo último que se pintó en amarillo. Lo guarda quien pinta y lo usa quien
         // avisa, y por eso el aviso puede evaluarse en cada tic SIN volver a pedir
@@ -2852,14 +3176,14 @@
             const cal = readCalendar(document);
             calFirma = firmaCal(cal);
             pendientes = renderDaily(list, relojes, ultimo.daily, cal,
-                ultimo.pass, ultimo.discord, acc) || [];
+                ultimo.pass, ultimo.discord, ultimo.evento, acc) || [];
             // El aviso se decide DESPUÉS de pintar, porque necesita saber qué salió
             // en amarillo. Si suena, hay que volver a pintar: su banda no existía
             // cuando se dibujó el panel. La segunda pasada no puede disparar nada
             // —las marcas de «ya sonó» ya están puestas—, así que no hay bucle.
             if (evaluarAvisos(ultimo.daily, cal, ultimo.pass, ultimo.discord, pendientes)) {
                 pendientes = renderDaily(list, relojes, ultimo.daily, cal,
-                    ultimo.pass, ultimo.discord, acc) || [];
+                    ultimo.pass, ultimo.discord, ultimo.evento, acc) || [];
             }
         }
 
@@ -2878,11 +3202,16 @@
             store(REFRESH_KEY, String(_intentoEn));
             if (modo === 'manual') refrescar.classList.add('awa-w__refresh--busy');
             const dia = modo === 'auto' || modo === 'manual';
-            return Promise.all([getDaily(dia), getPass(modo === 'manual'), getDiscord(dia)])
-                .then(([daily, pass, discord]) => {
+            // El evento se fuerza solo a mano, como el pase y por lo mismo: son dos
+            // peticiones (indice + pagina del evento) para un dato que cambia con la
+            // hora, no con el cuarto de hora.
+            return Promise.all([getDaily(dia), getPass(modo === 'manual'), getDiscord(dia),
+                getEvento(modo === 'manual')])
+                .then(([daily, pass, discord, evento]) => {
                     ultimo.daily = fusionar(ultimo.daily, daily);
                     ultimo.pass = fusionar(ultimo.pass, pass);
                     ultimo.discord = fusionar(ultimo.discord, discord);
+                    ultimo.evento = fusionar(ultimo.evento, evento);
                     // La edad solo avanza si de verdad se leyó algo nuevo: si no,
                     // el «↻ hace un momento» estaría mintiendo sobre un dato viejo.
                     if (daily) _leidoEn = Date.now();
@@ -2927,7 +3256,7 @@
             document.body.appendChild(box);
             refrescar.addEventListener('click', alPulsarRefresco);
             renderDaily(list, relojes, ultimo.daily, readCalendar(document),
-                ultimo.pass, ultimo.discord, acc);
+                ultimo.pass, ultimo.discord, ultimo.evento, acc);
         }
 
         // Weglot llega tarde: cuando arranca el script su selector no existe y su

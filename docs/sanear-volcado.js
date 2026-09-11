@@ -27,9 +27,21 @@
 
 const fs = require('fs');
 
-const [entrada, salidaArg, nota] = process.argv.slice(2);
+// `--conservar-noscript` se saca de argv ANTES de leer los posicionales, para que pueda ir en
+// cualquier sitio de la linea sin desplazar <salida> ni la nota.
+//
+// Por que existe: el recorte de <noscript> es una regla de VOLUMEN, no de seguridad, y da por
+// hecho que ahi no hay nada que mirar. En /steam/events eso es falso: el DOM renderizado es sopa
+// de estilos en linea de un maquetador —ni una clase, ni un id, ni un encabezado— y la unica
+// separacion entre eventos actuales y anteriores esta dentro del <noscript>, que ademas viene en
+// ingles porque Weglot no lo traduce. Ahi el <noscript> ES la carga util, y encima es lo que
+// conviene parsear desde el script: con JS activo su contenido no se renderiza pero SI esta en el
+// DOM como texto, o sea legible con .textContent.
+const argv = process.argv.slice(2);
+const conservarNoscript = argv.includes('--conservar-noscript');
+const [entrada, salidaArg, nota] = argv.filter((a) => a !== '--conservar-noscript');
 if (!entrada) {
-  console.error('uso: node sanear-volcado.js <entrada.html> [salida.html] ["nota"]');
+  console.error('uso: node sanear-volcado.js <entrada.html> [salida.html] ["nota"] [--conservar-noscript]');
   process.exit(2);
 }
 const salida = salidaArg || entrada;
@@ -55,7 +67,7 @@ const userId = mId && mId[1];
 const reglas = [
   // --- recortes de volumen (mismas marcas que el resto de los volcados)
   ['<style> recortado',    /([ \t]*)<style[^>]*>[\s\S]*?<\/style>/g,        '$1<!-- <style> inline recortado -->'],
-  ['<noscript> recortado', /([ \t]*)<noscript[^>]*>[\s\S]*?<\/noscript>/g,  '$1<!-- <noscript> recortado -->'],
+  ...(conservarNoscript ? [] : [['<noscript> recortado', /([ \t]*)<noscript[^>]*>[\s\S]*?<\/noscript>/g,  '$1<!-- <noscript> recortado -->']]),
 
   // --- credenciales y identificadores
   // El JWT aparece en DOS formas: `var user_token = "ey..."` y, en las paginas de sorteo,
@@ -153,7 +165,7 @@ const cabecera =
   `     idiomas, plataforma y resolucion),\n` +
   `     y nombre de usuario. steamId enmascarado conservando los 17 digitos (lo que importa es\n` +
   `     que no sea 0, ver dom-steam-quest-2026-08.html, sin vincular).\n` +
-  `     Recortado: bloques <style> inline y <noscript>. -->\n`;
+  `     Recortado: bloques <style> inline${conservarNoscript ? ' (los <noscript> se CONSERVAN a proposito)' : ' y <noscript>'}. -->\n`;
 
 s = cabecera + s;
 fs.writeFileSync(salida, s);
