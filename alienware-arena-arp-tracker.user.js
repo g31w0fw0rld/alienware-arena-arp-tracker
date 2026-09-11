@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Alienware Arena ARP Tracker
 // @namespace    http://tampermonkey.net/
-// @version      1.3.0
-// @description  Panel de ARP para Alienware Arena. En cualquier página muestra lo que caduca y cuándo: tiempo en el sitio y Twitch a las 00:00 UTC, quests diarias de un solo uso, las de Steam de lunes a lunes, Discord solo en laborables, el calendario de campaña y las fichas del pase, que se borran al cerrar la temporada. En un sorteo dice si hay claves para tu país y nivel antes de pulsar nada; en el Marketplace y la Bóveda marca cada tarjeta. Avisa antes del reinicio. Ocho idiomas. Solo lee: no reclama nada.
+// @version      1.3.1
+// @description  Panel de ARP para Alienware Arena. Casi todo lo que ganas ahí caduca —a las 00:00 UTC, el lunes, al cerrar la temporada, al acabar un evento— y el sitio no te lo dice en un solo lugar. Este panel sí: en cualquier página, qué te queda por hacer, cuánto tiempo tienes y un aviso antes de perderlo. Solo lee, nunca reclama. Cada línea se explica en «Saber más», dentro del panel, y el resto está en el repositorio. Ocho idiomas.
 // @icon         data:image/png;base64,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
 // @match        https://www.alienwarearena.com/*
 // @match        https://na.alienwarearena.com/*
@@ -16,7 +16,7 @@
 (function () {
     'use strict';
 
-    const SCRIPT_VERSION = '1.3.0';
+    const SCRIPT_VERSION = '1.3.1';
 
     // ------------------------------------------------------------------
     // Idiomas
@@ -533,7 +533,12 @@
         // buscarlo con querySelector (que ve elementos) y nunca sobre el HTML en
         // crudo, que daria positivo siempre.
         evSync: '#sync-button',
-        evJoinBtn: '.enter-event-btn',
+        // Los DOS botones de entrar: el normal y el de acceso anticipado. El segundo existe en el
+        // JS del sitio —tiene su propio manejador, que llama a `/start-early/`— pero no se ha
+        // visto renderizado en ningun volcado, asi que va aqui como red y no como algo observado.
+        // Sin el, un evento que solo ofreciera acceso anticipado no se rompia (cae a «en marcha»,
+        // comprobado) pero tampoco decia que hubiera un boton que pulsar.
+        evJoinBtn: '.enter-event-btn, .enter-event-early-btn',
         evRun: 'a[href^="steam://run/"]',
         // Cada hito lleva su umbral personal en MINUTOS (`data-playtime`) aunque
         // la interfaz hable de horas.
@@ -554,6 +559,17 @@
     // cada peticion de mas es una peticion de mas en todas las paginas del sitio.
     const EVENTS_URL = '/steam/events';
     const EVENT_KEY = 'awa-arp-evento';
+    // El evento guarda DOS cosas con relojes distintos, y meterlas en el mismo fue un error de
+    // la 1.3.0: se calco la cache del pase, que cambia una vez al dia, pero los MINUTOS del
+    // evento cambian mientras juegas. Resultado: en la pagina del evento el dato salia del
+    // documento y era fresco, y en CUALQUIER OTRA la fila se quedaba congelada hasta el ⟳ o
+    // hasta las 00:00 UTC.
+    //
+    //   - QUE evento esta vivo y entre que fechas -> sigue siendo diario, eso si cambia despacio.
+    //   - TU estado dentro de el -> este TTL, acorde a que AWA acredita «dentro de la hora».
+    //
+    // Y ademas sale mas barato: cuando solo caduca el estado se pide UNA pagina, no dos.
+    const EVENT_TTL_MS = 20 * 60 * 1000;
     const STORE_URL = '/battle-store';
     // El destino del aviso de la boveda. Mismo trato que el pase o la tienda: el
     // panel dice QUE pasa y ademas te deja a un clic de DONDE se hace.
@@ -1419,15 +1435,40 @@
         // fila en ambar diciendo que no te has unido a algo que ya termino.
         const esElVivo = (v) => !!(v && v.hay && v.url && yaEstoyEn(v.url));
 
+        const ahora = Date.now();
+        // `idxAt` es de cuando se leyo el INDICE y `at` de cuando se leyo tu ESTADO. En una cache
+        // escrita por 1.3.0 solo existe `at`, asi que se usa para las dos: ese dia se comporta
+        // como antes y al siguiente ya se separan.
+        const indiceVale = !!(guardado && utcStamp(guardado.idxAt || guardado.at) === utcStamp(ahora));
+        const estadoVale = !!(guardado && guardado.at && (ahora - guardado.at) < EVENT_TTL_MS);
+
         if (!forzar) {
             if (aqui && esElVivo(guardado)) {
-                // Las fechas y el nombre no estan en la pagina en forma fiable —el
-                // rango va traducido—, asi que se conservan los del indice.
+                // Estando en la pagina del evento el estado es gratis y siempre fresco. Las
+                // fechas y el nombre no estan ahi en forma fiable —el rango va traducido—, asi
+                // que se conservan los del indice.
                 const dato = Object.assign({}, guardado, aqui);
                 store(EVENT_KEY, JSON.stringify(dato));
                 return Promise.resolve(dato);
             }
-            if (guardado && utcStamp(guardado.at) === utcStamp(Date.now())) return Promise.resolve(guardado);
+            // Sin evento vivo hoy no hay nada que refrescar hasta mañana: es el caso normal la
+            // mayor parte del mes y no debe costar ni una peticion.
+            if (indiceVale && guardado.hay === false) return Promise.resolve(guardado);
+            if (indiceVale && estadoVale) return Promise.resolve(guardado);
+            // Con el indice todavia bueno y el estado caducado, se pide SOLO la pagina del
+            // evento. Es la mitad del coste de antes, y es el caso que mas se repite mientras
+            // un evento esta vivo.
+            if (indiceVale && guardado.hay && guardado.url) {
+                return pedir(guardado.url)
+                    .then((h) => {
+                        const est = readEventoPagina(new DOMParser().parseFromString(h, 'text/html'));
+                        if (!est) return guardado;
+                        const dato = Object.assign({}, guardado, est);
+                        store(EVENT_KEY, JSON.stringify(dato));
+                        return dato;
+                    })
+                    .catch(() => guardado);
+            }
         }
         return pedir(EVENTS_URL)
             .then((html) => {
@@ -1436,20 +1477,20 @@
                     // Que no haya evento es un dato, y se guarda: si no, cada carga
                     // de cada pagina volveria a pedir el indice para no encontrar
                     // nada, que es el caso normal la mayor parte del mes.
-                    const nada = { hay: false, at: Date.now() };
+                    const nada = { hay: false, at: ahora, idxAt: ahora };
                     store(EVENT_KEY, JSON.stringify(nada));
                     return nada;
                 }
                 // Si el vivo resulta ser justo la pagina en la que estas, su estado
                 // ya lo tienes delante: una peticion menos.
                 if (aqui && yaEstoyEn(vivo.url)) {
-                    const dato = Object.assign({ hay: true, at: Date.now() }, vivo, aqui);
+                    const dato = Object.assign({ hay: true, at: ahora, idxAt: ahora }, vivo, aqui);
                     store(EVENT_KEY, JSON.stringify(dato));
                     return dato;
                 }
                 return pedir(vivo.url).then((h) => {
                     const est = readEventoPagina(new DOMParser().parseFromString(h, 'text/html'));
-                    const dato = Object.assign({ hay: true, at: Date.now() }, vivo, est || {});
+                    const dato = Object.assign({ hay: true, at: ahora, idxAt: ahora }, vivo, est || {});
                     store(EVENT_KEY, JSON.stringify(dato));
                     return dato;
                 });

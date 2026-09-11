@@ -2472,13 +2472,30 @@ const titulos = (w) => Array.from(w.document.querySelectorAll('#awa-arp-widget .
     e && /^0\/60 min$/.test(e[1]), e && e.join(' | '));
 }
 {
-  // Y el caso que obliga a pedir el indice aunque estes en la pagina: un evento ya
-  // TERMINADO. Su pagina sigue existiendo y se ve igual —el «EN VIVO» es texto que
-  // Weglot traduce, y no hay volcado de uno cerrado con el que saber que cambia en
-  // la estructura—, asi que fiarse del documento pintaria en ambar «no te has
-  // unido» a algo que acabo el mes pasado.
-  const w = enElEvento('dom-steam-community-event-live-owned-unjoined-2026-09-10.html',
-    '2026-09-19T00:30:00Z');
+  // Y el caso que obliga a pedir el indice aunque estes en la pagina: un evento ya TERMINADO.
+  //
+  // La FORMA de esa pagina sale de un volcado real de uno cerrado —«Old School Runescape»,
+  // 7-21 de agosto—, que no se commitea porque pesa 1,5 MB y lleva 838 reseñas de otras
+  // personas. Lo que enseño: **no hay ninguna marca de «terminado»**. Ni `event-ended` ni nada
+  // equivalente. Lo que pasa es que DESAPARECE TODO: los tres botones del discriminador y el
+  // <span class="event-live">. Aqui se reproduce esa forma sobre un volcado vivo, que si esta
+  // en el repo.
+  //
+  // Ojo con el /g de los dos replace: la cabecera que escribe `sanear-volcado.js` CITA el
+  // marcado en su nota, asi que la primera coincidencia de cualquier selector suele estar en el
+  // comentario y no en el elemento. Sin el /g, esto cambiaba el comentario y dejaba la pagina
+  // intacta — y la prueba habria medido el volcado sin tocar. Van con /g y con un control que
+  // comprueba que el recorte de verdad ocurrio.
+  const cerrado = leerDoc('dom-steam-community-event-live-owned-unjoined-2026-09-10.html')
+    .replace(/<a href="#" class="btn btn-lg enter-event-btn[\s\S]*?<\/a>/g, '')
+    .replace(/<span class="event-live">[\s\S]*?<\/span>/g, '');
+  check('el fixture reproduce la forma de uno cerrado: sin boton y sin «EN VIVO»',
+    !/class="btn btn-lg enter-event-btn/.test(cerrado) && !/class="event-live"/.test(cerrado), '');
+  const w = mount('dom-homepage-src-2026-08.html', RUTA_EVENTO, (win) => {
+    enFecha('2026-09-19T00:30:00Z')(win);
+    win.__respuestas = { '/steam/events': leerDoc('dom-steam-events-index-2026-09-10.html'),
+      '/steam/community-event/': cerrado };
+  });
   await tick(); await tick();
   check('en la pagina de un evento terminado no se pinta nada',
     !lines(w).find((l) => /Evento|Event/.test(l[0])), lines(w).map((x) => x[0]).join(' / '));
@@ -2745,6 +2762,96 @@ console.log('\n=== 56. Lo del evento, en las tres superficies y en los ocho idio
   check('control: una frase inventada NO se encuentra',
     lineaDe('tipEvJoin', 1).indexOf('esta frase no existe en ningun idioma') < 0
       && lineaDe('tipEvJoin', 1).length > 0, 'la linea de tipEvJoin[es] esta vacia');
+}
+
+console.log('\n=== 57. Las dos caches del evento tienen relojes distintos ===');
+{
+  // El fallo de 1.3.0: una sola cache diaria para las dos cosas. En la pagina del evento el dato
+  // salia del documento y era fresco, pero en cualquier OTRA la fila se quedaba congelada hasta
+  // el ⟳ o hasta las 00:00 UTC, aunque AWA ya hubiera acreditado la hora.
+  const AHORA = '2026-09-12T10:00:00Z';
+  const T0 = Date.parse(AHORA);
+  const SLUG = '/steam/community-event/idle-champions-of-the-forgotten-realms-community-event';
+  const sembrar = (cache) => (win) => {
+    enFecha(AHORA)(win);
+    win.localStorage.setItem('awa-arp-evento', JSON.stringify(cache));
+    win.__respuestas = {
+      '/steam/events': leerDoc('dom-steam-events-index-2026-09-10.html'),
+      '/steam/community-event/': leerDoc('dom-steam-community-event-live-joined-awarded-2026-09-11.html'),
+    };
+  };
+  const base = { hay: true, url: SLUG, desde: Date.parse('2026-09-10T00:00:00Z'),
+    hasta: Date.parse('2026-09-19T00:00:00Z'), estado: 'joined', minutos: 0,
+    hitos: [{ meta: 60, personal: false, comunidad: true }] };
+  const pedidas = (w) => w.fetched.filter((u) => /\/steam\//.test(u));
+
+  {
+    // Estado fresco (hace 5 min) e indice de hoy: no se pide nada.
+    const w = mount('dom-homepage-src-2026-08.html', '/',
+      sembrar(Object.assign({}, base, { at: T0 - 5 * 60000, idxAt: T0 - 5 * 60000 })));
+    await tick(); await tick();
+    check('con el estado fresco no se pide nada del evento', pedidas(w).length === 0,
+      JSON.stringify(pedidas(w)));
+  }
+  {
+    // Estado caducado (hace 45 min) pero indice del mismo dia: SOLO la pagina del evento.
+    const w = mount('dom-homepage-src-2026-08.html', '/',
+      sembrar(Object.assign({}, base, { at: T0 - 45 * 60000, idxAt: T0 - 45 * 60000 })));
+    await tick(); await tick();
+    check('con el estado caducado se pide SOLO la pagina del evento',
+      pedidas(w).length === 1 && /community-event/.test(pedidas(w)[0]), JSON.stringify(pedidas(w)));
+    // Y el dato se renueva: el volcado trae 60 min, la cache sembrada tenia 0.
+    const e = lines(w).find((l) => /Evento|Event/.test(l[0]));
+    check('y la fila se actualiza con lo leido', e && /^60\/120 min$/.test(e[1]), e && e.join(' | '));
+  }
+  {
+    // Indice de ayer: hay que volver a preguntar QUE evento esta vivo, o sea las dos.
+    const ayer = Date.parse('2026-09-11T10:00:00Z');
+    const w = mount('dom-homepage-src-2026-08.html', '/',
+      sembrar(Object.assign({}, base, { at: ayer, idxAt: ayer })));
+    await tick(); await tick();
+    check('con el indice de ayer se piden las dos', pedidas(w).length === 2
+      && pedidas(w).some((u) => /\/steam\/events$/.test(u)), JSON.stringify(pedidas(w)));
+  }
+  {
+    // Sin evento vivo hoy: ni una peticion. Es el caso normal la mayor parte del mes.
+    const w = mount('dom-homepage-src-2026-08.html', '/',
+      sembrar({ hay: false, at: T0 - 8 * 3600000, idxAt: T0 - 8 * 3600000 }));
+    await tick(); await tick();
+    check('sin evento vivo no se gasta ni una peticion', pedidas(w).length === 0,
+      JSON.stringify(pedidas(w)));
+    check('y no sale la fila', !lines(w).find((l) => /Evento|Event/.test(l[0])), '');
+  }
+  {
+    // Compatibilidad: una cache escrita por 1.3.0 no tiene `idxAt`. Debe caer al `at` y no
+    // romperse ni pedir de mas.
+    const vieja = Object.assign({}, base, { at: T0 - 5 * 60000 });
+    delete vieja.idxAt;
+    const w = mount('dom-homepage-src-2026-08.html', '/', sembrar(vieja));
+    await tick(); await tick();
+    check('una cache de 1.3.0 sin idxAt sigue valiendo', pedidas(w).length === 0,
+      JSON.stringify(pedidas(w)));
+  }
+}
+
+console.log('\n=== 58. El boton de acceso anticipado cuenta como «sin unirte» ===');
+{
+  // Nunca se ha visto renderizado, pero su manejador existe en el JS del sitio y llama a
+  // `/start-early/`. Antes, una pagina que solo lo ofreciera caia a «en marcha»: no se rompia,
+  // pero tampoco decia que hubiera un boton que pulsar.
+  const soloAnticipado = leerDoc('dom-steam-community-event-live-joined-awarded-2026-09-11.html')
+    .replace(/<a href="steam:\/\/run\/\d+" class="btn btn-steam-community-event">/,
+             '<a href="#" class="btn enter-event-early-btn btn-steam-community-event">');
+  check('el fixture ya no tiene el boton de jugar', !/steam:\/\/run/.test(soloAnticipado)
+    && /enter-event-early-btn/.test(soloAnticipado), '');
+  const w = mount('dom-homepage-src-2026-08.html', '/', (win) => {
+    enFecha('2026-09-12T10:00:00Z')(win);
+    win.__respuestas = { '/steam/events': leerDoc('dom-steam-events-index-2026-09-10.html'),
+      '/steam/community-event/': soloAnticipado };
+  }); await tick(); await tick();
+  const e = lines(w).find((l) => /Evento|Event/.test(l[0]));
+  check('lo lee como que no te has unido', e && /sin unirte|not joined/.test(e[1]), e && e.join(' | '));
+  check('y en ambar, que hay algo que hacer', e && /--todo/.test(e[2]), e && e[2]);
 }
 
 console.log('\n' + (fail ? '✗ ' : '✓ ') + ok + ' comprobaciones pasadas, ' + fail + ' fallidas\n');
