@@ -6,6 +6,10 @@ Userscript that shows, on every Alienware Arena page, what ARP you still have to
 
 *The panel, on any page. Each line is `done/total`, green with a tick when it is finished, amber while it is not, and the ↗ marks the ones you complete somewhere else. / El panel, en cualquier página. Cada línea es `hechas/total`, en verde con marca cuando está cumplida, en ámbar mientras no, y la ↗ señala las que se cumplen en otro sitio.*
 
+![The panel on a Steam community event page, its Community event line reading all milestones with a tick, beside the site's own cards where milestones 3, 4 and 5 have both the community and the personal condition met](docs/screenshot-community-event.png)
+
+*A finished Steam community event. Each milestone needs two things at once —the community reaching a total of hours and you reaching your own— so the panel only says «all milestones» when both are met; until then it counts your minutes towards the next one, and it warns you when you have not joined, because playtime from before you join is thrown away. / Un evento comunitario de Steam, terminado. Cada hito exige dos cosas a la vez —que la comunidad llegue a un total de horas y que llegues tú a las tuyas—, así que el panel solo dice «todos los hitos» cuando se cumplen ambas; hasta entonces cuenta tus minutos hacia el siguiente, y avisa cuando no te has unido, porque el tiempo jugado antes de unirte se tira.*
+
 ![A green notice reading 747 keys for your country at tier 1, directly above the GET KEY button of a giveaway](docs/screenshot-giveaway.png)
 
 *On a giveaway page, above the button: read from the giveaway's own per-country, per-tier stock before you click anything. / En la ficha de un sorteo, encima del botón: leído del inventario por país y por nivel del propio sorteo antes de pulsar nada.*
