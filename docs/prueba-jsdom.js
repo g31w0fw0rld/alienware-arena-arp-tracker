@@ -1922,10 +1922,11 @@ console.log('\n=== 41. Discord no se cobra sábado ni domingo ===');
 console.log('\n=== 42. La tarjeta de subasta no se etiqueta como una compra ===');
 {
   // `dom-game-vault-auction-2026-08.html` trae la Bóveda con la subasta a ciegas
-  // de Dinoblade (producto 1160) ya cerrada. Sus dos atributos de compra mienten:
-  // `data-product-in-stock="false"` con la subasta abierta también, y
-  // `data-product-price="2400"` cuando la entrada eran 100 y las ganadoras
-  // fueron de 7.000 a 8.500.
+  // de Dinoblade (producto 1160) ya CERRADA, que resulta ser el único estado en el
+  // que `data-product-in-stock` vale `false`: el atributo no sigue al stock, sigue
+  // al final de la subasta (lo comprueba el bloque siguiente). Así que aquí el que
+  // miente es el otro, `data-product-price="2400"`, cuando la entrada eran 100 y
+  // las diez ganadoras fueron de 7.000 a 8.500.
   const w = mount('dom-game-vault-auction-2026-08.html', '/marketplace/game-vault'); await tick();
   const card = w.document.getElementById('marketplace-product-id-1160');
   const tag = card && card.querySelector('.awa-tag');
@@ -1942,17 +1943,47 @@ console.log('\n=== 42. La tarjeta de subasta no se etiqueta como una compra ==='
     tn && /--ok|--short|--tier|--out/.test(tn.className) && !/--bid/.test(tn.className), tn && tn.className);
 }
 {
-  // El estado que no hemos podido volcar: la subasta ABIERTA. Se fuerza sobre el
-  // mismo volcado poniendo `data-auction-active` a true, que es el único
-  // atributo que separa los dos estados. Sin esta prueba, la mitad que de verdad
-  // importa —no llamar «agotado» a algo a lo que puedes pujar— no está cubierta.
-  const w = mount('dom-game-vault-auction-2026-08.html', '/marketplace/game-vault', (win) => {
-    const c = win.document.getElementById('marketplace-product-id-1160');
-    if (c) { c.setAttribute('data-auction-active', 'true'); c.setAttribute('data-auction-ended', 'false'); }
-  }); await tick();
-  const tag = w.document.querySelector('#marketplace-product-id-1160 .awa-tag');
-  check('abierta, enseña la puja mínima', tag && /100/.test(tag.textContent), tag && tag.textContent);
-  check('y va en su propio tono, ni verde ni rojo', tag && /--bid/.test(tag.className), tag && tag.className);
+  // La subasta ABIERTA, por fin volcada de verdad: el Game Vault del 18/09 con
+  // STALKER 2 (1181, entrada 300) y Cronos (1182, entrada 100) las dos en curso.
+  //
+  // Hasta aquí este caso se probaba SIMULÁNDOLO: se cogía el volcado de agosto,
+  // que está cerrado, y se le ponía `data-auction-active` a true a mano. O sea que
+  // el fixture era una suposición sobre el estado que faltaba, escrita desde el
+  // estado contrario — y la suposición traía un error dentro: el volcado real dice
+  // `data-product-in-stock="true"` en las dos, no el `false` que se daba por hecho.
+  //
+  // Eso cambia el control negativo, y a mejor. Mientras el atributo valía `false`,
+  // que `tagCard` no llegara a ver la tarjeta se notaba porque no salía «agotado»;
+  // ahora que vale `true`, un enrutado roto no diría «agotado», diría «te alcanza»
+  // o «te faltan N» comparando el saldo contra un `data-product-price` que no es
+  // lo que se paga. Así que se comprueban las DOS familias, la de stock y la de
+  // precio: con una sola, el fallo que hoy es posible pasaría en verde.
+  const w = mount('dom-marketplace-auction-active-2026-09-18.html', '/marketplace/game-vault'); await tick();
+  const cards = Array.from(w.document.querySelectorAll(
+    '.gamevault-marketplace-product[data-is-blind-auction="true"]'));
+  check('el volcado trae las dos subastas en curso', cards.length === 2, String(cards.length));
+  check('y las dos con el stock en true, que es lo que se daba por false',
+    cards.every((c) => c.getAttribute('data-product-in-stock') === 'true'),
+    cards.map((c) => c.getAttribute('data-product-in-stock')).join(' , '));
+  const tags = cards.map((c) => c.querySelector('.awa-tag')).filter(Boolean)
+    .map((x) => x.className + '::' + x.textContent);
+  check('las dos se etiquetan', tags.length === 2, tags.join(' , '));
+  check('abiertas, van en su propio tono', tags.every((x) => /--bid/.test(x)), tags.join(' , '));
+  check('NINGUNA sale como terminada', !tags.some((x) => /--out/.test(x)), tags.join(' , '));
+  check('y NINGUNA se etiqueta por precio, que es lo que haría tagCard',
+    !tags.some((x) => /--ok|--short|--tier/.test(x)), tags.join(' , '));
+  check('cada una enseña SU puja mínima', tags.some((x) => /300/.test(x)) && tags.some((x) => /100/.test(x)),
+    tags.join(' , '));
+  check('y ninguna enseña el precio de catálogo, que no es lo que se paga',
+    !tags.some((x) => /6[.,]?400|6[.,]?500/.test(x)), tags.join(' , '));
+  // Control POSITIVO del cruce: una tarjeta normal de la MISMA página sí pasa por
+  // el camino de precio. Sin él, todo lo de arriba se cumpliría igual si no se
+  // hubiera etiquetado nada en absoluto.
+  const normal = Array.from(w.document.querySelectorAll('.gamevault-marketplace-product'))
+    .find((c) => c.getAttribute('data-is-blind-auction') !== 'true' && c.querySelector('.awa-tag'));
+  const tn = normal && normal.querySelector('.awa-tag');
+  check('control positivo: una tarjeta normal de la misma página sí se etiqueta por precio',
+    tn && /--ok|--short|--tier|--out/.test(tn.className) && !/--bid/.test(tn.className), tn && tn.className);
 }
 
 console.log('\n=== 43. La Tienda de Batalla: fichas que caducan ===');
