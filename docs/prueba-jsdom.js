@@ -2854,6 +2854,52 @@ console.log('\n=== 58. El boton de acceso anticipado cuenta como «sin unirte» 
   check('y en ambar, que hay algo que hacer', e && /--todo/.test(e[2]), e && e[2]);
 }
 
+console.log('\n=== 59. La campaña SEMANAL sin cobrar, que es el calendario de siempre con UN día ===');
+{
+  // Volcado del 2026-09-17, el primero con la recompensa semanal SIN cobrar y con el
+  // overlay ya abierto: trae el calendario DOS VECES —la copia de `.overlay-content` y el
+  // original de `#promotional-calendar-container`— y los dos ejemplares del día 1 con su
+  // botón puesto. El de 2026-09-10 (`dom-promotional-calendar-weekly-claimed-…`) es el
+  // mismo calendario ya cobrado, así que entre los dos queda el ciclo entero.
+  //
+  // Lo que enseña, y no se veía con uno solo: cada semana es una CAMPAÑA DISTINTA, no una
+  // recompensa que se queda puesta. La del 10 de septiembre cobraba en
+  // `/promotional-calendar/claim/116/1243` y esta en `/claim/119/1246`. O sea que «semanal»
+  // no es una cadencia nueva del calendario: es el de siempre, con un solo día, publicado
+  // otra vez. Por eso `readCalendar` no ha tenido que cambiar nada.
+  //
+  // Lo que sigue SIN saberse es cuánto dura abierta cada una. El marcado no publica su
+  // ventana —ni fecha límite ni contador—, así que no se puede decidir desde aquí si el
+  // ámbar de esta línea debería entrar en el aviso de fin de día. Hace falta ver un día sin
+  // cobrar sobrevivir a las 00:00 UTC.
+  const w = mount('dom-promotional-calendar-weekly-unclaimed-2026-09-17.html', '/control-center',
+    capturarTics); await tick();
+  const d = w.document;
+  check('el volcado trae el overlay abierto, o sea los dos ejemplares',
+    !!d.querySelector('.overlay-content .promotional-calendar')
+      && d.querySelectorAll('.promotional-calendar__day').length === 2,
+    'nodos de día: ' + d.querySelectorAll('.promotional-calendar__day').length);
+  const cal = () => lines(w).find((l) => /Calendario|Calendar/.test(l[0]));
+  check('un solo día y sin cobrar: 0/1', cal() && cal()[1] === '0/1', cal() && cal().join(' | '));
+  check('y en ámbar, que hay algo que cobrar', cal() && /--todo/.test(cal()[2]), cal() && cal()[2]);
+
+  // Cobrar como cobra el sitio: `$btn.remove(); $('#claimed-N').show();` SOLO en la copia.
+  const copia = d.querySelector('.overlay-content .promotional-calendar__day[data-day="1"]');
+  copia.querySelector('button.promotional-calendar__day-claim').remove();
+  copia.querySelector('.promotional-calendar__day-claimed').style.display = '';
+  check('el original se queda con su botón, como en el sitio',
+    !!d.querySelector('#promotional-calendar-container .promotional-calendar__day-claim'));
+  tic(w); await tick();
+  check('el panel se entera: 1/1 con marca', cal() && cal()[1] === '1/1 ✅', cal() && cal().join(' | '));
+  check('y deja de pedir acción', cal() && /--done/.test(cal()[2]), cal() && cal()[2]);
+
+  // Y el overlay se vacía al cerrarlo, que es donde estaba la única prueba de que cobraste.
+  d.querySelector('.overlay-content').textContent = '';
+  tic(w); await tick();
+  check('cerrar el overlay no lo devuelve a «por cobrar»', cal() && cal()[1] === '1/1 ✅',
+    cal() && cal().join(' | '));
+}
+
 console.log('\n' + (fail ? '✗ ' : '✓ ') + ok + ' comprobaciones pasadas, ' + fail + ' fallidas\n');
 process.exit(fail ? 1 : 0);
 }
