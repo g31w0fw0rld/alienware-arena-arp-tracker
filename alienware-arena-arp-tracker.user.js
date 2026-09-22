@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Alienware Arena ARP Tracker
 // @namespace    http://tampermonkey.net/
-// @version      1.3.3
+// @version      1.3.4
 // @description  ARP panel for Alienware Arena. Almost everything you earn there expires —at 00:00 UTC, on Monday, when the season closes, when an event ends— and the site never says it in one place. This panel does: on any page, what you have left to do, how long you have and a warning before you lose it. It only reads, it never claims. Every line is explained in "Learn more", inside the panel, and the rest is in the repository. Eight languages.
 // @icon         data:image/png;base64,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
 // @match        https://www.alienwarearena.com/*
@@ -16,7 +16,7 @@
 (function () {
     'use strict';
 
-    const SCRIPT_VERSION = '1.3.3';
+    const SCRIPT_VERSION = '1.3.4';
 
     // ------------------------------------------------------------------
     // Idiomas
@@ -117,6 +117,10 @@
             keysFor: '{n} keys for your country at tier {t}', keysNone: 'No keys for your country ({c})',
             keysTier: 'Keys only from tier {t} — you are tier {u}',
             tipKeys: 'Read from the giveaway’s own per-country, per-tier stock, before pressing anything.',
+            qtSeen: '⏱ AWA sees {p} of {n} min · {f} to go', qtZero: '⏱ AWA sees no time here yet · this quest asks for {n} min',
+            qtFull: '⏱ AWA sees {p} of the {n} min it asks for · the time is in', qtPct: '⏱ AWA sees {v} % of this quest',
+            tipQuest: 'The page publishes only the bar’s percentage —not a single figure—; the minutes come from multiplying it by the time the quest asks for, which is written nowhere but in its description. And it is the last thing AWA knows, not the current minute: progress only counts once you close the game, and it can take up to an hour to show up —measured here, not assumed—. So if you have just been playing, less is left than this says.',
+            mQuestTime: 'On a Steam quest page the bar carries no figure at all: only a width. The script turns it into minutes —the percentage times the time the quest asks for— and says how many are left. The percentage counts by the minute, so the number is the minute AWA has on file and not a rounding of ours; what it is not is the current minute, because the site takes up to an hour to see what you played and only counts a session you have closed.',
             afford: 'You can afford this', short: '{v} ARP short', tierShort: 'Needs tier {t}', soldOut: 'Sold out', bidFrom: 'Bid from {v} ARP', bidOpen: 'Auction open', bidOver: 'Auction over', bidPending: 'Not open yet', tipOpensAt: 'It opens on {d}, your local time. ', vaultOpens: '🔓 Opens {d}, your local time', aviauction: 'The Game Vault is open', bidRemind: '🔔 Remind me', bidUnremind: '🔕 Cancel reminder', tipRemind: 'Warns you when the Game Vault opens, on ANY page where the script runs — you do not have to be in the Vault. It is the same warning as the rest: a dialog you have to close, a 👽 on the tab, and a band in the panel. There is no sound: the browser refuses to play one on this site, see the script information. It does not bid for you: bidding goes through a captcha. It fires WHEN IT OPENS because what runs out first-come are the keys on the ordinary cards. For the auctions there is no rush: the site gives you 24 h to bid, the highest bid wins and not the fastest, and it locks your ARP the moment you bid — so bidding early only takes away balance you could claim a vault game with. Click again to cancel.', tipAuction: 'A blind auction is not a purchase: you place ONE bid and only the highest ones win, so the panel shows the entry price and not what it will end up costing. In the Dinoblade auction the entry was 100 ARP and the ten winning bids ran from 7,000 to 8,500. The site marks these cards as out of stock even while they are open, which is why they are read apart from the rest.',
             mTitle: 'What this panel reads', mIntro: 'Everything here is read from the page. The script never claims, bids or enters anything: those all go through a captcha, and doing them by script is what gets accounts banned.',
             mDaily: 'Resets at 00:00 UTC: time on site, Twitch, the calendar day and the login streak. That hour comes from the site’s own code, not from a guess.',
@@ -163,6 +167,10 @@
             keysFor: '{n} claves para tu país en el nivel {t}', keysNone: 'Sin claves para tu país ({c})',
             keysTier: 'Claves solo desde el nivel {t} — tú eres nivel {u}',
             tipKeys: 'Leído del inventario por país y por nivel del propio sorteo, antes de pulsar nada.',
+            qtSeen: '⏱ AWA te ve {p} de {n} min · le faltan {f}', qtZero: '⏱ AWA aún no te ve tiempo aquí · la quest pide {n} min',
+            qtFull: '⏱ AWA te ve {p} de los {n} min que pide · el tiempo ya está', qtPct: '⏱ AWA te ve el {v} % de esta quest',
+            tipQuest: 'La página solo publica el porcentaje de la barra —ni una cifra—; los minutos salen de multiplicarlo por el tiempo que pide la quest, que no está escrito en ningún sitio más que en su descripción. Y es lo último que AWA sabe, no el minuto actual: el progreso solo cuenta cuando cierras el juego, y puede tardar hasta una hora en aparecer —medido aquí, no supuesto—. Así que si acabas de jugar, te falta menos de lo que dice.',
+            mQuestTime: 'En la página de una quest de Steam la barra no lleva ni una cifra: solo un ancho. El script lo convierte en minutos —el porcentaje por el tiempo que pide la quest— y dice cuántos faltan. El porcentaje cuenta al minuto, así que el número es el minuto que AWA tiene apuntado y no un redondeo nuestro; lo que no es es el minuto actual, porque el sitio tarda hasta una hora en ver lo que jugaste y solo cuenta una sesión que hayas cerrado.',
             afford: 'Te alcanza', short: 'te faltan {v} ARP', tierShort: 'Pide nivel {t}', soldOut: 'Agotado', bidFrom: 'Puja desde {v} ARP', bidOpen: 'Subasta abierta', bidOver: 'Subasta terminada', bidPending: 'Aún no abre', tipOpensAt: 'Abre el {d}, en tu hora local. ', vaultOpens: '🔓 Abre el {d}, en tu hora local', aviauction: 'El Game Vault está abierto', bidRemind: '🔔 Avísame', bidUnremind: '🔕 No avisar', tipRemind: 'Te avisa cuando el Game Vault abra, en CUALQUIER página donde corra el script — no hace falta que estés en la Bóveda. Es el mismo aviso que el resto: un diálogo que hay que cerrar, un 👽 en la pestaña y una banda en el panel. No hay sonido: el navegador se niega a reproducirlo en este sitio, lo cuenta la información del script. No puja por ti: pujar pasa por un captcha. Salta AL ABRIR porque lo que se agota por orden de llegada son las claves de las tarjetas normales. Para las subastas no corre prisa: el sitio da 24 h para pujar, gana la puja más alta y no la más rápida, y te bloquea el ARP en cuanto pujas — así que pujar pronto solo te quita saldo para reclamar un juego de la bóveda. Vuelve a pulsar para cancelarlo.', tipAuction: 'Una subasta a ciegas no es una compra: pones UNA puja y solo ganan las más altas, así que el panel enseña la entrada y no lo que va a acabar costando. En la de Dinoblade la entrada eran 100 ARP y las diez ganadoras fueron de 7.000 a 8.500. El sitio marca estas tarjetas como agotadas incluso con la subasta abierta, y por eso se leen aparte de las demás.',
             mTitle: 'Qué lee este panel', mIntro: 'Todo lo de aquí se lee de la página. El script no reclama, no puja y no participa en nada: todo eso pasa por un captcha, y hacerlo por script es lo que hace que baneen cuentas.',
             mDaily: 'Se reinician a las 00:00 UTC: el tiempo en el sitio, Twitch, el día del calendario y la racha de login. Esa hora sale del código del propio sitio, no de una suposición.',
@@ -209,6 +217,10 @@
             keysFor: '{n} Keys für dein Land auf Stufe {t}', keysNone: 'Keine Keys für dein Land ({c})',
             keysTier: 'Keys erst ab Stufe {t} — du hast Stufe {u}',
             tipKeys: 'Aus dem Bestand des Gewinnspiels nach Land und Stufe gelesen, ohne etwas anzuklicken.',
+            qtSeen: '⏱ AWA sieht {p} von {n} Min. · {f} fehlen', qtZero: '⏱ AWA sieht hier noch keine Zeit · diese Quest verlangt {n} Min.',
+            qtFull: '⏱ AWA sieht {p} der verlangten {n} Min. · die Zeit ist voll', qtPct: '⏱ AWA sieht {v} % dieser Quest',
+            tipQuest: 'Die Seite veröffentlicht nur den Prozentwert des Balkens —keine einzige Zahl—; die Minuten ergeben sich, indem man ihn mit der von der Quest verlangten Zeit multipliziert, und die steht nirgends außer in ihrer Beschreibung. Und es ist das Letzte, was AWA weiß, nicht die aktuelle Minute: der Fortschritt zählt erst, wenn du das Spiel schließt, und kann bis zu einer Stunde brauchen, bis er auftaucht —hier gemessen, nicht vermutet—. Wenn du also gerade gespielt hast, fehlt weniger als hier steht.',
+            mQuestTime: 'Auf der Seite einer Steam-Quest trägt der Balken keine einzige Zahl: nur eine Breite. Das Skript rechnet sie in Minuten um —der Prozentwert mal die von der Quest verlangte Zeit— und sagt, wie viele fehlen. Der Prozentwert zählt minutengenau, die Zahl ist also die Minute, die AWA notiert hat, und keine Rundung von uns; was sie nicht ist, ist die aktuelle Minute, denn die Seite braucht bis zu einer Stunde, um deine Spielzeit zu sehen, und zählt nur eine Sitzung, die du beendet hast.',
             afford: 'Kannst du dir leisten', short: '{v} ARP fehlen', tierShort: 'Braucht Stufe {t}', soldOut: 'Ausverkauft', bidFrom: 'Gebot ab {v} ARP', bidOpen: 'Auktion offen', bidOver: 'Auktion beendet', bidPending: 'Noch nicht offen', tipOpensAt: 'Sie öffnet am {d}, deine Ortszeit. ', vaultOpens: '🔓 Öffnet am {d}, deine Ortszeit', aviauction: 'Der Game Vault ist offen', bidRemind: '🔔 Erinnere mich', bidUnremind: '🔕 Nicht erinnern', tipRemind: 'Warnt dich, wenn der Game Vault öffnet, auf JEDER Seite, auf der das Skript läuft — du musst nicht im Vault sein. Es ist dieselbe Warnung wie die übrigen: ein Dialog, den du schließen musst, ein 👽 im Tab und ein Band im Panel. Ton gibt es keinen: der Browser spielt auf dieser Seite keinen ab, siehe Skript-Informationen. Es bietet nicht für dich: Bieten läuft über ein Captcha. Sie kommt BEIM ÖFFNEN, weil das, was nach Reihenfolge ausgeht, die Keys der normalen Karten sind. Bei den Auktionen eilt nichts: die Seite gibt dir 24 h zum Bieten, es gewinnt das höchste Gebot und nicht das schnellste, und sie sperrt dein ARP, sobald du bietest — früh zu bieten nimmt dir also nur Guthaben, mit dem du ein Vault-Spiel holen könntest. Zum Abbrechen erneut klicken.', tipAuction: 'Eine Blindauktion ist kein Kauf: du gibst EIN Gebot ab und nur die höchsten gewinnen, also zeigt das Panel den Einstieg und nicht den Endpreis. Bei Dinoblade lag der Einstieg bei 100 ARP und die zehn Gewinngebote zwischen 7.000 und 8.500. Die Seite markiert diese Karten als ausverkauft, auch solange sie offen sind — deshalb werden sie getrennt gelesen.',
             mTitle: 'Was dieses Panel liest', mIntro: 'Alles hier wird von der Seite gelesen. Das Skript holt nichts ab, bietet nicht und nimmt an nichts teil: das läuft alles über ein Captcha, und per Skript ist es der Grund, warum Konten gesperrt werden.',
             mDaily: 'Reset um 00:00 UTC: Zeit auf der Seite, Twitch, der Kalendertag und die Login-Serie. Diese Uhrzeit stammt aus dem Code der Seite, nicht aus einer Vermutung.',
@@ -255,6 +267,10 @@
             keysFor: '{n} clés pour ton pays au niveau {t}', keysNone: 'Aucune clé pour ton pays ({c})',
             keysTier: 'Clés seulement à partir du niveau {t} — tu es niveau {u}',
             tipKeys: 'Lu dans le stock par pays et par niveau du tirage lui-même, sans rien cliquer.',
+            qtSeen: '⏱ AWA voit {p} des {n} min · il en manque {f}', qtZero: '⏱ AWA ne voit encore aucun temps ici · cette quête demande {n} min',
+            qtFull: '⏱ AWA voit {p} des {n} min demandées · le temps est fait', qtPct: '⏱ AWA voit {v} % de cette quête',
+            tipQuest: 'La page ne publie que le pourcentage de la barre —pas un seul chiffre— ; les minutes viennent de sa multiplication par le temps demandé par la quête, qui n’est écrit nulle part ailleurs que dans sa description. Et c’est la dernière chose que AWA sait, pas la minute actuelle : la progression ne compte qu’une fois le jeu fermé, et peut mettre jusqu’à une heure à apparaître —mesuré ici, pas supposé—. Donc si tu viens de jouer, il t’en manque moins que ce qui est affiché.',
+            mQuestTime: 'Sur la page d’une quête Steam, la barre ne porte aucun chiffre : seulement une largeur. Le script la convertit en minutes —le pourcentage multiplié par le temps demandé par la quête— et dit combien il en manque. Le pourcentage compte à la minute, donc le nombre est la minute qu’AWA a notée et non un arrondi de notre part ; ce qu’il n’est pas, c’est la minute actuelle, car le site met jusqu’à une heure à voir ce que tu as joué et ne compte qu’une session que tu as fermée.',
             afford: 'Tu peux te le permettre', short: 'il manque {v} ARP', tierShort: 'Demande le niveau {t}', soldOut: 'Épuisé', bidFrom: 'Enchère dès {v} ARP', bidOpen: 'Enchère ouverte', bidOver: 'Enchère terminée', bidPending: 'Pas encore ouverte', tipOpensAt: 'Elle ouvre le {d}, à ton heure locale. ', vaultOpens: '🔓 Ouvre le {d}, à ton heure locale', aviauction: 'Le Game Vault est ouvert', bidRemind: '🔔 Préviens-moi', bidUnremind: '🔕 Annuler le rappel', tipRemind: 'Te prévient quand le Game Vault ouvre, sur N’IMPORTE QUELLE page où le script tourne — tu n’as pas besoin d’être dans le Vault. C’est la même alerte que les autres : une boîte de dialogue à fermer, un 👽 sur l’onglet et un bandeau dans le panneau. Il n’y a pas de son : le navigateur refuse d’en jouer sur ce site, voir les informations du script. Il n’enchérit pas à ta place : enchérir passe par un captcha. Elle arrive À L’OUVERTURE parce que ce qui part dans l’ordre d’arrivée, ce sont les clés des cartes ordinaires. Pour les enchères rien ne presse : le site donne 24 h pour enchérir, c’est l’enchère la plus haute qui gagne et non la plus rapide, et il bloque ton ARP dès que tu enchéris — enchérir tôt ne fait donc que te retirer du solde pour réclamer un jeu du Vault. Clique à nouveau pour annuler.', tipAuction: 'Une enchère à l’aveugle n’est pas un achat : tu poses UNE enchère et seules les plus hautes gagnent, donc le panneau affiche l’entrée et non le prix final. Pour Dinoblade l’entrée était à 100 ARP et les dix enchères gagnantes allaient de 7 000 à 8 500. Le site marque ces cartes comme épuisées même quand elles sont ouvertes ; c’est pourquoi elles sont lues à part.',
             mTitle: 'Ce que lit ce panneau', mIntro: 'Tout ici est lu depuis la page. Le script ne récupère rien, n’enchérit pas et ne participe à rien : tout cela passe par un captcha, et le faire par script est ce qui fait bannir des comptes.',
             mDaily: 'Réinitialisation à 00:00 UTC : temps sur le site, Twitch, le jour du calendrier et la série de connexions. Cette heure vient du code du site, pas d’une supposition.',
@@ -301,6 +317,10 @@
             keysFor: '{n} chaves para o teu país no nível {t}', keysNone: 'Sem chaves para o teu país ({c})',
             keysTier: 'Chaves só a partir do nível {t} — tu és nível {u}',
             tipKeys: 'Lido do stock por país e por nível do próprio sorteio, antes de premir nada.',
+            qtSeen: '⏱ A AWA vê {p} de {n} min · faltam {f}', qtZero: '⏱ A AWA ainda não vê tempo aqui · esta quest pede {n} min',
+            qtFull: '⏱ A AWA vê {p} dos {n} min que pede · o tempo já está', qtPct: '⏱ A AWA vê {v} % desta quest',
+            tipQuest: 'A página só publica a percentagem da barra —nem um número—; os minutos saem de multiplicá-la pelo tempo que a quest pede, que não está escrito em nenhum sítio além da sua descrição. E é o último que a AWA sabe, não o minuto atual: o progresso só conta quando fechas o jogo, e pode levar até uma hora a aparecer —medido aqui, não suposto—. Portanto, se acabaste de jogar, falta-te menos do que diz.',
+            mQuestTime: 'Na página de uma quest de Steam a barra não traz um único número: só uma largura. O script converte-a em minutos —a percentagem pelo tempo que a quest pede— e diz quantos faltam. A percentagem conta ao minuto, por isso o valor é o minuto que a AWA tem apontado e não um arredondamento nosso; o que não é é o minuto atual, porque o site leva até uma hora a ver o que jogaste e só conta uma sessão que tenhas fechado.',
             afford: 'Dá-te para isto', short: 'faltam-te {v} ARP', tierShort: 'Pede nível {t}', soldOut: 'Esgotado', bidFrom: 'Licitação desde {v} ARP', bidOpen: 'Leilão aberto', bidOver: 'Leilão terminado', bidPending: 'Ainda não abriu', tipOpensAt: 'Abre a {d}, na tua hora local. ', vaultOpens: '🔓 Abre a {d}, na tua hora local', aviauction: 'O Cofre está aberto', bidRemind: '🔔 Avisa-me', bidUnremind: '🔕 Não avisar', tipRemind: 'Avisa-te quando o Cofre abrir, em QUALQUER página onde o script corra — não precisas de estar no Cofre. É o mesmo aviso que os outros: uma caixa de diálogo que tens de fechar, um 👽 no separador e uma faixa no painel. Não há som: o navegador recusa-se a tocá-lo neste site, di-lo a informação do script. Não licita por ti: licitar passa por um captcha. Salta AO ABRIR porque o que se esgota por ordem de chegada são as chaves dos cartões normais. Para os leilões não há pressa: o site dá 24 h para licitar, ganha a licitação mais alta e não a mais rápida, e bloqueia o teu ARP assim que licitas — por isso licitar cedo só te tira saldo para reclamar um jogo do Cofre. Prime outra vez para cancelar.', tipAuction: 'Um leilão às cegas não é uma compra: fazes UMA licitação e só as mais altas ganham, por isso o painel mostra a entrada e não o que vai acabar por custar. No de Dinoblade a entrada eram 100 ARP e as dez vencedoras foram de 7.000 a 8.500. O site marca estas cartas como esgotadas mesmo com o leilão aberto, e por isso são lidas à parte.',
             mTitle: 'O que este painel lê', mIntro: 'Tudo aqui é lido da página. O script não reclama, não licita e não participa em nada: isso passa todo por um captcha, e fazê-lo por script é o que faz banir contas.',
             mDaily: 'Reiniciam às 00:00 UTC: o tempo no site, o Twitch, o dia do calendário e a sequência de login. Essa hora vem do código do próprio site, não de um palpite.',
@@ -347,6 +367,10 @@
             keysFor: '{n} chaves para o seu país no nível {t}', keysNone: 'Sem chaves para o seu país ({c})',
             keysTier: 'Chaves só a partir do nível {t} — você é nível {u}',
             tipKeys: 'Lido do estoque por país e por nível do próprio sorteio, antes de clicar em nada.',
+            qtSeen: '⏱ A AWA vê {p} de {n} min · faltam {f}', qtZero: '⏱ A AWA ainda não vê tempo aqui · esta quest pede {n} min',
+            qtFull: '⏱ A AWA vê {p} dos {n} min que pede · o tempo já está', qtPct: '⏱ A AWA vê {v} % desta quest',
+            tipQuest: 'A página só publica a porcentagem da barra —nem um número—; os minutos saem de multiplicá-la pelo tempo que a quest pede, que não está escrito em nenhum lugar além da descrição dela. E é o último que a AWA sabe, não o minuto atual: o progresso só conta quando você fecha o jogo, e pode levar até uma hora para aparecer —medido aqui, não suposto—. Então, se você acabou de jogar, falta menos do que diz aqui.',
+            mQuestTime: 'Na página de uma quest da Steam a barra não traz um único número: só uma largura. O script converte isso em minutos —a porcentagem pelo tempo que a quest pede— e diz quantos faltam. A porcentagem conta por minuto, então o valor é o minuto que a AWA tem anotado e não um arredondamento nosso; o que ele não é é o minuto atual, porque o site leva até uma hora para ver o que você jogou e só conta uma sessão que você fechou.',
             afford: 'Dá para você', short: 'faltam {v} ARP', tierShort: 'Exige nível {t}', soldOut: 'Esgotado', bidFrom: 'Lance a partir de {v} ARP', bidOpen: 'Leilão aberto', bidOver: 'Leilão encerrado', bidPending: 'Ainda não abriu', tipOpensAt: 'Abre em {d}, no seu horário local. ', vaultOpens: '🔓 Abre em {d}, no seu horário local', aviauction: 'O Cofre está aberto', bidRemind: '🔔 Me avise', bidUnremind: '🔕 Não avisar', tipRemind: 'Te avisa quando o Cofre abrir, em QUALQUER página onde o script rodar — você não precisa estar no Cofre. É o mesmo aviso dos outros: uma caixa de diálogo que você precisa fechar, um 👽 na aba e uma faixa no painel. Não tem som: o navegador se recusa a tocar um neste site, as informações do script explicam. Ele não dá lance por você: dar lance passa por captcha. Dispara AO ABRIR porque o que acaba por ordem de chegada são as chaves dos cards normais. Para os leilões não tem pressa: o site dá 24 h para dar lance, ganha o lance mais alto e não o mais rápido, e bloqueia seu ARP assim que você dá o lance — então dar lance cedo só tira saldo que você usaria para resgatar um jogo do Cofre. Clique de novo para cancelar.', tipAuction: 'Um leilão às cegas não é uma compra: você dá UM lance e só os mais altos ganham, então o painel mostra o lance de entrada e não o que vai custar no fim. No do Dinoblade a entrada era 100 ARP e os dez lances vencedores ficaram entre 7.000 e 8.500. O site marca esses cards como esgotados mesmo com o leilão aberto, e é por isso que eles são lidos separados dos outros.',
             mTitle: 'O que este painel lê', mIntro: 'Tudo aqui é lido da página. O script não resgata, não dá lances e não participa de nada: isso tudo passa por captcha, e fazer por script é o que faz banir contas.',
             mDaily: 'Resetam às 00:00 UTC: tempo no site, Twitch, o dia do calendário e a sequência de login. Esse horário vem do código do próprio site, não de um chute.',
@@ -393,6 +417,10 @@
             keysFor: '你所在国家等级 {t} 有 {n} 个密钥', keysNone: '你所在国家（{c}）没有密钥',
             keysTier: '密钥仅限等级 {t} 起 — 你是等级 {u}',
             tipKeys: '直接读取该赠品按国家和等级的库存，无需点击任何按钮。',
+            qtSeen: '⏱ AWA 看到 {p} / {n} 分钟 · 还差 {f}', qtZero: '⏱ AWA 还没看到这里的时长 · 本任务需要 {n} 分钟',
+            qtFull: '⏱ AWA 看到 {p} 分钟，要求 {n} 分钟 · 时长已够', qtPct: '⏱ AWA 看到本任务的 {v} %',
+            tipQuest: '页面只公布进度条的百分比，一个数字都没有；分钟数是用它乘以任务要求的时长算出来的，而那个时长只写在任务说明里。而且这是 AWA 最后知道的情况，不是当前这一分钟：只有关闭游戏后进度才计入，并且最多要一小时才会出现——这是实测，不是推测。所以如果你刚玩过，实际还差的比这里显示的更少。',
+            mQuestTime: '在 Steam 任务页面上，进度条没有任何数字，只有一个宽度。脚本把它换算成分钟——百分比乘以任务要求的时长——并说出还差多少。百分比是按分钟计的，所以这个数字就是 AWA 记录的那一分钟，不是我们四舍五入的；但它不是当前这一分钟，因为网站最多要一小时才能看到你玩了多久，而且只统计你已经关闭的那一次游戏。',
             afford: '你买得起', short: '还差 {v} ARP', tierShort: '需要等级 {t}', soldOut: '已售完', bidFrom: '起拍 {v} ARP', bidOpen: '竞拍进行中', bidOver: '竞拍已结束', bidPending: '尚未开始', tipOpensAt: '将于 {d}（你的本地时间）开始。', vaultOpens: '🔓 {d}开放（你的本地时间）', aviauction: '宝库已开放', bidRemind: '🔔 提醒我', bidUnremind: '🔕 取消提醒', tipRemind: '宝库开放时会提醒你，在脚本运行的任何页面上都可以——你不必待在宝库里。提醒方式和其他的一样：一个必须关闭的对话框、标签页上的 👽，以及面板上的一条横幅。没有声音：浏览器在这个站点上拒绝播放，脚本信息里有说明。它不会替你出价：出价要过验证码。它在开放的那一刻提醒，因为按先到先得消耗的是普通卡片的密钥。竞拍则不必着急：站点给你 24 小时出价，赢的是最高价而不是最快的，而且你一出价它就锁住你的 ARP——所以早出价只会占用你本可以用来领取宝库游戏的余额。再点一次即可取消。', tipAuction: '盲拍不是购买：你只出一次价，只有最高的几个才中标，所以面板显示的是起拍价，而不是最终成交价。Dinoblade 那场起拍 100 ARP，十个中标价在 7,000 到 8,500 之间。即使竞拍还开着，站点也把这些卡片标成已售完，所以它们要跟其他卡片分开读。',
             mTitle: '这个面板读取什么', mIntro: '这里的一切都从页面读取。脚本不会领取、不会出价、也不会参与任何活动：这些都要过验证码，用脚本去做正是账号被封的原因。',
             mDaily: 'UTC 00:00 重置：在站时间、Twitch、日历当天和登录连续天数。这个时间点来自站点自己的代码，不是猜测。',
@@ -439,6 +467,10 @@
             keysFor: 'आपके देश में स्तर {t} पर {n} कुंजियाँ', keysNone: 'आपके देश ({c}) के लिए कोई कुंजी नहीं',
             keysTier: 'कुंजियाँ केवल स्तर {t} से — आप स्तर {u} हैं',
             tipKeys: 'कुछ भी दबाने से पहले, गिववे के अपने देश-और-स्तर वाले स्टॉक से पढ़ा गया।',
+            qtSeen: '⏱ AWA को {n} मिनट में से {p} दिख रहे हैं · {f} बाकी', qtZero: '⏱ AWA को यहाँ अभी कोई समय नहीं दिखता · यह क्वेस्ट {n} मिनट माँगती है',
+            qtFull: '⏱ AWA को माँगे गए {n} मिनट में से {p} दिख रहे हैं · समय पूरा है', qtPct: '⏱ AWA को इस क्वेस्ट का {v} % दिख रहा है',
+            tipQuest: 'पेज सिर्य़ बार का प्रतिशत छापता है —एक भी संख्या नहीं—; मिनट उसे क्वेस्ट के माँगे गए समय से गुणा करके निकलते हैं, और वह समय उसके विवरण के सिवा कहीं नहीं लिखा होता। और यह AWA को आखिरी बार पता चला हाल है, अभी का मिनट नहीं: प्रगति तभी गिनी जाती है जब आप खेल बंद करते हैं, और दिखने में एक घंटे तक लग सकता है —यहाँ मापा गया, माना हुआ नहीं—। तो अगर आप अभी खेलकर आए हैं, दिखाए से कम बाकी है।',
+            mQuestTime: 'Steam क्वेस्ट के पेज पर बार में एक भी संख्या नहीं होती: सिर्य़ एक चौड़ाई। स्क्रिप्ट उसे मिनटों में बदलती है —प्रतिशत गुणा क्वेस्ट का माँगा गया समय— और बताती है कि कितने बाकी हैं। प्रतिशत मिनट-दर-मिनट गिना जाता है, इसलिए यह संख्या वही मिनट है जो AWA ने दर्ज किया है, हमारा कोई गोल किया हुआ अनुमान नहीं; जो यह नहीं है वह है अभी का मिनट, क्योंकि साइट को आपका खेला हुआ समय देखने में एक घंटे तक लग सकता है और वह सिर्य़ उसी सेशन को गिनती है जिसे आपने बंद कर दिया हो।',
             afford: 'आप ले सकते हैं', short: '{v} ARP कम हैं', tierShort: 'स्तर {t} चाहिए', soldOut: 'खत्म', bidFrom: 'बोली {v} ARP से', bidOpen: 'नीलामी चालू', bidOver: 'नीलामी समाप्त', bidPending: 'अभी शुरू नहीं हुई', tipOpensAt: 'यह {d} को खुलेगी, आपके स्थानीय समय के अनुसार। ', vaultOpens: '🔓 {d} को खुलेगा, आपके स्थानीय समय के अनुसार', aviauction: 'Game Vault खुल गया है', bidRemind: '🔔 मुझे बताएँ', bidUnremind: '🔕 याद न दिलाएँ', tipRemind: 'Game Vault खुलते ही आपको बता देगा, हर उस पेज पर जहाँ स्क्रिप्ट चलती है — वॉल्ट में होना ज़रूरी नहीं। चेतावनी बाकियों जैसी ही है: एक डायलॉग जिसे बंद करना पड़ता है, टैब पर 👽, और पैनल में एक पट्टी। आवाज़ नहीं है: ब्राउज़र इस साइट पर बजाने से मना करता है, स्क्रिप्ट की जानकारी में यह लिखा है। यह आपकी ओर से बोली नहीं लगाता: बोली कैप्चा से होकर जाती है। यह खुलते ही आता है, क्योंकि पहले-आओ-पहले-पाओ के हिसाब से ख़त्म होने वाली चीज़ सामान्य कार्डों की कुंजियाँ हैं। नीलामियों में जल्दी नहीं है: साइट बोली लगाने के लिए 24 घंटे देती है, जीतती है सबसे ऊँची बोली, सबसे तेज़ नहीं, और बोली लगाते ही आपका ARP रोक देती है — यानी जल्दी बोली लगाना सिर्फ़ वह बैलेंस छीनता है जिससे आप वॉल्ट का कोई गेम ले सकते थे। रद्द करने के लिए फिर से दबाएँ।', tipAuction: 'अंधी नीलामी ख़रीद नहीं है: आप एक ही बोली लगाते हैं और सिर्फ़ सबसे ऊँची बोलियाँ जीतती हैं, इसलिए पैनल शुरुआती रकम दिखाता है, आख़िरी क़ीमत नहीं। Dinoblade वाली में शुरुआत 100 ARP से थी और दस जीतने वाली बोलियाँ 7,000 से 8,500 के बीच रहीं। नीलामी खुली होने पर भी साइट इन कार्डों को «ख़त्म» दिखाती है, इसीलिए इन्हें बाक़ी से अलग पढ़ा जाता है।',
             mTitle: 'यह पैनल क्या पढ़ता है', mIntro: 'यहाँ सब कुछ पेज से पढ़ा जाता है। यह स्क्रिप्ट कुछ नहीं लेती, बोली नहीं लगाती और किसी चीज़ में भाग नहीं लेती: वह सब कैप्चा से होकर जाता है, और स्क्रिप्ट से करना ही खाते बैन होने की वजह है।',
             mDaily: '00:00 UTC पर रीसेट: साइट पर समय, Twitch, कैलेंडर का दिन और लॉगिन की लगातार गिनती। यह समय साइट के ही कोड से आता है, अनुमान से नहीं।',
@@ -511,6 +543,22 @@
         logArp: '.col-lg-3',
         logDate: '.col-lg-2',
         giveawayActions: '#giveaway-actions',
+        // --- Pagina de una quest de Steam ----------------------------------
+        // El progreso vive SOLO en el `aria-valuenow` de esta barra: no hay un
+        // `data-*` con los minutos ni una global que los traiga, al contrario que
+        // en los eventos comunitarios (`data-playtime`). Y la barra es el gancho
+        // de los DOS tipos de quest —«elige tu propio juego» y juego fijo—, que
+        // convergen en el mismo marcado en cuanto arrancan. Asi que aqui no se
+        // distingue el tipo: si hay barra, hay progreso que traducir.
+        //
+        // `.progress-steam-quest` sale en las cinco paginas de quest de los
+        // volcados y en ninguna otra, asi que no puede confundirse con otra barra
+        // del sitio —el Pase y los eventos usan las suyas—.
+        questBar: '.progress-steam-quest .progress-bar[aria-valuenow]',
+        // El tiempo exigido, en prosa traducida. No hay otra fuente (ver QT_HORAS).
+        questDesc: '.quest-desc',
+        // La senal de completada es la CLASE y no el texto, que lo traduce Weglot.
+        questDone: '.alert.alert-steam',
         marketCard: '.product-card',
         vaultCard: '.gamevault-marketplace-product',
         // El contador de apertura del Game Vault. Es UNO para toda la seccion —vive en su
@@ -1685,7 +1733,7 @@
     const TIP_MARGIN = 8;
     // Solo lo nuestro. Un `title` de AWA sigue saliendo con la caja del
     // navegador, como hasta ahora.
-    const TIP_SCOPE = '#' + WIDGET_ID + ', .awa-keys, .awa-tag, .awa-vault, .awa-modal';
+    const TIP_SCOPE = '#' + WIDGET_ID + ', .awa-keys, .awa-tag, .awa-quest, .awa-vault, .awa-modal';
     const TIP_SELECTOR = '[title], [' + TIP_STASH + ']';
 
     let _tipEl = null;
@@ -2226,7 +2274,7 @@
             [t('infoDescription'), [t('infoDescriptionText')]],
             // Los cinco párrafos de «cómo funciona esto» viven aquí, que es donde
             // caben: son lo que no se puede explicar en un tooltip de una línea.
-            [t('title'), [t('mDaily'), t('mQuests'), t('mEvento'), t('mTwitch'), t('mLate')]],
+            [t('title'), [t('mDaily'), t('mQuests'), t('mQuestTime'), t('mEvento'), t('mTwitch'), t('mLate')]],
             [t('infoPrivacy'), [t('infoPrivacyText'), t('mIntro')]],
         ].forEach(([titulo, parrafos], n) => {
             const h = el('div', 'awa-modal__h');
@@ -2817,6 +2865,121 @@
     }
 
     // ------------------------------------------------------------------
+    // Pagina de una quest de Steam
+    // ------------------------------------------------------------------
+    // La pagina publica el progreso sin una sola cifra: la barra lleva el
+    // porcentaje en `aria-valuenow` y en su propio ancho, y nada mas. Lo que aqui
+    // se hace es deshacer esa cuenta y decir los minutos, que es la unidad en la
+    // que se juega.
+    //
+    // El tiempo que pide la quest solo existe en la PROSA de `.quest-desc`
+    // («¡Juega a Marvel Rivals durante 1 hora para recibir tu recompensa!»), que
+    // Weglot traduce. De ahi esta tabla, y de ahi que sea la UNION de los ocho
+    // idiomas y no la del idioma vigente: cuando el script arranca, Weglot puede
+    // no haber llegado todavia y `siteLang()` devolver el idioma de ENTRADA en vez
+    // del pintado (ver su comentario). Buscar en los ocho no cuesta nada y no
+    // puede confundir una unidad con la otra, porque ninguna palabra de horas
+    // aparece dentro de una de minutos.
+    //
+    // Lo COMPROBADO es el espanol de los cinco volcados de quest. El ingles es el
+    // idioma ORIGEN del sitio, asi que su cadena es la de partida; los otros seis
+    // son la traduccion PROBABLE y no estan verificadas. Por eso el fallo se cae
+    // con gracia: sin unidad reconocida no se inventan minutos, se pinta el
+    // porcentaje a secas (`qtPct`). Un idioma mal adivinado cuesta la cifra fina,
+    // no una cifra falsa.
+    //
+    // Cada lista va de la palabra mas larga a la mas corta, porque son
+    // alternativas de una expresion regular y la primera que casa gana: con
+    // 'hora' delante de 'horas', «2 horas» se habria leido como «2 hora».
+    const QT_HORAS = ['horas', 'hora', 'hours', 'hour', 'hrs', 'hr',
+        'stunden', 'stunde', 'heures', 'heure', '小时', '小時', 'घंटों', 'घंटे', 'घंटा'];
+    const QT_MINUTOS = ['minutos', 'minuten', 'minutes', 'minuto', 'minute',
+        'mins', 'min', '分钟', '分鐘', 'मिनट'];
+
+    // El tiempo exigido, en minutos. La palabra de la unidad es OBLIGATORIA:
+    // coger «el primer numero» habria bastado con las quests vistas —todas piden
+    // 1 hora y el numero va solo—, pero el nombre del juego entra en la frase del
+    // tipo B, y en «Juega a Dota 2 durante 1 hora» el primer numero es el 2 del
+    // titulo.
+    function questExigido(doc) {
+        const desc = doc.querySelector(SEL.questDesc);
+        const txt = desc ? (desc.textContent || '') : '';
+        if (!txt) return null;
+        const pega = (unidades, factor) => {
+            const re = new RegExp('(\\d+(?:[.,]\\d+)?)\\s*(?:' + unidades.join('|') + ')', 'i');
+            const m = re.exec(txt);
+            if (!m) return null;
+            const v = Number(m[1].replace(',', '.')) * factor;
+            // Un dia es el techo. Por encima de eso lo leido no es el tiempo de una
+            // quest, es otra cifra que ha casado por casualidad, y mas vale no dar
+            // minutos que dar los de otra cosa.
+            return v >= 1 && v <= 1440 ? Math.round(v) : null;
+        };
+        return pega(QT_HORAS, 60) || pega(QT_MINUTOS, 1);
+    }
+
+    // Deshacer el porcentaje. El sitio lo calcula como jugado ÷ exigido × 100 y lo
+    // TRUNCA —lo prueba el 71 % de un volcado, que no es multiplo de ningun paso
+    // grueso: contar de cinco en cinco daria multiplos de 8,33—, asi que la cuenta
+    // tiene inversa. Si floor(100·m/n) = p, el menor entero que lo cumple es
+    // ceil(p·n/100) y el mayor, ceil((p+1)·n/100) − 1.
+    //
+    // Con los 60 minutos que piden todas las quests vistas los dos coinciden —el
+    // 71 % solo lo produce el minuto 43—, o sea que la cifra no es un redondeo
+    // nuestro: es el minuto que AWA tiene apuntado. Con exigencias mas largas el
+    // intervalo puede admitir dos minutos (a 3 horas, el 71 % vale por el 128 y
+    // por el 129), y entonces se dice «≈» en vez de fingir una precision que no
+    // esta.
+    function questMinutos(pct, exig) {
+        const bajo = Math.ceil(pct * exig / 100);
+        const alto = Math.ceil((pct + 1) * exig / 100) - 1;
+        return { min: bajo, exacto: alto <= bajo };
+    }
+
+    function paintQuest() {
+        const barra = document.querySelector(SEL.questBar);
+        if (!barra) return;                          // no es la pagina de una quest empezada
+        if (document.querySelector('.awa-quest')) return;
+        // Completada no se pinta: el propio sitio lo dice con su `.alert-steam` justo
+        // debajo de la barra, y repetirlo con otras palabras solo añade ruido donde
+        // ya no queda nada que decidir. Ademas ahi el porcentaje se pasa de 100
+        // —150 % y 171 % en dos volcados independientes—, asi que «te ve 103 de 60»
+        // seria exacto y a la vez inutil.
+        if (document.querySelector(SEL.questDone)) return;
+
+        const pct = num(barra.getAttribute('aria-valuenow'));
+        if (pct === null || pct < 0) return;
+        const exig = questExigido(document);
+
+        const box = noTraducir(el('div', 'awa-quest'));
+        if (exig === null) {
+            box.textContent = t('qtPct', { v: nf.format(pct) });
+        } else {
+            const cuenta = questMinutos(pct, exig);
+            const jugado = (cuenta.exacto ? '' : '≈') + nf.format(cuenta.min);
+            if (cuenta.min <= 0) {
+                // Cero con la barra puesta NO es «sin empezar»: la quest esta en
+                // marcha y lo que pasa es que AWA aun no ha visto nada, que con su
+                // hora de retraso es lo normal al arrancar. Decir «te faltan 60 de
+                // 60» sonaria a que no has jugado.
+                box.textContent = t('qtZero', { n: nf.format(exig) });
+            } else if (cuenta.min >= exig) {
+                box.classList.add('awa-quest--ok');
+                box.textContent = t('qtFull', { p: jugado, n: nf.format(exig) });
+            } else {
+                box.textContent = t('qtSeen', {
+                    p: jugado, n: nf.format(exig), f: nf.format(exig - cuenta.min),
+                });
+            }
+        }
+        tip(box, t('tipQuest'));
+        // Debajo de la barra y encima del boton de lanzar el juego, que es el orden
+        // en el que se lee: cuanto llevas, y luego con que seguir.
+        const hueco = barra.closest('.progress') || barra.parentNode;
+        hueco.parentNode.insertBefore(box, hueco.nextSibling);
+    }
+
+    // ------------------------------------------------------------------
     // Marketplace y Bóveda
     // ------------------------------------------------------------------
     // Los dos traen precio, stock y nivel en atributos, así que el cruce con el
@@ -3142,6 +3305,14 @@
             '.awa-keys--ok{background:rgba(103,217,139,.12);border:1px solid rgba(103,217,139,.5);color:#67d98b;}',
             '.awa-keys--none{background:rgba(255,107,107,.12);border:1px solid rgba(255,107,107,.5);color:#ff8f8f;}',
             '.awa-keys--tier{background:rgba(255,207,102,.12);border:1px solid rgba(255,207,102,.5);color:#ffcf66;}',
+            // El aviso de la pagina de una quest. Va justo debajo de la barra del
+            // sitio, que vive dentro de un `.col-lg-12.text-dark`: el color del
+            // texto va EXPLICITO porque heredarlo lo dejaba negro sobre el fondo
+            // oscuro de la pagina.
+            '.awa-quest{margin:0 auto 10px;padding:6px 12px;border-radius:8px;text-align:center;',
+            'font:600 14px/1.3 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;max-width:520px;',
+            'background:rgba(1,245,255,.10);border:1px solid rgba(1,245,255,.45);color:#01f5ff;}',
+            '.awa-quest--ok{background:rgba(103,217,139,.12);border-color:rgba(103,217,139,.5);color:#67d98b;}',
             '.awa-tag{margin-top:6px;padding:2px 6px;border-radius:4px;text-align:center;',
             'font:600 11px/1.4 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;}',
             // En una tarjeta de subasta el contador del sitio (`.auction-timer`) va
@@ -3200,6 +3371,13 @@
         // AWA les diera inventario algún día el aviso aparecería solo. Borrarla
         // sería cambiar «no hay nada que decir» por «no lo miramos».
         if (/\/Giveaway\//.test(path) || /\/community-giveaways\//.test(path)) paintGiveaway(acc);
+        // La quest NO se filtra por ruta, a diferencia de las de arriba, y es a
+        // proposito: `SEL.questBar` solo existe en las paginas de quest empezadas
+        // —comprobado contra los sesenta y tantos volcados—, asi que la barra ya es
+        // el filtro. Una ruta escrita a mano habria añadido una segunda forma de
+        // fallar, y en silencio: si el sitio le pusiera un prefijo de idioma, la
+        // linea dejaria de salir sin que nada lo dijera.
+        paintQuest();
         if (/^\/marketplace\/game-vault/.test(path)) paintVault(acc);
         else if (/^\/marketplace/.test(path)) paintMarketplace(acc);
 
@@ -3315,6 +3493,16 @@
             refrescar.addEventListener('click', alPulsarRefresco);
             renderDaily(list, relojes, ultimo.daily, readCalendar(document),
                 ultimo.pass, ultimo.discord, ultimo.evento, acc);
+            // La linea de la quest se rehace con el panel, y hace falta: se pinta UNA
+            // VEZ al arrancar, y al arrancar el idioma puede ser el de ENTRADA y no el
+            // que Weglot va a dejar pintado (ver siteLang). Sin esto, la barra quedaba
+            // con su texto en un idioma y el panel de al lado en otro.
+            //
+            // El aviso de claves de los sorteos y las etiquetas de las tarjetas tienen
+            // el mismo problema y NO se arreglan aqui: son otro cambio, y mezclarlo con
+            // este haria que un bump dijera dos cosas.
+            const questVieja = document.querySelector('.awa-quest');
+            if (questVieja) { questVieja.remove(); paintQuest(); }
         }
 
         // Weglot llega tarde: cuando arranca el script su selector no existe y su

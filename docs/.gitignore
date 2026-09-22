@@ -37,6 +37,14 @@
 !dom-marketplace-auction-unstarted-2026-09-01.html
 !dom-steam-quest-choose-unstarted-2026-08.html
 !dom-steam-quest-fixed-unstarted-2026-08.html
+# Los cuatro estados de una MISMA quest de Steam empezada: sin tiempo visto (0 %), a
+# medias (71 %) y hecha, mas la de «elige tu propio juego» al 50 %. Son los que
+# sostienen §60 —la barra convertida en minutos—, y en especial el del 71 %, que es el
+# que prueba que el porcentaje cuenta al minuto y no por tramos.
+!dom-steam-quest-fixed-progress-2026-08.html
+!dom-steam-quest-fixed-progress-71-2026-08.html
+!dom-steam-quest-fixed-done-2026-08.html
+!dom-steam-quest-progress-2026-08.html
 !dom-steam-community-event-live-unowned-2026-09-09.html
 !dom-steam-community-event-live-owned-unjoined-2026-09-10.html
 !dom-steam-community-event-live-joined-2026-09-10.html

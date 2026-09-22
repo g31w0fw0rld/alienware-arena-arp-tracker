@@ -2931,6 +2931,200 @@ console.log('\n=== 59. La campaña SEMANAL sin cobrar, que es el calendario de s
     cal() && cal().join(' | '));
 }
 
+console.log('\n=== 60. La pagina de una quest de Steam: el porcentaje, en minutos ===');
+{
+  // La barra del sitio no lleva NI UNA CIFRA: solo un ancho y su `aria-valuenow`.
+  // Estas comprobaciones son las de deshacer esa cuenta, y los cuatro volcados de
+  // la serie dan los cuatro estados sin tocar la cuenta.
+  //
+  // El 71 % es el caso que fija el metodo: 71 % de 60 min son 42,6, pero el sitio
+  // TRUNCA minutos ÷ exigidos × 100, asi que el unico entero que produce un 71 es
+  // el 43 —el 42 daria 70 y el 44 daria 73—. O sea que la cifra no es un redondeo
+  // nuestro, es el minuto que AWA tiene apuntado, y eso es lo que se comprueba
+  // aqui: que dice 43 y no 42 ni 43,2.
+  const w = mount('dom-steam-quest-fixed-progress-71-2026-08.html', '/steam/quests/marvel-rivals-6');
+  await tick();
+  const caja = w.document.querySelector('.awa-quest');
+  check('pinta la linea debajo de la barra', !!caja);
+  check('43 de 60 minutos, no 42 ni 42,6', caja && /\b43 de 60 min\b/.test(caja.textContent),
+    caja && caja.textContent);
+  check('y dice lo que falta: 17', caja && /faltan 17\b/.test(caja.textContent),
+    caja && caja.textContent);
+  check('sin «≈»: con una hora exigida el minuto es unico',
+    caja && caja.textContent.indexOf('≈') < 0, caja && caja.textContent);
+  check('va justo DESPUES de la barra del sitio, no en otro sitio de la pagina',
+    caja && caja.previousElementSibling
+      && caja.previousElementSibling.classList.contains('progress-steam-quest'),
+    caja && caja.previousElementSibling && caja.previousElementSibling.className);
+  check('lleva su explicacion en el title', caja && (caja.getAttribute('title') || '').length > 100);
+  check('y marcada como no traducible, para que Weglot no se coma las cifras',
+    caja && caja.getAttribute('translate') === 'no' && caja.classList.contains('notranslate'));
+  check('el panel sigue estando: la linea no lo sustituye', !!w.document.getElementById('awa-arp-widget'));
+}
+
+{
+  // Tipo A, «elige tu propio juego», al 50 %. Es el volcado de OTRA quest y de otro
+  // tipo, y aqui se comprueba lo que dice el analisis: que una vez arrancadas las dos
+  // convergen en el mismo marcado, asi que el mismo codigo las lee sin distinguir.
+  const w = mount('dom-steam-quest-progress-2026-08.html', '/steam/quests/choose-your-own-game-167');
+  await tick();
+  const caja = w.document.querySelector('.awa-quest');
+  check('el tipo A se lee con el mismo codigo', !!caja);
+  check('50 % de 60 min son 30, y faltan 30',
+    caja && /\b30 de 60 min\b/.test(caja.textContent) && /faltan 30\b/.test(caja.textContent),
+    caja && caja.textContent);
+}
+
+{
+  // Cero con la barra PUESTA no es «sin empezar»: la quest esta en marcha y lo que
+  // pasa es que AWA aun no ha visto nada, que con su hora de retraso es lo normal
+  // justo despues de arrancar. La linea tiene que decir eso y no «te faltan 60 de 60»,
+  // que sonaria a que no has jugado.
+  const w = mount('dom-steam-quest-fixed-progress-2026-08.html', '/steam/quests/marvel-rivals-6');
+  await tick();
+  const caja = w.document.querySelector('.awa-quest');
+  check('con la barra al 0 tambien pinta', !!caja);
+  check('y no dice «0 de 60»', caja && caja.textContent.indexOf('0 de 60') < 0, caja && caja.textContent);
+  check('dice que AWA no ve tiempo y cuanto pide', caja && /aún no te ve tiempo/.test(caja.textContent)
+    && /60 min/.test(caja.textContent), caja && caja.textContent);
+}
+
+{
+  // Completada: el sitio ya lo dice con su propio `.alert-steam` justo debajo de la
+  // barra, asi que no hay nada que añadir. Y ademas ahi el porcentaje se pasa de 100
+  // (171 %), o sea que la cuenta seria exacta y a la vez inutil.
+  const w = mount('dom-steam-quest-fixed-done-2026-08.html', '/steam/quests/marvel-rivals-6');
+  await tick();
+  check('con la quest hecha no pinta nada', !w.document.querySelector('.awa-quest'));
+  check('y el aviso del sitio sigue ahi, intacto', !!w.document.querySelector('.alert.alert-steam'));
+}
+
+{
+  // Antes de arrancarla no hay barra, y sin barra no hay progreso que traducir. Se
+  // comprueba en los DOS tipos, porque es el unico estado en el que no convergen:
+  // el fijo espera a que compruebes la propiedad y el otro, a que elijas juego.
+  const fijo = mount('dom-steam-quest-fixed-unstarted-2026-08.html', '/steam/quests/marvel-rivals-7');
+  await tick();
+  check('en la quest de juego fijo sin arrancar no se pinta', !fijo.document.querySelector('.awa-quest'));
+  const elige = mount('dom-steam-quest-choose-unstarted-2026-08.html', '/steam/quests/choose-your-own-game-168');
+  await tick();
+  check('ni en la de «elige tu propio juego» sin arrancar', !elige.document.querySelector('.awa-quest'));
+}
+
+{
+  // Control negativo de alcance: el gancho es la barra y no la ruta, asi que hay que
+  // comprobar que ninguna OTRA pagina la tiene. Si `.progress-steam-quest` saliera
+  // tambien en el Centro de control, la linea aparecería donde no toca.
+  const w = mount('dom-control-center-2026-08-24.html', '/control-center');
+  await tick();
+  check('en el Centro de control no hay linea de quest', !w.document.querySelector('.awa-quest'));
+  const ev = mount('dom-steam-community-event-live-joined-2026-09-10.html',
+    '/steam/community-event/1');
+  await tick();
+  check('ni en la pagina de un evento comunitario, que tiene sus propias barras',
+    !ev.document.querySelector('.awa-quest'));
+}
+
+{
+  // La trampa del titulo con numero. El tiempo exigido solo esta en la prosa, y en el
+  // tipo B esa prosa lleva el nombre del juego dentro: coger «el primer numero» habria
+  // leido el 2 de «Dota 2» y anunciado una quest de dos minutos.
+  const w = mount('dom-steam-quest-fixed-progress-71-2026-08.html', '/steam/quests/marvel-rivals-6',
+    (win) => {
+      win.document.querySelector('.quest-desc').textContent =
+        '¡Juega a Dota 2 durante 1 hora para recibir tu recompensa!';
+    });
+  await tick();
+  const caja = w.document.querySelector('.awa-quest');
+  check('un numero en el titulo del juego no se confunde con el tiempo exigido',
+    caja && /\b43 de 60 min\b/.test(caja.textContent), caja && caja.textContent);
+}
+
+{
+  // Una exigencia mas larga: el intervalo del truncado puede admitir DOS minutos —a
+  // tres horas, el 71 % vale por el 128 y por el 129—, y entonces la cifra se marca
+  // como aproximada en vez de fingir una precision que no esta.
+  const w = mount('dom-steam-quest-fixed-progress-71-2026-08.html', '/steam/quests/marvel-rivals-6',
+    (win) => {
+      win.document.querySelector('.quest-desc').textContent =
+        '¡Juega a Marvel Rivals durante 3 horas para recibir tu recompensa!';
+    });
+  await tick();
+  const caja = w.document.querySelector('.awa-quest');
+  check('con 3 horas exigidas la cifra sale aproximada',
+    caja && /≈128 de 180 min/.test(caja.textContent), caja && caja.textContent);
+  check('y lo que falta se cuenta igual: 52', caja && /faltan 52\b/.test(caja.textContent),
+    caja && caja.textContent);
+}
+
+{
+  // Y si la unidad no se reconoce —un idioma cuya traduccion no esta en la tabla, o
+  // una frase escrita de otra manera— no se inventan minutos: se pinta el porcentaje,
+  // que es el unico dato que la pagina publica de verdad.
+  const w = mount('dom-steam-quest-fixed-progress-71-2026-08.html', '/steam/quests/marvel-rivals-6',
+    (win) => {
+      win.document.querySelector('.quest-desc').textContent =
+        '¡Juega a Marvel Rivals durante un rato para recibir tu recompensa!';
+    });
+  await tick();
+  const caja = w.document.querySelector('.awa-quest');
+  check('sin tiempo exigido legible cae al porcentaje', caja && /71 %/.test(caja.textContent),
+    caja && caja.textContent);
+  check('y no dice minutos que no puede saber', caja && !/min/.test(caja.textContent),
+    caja && caja.textContent);
+}
+
+{
+  // El idioma. La linea se pinta UNA VEZ al arrancar, y al arrancar Weglot puede no
+  // haber llegado: `siteLang()` devuelve entonces el idioma de ENTRADA y no el que se
+  // va a ver. El panel ya se rehacia por eso; esto comprueba que la linea de la quest
+  // se rehace con el, porque si no quedaba en un idioma y el panel de al lado en otro.
+  //
+  // Se conduce por la API de Weglot, que es la fuente que manda en `siteLang()`, y no
+  // por el `lang` del <html>: este volcado trae la marca `.wgcurrent[data-l="es"]` del
+  // selector, que va ANTES del <html> en ese orden, asi que cambiar el atributo no
+  // cambia el idioma vigente —y una prueba que lo hiciera estaria midiendo el volcado,
+  // no el script—.
+  let disparar = null;
+  const w = mount('dom-steam-quest-fixed-progress-71-2026-08.html', '/steam/quests/marvel-rivals-6',
+    (win) => {
+      win.Weglot = {
+        _lang: 'es',
+        getCurrentLang() { return this._lang; },
+        on(evt, cb) { if (evt === 'languageChanged') disparar = cb; },
+      };
+    });
+  await tick();
+  const antes = w.document.querySelector('.awa-quest');
+  check('arranca en el idioma que dice Weglot (es)', antes && /te ve 43 de 60 min/.test(antes.textContent),
+    antes && antes.textContent);
+  check('y el script esta suscrito al cambio', typeof disparar === 'function');
+  if (disparar) { w.Weglot._lang = 'en'; disparar('en'); }
+  await tick();
+  const despues = w.document.querySelector('.awa-quest');
+  check('la linea sigue al idioma cuando el sitio cambia',
+    despues && /sees 43 of 60 min/.test(despues.textContent), despues && despues.textContent);
+  check('sin duplicarse: sigue habiendo UNA linea',
+    w.document.querySelectorAll('.awa-quest').length === 1,
+    'lineas: ' + w.document.querySelectorAll('.awa-quest').length);
+  check('y con su title tambien en el idioma nuevo',
+    despues && /The page publishes only/.test(despues.getAttribute('title') || ''),
+    despues && (despues.getAttribute('title') || '').slice(0, 40));
+}
+
+{
+  // Los ocho idiomas, como en §56: una clave que se quede en ingles no rompe nada y
+  // por eso no se ve, asi que se comprueba que las cuatro cadenas de la linea y el
+  // parrafo de «Saber mas» existen en todos y NO son la inglesa copiada.
+  const src = SCRIPT;   // y no el fichero: SCRIPT honra AWA_FUENTE, que es lo que mide el control negativo
+  for (const clave of ['qtSeen', 'qtZero', 'qtFull', 'qtPct', 'tipQuest', 'mQuestTime']) {
+    const halladas = src.split('\n').filter((l) => l.indexOf(clave + ':') >= 0);
+    // Las claves van de dos en dos por linea, asi que se cuentan por apariciones.
+    const veces = (src.match(new RegExp('\\b' + clave + ':', 'g')) || []).length;
+    check(clave + ' esta en los ocho idiomas', veces === 8, 'apariciones: ' + veces + ' / lineas: ' + halladas.length);
+  }
+}
+
 console.log('\n' + (fail ? '✗ ' : '✓ ') + ok + ' comprobaciones pasadas, ' + fail + ' fallidas\n');
 process.exit(fail ? 1 : 0);
 }
