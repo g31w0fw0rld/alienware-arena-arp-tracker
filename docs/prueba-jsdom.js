@@ -2814,12 +2814,20 @@ console.log('\n=== 57. Las dos caches del evento tienen relojes distintos ===');
   const base = { hay: true, url: SLUG, desde: Date.parse('2026-09-10T00:00:00Z'),
     hasta: Date.parse('2026-09-19T00:00:00Z'), estado: 'joined', minutos: 0,
     hitos: [{ meta: 60, personal: false, comunidad: true }] };
+  // Desde que la cache lleva una lista (§61), una con la forma de 1.3.x obliga a releer el
+  // indice. Estas pruebas miden los DOS relojes, no la migracion, asi que siembran la forma
+  // nueva: el indice de `idxAt` y el estado del `at` de cada evento.
+  const nueva = (at, idxAt) => {
+    const ev = Object.assign({}, base, { at: at });
+    delete ev.hay;
+    return { hay: true, at: at, idxAt: idxAt, eventos: [ev] };
+  };
   const pedidas = (w) => w.fetched.filter((u) => /\/steam\//.test(u));
 
   {
     // Estado fresco (hace 5 min) e indice de hoy: no se pide nada.
     const w = mount('dom-homepage-src-2026-08.html', '/',
-      sembrar(Object.assign({}, base, { at: T0 - 5 * 60000, idxAt: T0 - 5 * 60000 })));
+      sembrar(nueva(T0 - 5 * 60000, T0 - 5 * 60000)));
     await tick(); await tick();
     check('con el estado fresco no se pide nada del evento', pedidas(w).length === 0,
       JSON.stringify(pedidas(w)));
@@ -2827,7 +2835,7 @@ console.log('\n=== 57. Las dos caches del evento tienen relojes distintos ===');
   {
     // Estado caducado (hace 45 min) pero indice del mismo dia: SOLO la pagina del evento.
     const w = mount('dom-homepage-src-2026-08.html', '/',
-      sembrar(Object.assign({}, base, { at: T0 - 45 * 60000, idxAt: T0 - 45 * 60000 })));
+      sembrar(nueva(T0 - 45 * 60000, T0 - 45 * 60000)));
     await tick(); await tick();
     check('con el estado caducado se pide SOLO la pagina del evento',
       pedidas(w).length === 1 && /community-event/.test(pedidas(w)[0]), JSON.stringify(pedidas(w)));
@@ -2839,7 +2847,7 @@ console.log('\n=== 57. Las dos caches del evento tienen relojes distintos ===');
     // Indice de ayer: hay que volver a preguntar QUE evento esta vivo, o sea las dos.
     const ayer = Date.parse('2026-09-11T10:00:00Z');
     const w = mount('dom-homepage-src-2026-08.html', '/',
-      sembrar(Object.assign({}, base, { at: ayer, idxAt: ayer })));
+      sembrar(nueva(ayer, ayer)));
     await tick(); await tick();
     check('con el indice de ayer se piden las dos', pedidas(w).length === 2
       && pedidas(w).some((u) => /\/steam\/events$/.test(u)), JSON.stringify(pedidas(w)));
@@ -2854,14 +2862,16 @@ console.log('\n=== 57. Las dos caches del evento tienen relojes distintos ===');
     check('y no sale la fila', !lines(w).find((l) => /Evento|Event/.test(l[0])), '');
   }
   {
-    // Compatibilidad: una cache escrita por 1.3.0 no tiene `idxAt`. Debe caer al `at` y no
-    // romperse ni pedir de mas.
+    // Compatibilidad: una cache escrita por 1.3.0 no tiene `idxAt`, y como la de 1.3.x lleva UN
+    // solo evento en la raiz. No debe romperse, y si debe volver a preguntar al indice: quien la
+    // escribio paraba en el primer vivo (ver §61).
     const vieja = Object.assign({}, base, { at: T0 - 5 * 60000 });
     delete vieja.idxAt;
     const w = mount('dom-homepage-src-2026-08.html', '/', sembrar(vieja));
     await tick(); await tick();
-    check('una cache de 1.3.0 sin idxAt sigue valiendo', pedidas(w).length === 0,
-      JSON.stringify(pedidas(w)));
+    check('una cache de 1.3.0 sin idxAt no rompe y relee el indice',
+      pedidas(w).some((u) => /\/steam\/events$/.test(u))
+        && !!lines(w).find((l) => /Evento|Event/.test(l[0])), JSON.stringify(pedidas(w)));
   }
 }
 
@@ -3122,6 +3132,152 @@ console.log('\n=== 60. La pagina de una quest de Steam: el porcentaje, en minuto
     // Las claves van de dos en dos por linea, asi que se cuentan por apariciones.
     const veces = (src.match(new RegExp('\\b' + clave + ':', 'g')) || []).length;
     check(clave + ' esta en los ocho idiomas', veces === 8, 'apariciones: ' + veces + ' / lineas: ' + halladas.length);
+  }
+}
+
+console.log('\n=== 61. Dos eventos vivos a la vez: una linea por cada uno ===');
+{
+  // El 2026-09-23 hubo dos a la vez —Warframe del 23-sep al 10-oct y Aniimo del 21 al 30-sep, los
+  // dos sin el juego— y el panel enseño solo Warframe, que es el primero del indice: un `return`
+  // dentro del bucle. Aniimo, el que acababa antes, no salia en ninguna parte. Los cuatro volcados
+  // son de ese dia y la fecha se congela dentro de la ventana de los dos.
+  const AHORA = '2026-09-24T01:30:00Z';
+  const WF = '/steam/community-event/warframe-community-event-7';
+  const AN = '/steam/community-event/aniimo-community-event';
+  const INDICE = 'dom-steam-events-index-two-live-2026-09-23.html';
+  const P_WF = 'dom-steam-community-event-live-unowned-9-milestones-2026-09-23.html';
+  const P_AN = 'dom-steam-community-event-live-unowned-6-milestones-2026-09-23.html';
+  const respuestas = (win) => {
+    win.__respuestas = { '/steam/events': leerDoc(INDICE), [WF]: leerDoc(P_WF), [AN]: leerDoc(P_AN) };
+  };
+  const deEvento = (w) => lines(w).filter((l) => /Evento|Event/.test(l[0]));
+  const relojesDe = (w) => Array.from(w.document.querySelectorAll('#awa-arp-widget .awa-w__clock'))
+    .map((n) => n.textContent).filter((r) => /Evento|Event/.test(r));
+
+  // Control del fixture: el indice de verdad trae los dos bajo «Current Events», Warframe primero.
+  const idx = leerDoc(INDICE);
+  check('el indice del volcado trae los dos, Warframe antes que Aniimo',
+    idx.indexOf('href="' + WF) > 0 && idx.indexOf('href="' + AN) > idx.indexOf('href="' + WF), '');
+
+  {
+    const w = mount('dom-homepage-src-2026-08.html', '/', (win) => { enFecha(AHORA)(win); respuestas(win); });
+    await tick(); await tick();
+    const ev = deEvento(w);
+    check('salen DOS lineas de evento', ev.length === 2, ev.map((x) => x.join(' | ')).join(' / '));
+    // Primero el que termina antes (Aniimo, 30-sep), aunque el indice lo ponga segundo.
+    check('la primera es la que acaba antes: Aniimo', ev[0] && /Aniimo/.test(ev[0][0]), ev[0] && ev[0][0]);
+    check('y la segunda, Warframe', ev[1] && /Warframe/.test(ev[1][0]), ev[1] && ev[1][0]);
+    check('el nombre va sin el «Community Event» del indice',
+      ev.every((x) => !/Community/.test(x[0])), ev.map((x) => x[0]).join(' / '));
+    check('las dos dicen que falta el juego',
+      ev.length === 2 && ev.every((x) => /falta el juego|game missing/.test(x[1])), ev.map((x) => x[1]).join(' / '));
+    check('y las dos en ambar', ev.length === 2 && ev.every((x) => /--todo/.test(x[2])), '');
+    check('cada una lleva su flecha', ev.length === 2 && ev.every((x) => /--go/.test(x[2])), '');
+    // Una peticion por cosa: el indice y las dos paginas, ninguna repetida.
+    const f = w.fetched;
+    check('pide el indice una vez y cada evento una vez',
+      f.filter((u) => /\/steam\/events$/.test(u)).length === 1
+        && f.filter((u) => u.indexOf(WF) >= 0).length === 1
+        && f.filter((u) => u.indexOf(AN) >= 0).length === 1, JSON.stringify(f));
+    const r = relojesDe(w);
+    check('dos relojes de evento, cada uno con su nombre',
+      r.length === 2 && /Aniimo/.test(r[0]) && /Warframe/.test(r[1]), r.join(' / '));
+    // 30-sep incluido entero: del 24 a las 01:30 al 1-oct a las 00:00 son 6d 22h.
+    check('el de Aniimo cuenta hasta el final del 30-sep', r[0] && /6d\s*22h/.test(r[0]), r[0]);
+    // Y la cache nueva lleva la lista, no un evento suelto en la raiz.
+    let cache = null;
+    try { cache = JSON.parse(w.localStorage.getItem('awa-arp-evento')); } catch (e) { /* */ }
+    check('la cache guarda los dos en una lista',
+      !!(cache && Array.isArray(cache.eventos) && cache.eventos.length === 2), JSON.stringify(cache).slice(0, 120));
+  }
+  {
+    // En la pagina de uno de los dos: ese sale del documento y NO se pide; el otro, si.
+    const w = mount(P_WF, WF, (win) => { enFecha(AHORA)(win); respuestas(win); });
+    await tick(); await tick();
+    check('en la pagina de Warframe siguen saliendo las dos', deEvento(w).length === 2,
+      deEvento(w).map((x) => x[0]).join(' / '));
+    check('no se pide la pagina en la que estas', !w.fetched.some((u) => u.indexOf(WF) >= 0), JSON.stringify(w.fetched));
+    check('y la del otro si', w.fetched.some((u) => u.indexOf(AN) >= 0), JSON.stringify(w.fetched));
+    // La de la pagina en la que estas no lleva flecha: no te moveria (ver irA).
+    const wf = deEvento(w).find((x) => /Warframe/.test(x[0]));
+    check('la del evento en el que estas va sin flecha', wf && !/--go/.test(wf[2]), wf && wf[2]);
+  }
+  {
+    // Terminado Aniimo, queda uno: vuelve la etiqueta de siempre y un reloj sin nombre.
+    const w = mount('dom-homepage-src-2026-08.html', '/', (win) => {
+      enFecha('2026-10-01T00:30:00Z')(win); respuestas(win); });
+    await tick(); await tick();
+    const ev = deEvento(w);
+    check('con uno solo, una linea', ev.length === 1, ev.map((x) => x[0]).join(' / '));
+    check('con la etiqueta de siempre, sin nombre',
+      ev[0] && /^(Evento comunitario|Community event)/.test(ev[0][0]), ev[0] && ev[0][0]);
+    check('y no se pide la pagina del que ya termino', !w.fetched.some((u) => u.indexOf(AN) >= 0),
+      JSON.stringify(w.fetched));
+  }
+  {
+    // Las caches por evento: la de Warframe fresca y la de Aniimo caducada. Con el indice de hoy
+    // se pide SOLO la caducada.
+    const T0 = Date.parse(AHORA);
+    const cache = { hay: true, at: T0 - 5 * 60000, idxAt: T0 - 60 * 60000, eventos: [
+      { url: AN, nombre: 'Aniimo Community Event', hasta: Date.parse('2026-10-01T00:00:00Z'),
+        estado: 'unowned', hitos: [], at: T0 - 45 * 60000 },
+      { url: WF, nombre: 'Warframe Community Event', hasta: Date.parse('2026-10-11T00:00:00Z'),
+        estado: 'unowned', hitos: [], at: T0 - 5 * 60000 },
+    ] };
+    const w = mount('dom-homepage-src-2026-08.html', '/', (win) => {
+      enFecha(AHORA)(win); respuestas(win);
+      win.localStorage.setItem('awa-arp-evento', JSON.stringify(cache));
+    });
+    await tick(); await tick();
+    const pedidas = w.fetched.filter((u) => /\/steam\//.test(u));
+    check('con una caducada y otra fresca, se pide solo la caducada',
+      pedidas.length === 1 && pedidas[0].indexOf(AN) >= 0, JSON.stringify(pedidas));
+    check('y siguen las dos lineas', deEvento(w).length === 2, deEvento(w).map((x) => x[0]).join(' / '));
+  }
+  {
+    // Si la pagina de uno falla, el otro no se pierde: antes un solo `.catch` tiraba todo.
+    const w = mount('dom-homepage-src-2026-08.html', '/', (win) => {
+      enFecha(AHORA)(win);
+      win.__respuestas = { '/steam/events': leerDoc(INDICE), [WF]: leerDoc(P_WF) };
+    });
+    await tick(); await tick();
+    const ev = deEvento(w);
+    check('con la pagina de Aniimo sin red, Warframe sigue diciendo lo suyo',
+      ev.some((x) => /Warframe/.test(x[0]) && /falta el juego|game missing/.test(x[1])),
+      ev.map((x) => x.join(' | ')).join(' / '));
+  }
+  {
+    // El fallo que se vio al estrenarlo: la cache que dejo 1.3.4 ese mismo dia, con Warframe solo
+    // en la raiz, el indice leido HOY y el estado fresco. La primera version la daba por buena
+    // —sin pedir nada— y el panel siguio con una sola linea hasta pulsar ⟳.
+    const T0 = Date.parse(AHORA);
+    const de134 = { hay: true, url: WF, nombre: 'Warframe Community Event',
+      desde: Date.parse('2026-09-23T00:00:00Z'), hasta: Date.parse('2026-10-11T00:00:00Z'),
+      estado: 'unowned', minutos: 0, hitos: [], at: T0 - 5 * 60000, idxAt: T0 - 60 * 60000 };
+    const w = mount('dom-homepage-src-2026-08.html', '/', (win) => {
+      enFecha(AHORA)(win); respuestas(win);
+      win.localStorage.setItem('awa-arp-evento', JSON.stringify(de134));
+    });
+    await tick(); await tick();
+    check('con la cache de 1.3.4 (un solo evento) se relee el indice',
+      w.fetched.some((u) => /\/steam\/events$/.test(u)), JSON.stringify(w.fetched));
+    check('y salen las dos lineas sin pulsar ⟳', deEvento(w).length === 2,
+      deEvento(w).map((x) => x[0]).join(' / '));
+    // Y solo esa vez: la cache que queda ya es la nueva, y con ella no se vuelve a pedir.
+    let cache = null;
+    try { cache = JSON.parse(w.localStorage.getItem('awa-arp-evento')); } catch (e) { /* */ }
+    check('la cache queda con la forma nueva y el indice de hoy',
+      !!(cache && Array.isArray(cache.eventos) && cache.eventos.length === 2 && cache.idxAt === T0),
+      JSON.stringify(cache).slice(0, 120));
+  }
+  {
+    // Lo nuevo, en las otras dos superficies: la ficha «Saber más» (en los ocho) y el README.
+    const src = SCRIPT;
+    const veces = (src.match(/\bevNamed:/g) || []).length;
+    check('evNamed esta en los ocho idiomas', veces === 8, 'apariciones: ' + veces);
+    const readme = fs.readFileSync(__dirname + '/../README.md', 'utf8');
+    check('el README cuenta lo de varios eventos, en los dos idiomas',
+      /more than one event/.test(readme) && /más de un evento/.test(readme), '');
   }
 }
 
