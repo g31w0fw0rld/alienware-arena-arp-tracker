@@ -39,7 +39,7 @@ function globalsOf(html) {
   // longitud fallaba de dos maneras: quedarse corto (sin arp_balance) o
   // arrastrar código con jQuery detrás.
   const nombres = ['user_is_logged_in', 'arp_balance', 'arp_lifetime', 'arp_tier',
-    'user_country', 'consecutive_logins', 'steamId', 'countryKeys'];
+    'user_country', 'consecutive_logins', 'steamId', 'countryKeys', 'artifactLangDiscount'];
   const out = [];
   for (const n of nombres) {
     const re = new RegExp('var\\s+' + n + '\\s*=\\s*([\\s\\S]*?);\\s*\\n');
@@ -3278,6 +3278,153 @@ console.log('\n=== 61. Dos eventos vivos a la vez: una linea por cada uno ===');
     const readme = fs.readFileSync(__dirname + '/../README.md', 'utf8');
     check('el README cuenta lo de varios eventos, en los dos idiomas',
       /more than one event/.test(readme) && /más de un evento/.test(readme), '');
+  }
+}
+
+console.log('\n=== 62. Un artefacto sube el tope de Twitch ===');
+// Scion of the Light suma +1 al tope diario de Twitch, y el sitio lo paga APARTE: `totalPoints`
+// sigue topado en 15 y el extra llega en `bonusPoints` cuando esos 15 ya estan. Hasta 1.3.5 el
+// panel comparaba contra un 15 fijo, asi que con 15 cobrados y el bonus pendiente pintaba
+// «15/15 ✅» mientras el sitio decia «Incomplete», y con el bonus cobrado, «16/15».
+{
+  const twLinea = (w) => Array.from(w.document.querySelectorAll('#awa-arp-widget .awa-w__line'))
+    .find((l) => /Twitch/.test(l.querySelector('.awa-w__k').textContent));
+  const deLinea = (l) => l ? [l.querySelector('.awa-w__v').textContent, l.className, l.getAttribute('title') || ''] : null;
+  const BONUS = 'dom-control-center-twitch-scion-bonus-2026-09-25.html';
+  {
+    // El volcado de verdad: 15 + 1, underCap false.
+    const w = mount(BONUS, '/control-center'); await tick();
+    const [v, cls, tipo] = deLinea(twLinea(w)) || [];
+    check('con el bonus cobrado: 16/16 con marca', v === '16/16 ✅' && /--done/.test(cls), v + ' | ' + cls);
+    check('y el tooltip dice que el tope es 16 por un artefacto, sin nombrarlo',
+      /16/.test(tipo) && /artefactos equipados|equipped artifacts/.test(tipo) && !/Scion|Vástago/.test(tipo), tipo);
+  }
+  {
+    // El estado intermedio no se llego a volcar: se deriva del mismo volcado con los dos valores
+    // que cambian, anclados al JSON del script —la cabecera del saneado los cita SIN comillas—.
+    const orig = leer(BONUS);
+    const de = '"bonusPoints": 1, "pointsToAward": 0, "underCap": false';
+    const a = '"bonusPoints": 0, "pointsToAward": 0, "underCap": true';
+    const html = orig.split(de).join(a);
+    check('control: el recorte de verdad ocurrio (una vez, en el script)',
+      orig.split(de).length === 2 && html.indexOf(a) > 0 && html.indexOf(de) < 0, '');
+    const w = mount('dom-homepage-src-2026-08.html', '/', (win) => {
+      win.__respuestas = { 'control-center': html };
+    }); await tick(); await tick();
+    const [v, cls, tipo] = deLinea(twLinea(w)) || [];
+    check('con 15 y el bonus pendiente: 15/15+ y SIN marca', v === '15/15+' && /--todo/.test(cls), v + ' | ' + cls);
+    check('y el tooltip explica el «+»', /«\+»/.test(tipo) && /artefactos equipados|equipped artifacts/.test(tipo), tipo);
+  }
+  {
+    // Lo de siempre, sin artefacto, no cambia: ni la cifra ni el tooltip.
+    const w = mount('dom-control-center-twitch-completed-2026-08.html', '/control-center'); await tick();
+    const [v, , tipo] = deLinea(twLinea(w)) || [];
+    check('sin bonus sigue siendo 15/15 con marca', v === '15/15 ✅', v);
+    check('y su tooltip no habla de artefactos', !/artefacto|artifact/i.test(tipo), tipo);
+  }
+  {
+    // El camino de respaldo, sin `dailyArpData`: solo quedan los spans, y el estado lo traduce
+    // Weglot. La primera version de este arreglo daba ese texto por fiable, y con «Completo» —que
+    // no casa con /complete/— pintaba «15/15+» con el dia hecho. Sin el booleano manda lo de 1.3.5.
+    const orig = leer('dom-control-center-twitch-completed-2026-08.html');
+    const html = orig.split('dailyArpData').join('dailyArpDatoX')
+      .split('<span id="control-center__twitch-arp-status">Complete</span>')
+      .join('<span id="control-center__twitch-arp-status">Completo</span>');
+    check('control: sin dailyArpData y con el estado traducido',
+      html.indexOf('dailyArpData') < 0 && html.indexOf('>Completo</span>') > 0, '');
+    const w = mount('dom-homepage-src-2026-08.html', '/', (win) => {
+      win.__respuestas = { 'control-center': html };
+    }); await tick(); await tick();
+    const [v, cls] = deLinea(twLinea(w)) || [];
+    check('sin el booleano y con «Completo»: 15/15 con marca, no 15/15+', v === '15/15 ✅' && /--done/.test(cls),
+      v + ' | ' + cls);
+  }
+  {
+    // Y en las otras superficies: los dos textos del tooltip y la ficha en los ocho, y el README.
+    const n = (re) => (SCRIPT.match(re) || []).length;
+    check('tipTwitchBonus y tipTwitchPend estan en los ocho idiomas',
+      n(/\btipTwitchBonus:/g) === 8 && n(/\btipTwitchPend:/g) === 8,
+      n(/\btipTwitchBonus:/g) + ' / ' + n(/\btipTwitchPend:/g));
+    const mT = SCRIPT.split('\n').filter((l) => /^\s*mTwitch:/.test(l));
+    check('la ficha «Saber más» lo cuenta en los ocho', mT.length === 8 && mT.every((l) => /15/.test(l.split('Nexus')[1] || '')),
+      mT.length + '');
+    const readme = fs.readFileSync(__dirname + '/../README.md', 'utf8');
+    check('el README lo cuenta en los dos idiomas',
+      /raise the daily cap above 15/.test(readme) && /suben el tope diario por encima de 15/.test(readme), '');
+  }
+}
+
+console.log('\n=== 63. El descuento de un artefacto en el Marketplace ===');
+// Con Mysterious Text equipado el sitio publica `artifactLangDiscount = 0.99` y pinta al lado de
+// cada precio el rebajado (`.arp-discount-new`), pero `data-product-price` sigue siendo el de
+// lista. Hasta 1.3.5 el panel comparaba el saldo con ese, asi que en el borde decia «te faltan»
+// de algo que ya alcanzaba. La prueba usa como verdad lo que pinta el propio sitio.
+{
+  const F = 'dom-marketplace-artifact-discount-2026-09-25.html';
+  const orig = leer(F);
+  // Precio de lista y precio que pinta el sitio, por id de producto, sacados del HTML.
+  const pares = {};
+  orig.replace(/id="marketplace-product-id-(\d+)"[\s\S]*?class="arp-discount-old">\s*(\d+)\s*<\/span>\s*<span\s+class="arp-discount-new">\s*(\d+)/g,
+    (m, id, l, n) => { pares[id] = { lista: +l, real: +n }; return m; });
+  const ids = Object.keys(pares);
+  check('control: el volcado trae los dos precios de 38 tarjetas', ids.length === 38, 'pares: ' + ids.length);
+  const reales = Array.from(new Set(ids.map((id) => pares[id].real))).sort((a, b) => a - b);
+  // Con el saldo justo en cada precio rebajado, y uno por debajo: toda tarjeta con stock tiene que
+  // decir «alcanza» exactamente cuando el saldo llega a lo que pinta el sitio.
+  let malas = [], vistas = 0;
+  for (const saldo of reales.flatMap((r) => [r - 1, r])) {
+    const w = mount(F, '/marketplace/', (win) => { win.arp_balance = saldo; }); await tick();
+    ids.forEach((id) => {
+      const card = w.document.getElementById('marketplace-product-id-' + id);
+      if (!card || card.getAttribute('data-product-in-stock') !== 'true') return;
+      const tag = card.querySelector('.awa-tag');
+      vistas++;
+      const alcanza = !!(tag && /--ok/.test(tag.className));
+      if (alcanza !== (saldo >= pares[id].real)) malas.push(id + '@' + saldo + ' (' + (tag && tag.textContent) + ')');
+    });
+  }
+  check('«te alcanza» justo cuando el saldo llega al precio rebajado, en todas las tarjetas',
+    vistas > 100 && !malas.length, malas.slice(0, 4).join(', ') + ' · vistas ' + vistas);
+  {
+    // El caso del borde, dicho con la tarjeta de los fragmentos: 150 de lista, 148 de verdad.
+    const w = mount(F, '/marketplace/', (win) => { win.arp_balance = 147; }); await tick();
+    const frag = Array.from(w.document.querySelectorAll('.product-card'))
+      .find((c) => c.getAttribute('data-product-price') === '150' && /Fragment/i.test(c.getAttribute('data-product-name') || ''));
+    const tag = frag && frag.querySelector('.awa-tag');
+    check('con 147 de saldo, los fragmentos piden 1 ARP mas, no 3', !!tag && /\b1\b/.test(tag.textContent) && !/\b3\b/.test(tag.textContent),
+      tag && tag.textContent);
+    const tipo = tag ? (tag.getAttribute('title') || '') : '';
+    check('y el tooltip dice el precio rebajado y el de lista', /148/.test(tipo) && /150/.test(tipo), tipo);
+  }
+  {
+    // Sin la carta (el mismo volcado con el factor en 1) todo sigue como antes: precio de lista.
+    const sin = orig.replace(/var artifactLangDiscount = 0\.99;/, 'var artifactLangDiscount = 1;');
+    check('control: el factor se cambio de verdad', sin !== orig && sin.indexOf('artifactLangDiscount = 1;') > 0, '');
+    // `mount` lee de fichero, asi que la copia sin descuento se escribe en un temporal —fuera de
+    // docs/, para no dejar nada en el repo— y se lee con 148 de saldo en los fragmentos.
+    const tmp = require('path').join(require('os').tmpdir(), 'awa-sin-descuento.html');
+    require('fs').writeFileSync(tmp, sin);
+    const w2 = mount(require('path').relative(DOCS, tmp), '/marketplace/', (win) => { win.arp_balance = 148; }); await tick();
+    const frag = Array.from(w2.document.querySelectorAll('.product-card'))
+      .find((c) => c.getAttribute('data-product-price') === '150' && /Fragment/i.test(c.getAttribute('data-product-name') || ''));
+    const tag = frag && frag.querySelector('.awa-tag');
+    check('sin descuento, 148 no alcanzan para 150: faltan 2', !!tag && /--short/.test(tag.className) && /\b2\b/.test(tag.textContent),
+      tag && tag.textContent);
+    // Ojo: «Cuesta 150 ARP y tienes 148» lleva los dos numeros, asi que se mira el texto del
+    // descuento y no las cifras (la primera version de esta prueba casaba con el saldo).
+    const tt = tag ? (tag.getAttribute('title') || '') : '';
+    check('y el tooltip es el de siempre', !!tag && /150/.test(tt) && !/descuento|discount/i.test(tt), tt);
+    require('fs').unlinkSync(tmp);
+  }
+  {
+    const n = (SCRIPT.match(/\btipTagDisc:/g) || []).length;
+    check('tipTagDisc esta en los ocho idiomas', n === 8, 'apariciones: ' + n);
+    const info = SCRIPT.split('\n').filter((l) => /^\s*infoDescriptionText:/.test(l));
+    check('la ficha lo cuenta en los ocho', info.length === 8 && info.every((l) => /Marketplace/.test(l) && /(descuento|discount|Rabatt|remise|desconto|折扣|छूट)/.test(l)),
+      info.length + '');
+    const readme = fs.readFileSync(__dirname + '/../README.md', 'utf8');
+    check('el README lo cuenta en los dos idiomas',
+      /discount artifact equipped/.test(readme) && /artefacto de descuento del Marketplace/.test(readme), '');
   }
 }
 
