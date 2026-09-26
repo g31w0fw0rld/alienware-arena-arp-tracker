@@ -8,25 +8,31 @@ Userscript that shows, on every Alienware Arena page, what ARP you still have to
 >
 > Necesitas antes un gestor de userscripts: [Violentmonkey](https://violentmonkey.github.io/) (código abierto) o [Tampermonkey](https://www.tampermonkey.net/). En Chrome y Edge, activa además **Allow user scripts** en la página de la propia extensión en `chrome://extensions`; sin eso no se ejecuta nada. Pasos detallados en [Español](#español).
 
-![The panel in the top right corner of the Control Center, listing the daily ARP sources with their counts, two countdowns and how old the data is](docs/screenshot-panel.png)
+![The panel on the right of the Control Center, beside the site's Daily Quests card and the banners of two live community events, listing the daily ARP sources with their counts, one line per event, a countdown for the day, the Steam week and each event, and how old the data is](docs/screenshot-panel.png)
 
 *The panel, on any page. Each line is `done/total`, green with a tick when it is finished, amber while it is not, and the ↗ marks the ones you complete somewhere else. / El panel, en cualquier página. Cada línea es `hechas/total`, en verde con marca cuando está cumplida, en ámbar mientras no, y la ↗ señala las que se cumplen en otro sitio.*
 
-![The panel on a Steam community event page, its Community event line reading all milestones with a tick, beside the site's own cards where milestones 3, 4 and 5 have both the community and the personal condition met](docs/screenshot-community-event.png)
+![The panel on the Warframe community event page, its Event: Warframe line reading 480/540 min while the site says Your Total Hours: 8, beside the site's own cards where milestones 1 to 3 have both conditions met; a second line says the Aniimo event is missing its game](docs/screenshot-community-event.png)
 
-*A finished Steam community event. Each milestone needs two things at once —the community reaching a total of hours and you reaching your own— so the panel only says «all milestones» when both are met; until then it counts your minutes towards the next one, and it warns you when you have not joined, because playtime from before you join is thrown away. / Un evento comunitario de Steam, terminado. Cada hito exige dos cosas a la vez —que la comunidad llegue a un total de horas y que llegues tú a las tuyas—, así que el panel solo dice «todos los hitos» cuando se cumplen ambas; hasta entonces cuenta tus minutos hacia el siguiente, y avisa cuando no te has unido, porque el tiempo jugado antes de unirte se tira.*
+*A Steam community event under way. Each milestone needs two things at once —the community reaching a total of hours and you reaching your own— so until both are met the panel counts your minutes towards the next one, in minutes because the site rounds down to whole hours. It warns you when you have not joined, because playtime from before you join is thrown away, and with two events live each gets its own line and countdown. / Un evento comunitario de Steam, en marcha. Cada hito exige dos cosas a la vez —que la comunidad llegue a un total de horas y que llegues tú a las tuyas—, así que mientras no se cumplan ambas el panel cuenta tus minutos hacia el siguiente, en minutos porque el sitio redondea hacia abajo a horas enteras. Avisa cuando no te has unido, porque el tiempo jugado antes de unirte se tira, y con dos eventos vivos cada uno lleva su línea y su cuenta atrás.*
 
-![A green notice reading 747 keys for your country at tier 1, directly above the GET KEY button of a giveaway](docs/screenshot-giveaway.png)
+![A green notice reading 2,570 keys for your country at tier 1, directly above the GET KEY button of a giveaway](docs/screenshot-giveaway.png)
 
 *On a giveaway page, above the button: read from the giveaway's own per-country, per-tier stock before you click anything. / En la ficha de un sorteo, encima del botón: leído del inventario por país y por nivel del propio sorteo antes de pulsar nada.*
 
-![Vault cards tagged with You can afford this, Sold out and 957 ARP short](docs/screenshot-vault.png)
+![Vault cards tagged You can afford this, Needs tier 2 and Sold out](docs/screenshot-vault.png)
+
+![Vault cards tagged Sold out, Needs tier 2 and 103 ARP short](docs/screenshot-vault-short.png)
 
 *In the Marketplace and the Vault, one tag per card, from the price, stock and tier the card itself carries. / En el Marketplace y la Bóveda, una etiqueta por tarjeta, del precio, el stock y el nivel que trae la propia tarjeta.*
 
 ![Two auction cards tagged Bid from 300 ARP and Bid from 100 ARP, and under the site's own countdown a notice reading Opens Friday, September 18, 2026 at 12:00 PM, your local time, next to a Cancel reminder button](docs/screenshot-vault-unstarted.png)
 
 *The Vault before it opens: each auction shows its minimum bid instead of «auction over», and under the site's own countdown, the exact opening time in your clock — with the bell already armed. / La Bóveda antes de abrir: cada subasta enseña su puja mínima en vez de «subasta terminada», y bajo la cuenta atrás del propio sitio, la hora exacta de apertura en tu reloj — con la campana ya armada.*
+
+![Two blind auction cards, STALKER 2 and Cronos, tagged Auction over under the site's own Auction Completed label](docs/screenshot-vault-auction-over.png)
+
+*And once an auction closes, its tag says «auction over» — not «sold out», which is what the site's own stock flag would suggest. / Y cuando una subasta cierra, su etiqueta dice «subasta terminada» — no «agotado», que es lo que sugeriría la marca de stock del propio sitio.*
 
 ## English
 
@@ -44,7 +50,7 @@ It changes **four** places. Nothing else on the site is touched.
 - **Steam community events**, while one is live. These pay ARP for playtime in milestones, and they are the one source where you can lose ARP without doing anything wrong: if you never press **Join** on the event page, nothing you play counts — playtime from before you join is thrown away, and joining is one way only. So the panel says, from any page, whether an event is running and whether you are actually in it. Your progress is shown in **minutes**, because the site rounds to hours and anything under one hour reads there as 0, which is indistinguishable from not having played at all. If the site says you do not own the game and it is Free to Play, the line explains that too: Steam only reports free games you have actually played, so opening it once for a few minutes is what makes it appear. If more than one event is live at once, each gets its own line —with the game's name, its link and its own countdown—, the one ending soonest first.
 - **The Battle Pass**, and the **Battle Store**, which is the one with a real deadline: your Battle Tokens are wiped when the season closes, so the line says what they are worth in ARP right now (25 tokens buy 100 ARP, 45 buy 200, 90 buy 500).
 
-Every line carries a tooltip saying which clock it answers to, and the ones you complete somewhere else are clickable and take you there — the arrow only appears when the line actually leads out of the page you are on. Two countdowns — the day and the Steam week — redraw themselves, and the panel says how old its data is. The ⟳ button reads everything again immediately.
+Every line carries a tooltip saying which clock it answers to, and the ones you complete somewhere else are clickable and take you there — the arrow only appears when the line actually takes you somewhere. The four you complete in the Control Center —time on site, Twitch, daily and Steam quests— go straight to their section of it and highlight it, even when you are already there. Two countdowns — the day and the Steam week — redraw themselves, and the panel says how old its data is. The ⟳ button reads everything again immediately.
 
 It can also warn you three times: half an hour before the day ends, six hours before the Steam week ends, and when a new day starts. Each warning marks the tab with a 👽, leaves a band in the panel and opens a dialog you have to close — never in a background tab, where the browser would swallow it. There is no sound: it was tried three ways on this site and the browser blocks it every time.
 
@@ -82,7 +88,7 @@ Cambia **cuatro** sitios. No toca nada más de la web.
 - **Los eventos comunitarios de Steam**, mientras haya uno vivo. Pagan ARP por tiempo jugado en hitos, y son la única fuente donde se puede perder ARP sin hacer nada mal: si no pulsas **Unirse** en la página del evento, nada de lo que juegues cuenta —el tiempo de antes de unirte se tira, y unirse es de ida—. Así que el panel dice, desde cualquier página, si hay un evento en marcha y si estás dentro de verdad. Tu progreso va en **minutos**, porque el sitio redondea a horas y por debajo de una hora él muestra 0, que no se distingue de no haber jugado nada. Y si el sitio dice que no tienes el juego y es Free to Play, la línea lo explica también: Steam solo informa de los juegos gratis que has jugado de verdad, así que abrirlo unos minutos es lo que hace que aparezca. Si hay más de un evento vivo a la vez, cada uno lleva su propia línea —con el nombre del juego, su enlace y su propio reloj—, primero el que acaba antes.
 - **El Pase de batalla**, y la **Tienda de batalla**, que es la que tiene fecha límite de verdad: las fichas se borran al cerrar la temporada, así que la línea dice cuánto ARP valen ahora mismo (25 fichas compran 100 ARP, 45 compran 200, 90 compran 500).
 
-Cada línea lleva un tooltip que dice a qué reloj responde, y las que se cumplen en otro sitio se pulsan y te llevan allí —la flecha solo sale cuando esa línea de verdad lleva fuera de la página en la que estás—. Dos cuentas atrás —el día y la semana de Steam— se repintan solas, y el panel dice cuánto de viejo es su dato. El botón ⟳ vuelve a leerlo todo al instante.
+Cada línea lleva un tooltip que dice a qué reloj responde, y las que se cumplen en otro sitio se pulsan y te llevan allí —la flecha solo sale cuando esa línea de verdad te lleva a algún sitio—. Las cuatro que se cumplen en el Centro de control —tiempo en el sitio, Twitch, quests diarias y de Steam— te llevan directo a su sección y la resaltan, aunque ya estés ahí. Dos cuentas atrás —el día y la semana de Steam— se repintan solas, y el panel dice cuánto de viejo es su dato. El botón ⟳ vuelve a leerlo todo al instante.
 
 También puede avisarte tres veces: media hora antes de que acabe el día, seis horas antes de que acabe la semana de Steam, y al empezar el día nuevo. Cada aviso marca la pestaña con un 👽, deja una banda en el panel y abre un diálogo que hay que cerrar — nunca en una pestaña de fondo, donde el navegador se lo quedaría. No hay sonido: se intentó de tres maneras en este sitio y el navegador lo bloquea siempre.
 

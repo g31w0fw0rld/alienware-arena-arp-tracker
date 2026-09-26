@@ -1767,25 +1767,98 @@ const llevaA = (w, re) => { const f = filaDe(w, re); return !!f && /--go/.test(f
     avisoDis.slice(-70));
 }
 {
-  // Ya EN el Centro de control: las tres del día no prometen un viaje que no
-  // pasa. El pase sí, que vive en otra página — y eso es lo que demuestra que
-  // los dos destinos son distintos.
+  // Ya EN el Centro de control. Hasta 1.3.6 las tres del día no llevaban flecha, por la regla de
+  // «una flecha que no te mueve es peor que ninguna». Desde 1.3.7 SÍ te mueven —bajan a su
+  // sección y la resaltan—, así que la llevan, y su aviso dice eso y no «ir al Centro de
+  // control». El pase sigue llevando a su página: eso demuestra que los destinos son distintos.
   const w = mount('dom-control-center-streak-monthly-2026-08.html', '/control-center', (win) => {
     // El pase NO está en el Centro de control: llega por fetch, así que sin esto
     // no habría línea de pase que comprobar —y «no lleva» y «no existe» se leen
     // igual desde fuera—.
     win.__respuestas = { 'battle-pass': leer('dom-battle-pass-2026-08.html') };
+    // jsdom no implementa el scroll: se apunta cada petición de bajar.
+    win.__bajadas = [];
+    win.scrollTo = function (o) { win.__bajadas.push(o); };
   });
   await tick(); await tick(); await tick();
   check('hay línea de pase que comprobar', !!filaDe(w, /Pase|Pass/));
-  ['Twitch', 'diarias|Daily', 'Steam'].forEach((pat) => {
-    check('«' + pat.split('|')[0] + '» ya está aquí: sin flecha', !llevaA(w, new RegExp(pat)),
-      String((filaDe(w, new RegExp(pat)) || {}).className));
+  // El destino de cada una: la tarjeta que contiene lo que el panel ya lee de ella; y para el
+  // tiempo en el sitio, el bloque de texto de la franja de arriba.
+  const d = w.document;
+  const tarjeta = (sel) => d.querySelector(sel).closest('.user-profile__profile-card');
+  const destinos = [
+    ['Tiempo|Time', d.querySelector('#control-center__tos-arp').closest('.lh-sm')],
+    ['Twitch', tarjeta('#control-center__twitch-arp')],
+    ['diarias|Daily', tarjeta('a.quest-title[data-quest-id]')],
+    ['Steam', tarjeta('[id^="control-center__steam-quest-status-"]')],
+  ];
+  check('control: los cuatro destinos existen y son distintos',
+    destinos.every(([, x]) => !!x) && new Set(destinos.map(([, x]) => x)).size === 4, '');
+  destinos.forEach(([pat, destino]) => {
+    const nombre = pat.split('|')[0];
+    const fila = filaDe(w, new RegExp(pat));
+    check('«' + nombre + '» aquí lleva flecha', llevaA(w, new RegExp(pat)), String((fila || {}).className));
+    const aviso = fila ? (fila.getAttribute('title') || fila.getAttribute('data-awa-tip') || '') : '';
+    check('«' + nombre + '» dice que baja a su sección', /bajar a su sección|scroll to its section/.test(aviso), aviso.slice(-60));
+    w.__bajadas.length = 0;
+    if (fila) fila.click();
+    // jsdom no hace layout, así que la posición llega a 0: lo que se comprueba es que se pidió
+    // UNA bajada y que la sección resaltada es la suya.
+    check('«' + nombre + '» baja a SU sección y la resalta',
+      w.__bajadas.length === 1 && typeof w.__bajadas[0].top === 'number' && destino.classList.contains('awa-foco'),
+      w.__bajadas.length + ' / ' + destino.className);
   });
   check('el pase sigue llevando, porque está en otra página', llevaA(w, /Pase|Pass/));
-  const tw = filaDe(w, /Twitch/);
-  const aviso = tw.getAttribute('title') || tw.getAttribute('data-awa-tip') || '';
-  check('y el aviso tampoco ofrece el viaje', !/Pulsa esta línea/.test(aviso), aviso.slice(-60));
+}
+{
+  // Desde otra página: la línea deja apuntada su sección en sessionStorage y navega. jsdom no
+  // navega, así que se comprueba lo apuntado.
+  const w = mount('dom-homepage-src-2026-08.html', '/', (win) => {
+    win.__respuestas = { 'control-center': leer('dom-control-center-twitch-progress-2026-08.html') };
+  });
+  await tick(); await tick();
+  const fila = filaDe(w, /Twitch/);
+  const aviso = fila ? (fila.getAttribute('title') || fila.getAttribute('data-awa-tip') || '') : '';
+  check('fuera del Centro de control, el aviso dice que va a su sección', /su sección del Centro de control|its section of the Control Center/.test(aviso), aviso.slice(-70));
+  if (fila) fila.click();
+  let f = null;
+  try { f = JSON.parse(w.sessionStorage.getItem('awa-arp-foco') || 'null'); } catch (e) { /* */ }
+  check('y al pulsar deja apuntada la sección de Twitch', !!f && f.clave === 'twitch' && Date.now() - f.at < 5000, JSON.stringify(f));
+}
+{
+  // Y al llegar: con la sección apuntada, el Centro de control baja a ella solo, y la marca se
+  // borra para que una recarga no vuelva a bajar.
+  const w = mount('dom-control-center-twitch-progress-2026-08.html', '/control-center', (win) => {
+    win.sessionStorage.setItem('awa-arp-foco', JSON.stringify({ clave: 'qSteam', at: Date.now() }));
+    win.__bajadas = [];
+    win.scrollTo = function (o) { win.__bajadas.push(o); };
+  });
+  await tick(); await new Promise((r) => setTimeout(r, 500));
+  const steam = w.document.querySelector('[id^="control-center__steam-quest-status-"]').closest('.user-profile__profile-card');
+  check('al llegar con la sección apuntada, baja a las quests de Steam',
+    w.__bajadas.length === 1 && steam.classList.contains('awa-foco'), String(w.__bajadas.length));
+  check('y borra la marca', w.sessionStorage.getItem('awa-arp-foco') === null, String(w.sessionStorage.getItem('awa-arp-foco')));
+}
+{
+  // Una marca de hace dos minutos no cuenta: volver luego por tu cuenta no debe bajar solo.
+  const w = mount('dom-control-center-twitch-progress-2026-08.html', '/control-center', (win) => {
+    win.sessionStorage.setItem('awa-arp-foco', JSON.stringify({ clave: 'twitch', at: Date.now() - 2 * 60 * 1000 }));
+    win.__bajadas = [];
+    win.scrollTo = function (o) { win.__bajadas.push(o); };
+  });
+  await tick(); await new Promise((r) => setTimeout(r, 500));
+  check('con una marca vieja no baja a ningún sitio', w.__bajadas.length === 0, String(w.__bajadas.length));
+}
+{
+  const n = (SCRIPT.match(/\bgoHere: '/g) || []).length;
+  check('goHere está en los ocho idiomas', n === 8, 'apariciones: ' + n);
+  const info = SCRIPT.split('\n').filter((l) => /^\s*infoDescriptionText:/.test(l));
+  check('la ficha cuenta lo de las secciones en los ocho',
+    info.length === 8 && info.every((l) => /(section|sección|Abschnitt|secção|seção|对应的部分|हिस्से)/.test(l)), info.length + '');
+  const readme = fs.readFileSync(__dirname + '/../README.md', 'utf8');
+  check('el README lo cuenta en los dos idiomas, y ya no dice lo de «fuera de la página»',
+    /straight to their section/.test(readme) && /directo a su sección/.test(readme)
+      && !/leads out of the page you are on/.test(readme) && !/lleva fuera de la página en la que estás/.test(readme), '');
 }
 {
   // Y en la página del pase, al revés: es la prueba de que el destino del pase
