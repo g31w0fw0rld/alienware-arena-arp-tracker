@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Alienware Arena ARP Tracker
 // @namespace    http://tampermonkey.net/
-// @version      1.3.7
+// @version      1.3.8
 // @description  ARP panel for Alienware Arena. Almost everything you earn there expires —at 00:00 UTC, on Monday, when the season closes, when an event ends— and the site never says it in one place. This panel does: on any page, what you have left to do, how long you have and a warning before you lose it. It only reads, it never claims. Every line is explained in "Learn more", inside the panel, and the rest is in the repository. Eight languages.
 // @icon         data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAAAAXNSR0IArs4c6QAACn9JREFUWIWlmVusXVUVhv//H3OtfW69AB56ihbFArXaCBargle84QOS4CWaGI3x8uCDGsX7PSaA6INKFOMDGhNNbNSgqDFi1aBYLVQUUFJAkEu5WECkUGw5e43hw5xz7bUBK8LMzj77rLPPXt/5xz/GmHMcLi4uYbiCAAESQohIRCuMhBlxVpxPnJcWjHPiTLKR1IqNaIQQjGAEwiMciIiI6BAeiHrFgQADEQAYERFAAMhXkHoQgADAKD9GEBEIRAQ86IAjPBgIB52Mgk+QJEUoHBH5ahQyIBjw/FEAIhwAyMJEIt8kX0kFb8g0rRjgQCA8Y0V0QQeif5CQMpVARmSmCEfWKxhgvhIgwICDQHlnAMxagZwoNFhE+VMQRAx+0bM2iC7QAQ4GWRQSRaqKk6MH9wAivH4CA94HpwSuRA0gGRGPBDStUCAAj2wEdlmhCC/KZYGzSBShHsgJZlP1Dw/AgyQBr1hkRDYcSB4cKPqoZVsGPNBFdIgusl8QZBBBUiIhUhEMRqbxqm6VmfCAAmCvUAlM9RDrjTmFMbkSAQe6CA90Dld0UR7jiC48a9YBIkVCUhAinE6EM4J0BOGecyVqmhEROdeYfWLz8ws5zwcQkwfLCxFEGCKRRiQyEZavE8Tw98tSdhWpkoXl03vX5d/q74V88SEh41CeybsjAg4uhzfuTnaOcefLkIlad/Ti2iMOs9T86+79u2/cOx6PzVqpJZOZkUHQKaDLCRbZeR45JyLgHgSDgShZxkGkeojMN/k24I5l+JjouuiefeJRb37HKS955TMXVsz2f8SB/cuX/u6mC7detXP7bdDIRDMjwS4IEp0Hq5+c5S4hIaIQcXFx7bRpMpz6Yg0IYQgBid7SZ9YsPumcc993yqnPPUg6XHHZ7s9/8td7bj+QNBNh4fDOu67zceedh0e4l2TNGeYl+21+bsW0dTBsHajPRGI0jLRh4zEXXPTl40849iA0AJaeuPKU05521eW33vmPB0wmGsvHApGdhGo+Vv8QoM3PrRxwlDDlxlRpDGGMxEhr1qz94UXnrT3iCQenyasdpRe9Yv3vfnXD/fcum6Xs7sgQ0d8vZ0CfE9QgWEAuKFOJVmLHMKL53Bc/sLT2UdHkNb/Qfvisk8ExGWaWUjIzM6MkiZJUUpL9q4GLBxAxuBIlaptP2PSqU1/46GnyOvbpi89/2ZEBN5OllFIyS7JMMOEoWCwK1ZxCHyxmX6M0K0Okt7z99P+XJq9TX78x0ElIyVJqLCUz01CevnCJqQqDKZ0yTWlMZKhp2scgT16bNi8trEjL+0OmlFtal8IjAqUE5FwDiEnIxBCLKhoGjjCEbXz60StXLTw2IDNt2nx4wClKZpYsmVnKNuLARxMPcVIAhzS5AhmgTc/c8Nho8lq/4VDACUgyyWT5S/b2wEZM/4WmSEWUUnTU+ic9HqC161bmukeRylQOORwuZwjueUuZHpGGE6aMq/8r2x++Djt8rm4vKeaEF2QhCAjvN9Bl+zEVqUGNzr42gqsPWfF4gFasHJW9et4yTbYECsDpwbKPTQ+jsUHHICLlRJuZGT0eoHZkWYC+TYgMiR6TWl225YPCSNh0SbT8TJj74+Hpg9IToVco05TtUb8tr/7tHV2eFYlIRLpv7wN/u3b3pz94/i037nn0HPfc/cD5526/cuet+/Yt146EClBoCtN06xCgQWM3RhJaRUuMGC0xuu3mu8Pxza/+/KXHnfGlMy8Yj7v/IUngwq1/eeurv7v1/CsOHOjuvGNfbq65K7C2916nvnKrWoeFJhLQECPFjDCnmDXMWrRXX3nzk5+6NDc7N17muWdd+LbTv7zvvv3/jWa83J3zsV99/Qs7fdykNHrK0YfdcM09lGGyj53wAFNkwyQXoyFaixnDjNgaG1NjbKT0+4t3NcleddpzzZpk7Y7fXP/O1523/98PPpym6/zMD//ykm23tu2clJ5x/NLimvk/7bhDSlWkXIsrSv4yUCiH1hStMFKMiIZM6h9KYrrzjr3bL776/Z967cpV82ZNSqOr/njbp977vYcDfePcHTsuvi2lFoAs3vG+Lbtv2vv3a/dmoClLV6X6PitJhLJjiJZIookm2BQTk5S+9bVtRx51+Ne3vnv1oQtmSqn5xY+v/sn3/jSk+fOlu7//rSskuXeWxmd89qQNmxZ/vHWX1PRAg2Y+cHdRSLZi5olEy2jEJFZtlIxNT0MmIt18w50vfPmmzc9bf9obtuy778CN19/lzqsuv+U1b9rSjhKA8dg/+q4f7r13uWl00snrPnL2izc9a2nP7fd/5azLTLMptYSQm3s/7qhH0VKnAa5dtYVohEQ2QhKbnOdCU45gkchcLXnclqO+87MzJAJ4YN+BSy+54Zq/3v6cF6x/1nOeDODv19217ae7jnnams0nrlu5aiZrdvZHLt7523+ORguylkHvHBHuXXQRnYfXR+fuERE8YtWJYiIaMUMkoeGAjDAxAaVQfeyc177xbc8/eM73a8dvbznrQ9tnRiubNEOmfBwfQES4w93dy1EkQqIRJpqY6nMylWdTMjViMjVJbbL2K2f+fPdN/3w0NPfde+C8sy9r02xKrZT6WpwLI1C2itXgykdcMbuYRhhV00oluQqlkqkxa5LaB/fz0+/5ftf971by1c/94f570TQzpobU5NwzbBo9Uz1w2+q59cP0Li7OEaxXrLxozBpT2nP7/QROOOkpB6G56EfXXfDt60ajhaaZJVMtPGWxr5BAIBAskwfADpmtQGzEhmzERsrfDkBlWTZTktKVO3dv2LR05FMPfUSaa/961+c/vj3ZfNPMmrWqKFNTB3JyOqtvCMAOmTtGTMaGTFZ9IzZSUzj6INJUvUXYJdv+tvH4tUccufohNNfvuvsz7/11Nx617ZylNu9QJzR9xyAHhbrqRdph8xuyGJa1YSM2pmHIrEplQ4d5x20/uUbixuOWzATAu/jpD3Z94RPbxw+2bTOX0kgyUUMa8SFgE4/ncQuPXjzN2IqN5QEvmhq7JNRpEEzsa7dJiTISeXi3+gkzJ5y0zpL95fI999w1btrZtplNaWTWSMqRqH20CBF15doT3q/gsYefXlDYWu+hUpbKYCq3FNJySpqSZJRJqgkCmZk1qRml1Jq1ZslklPq0mrJLxIDJK5m7e+4MpQhNNICx1ifSCOXhYRm1Ik+CTUyqB3WZWUo5DSUr6dxvx2pqFZ3IqMNZkRFBep6GpumSaEKh6bFKiYJhglIHdaAymazU0kwfJaGp4b5nmPAIIKOUgWP5pqYPmViDQuRRgNV7TxSqJwbVUWH57FLxJlNyMCCSkVWZBItlQgSxFiGUQWxmG3AUMfKk0khlVTg5uYgw0gbDmsrk+c4BR5kjsg7cWYfv+YSMqIYqB42+XuTGn3KMJpGa+MaqJPm5N9PUySryzDkP5AuNBxmdR//fBzEAUlBJsqm+Vn2WX2SFkgZeIUwTjhIylSm9pioHQLD888EjEA4HKHgY3HPsgk6KedBKU0yc/ZDdWTH1IKWLEvnsUdMKFKtak9j1e9/SjaL+2yLcHYiAFIqI/P4Q5ZDgQWM547OeNszqxEj/AUg44ksrXGkmAAAAAElFTkSuQmCC
 // @match        https://www.alienwarearena.com/*
@@ -16,7 +16,7 @@
 (function () {
     'use strict';
 
-    const SCRIPT_VERSION = '1.3.7';
+    const SCRIPT_VERSION = '1.3.8';
 
     // ------------------------------------------------------------------
     // Idiomas
@@ -134,7 +134,7 @@
             store: 'Battle Store', storePack: '{a} ARP for {f}', storeShort: '{n} tokens short', qPass: 'Battle Pass', passNone: 'not started', passClosed: 'season over', passClaim: '{n} to claim',
             evento: "Community event", evJoin: "not joined", evOwn: "game missing", evMin: "{v}/{c} min", evAll: "all milestones", evEnds: "Event: {v}", evNamed: "Event: {n}", goEvento: "Click this line to go to the event page.", tipEv: "Steam community events pay ARP for playtime, in milestones that need TWO things at once: the whole community reaching a total of hours, and you reaching your own. Your progress is shown in MINUTES because the site rounds to hours, so anything under one hour reads as 0 there and you cannot tell it apart from nothing at all.", tipEvJoin: "The event is live and you are NOT in it. Joining is a button on the event page, and until you press it nothing counts: playtime from before you join is thrown away — that is measured, not guessed. Joining is one way only, there is no leave button.", tipEvOwn: "The event needs the game and the site does not think you have it. If the game is Free to Play that is expected: Steam only reports free games you have actually PLAYED, so open it for a few minutes and close it. The site then takes up to an hour to notice. The «sync games» button is capped at once per hour and does not fix this on its own.",
             evOn: "under way",
-            mEvento: "Steam community events pay for playtime in milestones, and each one needs the whole community to reach a total of hours AND you to reach your own. Nothing counts until you press Join on the event page, and playtime from before you join is thrown away — so the panel warns you when an event is live and you are not in it. If more than one is live, each gets its own line, the one ending soonest first.",
+            mEvento: "Steam community events pay for playtime in milestones, and each one needs the whole community to reach a total of hours AND you to reach your own. Nothing counts until you press Join on the event page, and playtime from before you join is thrown away — so the panel warns you when an event is live and you are not in it. If more than one is live, each gets its own line, the one ending soonest first. On an event page you have joined, the milestone carousel moves to the one you are on —or, once yours are all done, to the first one the community still needs—, highlights it, and the page scrolls down to it. On one you have not joined it goes to the first milestone the community still needs, without scrolling the page away from the join button.",
             tipPass: 'The pass advances with ARP from any source, milestone by milestone, and it has to be STARTED by hand when a season opens. Unclaimed milestones are handed out at the end of the season, but the battle tokens are wiped: those are the ones with a deadline.',
             tipStore: 'The Battle Store swaps Battle Tokens for ARP at a fixed rate — 25 tokens for 100 ARP, 45 for 200, 90 for 500 — and this line shows the best pack your tokens already reach. It matters because the tokens are WIPED when the season closes, so they are ARP with an expiry date. It is deliberately not amber: it does not run out today, so it never feeds the end-of-day warning.',
             fold: 'Fold the panel', tipAcct: 'Your balance, tier and the two login counts. The streak of 7 and the calendar of 28 are NOT the same number, and neither one is the day of the month: the streak breaks if you miss a day, while the calendar counts the days you have logged in, whenever they fall. The site says so itself — its rewards go by total login days, not by the date. So you can be on streak day 1 with 8 days logged in. Both only exist in the Control Center, so on other pages they arrive a moment later.',
@@ -187,7 +187,7 @@
             store: 'Tienda de batalla', storePack: '{a} ARP por {f}', storeShort: 'faltan {n} fichas', qPass: 'Pase de batalla', passNone: 'sin empezar', passClosed: 'temporada cerrada', passClaim: '{n} por reclamar',
             evento: "Evento comunitario", evJoin: "sin unirte", evOwn: "falta el juego", evMin: "{v}/{c} min", evAll: "todos los hitos", evEnds: "Evento: {v}", evNamed: "Evento: {n}", goEvento: "Pulsa esta línea para ir a la página del evento.", tipEv: "Los eventos comunitarios de Steam pagan ARP por tiempo jugado, en hitos que exigen DOS cosas a la vez: que toda la comunidad llegue a un total de horas y que llegues tú a las tuyas. Tu progreso va en MINUTOS porque el sitio redondea a horas, así que por debajo de una hora él muestra 0 y no se distingue de no haber jugado nada.", tipEvJoin: "El evento está en vivo y NO estás dentro. Unirse es un botón de la página del evento, y hasta que lo pulsas no cuenta nada: el tiempo jugado antes de unirte se tira — está medido, no supuesto. Unirse es de ida: no hay botón para salirse.", tipEvOwn: "El evento pide el juego y el sitio no cree que lo tengas. Si el juego es Free to Play es lo esperable: Steam solo informa de los juegos gratis que has JUGADO de verdad, así que ábrelo unos minutos y ciérralo. El sitio tarda hasta una hora en enterarse. El botón de «sincronizar juegos» está limitado a una vez por hora y por sí solo no arregla esto.",
             evOn: "en marcha",
-            mEvento: "Los eventos comunitarios de Steam pagan por tiempo jugado en hitos, y cada uno exige que la comunidad entera llegue a un total de horas Y que llegues tú a las tuyas. No cuenta nada hasta que pulsas «unirse» en la página del evento, y el tiempo jugado antes de unirte se tira — por eso el panel avisa cuando hay un evento vivo y no estás dentro. Si hay más de uno vivo, cada uno va en su propia línea, primero el que acaba antes.",
+            mEvento: "Los eventos comunitarios de Steam pagan por tiempo jugado en hitos, y cada uno exige que la comunidad entera llegue a un total de horas Y que llegues tú a las tuyas. No cuenta nada hasta que pulsas «unirse» en la página del evento, y el tiempo jugado antes de unirte se tira — por eso el panel avisa cuando hay un evento vivo y no estás dentro. Si hay más de uno vivo, cada uno va en su propia línea, primero el que acaba antes. En la página de un evento al que te has unido, el carrusel de hitos se coloca en el que te toca —o, si ya tienes todos, en el primero que le falta a la comunidad—, lo resalta y la página baja hasta él. En uno al que no te has unido va al primer hito que le falta a la comunidad, sin bajar la página para no quitarte de delante el botón de unirte.",
             tipPass: 'El pase avanza con ARP de cualquier fuente, hito a hito, y hay que EMPEZARLO a mano cuando abre una temporada. Los hitos sin reclamar se entregan al cerrar, pero las fichas de batalla se borran: esas son las que tienen prisa.',
             tipStore: 'La Tienda de Batalla cambia fichas por ARP a precio fijo —25 fichas por 100 ARP, 45 por 200, 90 por 500— y esta línea enseña el mejor paquete que ya alcanzan tus fichas. Importa porque las fichas SE BORRAN al cerrar la temporada, así que son ARP con fecha de caducidad. No sale en amarillo a propósito: no vence hoy, así que nunca alimenta el aviso de fin de día.',
             fold: 'Plegar el panel', tipAcct: 'Tu saldo, tu nivel y las dos cuentas de inicio de sesión. La racha de 7 y el calendario de 28 NO son el mismo número, y ninguno es el día del mes: la racha se rompe si fallas un día, mientras que el calendario cuenta los días que has entrado, caigan cuando caigan. Lo dice el propio sitio: sus recompensas van por días de conexión acumulados, no por la fecha. Así que puedes ir por el día 1 de racha con 8 días entrados. Los dos solo están en el Centro de control, así que en otras páginas llegan un momento después.',
@@ -240,7 +240,7 @@
             store: 'Battle Store', storePack: '{a} ARP für {f}', storeShort: '{n} Marken fehlen', qPass: 'Battle Pass', passNone: 'nicht gestartet', passClosed: 'Saison beendet', passClaim: '{n} abzuholen',
             evento: "Community-Event", evJoin: "nicht beigetreten", evOwn: "Spiel fehlt", evMin: "{v}/{c} Min.", evAll: "alle Meilensteine", evEnds: "Event: {v}", evNamed: "Event: {n}", goEvento: "Klicke auf diese Zeile, um zur Event-Seite zu gehen.", tipEv: "Steam-Community-Events zahlen ARP für Spielzeit, in Meilensteinen, die ZWEI Dinge gleichzeitig verlangen: dass die ganze Community eine Gesamtstundenzahl erreicht und dass du deine eigene erreichst. Dein Fortschritt steht in MINUTEN, weil die Seite auf Stunden rundet — unter einer Stunde zeigt sie 0 an, ununterscheidbar von gar nichts.", tipEvJoin: "Das Event läuft und du bist NICHT dabei. Der Beitritt ist ein Knopf auf der Event-Seite, und bis du ihn drückst, zählt nichts: Spielzeit von vor dem Beitritt wird verworfen — gemessen, nicht vermutet. Der Beitritt ist endgültig, es gibt keinen Austritt.", tipEvOwn: "Das Event verlangt das Spiel und die Seite glaubt nicht, dass du es hast. Bei einem Free-to-Play-Spiel ist das zu erwarten: Steam meldet kostenlose Spiele nur, wenn du sie wirklich GESPIELT hast. Öffne es also ein paar Minuten und schließe es. Die Seite braucht danach bis zu einer Stunde. Der Knopf «Spiele synchronisieren» ist auf einmal pro Stunde begrenzt und löst das allein nicht.",
             evOn: "läuft",
-            mEvento: "Steam-Community-Events zahlen für Spielzeit in Meilensteinen, und jeder verlangt, dass die ganze Community eine Gesamtstundenzahl erreicht UND dass du deine eigene erreichst. Nichts zählt, bevor du auf der Event-Seite auf «Beitreten» drückst, und Spielzeit von vorher wird verworfen — deshalb warnt das Panel, wenn ein Event läuft und du nicht dabei bist. Laufen mehrere gleichzeitig, bekommt jedes seine eigene Zeile, das zuerst endende oben.",
+            mEvento: "Steam-Community-Events zahlen für Spielzeit in Meilensteinen, und jeder verlangt, dass die ganze Community eine Gesamtstundenzahl erreicht UND dass du deine eigene erreichst. Nichts zählt, bevor du auf der Event-Seite auf «Beitreten» drückst, und Spielzeit von vorher wird verworfen — deshalb warnt das Panel, wenn ein Event läuft und du nicht dabei bist. Laufen mehrere gleichzeitig, bekommt jedes seine eigene Zeile, das zuerst endende oben. Auf der Seite eines Events, dem du beigetreten bist, springt das Meilenstein-Karussell zu dem, an dem du gerade bist —oder, wenn du alle hast, zum ersten, der der Community noch fehlt—, hebt ihn hervor, und die Seite scrollt dorthin. Bei einem, dem du nicht beigetreten bist, springt es zum ersten Meilenstein, der der Community noch fehlt, ohne die Seite vom Beitreten-Knopf wegzuscrollen.",
             tipPass: 'Der Pass läuft mit ARP aus jeder Quelle, Meilenstein für Meilenstein, und muss bei Saisonstart von Hand GESTARTET werden. Nicht abgeholte Meilensteine gibt es am Saisonende, die Battle-Token werden aber gelöscht: die haben es eilig.',
             tipStore: 'Der Battle Store tauscht Marken gegen ARP zu festen Preisen — 25 Marken für 100 ARP, 45 für 200, 90 für 500 — und diese Zeile zeigt das beste Paket, das deine Marken schon erreichen. Wichtig ist es, weil die Marken beim Saisonende GELÖSCHT werden: es sind ARP mit Verfallsdatum. Bewusst nicht gelb: es läuft nicht heute ab und speist deshalb nie die Tageswarnung.',
             fold: 'Panel einklappen', tipAcct: 'Dein Guthaben, deine Stufe und die zwei Login-Zähler. Die 7-Tage-Serie und der 28-Tage-Kalender sind NICHT dieselbe Zahl, und keine davon ist der Tag des Monats: die Serie reißt, wenn du einen Tag auslässt, während der Kalender die Tage zählt, an denen du dich angemeldet hast, wann immer sie liegen. Die Seite sagt es selbst — ihre Belohnungen richten sich nach den gesamten Login-Tagen, nicht nach dem Datum. Du kannst also bei Serientag 1 und 8 Login-Tagen stehen. Beide gibt es nur im Control Center, auf anderen Seiten kommen sie einen Moment später.',
@@ -293,7 +293,7 @@
             store: 'Boutique de combat', storePack: '{a} ARP pour {f}', storeShort: 'il manque {n} jetons', qPass: 'Pass de combat', passNone: 'pas démarré', passClosed: 'saison terminée', passClaim: '{n} à récupérer',
             evento: "Événement communautaire", evJoin: "non rejoint", evOwn: "jeu manquant", evMin: "{v}/{c} min", evAll: "tous les paliers", evEnds: "Événement : {v}", evNamed: "Événement : {n}", goEvento: "Cliquez sur cette ligne pour aller à la page de l’événement.", tipEv: "Les événements communautaires Steam paient de l’ARP pour le temps de jeu, par paliers qui exigent DEUX choses à la fois : que toute la communauté atteigne un total d’heures et que vous atteigniez les vôtres. Votre progression est en MINUTES parce que le site arrondit aux heures : en dessous d’une heure il affiche 0, impossible à distinguer de rien du tout.", tipEvJoin: "L’événement est en cours et vous n’y êtes PAS. Rejoindre est un bouton sur la page de l’événement, et tant que vous ne l’avez pas pressé rien ne compte : le temps joué avant de rejoindre est perdu — c’est mesuré, pas supposé. Rejoindre est sans retour : il n’y a pas de bouton pour quitter.", tipEvOwn: "L’événement demande le jeu et le site ne pense pas que vous l’ayez. Si le jeu est Free to Play, c’est normal : Steam ne signale les jeux gratuits que si vous y avez vraiment JOUÉ. Ouvrez-le quelques minutes puis fermez-le. Le site met ensuite jusqu’à une heure à s’en apercevoir. Le bouton « synchroniser les jeux » est limité à une fois par heure et ne règle pas ça à lui seul.",
             evOn: "en cours",
-            mEvento: "Les événements communautaires Steam paient le temps de jeu par paliers, et chacun exige que toute la communauté atteigne un total d’heures ET que vous atteigniez le vôtre. Rien ne compte tant que vous n’avez pas cliqué sur « rejoindre » sur la page de l’événement, et le temps joué avant est perdu — c’est pourquoi le panneau vous prévient quand un événement est en cours et que vous n’y êtes pas. S'il y en a plusieurs en cours, chacun a sa propre ligne, celui qui se termine le plus tôt en premier.",
+            mEvento: "Les événements communautaires Steam paient le temps de jeu par paliers, et chacun exige que toute la communauté atteigne un total d’heures ET que vous atteigniez le vôtre. Rien ne compte tant que vous n’avez pas cliqué sur « rejoindre » sur la page de l’événement, et le temps joué avant est perdu — c’est pourquoi le panneau vous prévient quand un événement est en cours et que vous n’y êtes pas. S'il y en a plusieurs en cours, chacun a sa propre ligne, celui qui se termine le plus tôt en premier. Sur la page d’un événement que vous avez rejoint, le carrousel des paliers se place sur celui où vous en êtes —ou, si vous les avez tous, sur le premier qui manque encore à la communauté—, le met en évidence, et la page descend jusqu’à lui. Sur un événement que vous n’avez pas rejoint, il va au premier palier qui manque encore à la communauté, sans faire descendre la page loin du bouton pour rejoindre.",
             tipPass: 'Le pass avance avec l’ARP de n’importe quelle source, palier par palier, et il faut le DÉMARRER à la main quand une saison ouvre. Les paliers non récupérés sont remis à la fin, mais les jetons de combat sont effacés : ce sont eux qui pressent.',
             tipStore: 'La Boutique de combat échange des jetons contre des ARP à prix fixe — 25 jetons pour 100 ARP, 45 pour 200, 90 pour 500 — et cette ligne montre le meilleur lot que tes jetons atteignent déjà. C’est important parce que les jetons sont EFFACÉS à la fin de la saison : ce sont des ARP avec une date de péremption. Volontairement pas en jaune : ça n’expire pas aujourd’hui, donc ça n’alimente jamais l’alerte de fin de journée.',
             fold: 'Replier le panneau', tipAcct: 'Ton solde, ton niveau et les deux compteurs de connexion. La série de 7 et le calendrier de 28 ne sont PAS le même nombre, et aucun des deux n’est le jour du mois : la série se casse si tu sautes un jour, tandis que le calendrier compte les jours où tu t’es connecté, quels qu’ils soient. Le site le dit lui-même : ses récompenses suivent le total de jours de connexion, pas la date. Tu peux donc être au jour 1 de série avec 8 jours connectés. Les deux n’existent que dans le Centre de contrôle ; ailleurs ils arrivent un instant plus tard.',
@@ -346,7 +346,7 @@
             store: 'Loja de batalha', storePack: '{a} ARP por {f}', storeShort: 'faltam {n} fichas', qPass: 'Passe de batalha', passNone: 'por começar', passClosed: 'temporada fechada', passClaim: '{n} a reclamar',
             evento: "Evento da comunidade", evJoin: "sem participar", evOwn: "falta o jogo", evMin: "{v}/{c} min", evAll: "todos os marcos", evEnds: "Evento: {v}", evNamed: "Evento: {n}", goEvento: "Clica nesta linha para ir à página do evento.", tipEv: "Os eventos da comunidade de Steam pagam ARP por tempo de jogo, em marcos que exigem DUAS coisas ao mesmo tempo: que toda a comunidade chegue a um total de horas e que chegues tu às tuas. O teu progresso vai em MINUTOS porque o site arredonda para horas, por isso abaixo de uma hora mostra 0 e não se distingue de não teres jogado nada.", tipEvJoin: "O evento está a decorrer e NÃO estás dentro. Participar é um botão na página do evento, e até o carregares nada conta: o tempo jogado antes de participares é deitado fora — está medido, não suposto. Participar é só de ida: não há botão para sair.", tipEvOwn: "O evento pede o jogo e o site não acha que o tenhas. Se o jogo for Free to Play é o esperado: a Steam só reporta jogos gratuitos que tenhas mesmo JOGADO, por isso abre-o uns minutos e fecha-o. O site demora depois até uma hora a dar por isso. O botão de «sincronizar jogos» está limitado a uma vez por hora e por si só não resolve isto.",
             evOn: "a decorrer",
-            mEvento: "Os eventos da comunidade de Steam pagam por tempo de jogo em marcos, e cada um exige que toda a comunidade chegue a um total de horas E que chegues tu aos teus. Nada conta até carregares em «participar» na página do evento, e o tempo jogado antes é deitado fora — por isso o painel avisa quando há um evento a decorrer e não estás dentro. Se houver mais do que um a decorrer, cada um tem a sua linha, primeiro o que acaba mais cedo.",
+            mEvento: "Os eventos da comunidade de Steam pagam por tempo de jogo em marcos, e cada um exige que toda a comunidade chegue a um total de horas E que chegues tu aos teus. Nada conta até carregares em «participar» na página do evento, e o tempo jogado antes é deitado fora — por isso o painel avisa quando há um evento a decorrer e não estás dentro. Se houver mais do que um a decorrer, cada um tem a sua linha, primeiro o que acaba mais cedo. Na página de um evento em que participas, o carrossel de marcos vai para aquele em que estás —ou, se já os tens todos, para o primeiro que ainda falta à comunidade—, destaca-o e a página desce até ele. Num evento em que não participas, vai para o primeiro marco que ainda falta à comunidade, sem descer a página para não te tirar da frente o botão de participar.",
             tipPass: 'O passe avança com ARP de qualquer fonte, marco a marco, e tem de ser INICIADO à mão quando abre uma temporada. Os marcos por reclamar são entregues no fim, mas as fichas de batalha são apagadas: essas é que têm pressa.',
             tipStore: 'A Loja de Batalha troca fichas por ARP a preço fixo —25 fichas por 100 ARP, 45 por 200, 90 por 500— e esta linha mostra o melhor pacote que as tuas fichas já alcançam. Importa porque as fichas SÃO APAGADAS ao fechar a temporada, por isso são ARP com prazo. De propósito não fica amarela: não vence hoje, logo nunca alimenta o aviso de fim de dia.',
             fold: 'Recolher o painel', tipAcct: 'O teu saldo, o teu nível e as duas contagens de login. A sequência de 7 e o calendário de 28 NÃO são o mesmo número, e nenhum deles é o dia do mês: a sequência quebra se falhares um dia, enquanto o calendário conta os dias em que entraste, caiam quando caírem. O próprio site o diz: as suas recompensas seguem o total de dias de ligação, não a data. Por isso podes ir no dia 1 de sequência com 8 dias entrados. Ambos só existem no Centro de controlo; noutras páginas chegam um momento depois.',
@@ -399,7 +399,7 @@
             store: 'Loja de batalha', storePack: '{a} ARP por {f}', storeShort: 'faltam {n} fichas', qPass: 'Passe de batalha', passNone: 'não iniciado', passClosed: 'temporada encerrada', passClaim: '{n} para resgatar',
             evento: "Evento da comunidade", evJoin: "sem entrar", evOwn: "falta o jogo", evMin: "{v}/{c} min", evAll: "todos os marcos", evEnds: "Evento: {v}", evNamed: "Evento: {n}", goEvento: "Clique nesta linha para ir à página do evento.", tipEv: "Os eventos da comunidade da Steam pagam ARP por tempo de jogo, em marcos que exigem DUAS coisas ao mesmo tempo: a comunidade inteira chegar a um total de horas e você chegar às suas. Seu progresso aparece em MINUTOS porque o site arredonda para horas, então abaixo de uma hora ele mostra 0 e não dá para diferenciar de não ter jogado nada.", tipEvJoin: "O evento está no ar e você NÃO está dentro. Entrar é um botão na página do evento, e até você clicar nada conta: o tempo jogado antes de entrar é descartado — isso está medido, não suposto. Entrar é só de ida: não existe botão para sair.", tipEvOwn: "O evento pede o jogo e o site não acha que você tem. Se o jogo for Free to Play, isso é o esperado: a Steam só informa jogos gratuitos que você realmente JOGOU, então abra por alguns minutos e feche. Depois disso o site leva até uma hora para perceber. O botão «sincronizar jogos» é limitado a uma vez por hora e sozinho não resolve.",
             evOn: "em andamento",
-            mEvento: "Os eventos da comunidade da Steam pagam por tempo de jogo em marcos, e cada um exige que a comunidade inteira chegue a um total de horas E que você chegue aos seus. Nada conta até você clicar em «entrar» na página do evento, e o tempo jogado antes é descartado — por isso o painel avisa quando há um evento no ar e você não está dentro. Se houver mais de um no ar, cada um ganha sua própria linha, primeiro o que acaba antes.",
+            mEvento: "Os eventos da comunidade da Steam pagam por tempo de jogo em marcos, e cada um exige que a comunidade inteira chegue a um total de horas E que você chegue aos seus. Nada conta até você clicar em «entrar» na página do evento, e o tempo jogado antes é descartado — por isso o painel avisa quando há um evento no ar e você não está dentro. Se houver mais de um no ar, cada um ganha sua própria linha, primeiro o que acaba antes. Na página de um evento em que você entrou, o carrossel de marcos vai para aquele em que você está —ou, se você já tem todos, para o primeiro que ainda falta para a comunidade—, destaca ele e a página desce até lá. Em um evento em que você não entrou, ele vai para o primeiro marco que ainda falta para a comunidade, sem descer a página para não tirar da frente o botão de entrar.",
             tipPass: 'O passe avança com ARP de qualquer fonte, marco a marco, e precisa ser INICIADO na mão quando abre uma temporada. Os marcos não resgatados são entregues no fim, mas as fichas de batalha são apagadas: essas é que têm prazo.',
             tipStore: 'A Loja de Batalha troca fichas por ARP a preço fixo —25 fichas por 100 ARP, 45 por 200, 90 por 500— e esta linha mostra o melhor pacote que suas fichas já alcançam. Importa porque as fichas SÃO APAGADAS quando a temporada fecha, então são ARP com prazo de validade. De propósito ela não fica amarela: não vence hoje, então nunca alimenta o aviso de fim de dia.',
             fold: 'Recolher o painel', tipAcct: 'Seu saldo, seu nível e as duas contagens de login. A sequência de 7 e o calendário de 28 NÃO são o mesmo número, e nenhum dos dois é o dia do mês: a sequência quebra se você falhar um dia, enquanto o calendário conta os dias em que você entrou, caiam quando caírem. O próprio site diz isso: as recompensas dele seguem o total de dias de login, não a data. Então você pode estar no dia 1 de sequência com 8 dias entrados. Os dois só existem no Centro de controle; em outras páginas chegam um instante depois.',
@@ -452,7 +452,7 @@
             store: '战斗商店', storePack: '{f} 换 {a} ARP', storeShort: '还差 {n} 代币', qPass: '战斗通行证', passNone: '尚未开始', passClosed: '赛季已结束', passClaim: '{n} 待领取',
             evento: "社区活动", evJoin: "未参加", evOwn: "缺少游戏", evMin: "{v}/{c} 分钟", evAll: "全部里程碑", evEnds: "活动：{v}", evNamed: "活动：{n}", goEvento: "点击此行前往活动页面。", tipEv: "Steam 社区活动按游戏时长发放 ARP，分为若干里程碑，每个都需要同时满足两个条件：整个社区达到总时长，以及你自己达到个人时长。这里用分钟显示你的进度，因为站点会向下取整到小时——不足一小时它显示 0，和完全没玩无法区分。", tipEvJoin: "活动正在进行，而你并未加入。加入是活动页面上的一个按钮，在你按下之前一切都不计数：加入之前的游戏时长会被丢弃——这是实测结果，不是猜测。加入是单向的，没有退出按钮。", tipEvOwn: "活动需要该游戏，而站点认为你没有。如果是免费游戏，这是正常的：Steam 只会报告你真正玩过的免费游戏，所以打开它玩几分钟再关掉。之后站点最多需要一小时才会察觉。「同步游戏」按钮每小时只能用一次，单靠它解决不了这个问题。",
             evOn: "进行中",
-            mEvento: "Steam 社区活动按游戏时长分里程碑发放奖励，每个里程碑都要求整个社区达到总时长，并且你自己也要达到个人时长。在活动页面点击「加入」之前一切都不计数，加入之前的游戏时长会被丢弃——所以当活动正在进行而你尚未加入时，面板会提醒你。如果同时有多个活动进行，每个活动各占一行，最先结束的排在最前。",
+            mEvento: "Steam 社区活动按游戏时长分里程碑发放奖励，每个里程碑都要求整个社区达到总时长，并且你自己也要达到个人时长。在活动页面点击「加入」之前一切都不计数，加入之前的游戏时长会被丢弃——所以当活动正在进行而你尚未加入时，面板会提醒你。如果同时有多个活动进行，每个活动各占一行，最先结束的排在最前。在你已加入的活动页面上，里程碑轮播会跳到你当前所在的那一个——如果你的都已完成，则跳到社区还差的第一个——并将其高亮，页面也会滚动到那里。在你尚未加入的活动中，它会跳到社区还差的第一个里程碑，但页面不会滚动，以免把「加入」按钮移出视线。",
             tipPass: '通行证靠任何来源的 ARP 逐个里程碑推进，赛季开始时必须手动「开始」。未领取的里程碑会在赛季结束时发放，但战斗代币会被清空——有时限的是代币。',
             tipStore: '战斗商店以固定价格把代币换成 ARP——25 代币换 100 ARP，45 换 200，90 换 500——这一行显示你的代币已经够得着的最划算的一档。它重要是因为赛季结束时代币会被清空：这是有保质期的 ARP。这里刻意不用黄色：它今天不会过期，所以永远不会触发当日提醒。',
             fold: '折叠面板', tipAcct: '你的余额、等级，以及两个登录计数。7 天连续和 28 天日历不是同一个数字，两者都不是当月的日期：漏一天连续就断，而日历统计的是你登录过的天数，无论它们落在哪一天。网站自己也这么说——奖励看的是累计登录天数，不是日期。所以你可能连续第 1 天，却已登录 8 天。两者只存在于控制中心，在别的页面上会晚一点才到。',
@@ -505,7 +505,7 @@
             store: 'बैटल स्टोर', storePack: '{f} में {a} ARP', storeShort: '{n} टोकन कम हैं', qPass: 'बैटल पास', passNone: 'शुरू नहीं किया', passClosed: 'सीज़न खत्म', passClaim: '{n} लेना बाकी',
             evento: "कम्युनिटी इवेंट", evJoin: "शामिल नहीं हुए", evOwn: "गेम नहीं है", evMin: "{v}/{c} मिनट", evAll: "सभी माइलस्टोन", evEnds: "इवेंट: {v}", evNamed: "इवेंट: {n}", goEvento: "इवेंट पेज पर जाने के लिए इस पंक्ति पर क्लिक करें।", tipEv: "Steam के कम्युनिटी इवेंट खेले गए समय के बदले ARP देते हैं, माइलस्टोन के रूप में, जिनमें एक साथ दो शर्तें पूरी करनी होती हैं: पूरी कम्युनिटी का कुल घंटों तक पहुँचना, और आपका अपने घंटों तक पहुँचना। आपकी प्रगति मिनटों में दिखती है क्योंकि साइट घंटों में पूर्णांकित करती है — एक घंटे से कम पर वह 0 दिखाती है, जो बिलकुल न खेलने से अलग नहीं लगता।", tipEvJoin: "इवेंट चल रहा है और आप उसमें शामिल नहीं हैं। शामिल होना इवेंट पेज का एक बटन है, और जब तक आप उसे नहीं दबाते कुछ नहीं गिना जाता: शामिल होने से पहले खेला गया समय बेकार चला जाता है — यह मापा गया है, अनुमान नहीं। शामिल होना एकतरफ़ा है: बाहर निकलने का कोई बटन नहीं है।", tipEvOwn: "इवेंट को गेम चाहिए और साइट को नहीं लगता कि वह आपके पास है। अगर गेम Free to Play है तो यही अपेक्षित है: Steam केवल वही मुफ़्त गेम बताता है जिन्हें आपने सचमुच खेला हो, इसलिए उसे कुछ मिनट खोलें और बंद करें। इसके बाद साइट को समझने में एक घंटे तक लग सकता है। «गेम सिंक करें» बटन घंटे में एक बार तक सीमित है और अकेले यह इसे ठीक नहीं करता।",
             evOn: "चल रहा है",
-            mEvento: "Steam के कम्युनिटी इवेंट खेले गए समय के बदले माइलस्टोन में भुगतान करते हैं, और हर माइलस्टोन के लिए पूरी कम्युनिटी को कुल घंटों तक पहुँचना होता है और आपको अपने घंटों तक। इवेंट पेज पर «शामिल हों» दबाने तक कुछ नहीं गिना जाता, और उससे पहले खेला गया समय बेकार चला जाता है — इसीलिए जब कोई इवेंट चल रहा हो और आप उसमें न हों तो पैनल चेतावनी देता है। अगर एक साथ कई इवेंट चल रहे हों, तो हर एक की अपनी लाइन होती है, सबसे पहले ख़त्म होने वाला सबसे ऊपर।",
+            mEvento: "Steam के कम्युनिटी इवेंट खेले गए समय के बदले माइलस्टोन में भुगतान करते हैं, और हर माइलस्टोन के लिए पूरी कम्युनिटी को कुल घंटों तक पहुँचना होता है और आपको अपने घंटों तक। इवेंट पेज पर «शामिल हों» दबाने तक कुछ नहीं गिना जाता, और उससे पहले खेला गया समय बेकार चला जाता है — इसीलिए जब कोई इवेंट चल रहा हो और आप उसमें न हों तो पैनल चेतावनी देता है। अगर एक साथ कई इवेंट चल रहे हों, तो हर एक की अपनी लाइन होती है, सबसे पहले ख़त्म होने वाला सबसे ऊपर। जिस इवेंट में आप शामिल हैं उसके पेज पर, माइलस्टोन का कैरोसेल उस पर पहुँच जाता है जिस पर आप हैं —या, अगर आपके सारे पूरे हो चुके हैं, तो उस पहले पर जो कम्युनिटी के लिए अभी बाकी है—, उसे हाइलाइट करता है, और पेज नीचे उस तक स्क्रॉल होता है। जिस इवेंट में आप शामिल नहीं हैं, उसमें यह उस पहले माइलस्टोन पर जाता है जो कम्युनिटी के लिए अभी बाकी है, पर पेज नीचे नहीं जाता ताकि «शामिल हों» बटन सामने से न हटे।",
             tipPass: 'पास किसी भी स्रोत के ARP से, एक-एक पड़ाव करके आगे बढ़ता है, और सीज़न खुलने पर उसे हाथ से शुरू करना पड़ता है। बिना लिए पड़ाव सीज़न के अंत में मिल जाते हैं, पर बैटल टोकन मिट जाते हैं — जल्दी उन्हीं की है।',
             tipStore: 'बैटल स्टोर तय दाम पर टोकन को ARP में बदलता है — 25 टोकन के 100 ARP, 45 के 200, 90 के 500 — और यह पंक्ति वह सबसे अच्छा पैक दिखाती है जिस तक आपके टोकन पहले से पहुँचते हैं। यह मायने रखता है क्योंकि सीज़न बंद होते ही टोकन मिटा दिए जाते हैं: ये समय-सीमा वाले ARP हैं। इसे जानबूझकर पीला नहीं रखा गया: यह आज ख़त्म नहीं होता, इसलिए दिन-के-अंत की चेतावनी में कभी नहीं जुड़ता।',
             fold: 'पैनल समेटें', tipAcct: 'आपका बैलेंस, स्तर और लॉगिन की दो गिनतियाँ। 7 दिन की लगातार गिनती और 28 दिन का कैलेंडर एक ही संख्या नहीं हैं, और इनमें से कोई भी महीने की तारीख़ नहीं है: एक दिन चूकने पर लगातार गिनती टूट जाती है, जबकि कैलेंडर उन दिनों को गिनता है जिनमें आपने लॉगिन किया, चाहे वे कभी भी पड़ें। साइट ख़ुद यही कहती है — उसके इनाम कुल लॉगिन दिनों से चलते हैं, तारीख़ से नहीं। इसलिए आप लगातार दिन 1 पर हो सकते हैं और 8 दिन लॉगिन कर चुके हों। ये दोनों सिर्फ़ कंट्रोल सेंटर में हैं, बाकी पेजों पर थोड़ी देर बाद आते हैं।',
@@ -1510,6 +1510,8 @@
                 // El de COMUNIDAD si se lee: ese lo pinta el servidor y el JS de la
                 // pagina no lo toca nunca.
                 comunidad: com ? !com.classList.contains('fa-lock') : null,
+                // El id, para volver a su tarjeta del carrusel (ver enfocarHito).
+                id: id,
             });
         }
         return { hay: true, estado: estado, minutos: minutos, hitos: hitos, at: Date.now() };
@@ -2595,26 +2597,35 @@
         return n.closest('.user-profile__profile-card') || n.closest('.lh-sm') || n;
     }
 
-    function enfocar(clave) {
-        const destino = seccionCC(clave);
-        if (!destino) return false;
-        // Con su CABECERA arriba, justo debajo de la barra fija del sitio, y no centrada: la
-        // tarjeta de Twitch es más alta que la pantalla —la lista de canales entera—, y
-        // centrarla dejaba fuera justo su principio, el título «Ver Twitch» del que cuelga la
-        // lista (lo pidió el usuario el 2026-09-25). `scrollIntoView` con `block: 'start'` la
-        // dejaría debajo de la barra fija, así que se calcula a mano restando su alto.
+    // Bajar la página hasta un elemento con su borde de arriba justo debajo de la barra fija
+    // del sitio, y no centrado: la tarjeta de Twitch es más alta que la pantalla —la lista de
+    // canales entera—, y centrarla dejaba fuera justo su principio, el título «Ver Twitch» del
+    // que cuelga la lista (lo pidió el usuario el 2026-09-25). `scrollIntoView` con
+    // `block: 'start'` lo dejaría debajo de la barra fija, así que se calcula a mano restando su
+    // alto.
+    function bajarA(destino) {
         try {
             const barra = document.querySelector('nav.fixed-top, .navbar.fixed-top, header.fixed-top');
             const tapa = barra ? barra.getBoundingClientRect().height : 80;
             const y = destino.getBoundingClientRect().top + window.scrollY - tapa - 12;
             window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
         } catch (e) { /* sin scroll programático: el resaltado sigue marcando dónde está */ }
-        // Quitar y volver a poner la clase para que la animación arranque de nuevo si se
-        // pulsa dos veces seguidas.
+    }
+
+    // Quitar y volver a poner la clase para que la animación arranque de nuevo si se pide dos
+    // veces seguidas.
+    function resaltar(destino) {
         destino.classList.remove('awa-foco');
         void destino.offsetWidth;
         destino.classList.add('awa-foco');
         setTimeout(() => destino.classList.remove('awa-foco'), FOCO_MS);
+    }
+
+    function enfocar(clave) {
+        const destino = seccionCC(clave);
+        if (!destino) return false;
+        bajarA(destino);
+        resaltar(destino);
         return true;
     }
 
@@ -2643,6 +2654,64 @@
         // Un respiro para que la página termine de colocarse: las imágenes de arriba empujan
         // las tarjetas al cargar, y bajar antes deja el destino fuera de la vista.
         setTimeout(() => enfocar(f.clave), 400);
+    }
+
+    // ------------------------------------------------------------------
+    // La página de un evento: el carrusel, en el hito que te toca
+    // ------------------------------------------------------------------
+    // El sitio abre el carrusel de premios siempre por el hito 1, y con nueve hitos el que
+    // importa suele estar tres o cuatro clics más allá. Así que al entrar se coloca en el que te
+    // toca, se resalta y la página baja hasta la sección. Solo al cargar: si luego lo mueves tú,
+    // no se vuelve a mover.
+    //
+    // Cuál: el primero que TÚ no has cumplido; si ya los tienes todos, el primero al que le
+    // falta la COMUNIDAD, que es el que te queda por cobrar; si está todo, ninguno. Y sin
+    // minutos fiables (`personal` a null) no se adivina.
+    //
+    // En un evento al que NO te has unido —o cuyo juego el sitio no te ve— no hay hito «tuyo»:
+    // tus minutos no cuentan. Ahí el carrusel va al primero que le falta a la comunidad, pero la
+    // página NO baja: lo que importa en ella es su botón de unirse o de sincronizar, que está
+    // arriba, y bajar hasta los premios te lo quitaría de delante. Al bajar tú, ya está colocado
+    // (lo pidió el usuario el 2026-09-26, al ver que en Aniimo, sin el juego, no hacía nada).
+    function hitoObjetivo(hitos) {
+        if (!hitos || !hitos.length || hitos.some((h) => h.personal === null)) return null;
+        return hitos.find((h) => !h.personal) || hitos.find((h) => h.comunidad === false) || null;
+    }
+
+    // El carrusel es Flickity, y el sitio guarda su instancia en `window.main_flkty` —es la
+    // misma que usa su botón de mostrar detalles para recolocarlo—. Se crea en su `$(…)`, que
+    // puede llegar después que este script, así que se espera un poco a que exista; si no
+    // aparece, no se hace nada. Redimensionar la ventana no lo deshace: el sitio vuelve a
+    // llamar a `new Flickity` sobre el mismo elemento, y Flickity 2 devuelve la instancia que
+    // ya había, con su selección («do not initialize twice on same element», 2.1.2).
+    function enfocarHito(intento) {
+        const ev = readEventoPagina(document);
+        if (!ev) return;
+        const unido = ev.estado === 'joined';
+        const h = unido ? hitoObjetivo(ev.hitos)
+            : (ev.hitos || []).find((x) => x.comunidad === false) || null;
+        if (!h || !h.id) return;
+        const barra = document.querySelector('.milestone-progress[data-milestone="' + h.id + '"]');
+        const celda = barra && barra.closest('.carousel-cell');
+        if (!celda) return;
+        // Los premios van en un bloque plegable, y en la página de un evento terminado llegan
+        // plegados. Plegados no hay nada que enseñar, y desplegarlos no es cosa del script.
+        const caja = document.getElementById('rewardsCollapse');
+        if (caja && !visibleEnLinea(caja)) return;
+        const flk = pageWindow().main_flkty;
+        if (!flk || typeof flk.select !== 'function') {
+            const n = intento || 0;
+            if (n < 20) setTimeout(() => enfocarHito(n + 1), 250);
+            return;
+        }
+        const celdas = Array.isArray(flk.cells) && flk.cells.length
+            ? flk.cells.map((c) => c.element)
+            : Array.from(document.querySelectorAll('.main-carousel .carousel-cell'));
+        const i = celdas.indexOf(celda);
+        if (i < 0) return;
+        try { flk.select(i); } catch (e) { return; }
+        if (unido) bajarA(celda.closest('.rewards-section') || celda);
+        resaltar(celda);
     }
 
     // El aviso de una línea con enlace lleva pegado a dónde va; sin enlace, no
@@ -3419,6 +3488,9 @@
             '.awa-foco{outline:2px solid #01f5ff;outline-offset:4px;border-radius:8px;',
             'animation:awa-foco 2.6s ease-out forwards;}',
             '@keyframes awa-foco{0%,60%{outline-color:#01f5ff}100%{outline-color:rgba(1,245,255,0)}}',
+            // En una tarjeta del carrusel de un evento el contorno va hacia DENTRO: el visor de
+            // Flickity recorta con overflow:hidden todo lo que sale de la tarjeta.
+            '.carousel-cell.awa-foco{outline-offset:-3px;}',
             // El único elemento del panel que pide una respuesta, así que es el
             // único que se pinta como algo pulsable de cuerpo entero.
             W + ' .awa-w__alert{display:flex;align-items:flex-start;gap:8px;cursor:pointer;',
@@ -3596,6 +3668,8 @@
         // Si se llegó aquí desde una línea del panel, bajar a su sección. No espera a ningún
         // dato: las tarjetas vienen servidas en el HTML.
         enfocarPendiente();
+        // Y en la página de un evento, el carrusel al hito que te toca.
+        enfocarHito();
 
         let leyendo = false;
         // Lo último que se leyó BIEN de cada cosa. Una relectura fallida no puede

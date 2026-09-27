@@ -3501,6 +3501,105 @@ console.log('\n=== 63. El descuento de un artefacto en el Marketplace ===');
   }
 }
 
+console.log('\n=== 64. La pagina de un evento: el carrusel, en el hito que te toca ===');
+// El sitio abre el carrusel de premios por el hito 1. Al entrar en un evento al que te has unido,
+// el panel lo coloca en el primer hito que TE falta; si los tienes todos, en el primero que le
+// falta a la COMUNIDAD; si esta todo, no lo toca. Flickity no corre en jsdom: la instancia que el
+// sitio deja en `window.main_flkty` se sustituye por un doble que apunta lo que le piden.
+{
+  const F = 'dom-steam-community-event-live-joined-artifact-2026-09-24.html';
+  const URL_EV = '/steam/community-event/warframe-community-event-7';
+  const orig = leer(F);
+  const os = require('os');
+  // `mount` lee de fichero: las variantes se escriben en un temporal fuera de docs/.
+  const montarTexto = (html, tweak) => {
+    const tmp = path.join(os.tmpdir(), 'awa-ev-' + Math.random().toString(36).slice(2) + '.html');
+    fs.writeFileSync(tmp, html);
+    const w = mount(path.relative(DOCS, tmp), URL_EV, tweak);
+    fs.unlinkSync(tmp);
+    return w;
+  };
+  const doble = (win, retraso) => {
+    win.__sel = []; win.__bajadas = [];
+    win.scrollTo = (o) => win.__bajadas.push(o);
+    const poner = () => {
+      const celdas = [...win.document.querySelectorAll('.main-carousel .carousel-cell')];
+      win.main_flkty = { cells: celdas.map((e) => ({ element: e })), select: (i) => win.__sel.push(i) };
+    };
+    if (retraso === undefined) poner(); else if (retraso !== null) setTimeout(poner, retraso);
+  };
+  const celda = (w, i) => w.document.querySelectorAll('.main-carousel .carousel-cell')[i];
+  {
+    // 355 minutos y umbrales de 60 en 60: el primero que falta es el de 360, el sexto.
+    const w = mount(F, URL_EV, (win) => doble(win)); await tick();
+    check('con 355 min, al hito 6 (el de 360)', JSON.stringify(w.__sel) === '[5]', JSON.stringify(w.__sel));
+    check('y lo resalta', celda(w, 5).classList.contains('awa-foco'), celda(w, 5).className);
+    check('y baja la pagina una vez', w.__bajadas.length === 1 && typeof w.__bajadas[0].top === 'number', String(w.__bajadas.length));
+  }
+  const con540 = orig.split('let personalPlaytime = 355').join('let personalPlaytime = 540');
+  check('control: los minutos se cambiaron de verdad (una vez, en el script)',
+    orig.split('let personalPlaytime = 355').length === 2 && con540.indexOf('let personalPlaytime = 540') > 0, '');
+  {
+    // Con los nueve tuyos cumplidos, el primero que le falta a la comunidad: el hito 4 (40.000 h).
+    const w = montarTexto(con540, (win) => doble(win)); await tick();
+    check('con los tuyos cumplidos, al primero que le falta a la comunidad (hito 4)',
+      JSON.stringify(w.__sel) === '[3]', JSON.stringify(w.__sel));
+  }
+  {
+    let n = 0;
+    const todo = con540.replace(/class="fas fa-lock"(\s+id="milestone-\d+-community-status")/g,
+      (m, resto) => { n++; return 'class="fas fa-square-check text-success"' + resto; });
+    check('control: se abrieron los seis candados de comunidad', n === 6, String(n));
+    const w = montarTexto(todo, (win) => doble(win)); await tick();
+    check('con todo cumplido no mueve nada ni baja', w.__sel.length === 0 && w.__bajadas.length === 0,
+      JSON.stringify(w.__sel) + ' / ' + w.__bajadas.length);
+  }
+  {
+    // Sin unirte (aqui, sin el juego) no hay hito tuyo: va al primero que le falta a la
+    // comunidad, pero la pagina NO baja, para no quitar de delante el boton de arriba. El
+    // esperado se calcula del propio volcado: la primera tarjeta con el candado de comunidad.
+    const U = 'dom-steam-community-event-live-unowned-9-milestones-2026-09-23.html';
+    const w = mount(U, URL_EV, (win) => doble(win)); await tick();
+    const celdas = [...w.document.querySelectorAll('.main-carousel .carousel-cell')];
+    const esperado = celdas.findIndex((c) => { const i = c.querySelector('[id$="-community-status"]'); return i && i.classList.contains('fa-lock'); });
+    check('control: el volcado sin unirse tiene algun hito con candado de comunidad', esperado >= 0, String(esperado));
+    check('sin unirte, al primer hito que le falta a la comunidad', JSON.stringify(w.__sel) === JSON.stringify([esperado]),
+      JSON.stringify(w.__sel) + ' / esperado ' + esperado);
+    check('lo resalta', celdas[esperado] && celdas[esperado].classList.contains('awa-foco'), '');
+    check('pero NO baja la pagina', w.__bajadas.length === 0, String(w.__bajadas.length));
+  }
+  {
+    // Premios plegados (asi llega la pagina de un evento terminado): nada que enseñar.
+    const plegado = orig.split('<div id="rewardsCollapse">').join('<div id="rewardsCollapse" style="display: none;">');
+    check('control: el bloque se plego de verdad', plegado.indexOf('id="rewardsCollapse" style="display: none;"') > 0, '');
+    const w = montarTexto(plegado, (win) => doble(win)); await tick();
+    check('con los premios plegados no toca nada', w.__sel.length === 0 && w.__bajadas.length === 0, JSON.stringify(w.__sel));
+  }
+  {
+    // El carrusel del sitio puede crearse despues que el script: se espera a que aparezca.
+    const w = mount(F, URL_EV, (win) => doble(win, 600)); await tick();
+    check('aun sin carrusel, todavia no ha hecho nada', w.__sel.length === 0, JSON.stringify(w.__sel));
+    await new Promise((r) => setTimeout(r, 900));
+    check('y cuando el sitio lo crea, va al hito 6', JSON.stringify(w.__sel) === '[5]', JSON.stringify(w.__sel));
+  }
+  {
+    // Sin carrusel nunca: ni error ni bajada a ciegas.
+    const w = mount(F, URL_EV, (win) => doble(win, null)); await new Promise((r) => setTimeout(r, 700));
+    check('sin carrusel no baja la pagina', w.__bajadas.length === 0 && !w.document.querySelector('.awa-foco'), String(w.__bajadas.length));
+  }
+  {
+    const m = SCRIPT.split('\n').filter((l) => /^\s*mEvento:/.test(l));
+    check('la ficha lo cuenta en los ocho',
+      m.length === 8 && m.every((l) => /(carousel|carrusel|Karussell|carrousel|carrossel|轮播|कैरोसेल)/.test(l)), String(m.length));
+    const readme = fs.readFileSync(__dirname + '/../README.md', 'utf8');
+    check('el README lo cuenta en los dos idiomas',
+      /milestone carousel opens on the one you are on/.test(readme) && /carrusel de hitos se abre en el que te toca/.test(readme)
+        && /the page stays put/.test(readme) && /la página se queda donde está/.test(readme), '');
+    check('y la ficha cuenta lo de sin unirte en los ocho',
+      m.every((l) => /(not joined|no te has unido|nicht beigetreten|pas rejoint|não participas|não entrou|尚未加入|शामिल नहीं)/.test(l)), '');
+  }
+}
+
 console.log('\n' + (fail ? '✗ ' : '✓ ') + ok + ' comprobaciones pasadas, ' + fail + ' fallidas\n');
 process.exit(fail ? 1 : 0);
 }
