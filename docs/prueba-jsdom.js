@@ -246,7 +246,10 @@ console.log('\n=== 3. Twitch a cero: el aviso del widget ===');
   const w = mount('dom-control-center-2026-08.html', '/control-center'); await tick();
   const note = txt(w, '.awa-w__note');
   check('aparece el aviso', !!note, String(note));
-  check('el aviso habla del widget y de Hive/Nexus', note && /widget/i.test(note) && /Hive/.test(note), String(note));
+  // Hasta 1.3.8 decia «en un canal de Hive o Nexus», y Socios tambien paga (a 0.2/min, medido
+  // con `track` el 2026-09-30). El aviso tiene que remitir a la lista entera.
+  check('el aviso habla del widget y de la lista del Centro de control', note && /widget/i.test(note)
+    && /Control Center|Centro de control/.test(note) && !/Hive|Nexus/.test(note), String(note));
 }
 
 console.log('\n=== 4. Quest diaria incompleta (6200, 24 ago) ===');
@@ -352,15 +355,29 @@ console.log('\n=== 12. Fuera, se piden dos cosas y una sola vez cada una ===');
 {
   // Con la caché del día puesta, el pase no se vuelve a pedir. Es lo que hace que
   // la petición extra sea una al día y no una por página.
+  // Desde 1.3.9 la caché lleva la `url` del pase y solo vale para ESA: la portada del volcado
+  // enlaza el `/1`, así que la caché de `/1` se usa.
   const w = mount('dom-homepage-src-2026-08.html', '/', (win) => {
     win.localStorage.setItem('awa-arp-pass', JSON.stringify({
       tokens: 45, tokensMax: 135, claimable: 0, started: true, endsAt: Date.now() + 864e5, at: Date.now(),
+      url: '/control-center/battle-pass/1',
     }));
   }); await tick();
   check('con caché del día no se pide el pase', !w.fetched.some((u) => /battle-pass/.test(u)),
     JSON.stringify(w.fetched));
   const p = lines(w).find((l) => /[Pp]ase|Pass/.test(l[0]));
   check('y la línea sale igual, desde la caché', !!p && /45/.test(p[1]), p && p.join(' | '));
+}
+{
+  // Y una caché SIN `url` —la que dejó 1.3.8, que era siempre la Temporada 0— no vale aunque
+  // sea de hoy: si valiera, el día de actualizar el panel seguiría en la temporada cerrada.
+  const w = mount('dom-homepage-src-2026-08.html', '/', (win) => {
+    win.localStorage.setItem('awa-arp-pass', JSON.stringify({
+      tokens: 45, tokensMax: 135, claimable: 0, started: true, endsAt: Date.now() + 864e5, at: Date.now(),
+    }));
+  }); await tick();
+  check('una caché de 1.3.8, sin url, se vuelve a pedir', w.fetched.some((u) => /battle-pass/.test(u)),
+    JSON.stringify(w.fetched));
 }
 
 
@@ -3424,6 +3441,26 @@ console.log('\n=== 62. Un artefacto sube el tope de Twitch ===');
     const readme = fs.readFileSync(__dirname + '/../README.md', 'utf8');
     check('el README lo cuenta en los dos idiomas',
       /raise the daily cap above 15/.test(readme) && /suben el tope diario por encima de 15/.test(readme), '');
+    // El ritmo medido en septiembre de 2026 (ver TWITCH_CAP): los dos, nunca uno solo —va por
+    // grupo de canal—, y dicho como medido, no como publicado. En el tooltip, en la ficha y en
+    // el README. Y que ninguna de las tres vuelva a pedir Hive o Nexus para ganar.
+    const lineas = (k) => SCRIPT.split('\n').filter((l) => new RegExp('^\\s*' + k + ':').test(l));
+    const ritmo = (l) => /2[.,]5/.test(l) && /\b5\b/.test(l.replace(/2[.,]5/g, '')) && /2026/.test(l);
+    const tT = lineas('tipTwitch'), tZ = lineas('tipTwitchZero');
+    check('el tooltip de Twitch da los dos ritmos, fechados, en los ocho', tT.length === 8 && tT.every(ritmo),
+      tT.filter((l) => !ritmo(l)).join(' / '));
+    check('la ficha «Saber más» tambien, en los ocho', mT.every(ritmo), mT.filter((l) => !ritmo(l)).join(' / '));
+    check('el aviso de Twitch a cero no exige Hive ni Nexus en ningun idioma',
+      tZ.length === 8 && tZ.every((l) => !/Hive|Nexus/.test(l)), tZ.filter((l) => /Hive|Nexus/.test(l)).join(' / '));
+    const tramo = (re) => (readme.split('\n').find((l) => re.test(l)) || '');
+    const rEn = tramo(/^- \*\*Time on site\*\* and \*\*Twitch\*\*/), rEs = tramo(/^- \*\*Tiempo en el sitio\*\* y \*\*Twitch\*\*/);
+    check('el README da los dos ritmos en los dos idiomas', ritmo(rEn) && ritmo(rEs), rEn.slice(0, 80) + ' | ' + rEs.slice(0, 80));
+    check('y ya no dice que solo valgan Hive o Nexus',
+      !/on a Hive or Nexus channel/.test(readme) && !/en un canal de Hive o Nexus/.test(readme), '');
+    for (const f of ['screenshot-twitch-widget-popover.png', 'screenshot-twitch-widget-panel.png']) {
+      check('el README enseña ' + f + ' en los dos idiomas, y el fichero existe',
+        readme.split('docs/' + f).length === 3 && fs.existsSync(__dirname + '/' + f), '');
+    }
   }
 }
 
@@ -3597,6 +3634,312 @@ console.log('\n=== 64. La pagina de un evento: el carrusel, en el hito que te to
         && /the page stays put/.test(readme) && /la página se queda donde está/.test(readme), '');
     check('y la ficha cuenta lo de sin unirte en los ocho',
       m.every((l) => /(not joined|no te has unido|nicht beigetreten|pas rejoint|não participas|não entrou|尚未加入|शामिल नहीं)/.test(l)), '');
+  }
+}
+
+console.log('\n=== 65. El Pase de aniversario: otra URL y las fichas en dos strong ===');
+// El 2026-09-30 abrió la segunda temporada en `/control-center/battle-pass/2`, y 1.3.8 fallaba en
+// las dos cosas: pedía siempre el `/1` (la Temporada 0, cerrada) y leía las fichas de un solo
+// `<strong>` con «0/135», que ahora son dos (`token-count` y `token-total`). Con eso la línea decía
+// «hecho ✅» de un pase recién empezado y la de la tienda desaparecía.
+{
+  const F2 = 'dom-battle-pass-anniversary-started-2026-09-30.html';
+  const P2 = '/control-center/battle-pass/2';
+  {
+    const w = mount(F2, P2); await tick();
+    const p = lines(w).find((l) => /[Pp]ase|Pass/.test(l[0]));
+    // Desde §66 la línea enseña el hito en curso; las fichas se comprueban en lo que se guarda.
+    const gp = JSON.parse(w.localStorage.getItem('awa-arp-pass') || 'null');
+    check('en la página del pase nuevo: 0/150 fichas, leídas de los dos strong',
+      !!gp && gp.tokens === 0 && gp.tokensMax === 150 && !!p && p[1] === '0/40 ARP', JSON.stringify(gp) + ' ' + (p && p.join(' | ')));
+    const st = lines(w).find((l) => /[Tt]ienda|Store/.test(l[0]));
+    check('y la tienda vuelve a salir, con lo que falta para el primer paquete', !!st && /25/.test(st[1]), st && st.join(' | '));
+    check('sin pedir ningún pase ni la portada: ya estamos en él',
+      !w.fetched.some((u) => /battle-pass/.test(u) || u === '/'), JSON.stringify(w.fetched));
+    const g = JSON.parse(w.localStorage.getItem('awa-arp-pase-url') || 'null');
+    check('y se apunta su URL, sacada del menú lateral', !!g && g.url === P2, JSON.stringify(g));
+  }
+  // La portada de verdad del 2026-09-30, con el banner del pase nuevo. El enlace es un <a> con
+  // `href`, y es lo que hay que comprobar: si fuera un botón con JS, el script no lo vería.
+  const portada2 = leer('dom-homepage-battle-pass-anniversary-2026-09-30.html');
+  check('control: la portada nueva enlaza el pase en un <a href>',
+    /<a class="bp-widget__rewards-btn" href="\/control-center\/battle-pass\/2">/.test(portada2), '');
+  const pase2 = leer(F2);
+  {
+    // Desde una página que no enlaza el pase y sin URL aprendida: se pide la portada para
+    // sacarla de su banner, y luego ESE pase, no el `/1`.
+    const w = mount('dom-steam-quest-fixed-unstarted-2026-08.html', '/steam/quest/prueba', (win) => {
+      win.__respuestas = { '/': portada2, 'battle-pass/2': pase2 };
+    }); await tick(); await tick(); await tick();
+    check('pide la portada y después el pase que enlaza',
+      w.fetched.indexOf('/') >= 0 && w.fetched.indexOf(P2) > w.fetched.indexOf('/'), JSON.stringify(w.fetched));
+    check('y nunca el de la Temporada 0', !w.fetched.some((u) => /battle-pass\/1/.test(u)), JSON.stringify(w.fetched));
+    const p = lines(w).find((l) => /[Pp]ase|Pass/.test(l[0]));
+    check('la línea sale del pase nuevo', !!p && p[1] === '0/40 ARP', p && p.join(' | '));
+  }
+  {
+    // Con la URL aprendida hoy, la portada no se vuelve a pedir: es una petición al día.
+    const w = mount('dom-steam-quest-fixed-unstarted-2026-08.html', '/steam/quest/prueba', (win) => {
+      win.localStorage.setItem('awa-arp-pase-url', JSON.stringify({ url: P2, at: Date.now() }));
+      win.__respuestas = { '/': portada2, 'battle-pass/2': pase2 };
+    }); await tick(); await tick();
+    check('con la URL de hoy no se pide la portada', w.fetched.indexOf('/') < 0 && w.fetched.indexOf(P2) >= 0,
+      JSON.stringify(w.fetched));
+  }
+  {
+    // Entre temporadas la portada no trae banner: se sigue con la última que se supo y se
+    // apunta que hoy ya se miró, para no pedir la portada en cada carga.
+    const sinBanner = leer('dom-homepage-src-2026-08.html').split('href="/control-center/battle-pass/1"').join('href="#"');
+    const w = mount('dom-steam-quest-fixed-unstarted-2026-08.html', '/steam/quest/prueba', (win) => {
+      win.localStorage.setItem('awa-arp-pase-url', JSON.stringify({ url: P2, at: Date.now() - 2 * 864e5 }));
+      win.__respuestas = { '/': sinBanner, 'battle-pass/2': pase2 };
+    }); await tick(); await tick(); await tick();
+    check('control: la portada sin banner de verdad no enlaza ningún pase', !/battle-pass\/\d/.test(sinBanner), '');
+    const g = JSON.parse(w.localStorage.getItem('awa-arp-pase-url') || 'null');
+    check('sin banner se queda la URL de antes, fechada hoy',
+      w.fetched.indexOf(P2) >= 0 && !!g && g.url === P2 && Date.now() - g.at < 6e4, JSON.stringify(w.fetched) + ' ' + JSON.stringify(g));
+  }
+  {
+    // Sin empezar, que no hay volcado: el usuario pulsó «Iniciar» antes de guardarlo. Se fabrica
+    // del empezado quitando el aviso de «ya ha comenzado» y poniendo un enlace en su sitio, con
+    // una clase INVENTADA a propósito: lo que se prueba es que no se depende de ella.
+    const sinEmpezar = pase2.replace(/<div class="bp-header__started">[\s\S]*?<\/div>/,
+      '<a class="bp-header__clase-que-no-existe" href="#">Iniciar Pase de batalla</a>');
+    check('control: el aviso de empezado se quitó y hay un enlace en la cabecera',
+      sinEmpezar.indexOf('bp-header__started') < 0 && sinEmpezar.indexOf('clase-que-no-existe') > 0, '');
+    // `mount` lee de docs/, así que la variante se escribe ahí un instante y se borra.
+    const w2 = (() => {
+      const f = 'tmp-sin-empezar-prueba.html';
+      fs.writeFileSync(path.join(DOCS, f), sinEmpezar);
+      try { return mount(f, P2); } finally { fs.unlinkSync(path.join(DOCS, f)); }
+    })(); await tick();
+    const p = lines(w2).find((l) => /[Pp]ase|Pass/.test(l[0]));
+    check('con un control en la cabecera y sin el aviso, «sin empezar»',
+      !!p && /sin empezar|not started/.test(p[1]) && /--todo/.test(p[2]), p && p.join(' | '));
+  }
+  {
+    // La forma vieja sigue leyéndose: el volcado de la Temporada 0 trae «0/135» en un solo strong.
+    const w = mount('dom-battle-pass-closed-2026-08.html', '/control-center/battle-pass/1'); await tick();
+    const st = lines(w).find((l) => /[Tt]ienda|Store/.test(l[0]));
+    check('las fichas de la Temporada 0 (45/135, un solo strong) se siguen leyendo', !!st && /200/.test(st[1]), st && st.join(' | '));
+  }
+}
+
+console.log('\n=== 66. El hito en curso, el reloj del pase y la tienda que borra las fichas ===');
+// La línea del pase pasa a enseñar el avance del hito en curso («1/40», como la ventana del sitio)
+// y se añade su reloj. Y las fichas dejan de avisarse la noche en que cierra el PASE: la tienda abre
+// en ese momento y las borra al cerrar, días después (2026-08-25 → 2026-09-01 en la Temporada 0).
+{
+  // `mount` lee de docs/; las variantes con fechas movidas se escriben un instante y se borran.
+  const montarHtml = (html, ruta, tweak) => {
+    const f = 'tmp-prueba-66.html';
+    fs.writeFileSync(path.join(DOCS, f), html);
+    try { return mount(f, ruta, tweak); } finally { fs.unlinkSync(path.join(DOCS, f)); }
+  };
+  const iso = (ms) => new Date(ms).toISOString().replace(/\.\d{3}Z$/, '+00:00');
+  const fila = (w, re) => Array.from(w.document.querySelectorAll('#awa-arp-widget .awa-w__line'))
+    .find((l) => re.test(l.querySelector('.awa-w__k').textContent));
+  const tipDe = (n) => (n ? n.getAttribute('title') || n.getAttribute('data-awa-tip') || '' : '');
+  const relojes = (w) => Array.from(w.document.querySelectorAll('#awa-arp-widget .awa-w__clock')).map((n) => n.textContent);
+  const P2 = '/control-center/battle-pass/2';
+
+  // El pase en curso, con su cierre movido a diez días de hoy para que la prueba no caduque.
+  const progreso = leer('dom-battle-pass-anniversary-progress-2026-09-30.html')
+    .split('2026-10-26T20:00:00+00:00').join(iso(Date.now() + 10 * 864e5));
+  check('control: el cierre del pase se movió', progreso.indexOf('2026-10-26T20:00:00+00:00') < 0, '');
+  {
+    const w = montarHtml(progreso, P2); await tick(); await tick();
+    const p = fila(w, /[Pp]ase|Pass/);
+    const v = p && p.querySelector('.awa-w__v').textContent;
+    check('la línea del pase enseña el hito en curso: 1/40 ARP', v === '1/40 ARP', v);
+    check('y su tooltip dice qué hito es y cuánto le falta al pase entero (955 − 1)',
+      /Hito 1 de 21|Milestone 1 of 21/.test(tipDe(p)) && /954/.test(tipDe(p)), tipDe(p));
+    const st = fila(w, /[Tt]ienda|Store/);
+    check('las fichas pasan al tooltip de la tienda', /Tienes 0 fichas|You have 0 tokens/.test(tipDe(st)), tipDe(st));
+    check('hay reloj del pase, a diez días', relojes(w).some((r) => /^(Pase de batalla|Battle Pass): (9|10)d/.test(r)), relojes(w).join(' / '));
+    check('con el pase en curso no se pregunta a la tienda', !w.fetched.some((u) => /battle-store/.test(u)), JSON.stringify(w.fetched));
+  }
+  {
+    // La Temporada 0 recién cerrada, con 45 fichas: se pregunta a la tienda, que está ABIERTA y
+    // cierra dentro de tres horas. Sale su reloj y, con los avisos puestos, el aviso de la tienda.
+    const tienda = leer('dom-battle-store-open-2026-08.html')
+      .split('2026-09-01T01:00:00+00:00').join(iso(Date.now() + 3 * 3600e3));
+    const w = mount('dom-battle-pass-closed-2026-08.html', '/control-center/battle-pass/1', (win) => {
+      win.localStorage.setItem('awa-arp-alert', '1');
+      win.__respuestas = { 'battle-store': tienda };
+    }); await tick(); await tick(); await tick();
+    check('con el pase cerrado y fichas, se pregunta a la tienda', w.fetched.some((u) => /battle-store/.test(u)), JSON.stringify(w.fetched));
+    check('y su reloj sustituye al del pase', relojes(w).some((r) => /^(Tienda de batalla|Battle Store): (2|3)h/.test(r))
+      && !relojes(w).some((r) => /^(Pase de batalla|Battle Pass):/.test(r)), relojes(w).join(' / '));
+    const banda = txt(w, '.awa-w__alert-txt');
+    check('a menos de seis horas del cierre, avisa de la tienda', /Cierra la tienda de batalla|Battle Store is closing/.test(banda || ''), String(banda));
+    const g = JSON.parse(w.localStorage.getItem('awa-arp-pass') || 'null');
+    check('y la fecha de cierre queda guardada con el pase', !!g && g.storeClosesAt > Date.now(), JSON.stringify(g && g.storeClosesAt));
+  }
+  {
+    // Si lo que se lee de la tienda NO es posterior al cierre del pase, es su apertura y no vale:
+    // ni reloj ni aviso. La tienda de antes de abrir trae justo la fecha de cierre del pase.
+    const w = mount('dom-battle-pass-closed-2026-08.html', '/control-center/battle-pass/1', (win) => {
+      win.localStorage.setItem('awa-arp-alert', '1');
+      win.__respuestas = { 'battle-store': leer('dom-battle-store-2026-08.html') };
+    }); await tick(); await tick(); await tick();
+    check('control: esa tienda trae la apertura, igual al cierre del pase',
+      /data-countdown="2026-08-25T01:00:00\+00:00"/.test(leer('dom-battle-store-2026-08.html')), '');
+    check('la apertura no se toma por cierre: sin reloj de la tienda',
+      !relojes(w).some((r) => /^(Tienda de batalla|Battle Store):/.test(r)), relojes(w).join(' / '));
+    check('ni aviso de la tienda', !/Cierra la tienda|Battle Store is closing/.test(txt(w, '.awa-w__alert-txt') || ''), '');
+  }
+  {
+    // Ninguna de las tres superficies vuelve a decir que las fichas se borran al cerrar la temporada.
+    const n = (k) => SCRIPT.split('\n').filter((l) => new RegExp('^\\s*' + k + ':').test(l));
+    // Lo que lo distingue en cualquier idioma es que nombran la TIENDA como el momento del borrado.
+    // La primera versión de esta prueba solo pedía un «0» y pasaba con el texto viejo («100 ARP»).
+    const tienda = /Battle Store|tienda de batalla|boutique de combat|loja de batalha|战斗商店|बैटल स्टोर/;
+    const temporada0 = /Season 0|Temporada 0|Saison 0|第 0 赛季|सीज़न 0/;
+    const malas = ['tipPass', 'infoDescriptionText', 'tipAlert'].map((k) => [k, n(k)])
+      .filter(([, ls]) => ls.length !== 8 || !ls.every((l) => tienda.test(l))).map(([k]) => k);
+    check('tipPass, la descripción y tipAlert nombran la tienda en los ocho', !malas.length, malas.join(', '));
+    check('y tipStore da la ventana de la Temporada 0 en los ocho',
+      n('tipStore').length === 8 && n('tipStore').every((l) => temporada0.test(l)), '');
+    const readme = fs.readFileSync(__dirname + '/../README.md', 'utf8');
+    check('el README tampoco', !/wiped when the season closes/.test(readme) && !/se borran al cerrar la temporada/.test(readme)
+      && /wiped when it closes/.test(readme) && /se borran al cerrarla/.test(readme), '');
+  }
+}
+
+console.log('\n=== 67. La tienda: cada paquete una vez, y no solo vende ARP ===');
+// Tras comprar el lote de 200 en agosto su tarjeta pasó a «COMPRADO» (`--purchased`), así que cada
+// paquete se compra una sola vez y lo que valen las fichas es la mejor COMBINACIÓN de los que
+// quedan. Hasta 1.3.8 la línea ofrecía el mejor paquete suelto, y seguía ofreciéndolo comprado.
+{
+  const tiendaLinea = (w) => lines(w).find((x) => /[Tt]ienda|Store/.test(x[0]));
+  const pase1 = (extra) => Object.assign({ url: '/control-center/battle-pass/1', tokens: 135, tokensMax: 135,
+    claimable: 0, started: true, endsAt: Date.now() - 864e5, at: Date.now(), storeAt: Date.now() }, extra || {});
+  const sembrar = (win, pase) => {
+    win.localStorage.setItem('awa-arp-pase-url', JSON.stringify({ url: '/control-center/battle-pass/1', at: Date.now() }));
+    win.localStorage.setItem('awa-arp-pass', JSON.stringify(pase));
+  };
+  const QUEST = 'dom-steam-quest-fixed-unstarted-2026-08.html';
+  {
+    const w = mount(QUEST, '/steam/quest/prueba', (win) => sembrar(win, pase1())); await tick(); await tick();
+    const l = tiendaLinea(w);
+    check('con 135 fichas y nada comprado: 700 ARP (90 + 45), no 500', !!l && /700/.test(l[1]) && /135/.test(l[1]), l && l.join(' | '));
+  }
+  {
+    const w = mount(QUEST, '/steam/quest/prueba', (win) => sembrar(win, pase1({ tokens: 160 }))); await tick(); await tick();
+    const l = tiendaLinea(w);
+    check('con 160 fichas, los tres: 800 ARP', !!l && /800/.test(l[1]), l && l.join(' | '));
+  }
+  {
+    // En la propia tienda, el volcado de después de comprar el de 200: con 70 fichas quedan el de
+    // 500 (90, no alcanza) y el de 100 (25), así que la línea ofrece 100 y NO el de 200 comprado.
+    const w = mount('dom-battle-store-purchased-2026-08.html', '/battle-store', (win) => sembrar(win, pase1({ tokens: 70 })));
+    await tick(); await tick();
+    const l = tiendaLinea(w);
+    const g = JSON.parse(w.localStorage.getItem('awa-arp-pass') || 'null');
+    check('en la tienda se leen los comprados', !!g && JSON.stringify(g.storeBought) === '[200]', JSON.stringify(g && g.storeBought));
+    check('y el de 200 ya no se ofrece: con 70 fichas, 100 ARP', !!l && /100 ARP/.test(l[1]) && !/200/.test(l[1]), l && l.join(' | '));
+  }
+  {
+    const w = mount(QUEST, '/steam/quest/prueba', (win) => sembrar(win, pase1({ tokens: 70, storeBought: [500, 200, 100] })));
+    await tick(); await tick();
+    const l = tiendaLinea(w);
+    check('con los tres comprados lo dice, en verde', !!l && /los tres comprados|all three bought/.test(l[1]) && /--done/.test(l[2]), l && l.join(' | '));
+  }
+  {
+    // La tienda del Pase de aniversario, sin abrir: su cuenta atrás es la APERTURA, igual al cierre
+    // del pase, y no puede tomarse por cierre. Con el cierre del pase fijo, no depende de la fecha.
+    const fin = Date.parse('2026-10-26T20:00:00+00:00');
+    const w = mount('dom-battle-store-anniversary-unopened-2026-09-30.html', '/battle-store', (win) => sembrar(win,
+      pase1({ url: '/control-center/battle-pass/1', tokens: 0, tokensMax: 150, endsAt: fin })));
+    await tick(); await tick();
+    const g = JSON.parse(w.localStorage.getItem('awa-arp-pass') || 'null');
+    check('control: la tienda nueva trae su cuenta atrás en la fecha de cierre del pase',
+      /id="bp-store-timer"\s+data-countdown="2026-10-26T20:00:00\+00:00"/.test(leer('dom-battle-store-anniversary-unopened-2026-09-30.html')), '');
+    check('y no se apunta como cierre de la tienda', !!g && !g.storeClosesAt && Array.isArray(g.storeBought) && !g.storeBought.length,
+      JSON.stringify(g && { c: g.storeClosesAt, b: g.storeBought }));
+  }
+  {
+    const n = (k) => SCRIPT.split('\n').filter((l) => new RegExp('^\\s*' + k + ':').test(l));
+    check('tipStore dice en los ocho que cada paquete es una vez y que hay juegos que se agotan',
+      n('tipStore').length === 8 && n('tipStore').every((l) => /16|sixteen|dieciséis|sechzehn|seize|dezasseis|dezesseis|十六|सोलह/.test(l)), '');
+    check('storeAll está en los ocho', n('tipPassStep').every((l) => /storeAll: '/.test(l)) && n('tipPassStep').length === 8, '');
+    const readme = fs.readFileSync(__dirname + '/../README.md', 'utf8');
+    check('el README lo cuenta en los dos idiomas', /bought only once/.test(readme) && /se compra una sola vez/.test(readme)
+      && /sixteen minutes/.test(readme) && /dieciséis minutos/.test(readme), '');
+  }
+}
+
+console.log('\n=== 68. La campana de la Tienda de Batalla, como la de la Bóveda ===');
+// Lo que se agota en la tienda son los juegos (en la Temporada 0, todos en menos de dieciséis
+// minutos), así que mientras no abre la página lleva su fecha de apertura y una campana, y al abrir
+// avisa en cualquier página. Mismo molde que §49 y §50.
+{
+  const F = 'dom-battle-store-anniversary-unopened-2026-09-30.html';
+  const montarHtml = (html, ruta, tweak) => {
+    const f = 'tmp-prueba-68.html';
+    fs.writeFileSync(path.join(DOCS, f), html);
+    try { return mount(f, ruta, tweak); } finally { fs.unlinkSync(path.join(DOCS, f)); }
+  };
+  const ABRE = Date.now() + 5 * 864e5;
+  const iso = new Date(ABRE).toISOString().replace(/\.\d{3}Z$/, '+00:00');
+  const cerrada = leer(F).split('2026-10-26T20:00:00+00:00').join(iso);
+  check('control: la apertura se movió a cinco días', cerrada.indexOf(iso) > 0, '');
+  {
+    const w = montarHtml(cerrada, '/battle-store'); await tick();
+    const caja = w.document.querySelector('.awa-tienda');
+    check('con la tienda cerrada sale el cartel, uno', !!caja && w.document.querySelectorAll('.awa-tienda').length === 1, '');
+    check('detrás del banner de la tienda', !!(caja && caja.previousElementSibling
+      && /token-store-banner/.test(caja.previousElementSibling.className)), '');
+    // El banner es una columna de una fila flex: el cartel va en una columna IGUAL (para bajar
+    // debajo de él con su ancho) y no suelto, que lo dejaba a su lado (captura del 2026-09-30).
+    check('va en una columna con las clases del banner, sin las del banner',
+      !!caja && /\bcol-lg-8\b/.test(caja.className) && /\bcol-12\b/.test(caja.className)
+        && !/token-store-banner|\bfull\b/.test(caja.className) && !!caja.querySelector('.awa-vault'), caja && caja.className);
+    const bell = caja && caja.querySelector('.awa-vault__bell');
+    check('la campana empieza sin armar', !!bell && !/--on/.test(bell.className), bell && bell.className);
+    if (bell) bell.dispatchEvent(new w.Event('click', { bubbles: true }));
+    check('al pulsarla guarda la hora de apertura', w.localStorage.getItem('awa-arp-tienda-aviso') === String(Date.parse(iso)),
+      w.localStorage.getItem('awa-arp-tienda-aviso'));
+    check('y no toca la de la Bóveda', !w.localStorage.getItem('awa-arp-vault-aviso'), '');
+    if (bell) bell.dispatchEvent(new w.Event('click', { bubbles: true }));
+    check('el mismo botón la desarma', !w.localStorage.getItem('awa-arp-tienda-aviso'), '');
+  }
+  {
+    // La tienda ABIERTA trae formularios de compra: ahí la cuenta atrás es el cierre y no hay
+    // nada que anunciar. Con la fecha movida al futuro, para que solo decida el formulario.
+    const abierta = leer('dom-battle-store-open-2026-08.html').split('2026-09-01T01:00:00+00:00').join(iso);
+    check('control: la tienda abierta tiene formularios de compra', /action="\/battle-store\/purchase\//.test(abierta), '');
+    const w = montarHtml(abierta, '/battle-store'); await tick();
+    check('con la tienda abierta no hay cartel', !w.document.querySelector('.awa-tienda'), '');
+  }
+  {
+    // Y si el pase guardado ya cerró, la tienda está abierta aunque no ofrezca nada que comprar.
+    const w = montarHtml(cerrada, '/battle-store', (win) => win.localStorage.setItem('awa-arp-pass',
+      JSON.stringify({ url: '/control-center/battle-pass/2', endsAt: Date.now() - 3600e3, at: Date.now() })));
+    await tick();
+    check('con el pase ya cerrado tampoco', !w.document.querySelector('.awa-tienda'), '');
+  }
+  {
+    // Armada y ya abierta: el aviso sale en OTRA página, con la casilla general apagada, y su fila
+    // lleva a la tienda.
+    const w = mount('dom-control-center-2026-08.html', '/control-center', (win) => {
+      win.localStorage.setItem('awa-arp-tienda-aviso', String(Date.now() - 60e3));
+      win.localStorage.removeItem('awa-arp-alert');
+    }); await tick();
+    const banda = w.document.querySelector('#awa-arp-widget .awa-w__alert');
+    check('al abrir, la banda sale fuera de la tienda', !!banda && /tienda de batalla está abierta|Battle Store is open/.test(banda.textContent),
+      banda && banda.textContent);
+    const go = w.document.querySelector('#awa-arp-widget .awa-w__alert-go');
+    check('y su fila es un enlace a la tienda', !!go && go.tagName === 'A' && go.getAttribute('href') === '/battle-store', go && go.outerHTML.slice(0, 80));
+    if (banda) banda.dispatchEvent(new w.Event('click', { bubbles: true }));
+    check('marcarla vista desarma la campana', !w.localStorage.getItem('awa-arp-tienda-aviso'), '');
+  }
+  {
+    const n = (k) => (SCRIPT.match(new RegExp('\\b' + k + ": '", 'g')) || []).length;
+    check('tipRemindStore y avistoreopen en los ocho', n('tipRemindStore') === 8 && n('avistoreopen') === 8, n('tipRemindStore') + '/' + n('avistoreopen'));
+    const readme = fs.readFileSync(__dirname + '/../README.md', 'utf8');
+    check('el README lo cuenta en los dos idiomas', /a bell, like the Vault one/.test(readme) && /una campana, como la de la Bóveda/.test(readme), '');
   }
 }
 

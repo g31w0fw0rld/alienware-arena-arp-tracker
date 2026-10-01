@@ -65,3 +65,25 @@
 !screenshot-vault-short.png
 !screenshot-vault-auction-over.png
 !dom-steam-community-event-live-joined-artifact-2026-09-24.html
+# El widget de AWA en Twitch, tal como se ve cuando cuenta (2026-09-30): el popover con los
+# minutos y el tope del dia, y el panel bajo el directo. Los enseña la linea de Twitch del README.
+!screenshot-twitch-widget-popover.png
+!screenshot-twitch-widget-panel.png
+# El Pase de aniversario (segunda temporada, /battle-pass/2), empezado: las fichas en DOS strong y
+# la URL nueva. Lo abre §65.
+!dom-battle-pass-anniversary-started-2026-09-30.html
+# La portada del 2026-09-30 con el banner del Pase de aniversario: de su <a> aprende el script la
+# URL del pase en curso (§65). Y las dos capturas del pase y su tienda que ensena el README.
+!dom-homepage-battle-pass-anniversary-2026-09-30.html
+!screenshot-battle-store.png
+!screenshot-battle-pass.png
+!dom-battle-pass-anniversary-progress-2026-09-30.html
+# Las dos caras de la Tienda de Batalla de la Temporada 0: antes de abrir (su cuenta atras es la
+# apertura, igual al cierre del pase) y abierta (la cuenta atras es el CIERRE, cuando se borran las
+# fichas). Las abre §66.
+!dom-battle-store-2026-08.html
+!dom-battle-store-open-2026-08.html
+# La tienda despues de comprar el lote de 200 (tarjeta --purchased: cada lote se compra una vez) y
+# la del Pase de aniversario sin abrir (su cuenta atras es la apertura). Las abre §67.
+!dom-battle-store-purchased-2026-08.html
+!dom-battle-store-anniversary-unopened-2026-09-30.html

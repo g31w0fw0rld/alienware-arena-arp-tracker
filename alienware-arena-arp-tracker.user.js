@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Alienware Arena ARP Tracker
 // @namespace    http://tampermonkey.net/
-// @version      1.3.8
+// @version      1.3.10
 // @description  ARP panel for Alienware Arena. Almost everything you earn there expires —at 00:00 UTC, on Monday, when the season closes, when an event ends— and the site never says it in one place. This panel does: on any page, what you have left to do, how long you have and a warning before you lose it. It only reads, it never claims. Every line is explained in "Learn more", inside the panel, and the rest is in the repository. Eight languages.
 // @icon         data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAAAAXNSR0IArs4c6QAACn9JREFUWIWlmVusXVUVhv//H3OtfW69AB56ihbFArXaCBargle84QOS4CWaGI3x8uCDGsX7PSaA6INKFOMDGhNNbNSgqDFi1aBYLVQUUFJAkEu5WECkUGw5e43hw5xz7bUBK8LMzj77rLPPXt/5xz/GmHMcLi4uYbiCAAESQohIRCuMhBlxVpxPnJcWjHPiTLKR1IqNaIQQjGAEwiMciIiI6BAeiHrFgQADEQAYERFAAMhXkHoQgADAKD9GEBEIRAQ86IAjPBgIB52Mgk+QJEUoHBH5ahQyIBjw/FEAIhwAyMJEIt8kX0kFb8g0rRjgQCA8Y0V0QQeif5CQMpVARmSmCEfWKxhgvhIgwICDQHlnAMxagZwoNFhE+VMQRAx+0bM2iC7QAQ4GWRQSRaqKk6MH9wAivH4CA94HpwSuRA0gGRGPBDStUCAAj2wEdlmhCC/KZYGzSBShHsgJZlP1Dw/AgyQBr1hkRDYcSB4cKPqoZVsGPNBFdIgusl8QZBBBUiIhUhEMRqbxqm6VmfCAAmCvUAlM9RDrjTmFMbkSAQe6CA90Dld0UR7jiC48a9YBIkVCUhAinE6EM4J0BOGecyVqmhEROdeYfWLz8ws5zwcQkwfLCxFEGCKRRiQyEZavE8Tw98tSdhWpkoXl03vX5d/q74V88SEh41CeybsjAg4uhzfuTnaOcefLkIlad/Ti2iMOs9T86+79u2/cOx6PzVqpJZOZkUHQKaDLCRbZeR45JyLgHgSDgShZxkGkeojMN/k24I5l+JjouuiefeJRb37HKS955TMXVsz2f8SB/cuX/u6mC7detXP7bdDIRDMjwS4IEp0Hq5+c5S4hIaIQcXFx7bRpMpz6Yg0IYQgBid7SZ9YsPumcc993yqnPPUg6XHHZ7s9/8td7bj+QNBNh4fDOu67zceedh0e4l2TNGeYl+21+bsW0dTBsHajPRGI0jLRh4zEXXPTl40849iA0AJaeuPKU05521eW33vmPB0wmGsvHApGdhGo+Vv8QoM3PrRxwlDDlxlRpDGGMxEhr1qz94UXnrT3iCQenyasdpRe9Yv3vfnXD/fcum6Xs7sgQ0d8vZ0CfE9QgWEAuKFOJVmLHMKL53Bc/sLT2UdHkNb/Qfvisk8ExGWaWUjIzM6MkiZJUUpL9q4GLBxAxuBIlaptP2PSqU1/46GnyOvbpi89/2ZEBN5OllFIyS7JMMOEoWCwK1ZxCHyxmX6M0K0Okt7z99P+XJq9TX78x0ElIyVJqLCUz01CevnCJqQqDKZ0yTWlMZKhp2scgT16bNi8trEjL+0OmlFtal8IjAqUE5FwDiEnIxBCLKhoGjjCEbXz60StXLTw2IDNt2nx4wClKZpYsmVnKNuLARxMPcVIAhzS5AhmgTc/c8Nho8lq/4VDACUgyyWT5S/b2wEZM/4WmSEWUUnTU+ic9HqC161bmukeRylQOORwuZwjueUuZHpGGE6aMq/8r2x++Djt8rm4vKeaEF2QhCAjvN9Bl+zEVqUGNzr42gqsPWfF4gFasHJW9et4yTbYECsDpwbKPTQ+jsUHHICLlRJuZGT0eoHZkWYC+TYgMiR6TWl225YPCSNh0SbT8TJj74+Hpg9IToVco05TtUb8tr/7tHV2eFYlIRLpv7wN/u3b3pz94/i037nn0HPfc/cD5526/cuet+/Yt146EClBoCtN06xCgQWM3RhJaRUuMGC0xuu3mu8Pxza/+/KXHnfGlMy8Yj7v/IUngwq1/eeurv7v1/CsOHOjuvGNfbq65K7C2916nvnKrWoeFJhLQECPFjDCnmDXMWrRXX3nzk5+6NDc7N17muWdd+LbTv7zvvv3/jWa83J3zsV99/Qs7fdykNHrK0YfdcM09lGGyj53wAFNkwyQXoyFaixnDjNgaG1NjbKT0+4t3NcleddpzzZpk7Y7fXP/O1523/98PPpym6/zMD//ykm23tu2clJ5x/NLimvk/7bhDSlWkXIsrSv4yUCiH1hStMFKMiIZM6h9KYrrzjr3bL776/Z967cpV82ZNSqOr/njbp977vYcDfePcHTsuvi2lFoAs3vG+Lbtv2vv3a/dmoClLV6X6PitJhLJjiJZIookm2BQTk5S+9bVtRx51+Ne3vnv1oQtmSqn5xY+v/sn3/jSk+fOlu7//rSskuXeWxmd89qQNmxZ/vHWX1PRAg2Y+cHdRSLZi5olEy2jEJFZtlIxNT0MmIt18w50vfPmmzc9bf9obtuy778CN19/lzqsuv+U1b9rSjhKA8dg/+q4f7r13uWl00snrPnL2izc9a2nP7fd/5azLTLMptYSQm3s/7qhH0VKnAa5dtYVohEQ2QhKbnOdCU45gkchcLXnclqO+87MzJAJ4YN+BSy+54Zq/3v6cF6x/1nOeDODv19217ae7jnnams0nrlu5aiZrdvZHLt7523+ORguylkHvHBHuXXQRnYfXR+fuERE8YtWJYiIaMUMkoeGAjDAxAaVQfeyc177xbc8/eM73a8dvbznrQ9tnRiubNEOmfBwfQES4w93dy1EkQqIRJpqY6nMylWdTMjViMjVJbbL2K2f+fPdN/3w0NPfde+C8sy9r02xKrZT6WpwLI1C2itXgykdcMbuYRhhV00oluQqlkqkxa5LaB/fz0+/5ftf971by1c/94f570TQzpobU5NwzbBo9Uz1w2+q59cP0Li7OEaxXrLxozBpT2nP7/QROOOkpB6G56EfXXfDt60ajhaaZJVMtPGWxr5BAIBAskwfADpmtQGzEhmzERsrfDkBlWTZTktKVO3dv2LR05FMPfUSaa/961+c/vj3ZfNPMmrWqKFNTB3JyOqtvCMAOmTtGTMaGTFZ9IzZSUzj6INJUvUXYJdv+tvH4tUccufohNNfvuvsz7/11Nx617ZylNu9QJzR9xyAHhbrqRdph8xuyGJa1YSM2pmHIrEplQ4d5x20/uUbixuOWzATAu/jpD3Z94RPbxw+2bTOX0kgyUUMa8SFgE4/ncQuPXjzN2IqN5QEvmhq7JNRpEEzsa7dJiTISeXi3+gkzJ5y0zpL95fI999w1btrZtplNaWTWSMqRqH20CBF15doT3q/gsYefXlDYWu+hUpbKYCq3FNJySpqSZJRJqgkCmZk1qRml1Jq1ZslklPq0mrJLxIDJK5m7e+4MpQhNNICx1ifSCOXhYRm1Ik+CTUyqB3WZWUo5DSUr6dxvx2pqFZ3IqMNZkRFBep6GpumSaEKh6bFKiYJhglIHdaAymazU0kwfJaGp4b5nmPAIIKOUgWP5pqYPmViDQuRRgNV7TxSqJwbVUWH57FLxJlNyMCCSkVWZBItlQgSxFiGUQWxmG3AUMfKk0khlVTg5uYgw0gbDmsrk+c4BR5kjsg7cWYfv+YSMqIYqB42+XuTGn3KMJpGa+MaqJPm5N9PUySryzDkP5AuNBxmdR//fBzEAUlBJsqm+Vn2WX2SFkgZeIUwTjhIylSm9pioHQLD888EjEA4HKHgY3HPsgk6KedBKU0yc/ZDdWTH1IKWLEvnsUdMKFKtak9j1e9/SjaL+2yLcHYiAFIqI/P4Q5ZDgQWM547OeNszqxEj/AUg44ksrXGkmAAAAAElFTkSuQmCC
 // @match        https://www.alienwarearena.com/*
@@ -16,7 +16,7 @@
 (function () {
     'use strict';
 
-    const SCRIPT_VERSION = '1.3.8';
+    const SCRIPT_VERSION = '1.3.10';
 
     // ------------------------------------------------------------------
     // Idiomas
@@ -108,10 +108,10 @@
             langLabel: 'Language', auto: 'Automatic (site)', move: 'Move panel',
             refresh: 'Refresh now', tipRefresh: 'Reads everything again, ignoring the cache. On its own it refreshes every 15 minutes, but only while this tab is in view, and only once for the whole browser.',
             alertOn: 'Warn me before the reset', tipTos: 'Simply being on the site pays ARP up to a daily cap. It resets at 00:00 UTC.',
-            tipTwitch: 'The site does state this cap, in its FAQ: up to 15 ARP a day. It is paid 1 at a time.',
-            tipTwitchZero: 'Watching alone earns nothing: the AWA widget must be active on a Hive or Nexus channel, with your Twitch account linked.',
-            tipTwitchBonus: 'Today your cap is {c}, not 15: one of your equipped artifacts raises it. The extra arrives separately, once the 15 from watching are in.',
-            tipTwitchPend: 'You have the 15, but the site says there is still Twitch ARP to earn: one of your equipped artifacts raises the cap, and its extra arrives separately once the 15 are in. The site does not say how much, hence the «+».',
+            tipTwitch: 'The site does state this cap, in its FAQ: up to 15 ARP a day. It is paid 1 at a time: as measured in September 2026, one every 2.5 min on Hive and Nexus channels and one every 5 min on the rest of the list.',
+            tipTwitchZero: 'Watching alone earns nothing: the AWA widget must be active on one of the channels listed in the Control Center, with your Twitch account linked.',
+            tipTwitchBonus: 'Today your cap is {c}, not 15: one of your equipped artifacts raises it. The extra is earned by watching, at the same pace, once the 15 are in.',
+            tipTwitchPend: 'You have the 15, but the site says there is still Twitch ARP to earn: one of your equipped artifacts raises the cap, and its extra is earned by watching, at the same pace, now that the 15 are in. The Control Center does not say how much —the Twitch widget does—, hence the «+».',
             tipDaily: 'Single use: a daily quest never comes back. When its window ends it disappears, done or not.',
             tipSteam: 'These run Monday to Monday, not daily, and the site takes up to an hour to see your playtime — and to see a game you just added. If the fixed quest’s game is in the picker of the one that lets you choose, pick it: the same hour counts for both. And if that game is free and you don’t own it, add it to your Steam library and see whether it turns up in the picker: if it does, one hour covers both.',
             tipCalendar: 'This is the CAMPAIGN calendar, the one with an «Get item» button per day. It is claimed from the CAMPAIGN ICON UP IN THE TOP BAR, just left of the notifications bell —its picture changes with every campaign, so it is not always the same logo— and clicking this line opens it. It is not the daily login one: the 7-day streak and the 28-day calendar pay themselves when you come in, and you can see both next to your tier. Claiming goes through a captcha, so the script never does it for you.',
@@ -127,18 +127,19 @@
             mTitle: 'What this panel reads', mIntro: 'Everything here is read from the page. The script never claims, bids or enters anything: those all go through a captcha, and doing them by script is what gets accounts banned.',
             mDaily: 'Resets at 00:00 UTC: time on site, Twitch, the calendar day and the login streak. That hour comes from the site’s own code, not from a guess.',
             mQuests: 'Quests do not reset. Each one is single use with its own window: the daily ones vanish when it ends, and the Steam ones run Monday to Monday.',
-            mTwitch: 'Twitch ARP needs the AWA widget active on a Hive or Nexus channel. A zero here does not prove the widget is off — it also reads zero before you watch anything. Some artifacts raise the daily cap above 15: the extra arrives separately once the 15 are in, and the line then counts against the new cap.',
+            mTwitch: 'Twitch ARP needs the AWA widget active on one of the channels listed in the Control Center. As measured in September 2026, it pays one ARP every 2.5 min on Hive and Nexus, which the site advertises at double speed, and one every 5 min on the rest; the site may change it. A zero here does not prove the widget is off — it also reads zero before you watch anything. Some artifacts raise the daily cap above 15: the extra is earned by watching, at the same pace, once the 15 are in, and the line then counts against the new cap.',
             mLate: 'Steam is slow on purpose: playtime and game ownership can take up to an hour to register, so a red state may just be out of date.',
             mVersion: 'Version {v}',
             discord: 'Discord', tipDiscord: 'The site says Discord pays for two things — the polls and the «Arena Adventures» — and states no amount for either. The 5 here is what a day has been seen to pay; if a day pays more, this line shows it. There is no counter for it anywhere on the site, so it is read from your own ARP log, filtered to today. It only pays MONDAY TO FRIDAY: at the weekend the line goes quiet instead of asking you for something you cannot do.',
             store: 'Battle Store', storePack: '{a} ARP for {f}', storeShort: '{n} tokens short', qPass: 'Battle Pass', passNone: 'not started', passClosed: 'season over', passClaim: '{n} to claim',
+            tipPassStep: 'Milestone {n} of {t}: you have {v} of the {c} ARP it asks for.', tipPassLeft: 'To finish the whole pass you need {f} more ARP.', passEnds: 'Battle Pass: {v}', storeEnds: 'Battle Store: {v}', tipPassEnds: 'When the Battle Pass ends. Until then ARP counts towards its milestones. Your tokens are NOT wiped at that point: the Battle Store opens then, for a few days.', tipStoreEnds: 'When the Battle Store closes: any tokens you have not spent are wiped then.', tipStoreHave: 'You have {n} tokens.', avistore: 'The Battle Store is closing and you have unspent tokens', storeAll: 'all three bought', tipRemindStore: 'Warns you when the Battle Store opens, on ANY page where the script runs. It is the same warning as the rest: a dialog you have to close, a 👽 on the tab and a band in the panel. It matters for the games: in Season 0 they were all gone within sixteen minutes. The ARP packs do not run out, and the panel already warns you about leftover tokens before the store closes. It does not buy anything for you. Click again to cancel.', avistoreopen: 'The Battle Store is open',
             evento: "Community event", evJoin: "not joined", evOwn: "game missing", evMin: "{v}/{c} min", evAll: "all milestones", evEnds: "Event: {v}", evNamed: "Event: {n}", goEvento: "Click this line to go to the event page.", tipEv: "Steam community events pay ARP for playtime, in milestones that need TWO things at once: the whole community reaching a total of hours, and you reaching your own. Your progress is shown in MINUTES because the site rounds to hours, so anything under one hour reads as 0 there and you cannot tell it apart from nothing at all.", tipEvJoin: "The event is live and you are NOT in it. Joining is a button on the event page, and until you press it nothing counts: playtime from before you join is thrown away — that is measured, not guessed. Joining is one way only, there is no leave button.", tipEvOwn: "The event needs the game and the site does not think you have it. If the game is Free to Play that is expected: Steam only reports free games you have actually PLAYED, so open it for a few minutes and close it. The site then takes up to an hour to notice. The «sync games» button is capped at once per hour and does not fix this on its own.",
             evOn: "under way",
             mEvento: "Steam community events pay for playtime in milestones, and each one needs the whole community to reach a total of hours AND you to reach your own. Nothing counts until you press Join on the event page, and playtime from before you join is thrown away — so the panel warns you when an event is live and you are not in it. If more than one is live, each gets its own line, the one ending soonest first. On an event page you have joined, the milestone carousel moves to the one you are on —or, once yours are all done, to the first one the community still needs—, highlights it, and the page scrolls down to it. On one you have not joined it goes to the first milestone the community still needs, without scrolling the page away from the join button.",
-            tipPass: 'The pass advances with ARP from any source, milestone by milestone, and it has to be STARTED by hand when a season opens. Unclaimed milestones are handed out at the end of the season, but the battle tokens are wiped: those are the ones with a deadline.',
-            tipStore: 'The Battle Store swaps Battle Tokens for ARP at a fixed rate — 25 tokens for 100 ARP, 45 for 200, 90 for 500 — and this line shows the best pack your tokens already reach. It matters because the tokens are WIPED when the season closes, so they are ARP with an expiry date. It is deliberately not amber: it does not run out today, so it never feeds the end-of-day warning.',
+            tipPass: 'The pass advances with ARP from any source, milestone by milestone, and it has to be STARTED by hand when a season opens. Unclaimed milestones are handed out at the end of the season, but the battle tokens are wiped when the Battle Store closes, a few days after the pass: those are the ones with a deadline.',
+            tipStore: 'The Battle Store sells three ARP packs for Battle Tokens at a fixed rate — 25 tokens for 100 ARP, 45 for 200, 90 for 500 —, each one only once, and this line shows the most ARP your tokens already reach combining the ones you have not bought yet. It also sells games and fragments, but only the ARP has a fixed value and does not run out: in Season 0 the five games were already sold out sixteen minutes after the store opened. It matters because the store only opens once the pass ends, and only for a few days —seven in Season 0—; when it closes, the tokens left are WIPED, so they are ARP with an expiry date. It is deliberately not amber: it never feeds the end-of-day warning. The store has its own, six hours before it closes, if you still have tokens.',
             fold: 'Fold the panel', tipAcct: 'Your balance, tier and the two login counts. The streak of 7 and the calendar of 28 are NOT the same number, and neither one is the day of the month: the streak breaks if you miss a day, while the calendar counts the days you have logged in, whenever they fall. The site says so itself — its rewards go by total login days, not by the date. So you can be on streak day 1 with 8 days logged in. Both only exist in the Control Center, so on other pages they arrive a moment later.',
-            tipAlert: 'Three warnings: thirty minutes before the day ends if anything of the day is still pending; SIX hours before the Steam week ends if any of those is unfinished —those take playing, not clicking—; and when the new day starts, to get going — that one greets you WHENEVER you come in, not only at midnight, and stays quiet only in the last half hour, when it would contradict the other. Each one marks the tab —a 👽 on the title and on the favicon— and leaves a band in the panel; those stay until you mark them as seen. There is also a DIALOG you have to close, but never in a background tab: the browser swallows those without showing them, so it waits until you come back. There is no sound: the browser refuses to play one on this site, see the script information. Switching this box off and on again FORGETS everything already marked, so the warnings come back.',
+            tipAlert: 'Three warnings: thirty minutes before the day ends if anything of the day is still pending; SIX hours before the Steam week ends if any of those is unfinished —those take playing, not clicking—; and when the new day starts, to get going — that one greets you WHENEVER you come in, not only at midnight, and stays quiet only in the last half hour, when it would contradict the other. Each one marks the tab —a 👽 on the title and on the favicon— and leaves a band in the panel; those stay until you mark them as seen. There is also a DIALOG you have to close, but never in a background tab: the browser swallows those without showing them, so it waits until you come back. There is no sound: the browser refuses to play one on this site, see the script information. Switching this box off and on again FORGETS everything already marked, so the warnings come back. And one more, only at the end of a season: six hours before the Battle Store closes, if you still have tokens.',
             tipLang: 'Automatic follows the language you picked on Alienware Arena.',
             tipNoData: 'The daily counters live in the Control Center. If the request fails, the panel says so instead of showing zeros that would look like «nothing pending».',
             tipTag: 'It costs {p} ARP and you have {b}.',
@@ -146,7 +147,7 @@
             infoTitle: 'Script information', infoName: 'Name:', infoVersion: 'Version:',
             infoAuthor: 'Author:', infoGitHub: 'GitHub:', infoDescription: 'Description:',
             infoPrivacy: 'Privacy:', accept: 'Accept', info: 'Information',
-            infoDescriptionText: 'Shows what expires and when: time on site and Twitch reset at 00:00 UTC, daily quests are single use and never come back, Steam quests run Monday to Monday, and the campaign calendar has a day waiting. When there are two Steam quests and the game of the fixed one is in the picker of the one that lets you choose, picking it makes the same hour count for both. If it is a free game you don’t own, adding it to your Steam library may be enough to get it into that picker. Discord only pays Monday to Friday, so at the weekend that line goes quiet instead of asking, and clicking it opens the «Arena Connect» channel, where the polls are voted. And the Battle Pass tokens are wiped when the season closes, so the panel says what yours are worth in ARP right now. Each line says in its tooltip which clock it answers to, and two countdowns —the day and the Steam week— are redrawn on their own. The lines you complete in the Control Center take you straight to their section of it and highlight it, even if you are already there. On a giveaway page it reads the giveaway’s own per-country, per-tier stock and says whether there are keys for you before you press anything. In the Marketplace and the Vault it marks every card with what you can afford, what needs a higher tier and what is sold out. With a Marketplace discount artifact equipped, it counts the discounted price, which is what you actually pay. It can also warn you three times —before the day ends, six hours before the Steam week ends, and when the new day starts— with a dialog you have to close. There is no sound: it was tried three ways on this site and the browser blocks it every time, while the very same code does play on other sites; from inside the page there is nothing left to fix. A dialog, the 👽 mark on the tab and a band in the panel do reach you, and none of them needs a permission we do not have. It re-reads on its own every 15 minutes, and the ⟳ button re-reads everything right away. It only reads: it never claims, bids or enters anything, because all of that goes through a captcha.',
+            infoDescriptionText: 'Shows what expires and when: time on site and Twitch reset at 00:00 UTC, daily quests are single use and never come back, Steam quests run Monday to Monday, and the campaign calendar has a day waiting. When there are two Steam quests and the game of the fixed one is in the picker of the one that lets you choose, picking it makes the same hour count for both. If it is a free game you don’t own, adding it to your Steam library may be enough to get it into that picker. Discord only pays Monday to Friday, so at the weekend that line goes quiet instead of asking, and clicking it opens the «Arena Connect» channel, where the polls are voted. The Battle Pass line says how far you are into the milestone you are on, and a clock counts down to the end of the pass; its tokens are wiped when the Battle Store closes, a few days later, so the panel says what yours are worth in ARP and warns you six hours before the store closes if you have any left. On the store page, while it is still closed, a bell like the Vault one can warn you when it opens: the games there run out in minutes. Each line says in its tooltip which clock it answers to, and two countdowns —the day and the Steam week— are redrawn on their own. The lines you complete in the Control Center take you straight to their section of it and highlight it, even if you are already there. On a giveaway page it reads the giveaway’s own per-country, per-tier stock and says whether there are keys for you before you press anything. In the Marketplace and the Vault it marks every card with what you can afford, what needs a higher tier and what is sold out. With a Marketplace discount artifact equipped, it counts the discounted price, which is what you actually pay. It can also warn you three times —before the day ends, six hours before the Steam week ends, and when the new day starts— with a dialog you have to close. There is no sound: it was tried three ways on this site and the browser blocks it every time, while the very same code does play on other sites; from inside the page there is nothing left to fix. A dialog, the 👽 mark on the tab and a band in the panel do reach you, and none of them needs a permission we do not have. It re-reads on its own every 15 minutes, and the ⟳ button re-reads everything right away. It only reads: it never claims, bids or enters anything, because all of that goes through a captcha.',
             infoPrivacyText: 'Your settings —language, panel corner, the warning— stay in your browser only. The script reads the page you are on and, at most, asks the site once for your own Control Center, reusing your session. No third parties, and nothing is sent to the script author.',
         },
         es: {
@@ -161,10 +162,10 @@
             langLabel: 'Idioma', auto: 'Automático (el del sitio)', move: 'Mover el panel',
             refresh: 'Actualizar ahora', tipRefresh: 'Vuelve a leerlo todo, saltándose la caché. Solo se refresca cada 15 minutos mientras miras esta pestaña, y una vez para todo el navegador.',
             alertOn: 'Avisarme antes del reinicio', tipTos: 'Estar en el sitio ya paga ARP, hasta un tope diario. Se reinicia a las 00:00 UTC.',
-            tipTwitch: 'El tope lo dice el propio sitio en su FAQ: hasta 15 ARP al día. Se paga de uno en uno.',
-            tipTwitchZero: 'Verlo no basta: el widget de AWA tiene que estar activo en un canal de Hive o Nexus, y con tu cuenta de Twitch vinculada.',
-            tipTwitchBonus: 'Hoy tu tope es {c}, no 15: lo sube uno de tus artefactos equipados. El extra llega aparte, cuando ya tienes los 15 de ver.',
-            tipTwitchPend: 'Tienes los 15, pero el sitio dice que aún queda ARP de Twitch por ganar: uno de tus artefactos equipados sube el tope, y su extra llega aparte cuando ya tienes los 15. El sitio no dice cuánto, de ahí el «+».',
+            tipTwitch: 'El tope lo dice el propio sitio en su FAQ: hasta 15 ARP al día. Se paga de uno en uno: según lo medido en septiembre de 2026, uno cada 2,5 min en los canales de Colmena (Hive) y Nexus, y uno cada 5 min en el resto de la lista.',
+            tipTwitchZero: 'Verlo no basta: el widget de AWA tiene que estar activo en uno de los canales de la lista del Centro de control, y con tu cuenta de Twitch vinculada.',
+            tipTwitchBonus: 'Hoy tu tope es {c}, no 15: lo sube uno de tus artefactos equipados. El extra se gana viendo, al mismo ritmo, cuando ya tienes los 15.',
+            tipTwitchPend: 'Tienes los 15, pero el sitio dice que aún queda ARP de Twitch por ganar: uno de tus artefactos equipados sube el tope, y su extra se gana viendo, al mismo ritmo, ahora que ya tienes los 15. El Centro de control no dice cuánto —el widget de Twitch sí—, de ahí el «+».',
             tipDaily: 'De un solo uso: una quest diaria no vuelve. Al acabar su ventana desaparece, hecha o sin hacer.',
             tipSteam: 'Estas van de lunes a lunes, no por días, y el sitio tarda hasta una hora en ver lo que jugaste —y en ver un juego que acabas de añadir—. Si el juego de la quest fija sale en el selector de la que te deja elegir, elígelo: la misma hora cuenta para las dos. Y si ese juego es gratis y no lo tienes, añádelo a tu biblioteca de Steam y mira si aparece en el selector: si aparece, una hora vale para las dos.',
             tipCalendar: 'Este es el calendario de CAMPAÑA, el que tiene un botón «Obtener artículo» por día. Se cobra en el ICONO DE LA CAMPAÑA DE LA BARRA DE ARRIBA, justo a la izquierda de la campana de avisos —su dibujo cambia con cada campaña, así que no siempre es el mismo logo— y pulsando esta línea se abre. No es el de entrar cada día: la racha de 7 y el calendario de 28 se pagan solos al entrar, y los dos se ven al lado de tu nivel. Reclamar pasa por un captcha, así que el script no lo hace por ti.',
@@ -180,18 +181,19 @@
             mTitle: 'Qué lee este panel', mIntro: 'Todo lo de aquí se lee de la página. El script no reclama, no puja y no participa en nada: todo eso pasa por un captcha, y hacerlo por script es lo que hace que baneen cuentas.',
             mDaily: 'Se reinician a las 00:00 UTC: el tiempo en el sitio, Twitch, el día del calendario y la racha de login. Esa hora sale del código del propio sitio, no de una suposición.',
             mQuests: 'Las quests no se reinician. Cada una es de un solo uso con su ventana: las diarias desaparecen al acabarla, y las de Steam van de lunes a lunes.',
-            mTwitch: 'El ARP de Twitch necesita el widget de AWA activo en un canal de Hive o Nexus. Un cero aquí no demuestra que esté apagado: también marca cero antes de que veas nada. Algunos artefactos suben el tope diario por encima de 15: el extra llega aparte cuando ya tienes los 15, y la línea pasa a contar contra el tope nuevo.',
+            mTwitch: 'El ARP de Twitch necesita el widget de AWA activo en uno de los canales de la lista del Centro de control. Según lo medido en septiembre de 2026, paga un ARP cada 2,5 min en Colmena (Hive) y Nexus, que el sitio anuncia al doble de velocidad, y uno cada 5 min en el resto; el sitio puede cambiarlo. Un cero aquí no demuestra que esté apagado: también marca cero antes de que veas nada. Algunos artefactos suben el tope diario por encima de 15: el extra se gana viendo, al mismo ritmo, cuando ya tienes los 15, y la línea pasa a contar contra el tope nuevo.',
             mLate: 'Steam va con retraso por diseño: el tiempo jugado y la propiedad de un juego tardan hasta una hora en registrarse, así que un estado en rojo puede ser solo un dato viejo.',
             mVersion: 'Versión {v}',
             discord: 'Discord', tipDiscord: 'El sitio dice que Discord paga por dos cosas —las encuestas y las «Arena Adventures»— y no publica el importe de ninguna. Los 5 de aquí son lo que se ha visto pagar en un día; si un día paga más, la línea lo enseña. No hay contador para esto en ninguna parte del sitio, así que se lee de tu propio registro de ARP, filtrado a hoy. Solo paga de LUNES A VIERNES: el fin de semana la línea se calla en vez de pedirte algo que no se puede hacer.',
             store: 'Tienda de batalla', storePack: '{a} ARP por {f}', storeShort: 'faltan {n} fichas', qPass: 'Pase de batalla', passNone: 'sin empezar', passClosed: 'temporada cerrada', passClaim: '{n} por reclamar',
+            tipPassStep: 'Hito {n} de {t}: llevas {v} de los {c} ARP que pide.', tipPassLeft: 'Para completar el pase entero faltan {f} ARP.', passEnds: 'Pase de batalla: {v}', storeEnds: 'Tienda de batalla: {v}', tipPassEnds: 'Cuándo termina el pase de batalla. Hasta entonces el ARP cuenta para sus hitos. Las fichas NO se borran en ese momento: es cuando abre la tienda de batalla, por unos días.', tipStoreEnds: 'Cuándo cierra la tienda de batalla: las fichas que no hayas gastado se borran entonces.', tipStoreHave: 'Tienes {n} fichas.', avistore: 'Cierra la tienda de batalla y te quedan fichas', storeAll: 'los tres comprados', tipRemindStore: 'Te avisa cuando abra la Tienda de Batalla, en CUALQUIER página donde corra el script. Es el mismo aviso que el resto: un diálogo que hay que cerrar, un 👽 en la pestaña y una banda en el panel. Importa por los juegos: en la Temporada 0 se agotaron todos en menos de dieciséis minutos. Los paquetes de ARP no se agotan, y de las fichas que te queden ya avisa el panel antes de que cierre la tienda. No compra nada por ti. Vuelve a pulsar para cancelarlo.', avistoreopen: 'La tienda de batalla está abierta',
             evento: "Evento comunitario", evJoin: "sin unirte", evOwn: "falta el juego", evMin: "{v}/{c} min", evAll: "todos los hitos", evEnds: "Evento: {v}", evNamed: "Evento: {n}", goEvento: "Pulsa esta línea para ir a la página del evento.", tipEv: "Los eventos comunitarios de Steam pagan ARP por tiempo jugado, en hitos que exigen DOS cosas a la vez: que toda la comunidad llegue a un total de horas y que llegues tú a las tuyas. Tu progreso va en MINUTOS porque el sitio redondea a horas, así que por debajo de una hora él muestra 0 y no se distingue de no haber jugado nada.", tipEvJoin: "El evento está en vivo y NO estás dentro. Unirse es un botón de la página del evento, y hasta que lo pulsas no cuenta nada: el tiempo jugado antes de unirte se tira — está medido, no supuesto. Unirse es de ida: no hay botón para salirse.", tipEvOwn: "El evento pide el juego y el sitio no cree que lo tengas. Si el juego es Free to Play es lo esperable: Steam solo informa de los juegos gratis que has JUGADO de verdad, así que ábrelo unos minutos y ciérralo. El sitio tarda hasta una hora en enterarse. El botón de «sincronizar juegos» está limitado a una vez por hora y por sí solo no arregla esto.",
             evOn: "en marcha",
             mEvento: "Los eventos comunitarios de Steam pagan por tiempo jugado en hitos, y cada uno exige que la comunidad entera llegue a un total de horas Y que llegues tú a las tuyas. No cuenta nada hasta que pulsas «unirse» en la página del evento, y el tiempo jugado antes de unirte se tira — por eso el panel avisa cuando hay un evento vivo y no estás dentro. Si hay más de uno vivo, cada uno va en su propia línea, primero el que acaba antes. En la página de un evento al que te has unido, el carrusel de hitos se coloca en el que te toca —o, si ya tienes todos, en el primero que le falta a la comunidad—, lo resalta y la página baja hasta él. En uno al que no te has unido va al primer hito que le falta a la comunidad, sin bajar la página para no quitarte de delante el botón de unirte.",
-            tipPass: 'El pase avanza con ARP de cualquier fuente, hito a hito, y hay que EMPEZARLO a mano cuando abre una temporada. Los hitos sin reclamar se entregan al cerrar, pero las fichas de batalla se borran: esas son las que tienen prisa.',
-            tipStore: 'La Tienda de Batalla cambia fichas por ARP a precio fijo —25 fichas por 100 ARP, 45 por 200, 90 por 500— y esta línea enseña el mejor paquete que ya alcanzan tus fichas. Importa porque las fichas SE BORRAN al cerrar la temporada, así que son ARP con fecha de caducidad. No sale en amarillo a propósito: no vence hoy, así que nunca alimenta el aviso de fin de día.',
+            tipPass: 'El pase avanza con ARP de cualquier fuente, hito a hito, y hay que EMPEZARLO a mano cuando abre una temporada. Los hitos sin reclamar se entregan al cerrar, pero las fichas de batalla se borran al cerrar la tienda de batalla, unos días después del pase: esas son las que tienen prisa.',
+            tipStore: 'La Tienda de Batalla vende con fichas tres paquetes de ARP a precio fijo —25 fichas por 100 ARP, 45 por 200, 90 por 500—, cada uno una sola vez, y esta línea enseña lo más que te dan ya tus fichas juntando los que aún no has comprado. También vende juegos y fragmentos, pero solo el ARP tiene valor fijo y no se agota: en la Temporada 0 los cinco juegos ya estaban agotados a los dieciséis minutos de abrir la tienda. Importa porque la tienda solo abre cuando termina el pase, y por pocos días —siete en la Temporada 0—; al cerrarla, las fichas que queden SE BORRAN, así que son ARP con fecha de caducidad. No sale en amarillo a propósito: nunca alimenta el aviso de fin de día. La tienda tiene el suyo, seis horas antes de cerrar, si te quedan fichas.',
             fold: 'Plegar el panel', tipAcct: 'Tu saldo, tu nivel y las dos cuentas de inicio de sesión. La racha de 7 y el calendario de 28 NO son el mismo número, y ninguno es el día del mes: la racha se rompe si fallas un día, mientras que el calendario cuenta los días que has entrado, caigan cuando caigan. Lo dice el propio sitio: sus recompensas van por días de conexión acumulados, no por la fecha. Así que puedes ir por el día 1 de racha con 8 días entrados. Los dos solo están en el Centro de control, así que en otras páginas llegan un momento después.',
-            tipAlert: 'Tres avisos: media hora antes de que acabe el día si queda algo del día por hacer; SEIS horas antes de que acabe la semana de Steam si queda alguna sin hacer —esas se cumplen jugando, no pulsando—; y al empezar el día nuevo, para arrancar —ese te saluda ENTRES CUANDO ENTRES, no solo a medianoche, y solo se calla la última media hora, cuando diría lo contrario que el otro—. Cada uno marca la pestaña —un 👽 en el título y en el favicon— y deja una banda en el panel; esas se quedan hasta que las marcas como vistas. Hay además un DIÁLOGO que hay que cerrar, pero nunca en una pestaña de fondo: esos el navegador se los queda sin enseñarlos, así que espera a que vuelvas. No hay sonido: el navegador se niega a reproducirlo en este sitio, lo cuenta la información del script. Apagar y encender esta casilla OLVIDA todo lo ya marcado, así que los avisos vuelven.',
+            tipAlert: 'Tres avisos: media hora antes de que acabe el día si queda algo del día por hacer; SEIS horas antes de que acabe la semana de Steam si queda alguna sin hacer —esas se cumplen jugando, no pulsando—; y al empezar el día nuevo, para arrancar —ese te saluda ENTRES CUANDO ENTRES, no solo a medianoche, y solo se calla la última media hora, cuando diría lo contrario que el otro—. Cada uno marca la pestaña —un 👽 en el título y en el favicon— y deja una banda en el panel; esas se quedan hasta que las marcas como vistas. Hay además un DIÁLOGO que hay que cerrar, pero nunca en una pestaña de fondo: esos el navegador se los queda sin enseñarlos, así que espera a que vuelvas. No hay sonido: el navegador se niega a reproducirlo en este sitio, lo cuenta la información del script. Apagar y encender esta casilla OLVIDA todo lo ya marcado, así que los avisos vuelven. Y uno más, solo al final de una temporada: seis horas antes de que cierre la tienda de batalla, si aún te quedan fichas.',
             tipLang: 'El automático sigue al idioma que elegiste en Alienware Arena.',
             tipNoData: 'Los contadores del día viven en el Centro de control. Si la petición falla, el panel lo dice en vez de enseñar ceros, que se leerían como «no queda nada».',
             tipTag: 'Cuesta {p} ARP y tienes {b}.',
@@ -199,7 +201,7 @@
             infoTitle: 'Información del script', infoName: 'Nombre:', infoVersion: 'Versión:',
             infoAuthor: 'Autor:', infoGitHub: 'GitHub:', infoDescription: 'Descripción:',
             infoPrivacy: 'Privacidad:', accept: 'Aceptar', info: 'Información',
-            infoDescriptionText: 'Enseña qué caduca y cuándo: el tiempo en el sitio y Twitch se reinician a las 00:00 UTC, las quests diarias son de un solo uso y no vuelven, las de Steam van de lunes a lunes, y el calendario de campaña puede tener un día esperando. Cuando hay dos quests de Steam y el juego de la fija sale en el selector de la que te deja elegir, elegirlo hace que la misma hora cuente para las dos. Y si es un juego gratis que no tienes, añadirlo a tu biblioteca de Steam puede bastar para que salga en ese selector. Discord solo paga de lunes a viernes, así que el fin de semana esa línea se calla en vez de pedirlo, y al pulsarla abre el canal «Arena Connect», que es donde se vota en las encuestas. Y las fichas del pase se borran al cerrar la temporada, así que el panel dice cuánto ARP valen las tuyas ahora mismo. Cada línea dice en su tooltip a qué reloj responde, y dos cuentas atrás —el día y la semana de Steam— se repintan solas. Las líneas que se cumplen en el Centro de control te llevan directo a su sección y la resaltan, aunque ya estés ahí. En la ficha de un sorteo lee el inventario por país y por nivel del propio sorteo y dice si hay claves para ti antes de pulsar nada. En el Marketplace y la Bóveda marca cada tarjeta con lo que te alcanza, lo que pide más nivel y lo que está agotado. Si llevas un artefacto de descuento del Marketplace, cuenta con el precio rebajado, que es el que se paga. También puede avisarte tres veces —antes de que acabe el día, seis horas antes de que acabe la semana de Steam, y al empezar el día nuevo— con un diálogo que hay que cerrar. No hay sonido: se intentó de tres maneras en este sitio y el navegador lo bloquea siempre, mientras que ese mismo código sí suena en otros; desde dentro de la página no queda nada que arreglar. Un diálogo, la marca 👽 en la pestaña y una banda en el panel sí te alcanzan, y ninguno depende de un permiso que no tenemos. Se relee solo cada 15 minutos, y el botón ⟳ vuelve a leerlo todo al instante. Solo lee: no reclama, no puja y no participa en nada, porque todo eso pasa por un captcha.',
+            infoDescriptionText: 'Enseña qué caduca y cuándo: el tiempo en el sitio y Twitch se reinician a las 00:00 UTC, las quests diarias son de un solo uso y no vuelven, las de Steam van de lunes a lunes, y el calendario de campaña puede tener un día esperando. Cuando hay dos quests de Steam y el juego de la fija sale en el selector de la que te deja elegir, elegirlo hace que la misma hora cuente para las dos. Y si es un juego gratis que no tienes, añadirlo a tu biblioteca de Steam puede bastar para que salga en ese selector. Discord solo paga de lunes a viernes, así que el fin de semana esa línea se calla en vez de pedirlo, y al pulsarla abre el canal «Arena Connect», que es donde se vota en las encuestas. La línea del pase de batalla dice cuánto llevas del hito en el que vas, y un reloj cuenta lo que le queda al pase; sus fichas se borran cuando cierra la tienda de batalla, unos días después, así que el panel dice cuánto ARP valen las tuyas y te avisa seis horas antes de que cierre si te quedan. En la página de la tienda, mientras no abre, una campana como la de la Bóveda puede avisarte cuando abra: sus juegos se agotan en minutos. Cada línea dice en su tooltip a qué reloj responde, y dos cuentas atrás —el día y la semana de Steam— se repintan solas. Las líneas que se cumplen en el Centro de control te llevan directo a su sección y la resaltan, aunque ya estés ahí. En la ficha de un sorteo lee el inventario por país y por nivel del propio sorteo y dice si hay claves para ti antes de pulsar nada. En el Marketplace y la Bóveda marca cada tarjeta con lo que te alcanza, lo que pide más nivel y lo que está agotado. Si llevas un artefacto de descuento del Marketplace, cuenta con el precio rebajado, que es el que se paga. También puede avisarte tres veces —antes de que acabe el día, seis horas antes de que acabe la semana de Steam, y al empezar el día nuevo— con un diálogo que hay que cerrar. No hay sonido: se intentó de tres maneras en este sitio y el navegador lo bloquea siempre, mientras que ese mismo código sí suena en otros; desde dentro de la página no queda nada que arreglar. Un diálogo, la marca 👽 en la pestaña y una banda en el panel sí te alcanzan, y ninguno depende de un permiso que no tenemos. Se relee solo cada 15 minutos, y el botón ⟳ vuelve a leerlo todo al instante. Solo lee: no reclama, no puja y no participa en nada, porque todo eso pasa por un captcha.',
             infoPrivacyText: 'Tus ajustes —idioma, esquina del panel, el aviso— se guardan solo en tu navegador. El script lee la página en la que estás y, como mucho, le pide al sitio una vez tu propio Centro de control, reusando tu sesión. No hay terceros y no se envía nada al autor del script.',
         },
         de: {
@@ -214,10 +216,10 @@
             langLabel: 'Sprache', auto: 'Automatisch (Seite)', move: 'Panel verschieben',
             refresh: 'Jetzt aktualisieren', tipRefresh: 'Liest alles neu ein, am Cache vorbei. Von selbst nur alle 15 Minuten, nur solange dieser Tab sichtbar ist, und einmal für den ganzen Browser.',
             alertOn: 'Vor dem Reset warnen', tipTos: 'Schon das Verweilen auf der Seite bringt ARP, bis zu einem Tageslimit. Reset um 00:00 UTC.',
-            tipTwitch: 'Die Seite nennt dieses Limit selbst, in ihren FAQ: bis zu 15 ARP pro Tag. Ausgezahlt wird in 1er-Schritten.',
-            tipTwitchZero: 'Zuschauen allein bringt nichts: das AWA-Widget muss auf einem Hive- oder Nexus-Kanal aktiv sein, mit verknüpftem Twitch-Konto.',
-            tipTwitchBonus: 'Heute liegt dein Limit bei {c}, nicht bei 15: eines deiner ausgerüsteten Artefakte erhöht es. Das Extra kommt separat, sobald die 15 vom Zuschauen da sind.',
-            tipTwitchPend: 'Du hast die 15, aber laut Seite gibt es noch Twitch-ARP zu holen: eines deiner ausgerüsteten Artefakte erhöht das Limit, und sein Extra kommt separat, sobald die 15 da sind. Wie viel, sagt die Seite nicht – daher das «+».',
+            tipTwitch: 'Die Seite nennt dieses Limit selbst, in ihren FAQ: bis zu 15 ARP pro Tag. Ausgezahlt wird in 1er-Schritten: laut Messung vom September 2026 einer alle 2,5 Min. auf Hive- und Nexus-Kanälen und einer alle 5 Min. auf den übrigen Kanälen der Liste.',
+            tipTwitchZero: 'Zuschauen allein bringt nichts: das AWA-Widget muss auf einem der im Control Center gelisteten Kanäle aktiv sein, mit verknüpftem Twitch-Konto.',
+            tipTwitchBonus: 'Heute liegt dein Limit bei {c}, nicht bei 15: eines deiner ausgerüsteten Artefakte erhöht es. Das Extra verdienst du durchs Zuschauen, im selben Takt, sobald die 15 da sind.',
+            tipTwitchPend: 'Du hast die 15, aber laut Seite gibt es noch Twitch-ARP zu holen: eines deiner ausgerüsteten Artefakte erhöht das Limit, und sein Extra verdienst du durchs Zuschauen, im selben Takt, jetzt wo die 15 da sind. Wie viel, sagt das Control Center nicht – das Twitch-Widget schon –, daher das «+».',
             tipDaily: 'Einmalig: eine Tagesquest kommt nicht zurück. Endet ihr Zeitfenster, verschwindet sie — erledigt oder nicht.',
             tipSteam: 'Diese laufen von Montag zu Montag, nicht täglich, und die Seite braucht bis zu einer Stunde, um Spielzeit — oder ein neu gekauftes Spiel — zu sehen. Taucht das Spiel der festen Quest in der Auswahl der frei wählbaren auf, wähle es: dieselbe Stunde zählt für beide. Und ist dieses Spiel kostenlos und du hast es nicht, füge es deiner Steam-Bibliothek hinzu und schau, ob es in der Auswahl auftaucht: wenn ja, deckt eine Stunde beide ab.',
             tipCalendar: 'Das ist der KAMPAGNEN-Kalender, der mit einer «Gegenstand holen»-Schaltfläche pro Tag. Abgeholt wird er über das KAMPAGNEN-SYMBOL OBEN IN DER LEISTE, direkt links von der Benachrichtigungsglocke —sein Bild wechselt mit jeder Kampagne, es ist also nicht immer dasselbe Logo— und ein Klick auf diese Zeile öffnet ihn. Nicht der fürs tägliche Einloggen: die 7-Tage-Serie und der 28-Tage-Kalender zahlen sich beim Hereinkommen von selbst, und beide stehen neben deiner Stufe. Das Abholen läuft über ein Captcha, das Skript macht es also nie für dich.',
@@ -233,18 +235,19 @@
             mTitle: 'Was dieses Panel liest', mIntro: 'Alles hier wird von der Seite gelesen. Das Skript holt nichts ab, bietet nicht und nimmt an nichts teil: das läuft alles über ein Captcha, und per Skript ist es der Grund, warum Konten gesperrt werden.',
             mDaily: 'Reset um 00:00 UTC: Zeit auf der Seite, Twitch, der Kalendertag und die Login-Serie. Diese Uhrzeit stammt aus dem Code der Seite, nicht aus einer Vermutung.',
             mQuests: 'Quests werden nicht zurückgesetzt. Jede ist einmalig mit eigenem Zeitfenster: Tagesquests verschwinden am Ende, Steam-Quests laufen von Montag zu Montag.',
-            mTwitch: 'Twitch-ARP braucht das aktive AWA-Widget auf einem Hive- oder Nexus-Kanal. Eine Null beweist nicht, dass es aus ist — sie steht auch da, bevor du etwas ansiehst. Manche Artefakte heben das Tageslimit über 15: das Extra kommt separat, sobald die 15 da sind, und die Zeile zählt dann gegen das neue Limit.',
+            mTwitch: 'Twitch-ARP braucht das aktive AWA-Widget auf einem der im Control Center gelisteten Kanäle. Laut Messung vom September 2026 gibt es ein ARP alle 2,5 Min. auf Hive und Nexus, die die Seite mit doppelter Geschwindigkeit bewirbt, und eines alle 5 Min. auf den übrigen; die Seite kann das ändern. Eine Null beweist nicht, dass es aus ist — sie steht auch da, bevor du etwas ansiehst. Manche Artefakte heben das Tageslimit über 15: das Extra verdienst du durchs Zuschauen, im selben Takt, sobald die 15 da sind, und die Zeile zählt dann gegen das neue Limit.',
             mLate: 'Steam ist absichtlich langsam: Spielzeit und Spielbesitz brauchen bis zu einer Stunde, ein roter Status kann also nur veraltet sein.',
             mVersion: 'Version {v}',
             discord: 'Discord', tipDiscord: 'Laut Seite zahlt Discord für zwei Dinge — die Umfragen und die «Arena Adventures» — und nennt für keines einen Betrag. Die 5 hier sind das, was ein Tag bisher gebracht hat; bringt ein Tag mehr, zeigt die Zeile es. Einen Zähler dafür gibt es auf der Seite nirgends, also wird aus deinem eigenen ARP-Log gelesen, auf heute gefiltert. Es zahlt nur von MONTAG BIS FREITAG: am Wochenende schweigt die Zeile, statt dich um etwas Unmögliches zu bitten.',
             store: 'Battle Store', storePack: '{a} ARP für {f}', storeShort: '{n} Marken fehlen', qPass: 'Battle Pass', passNone: 'nicht gestartet', passClosed: 'Saison beendet', passClaim: '{n} abzuholen',
+            tipPassStep: 'Meilenstein {n} von {t}: du hast {v} der {c} ARP, die er verlangt.', tipPassLeft: 'Bis zum Ende des ganzen Pass fehlen {f} ARP.', passEnds: 'Battle Pass: {v}', storeEnds: 'Battle Store: {v}', tipPassEnds: 'Wann der Battle Pass endet. Bis dahin zählt ARP für seine Meilensteine. Deine Marken werden dann NICHT gelöscht: genau dann öffnet der Battle Store, für ein paar Tage.', tipStoreEnds: 'Wann der Battle Store schließt: nicht ausgegebene Marken werden dann gelöscht.', tipStoreHave: 'Du hast {n} Marken.', avistore: 'Der Battle Store schließt und du hast noch Marken', storeAll: 'alle drei gekauft', tipRemindStore: 'Warnt dich, wenn der Battle Store öffnet, auf JEDER Seite, auf der das Skript läuft. Es ist dieselbe Warnung wie die übrigen: ein Dialog, den du schließen musst, ein 👽 im Tab und ein Band im Panel. Wichtig ist das wegen der Spiele: in Saison 0 waren alle in weniger als sechzehn Minuten weg. Die ARP-Pakete gehen nicht aus, und vor übrigen Marken warnt das Panel schon, bevor der Store schließt. Es kauft nichts für dich. Zum Abbrechen erneut klicken.', avistoreopen: 'Der Battle Store ist offen',
             evento: "Community-Event", evJoin: "nicht beigetreten", evOwn: "Spiel fehlt", evMin: "{v}/{c} Min.", evAll: "alle Meilensteine", evEnds: "Event: {v}", evNamed: "Event: {n}", goEvento: "Klicke auf diese Zeile, um zur Event-Seite zu gehen.", tipEv: "Steam-Community-Events zahlen ARP für Spielzeit, in Meilensteinen, die ZWEI Dinge gleichzeitig verlangen: dass die ganze Community eine Gesamtstundenzahl erreicht und dass du deine eigene erreichst. Dein Fortschritt steht in MINUTEN, weil die Seite auf Stunden rundet — unter einer Stunde zeigt sie 0 an, ununterscheidbar von gar nichts.", tipEvJoin: "Das Event läuft und du bist NICHT dabei. Der Beitritt ist ein Knopf auf der Event-Seite, und bis du ihn drückst, zählt nichts: Spielzeit von vor dem Beitritt wird verworfen — gemessen, nicht vermutet. Der Beitritt ist endgültig, es gibt keinen Austritt.", tipEvOwn: "Das Event verlangt das Spiel und die Seite glaubt nicht, dass du es hast. Bei einem Free-to-Play-Spiel ist das zu erwarten: Steam meldet kostenlose Spiele nur, wenn du sie wirklich GESPIELT hast. Öffne es also ein paar Minuten und schließe es. Die Seite braucht danach bis zu einer Stunde. Der Knopf «Spiele synchronisieren» ist auf einmal pro Stunde begrenzt und löst das allein nicht.",
             evOn: "läuft",
             mEvento: "Steam-Community-Events zahlen für Spielzeit in Meilensteinen, und jeder verlangt, dass die ganze Community eine Gesamtstundenzahl erreicht UND dass du deine eigene erreichst. Nichts zählt, bevor du auf der Event-Seite auf «Beitreten» drückst, und Spielzeit von vorher wird verworfen — deshalb warnt das Panel, wenn ein Event läuft und du nicht dabei bist. Laufen mehrere gleichzeitig, bekommt jedes seine eigene Zeile, das zuerst endende oben. Auf der Seite eines Events, dem du beigetreten bist, springt das Meilenstein-Karussell zu dem, an dem du gerade bist —oder, wenn du alle hast, zum ersten, der der Community noch fehlt—, hebt ihn hervor, und die Seite scrollt dorthin. Bei einem, dem du nicht beigetreten bist, springt es zum ersten Meilenstein, der der Community noch fehlt, ohne die Seite vom Beitreten-Knopf wegzuscrollen.",
-            tipPass: 'Der Pass läuft mit ARP aus jeder Quelle, Meilenstein für Meilenstein, und muss bei Saisonstart von Hand GESTARTET werden. Nicht abgeholte Meilensteine gibt es am Saisonende, die Battle-Token werden aber gelöscht: die haben es eilig.',
-            tipStore: 'Der Battle Store tauscht Marken gegen ARP zu festen Preisen — 25 Marken für 100 ARP, 45 für 200, 90 für 500 — und diese Zeile zeigt das beste Paket, das deine Marken schon erreichen. Wichtig ist es, weil die Marken beim Saisonende GELÖSCHT werden: es sind ARP mit Verfallsdatum. Bewusst nicht gelb: es läuft nicht heute ab und speist deshalb nie die Tageswarnung.',
+            tipPass: 'Der Pass läuft mit ARP aus jeder Quelle, Meilenstein für Meilenstein, und muss bei Saisonstart von Hand GESTARTET werden. Nicht abgeholte Meilensteine gibt es am Saisonende, die Battle-Token werden aber gelöscht, wenn der Battle Store schließt, ein paar Tage nach dem Pass: die haben es eilig.',
+            tipStore: 'Der Battle Store verkauft drei ARP-Pakete gegen Marken zu festen Preisen — 25 Marken für 100 ARP, 45 für 200, 90 für 500 —, jedes nur einmal, und diese Zeile zeigt, wie viel ARP deine Marken schon erreichen, wenn du die noch nicht gekauften kombinierst. Er verkauft auch Spiele und Fragmente, aber nur ARP hat einen festen Wert und geht nicht aus: in Saison 0 waren die fünf Spiele sechzehn Minuten nach der Öffnung schon ausverkauft. Wichtig ist es, weil der Store erst öffnet, wenn der Pass endet, und nur für ein paar Tage —sieben in Saison 0—; schließt er, werden die übrigen Marken GELÖSCHT: es sind ARP mit Verfallsdatum. Bewusst nicht gelb: es speist nie die Tageswarnung. Der Store hat seine eigene, sechs Stunden vor dem Schließen, wenn du noch Marken hast.',
             fold: 'Panel einklappen', tipAcct: 'Dein Guthaben, deine Stufe und die zwei Login-Zähler. Die 7-Tage-Serie und der 28-Tage-Kalender sind NICHT dieselbe Zahl, und keine davon ist der Tag des Monats: die Serie reißt, wenn du einen Tag auslässt, während der Kalender die Tage zählt, an denen du dich angemeldet hast, wann immer sie liegen. Die Seite sagt es selbst — ihre Belohnungen richten sich nach den gesamten Login-Tagen, nicht nach dem Datum. Du kannst also bei Serientag 1 und 8 Login-Tagen stehen. Beide gibt es nur im Control Center, auf anderen Seiten kommen sie einen Moment später.',
-            tipAlert: 'Drei Warnungen: dreißig Minuten vor Tagesende, wenn vom Tag noch etwas offen ist; SECHS Stunden vor Ende der Steam-Woche, wenn dort etwas offen ist —die erledigt man durch Spielen, nicht durch Klicken—; und wenn der neue Tag beginnt, zum Loslegen — die begrüßt dich, WANN IMMER du hereinschaust, nicht nur um Mitternacht, und schweigt nur in der letzten halben Stunde, wo sie der anderen widersprechen würde. Jede markiert den Tab —ein 👽 im Titel und im Favicon— und hinterlässt ein Band im Panel; beide bleiben, bis du sie als gesehen markierst. Dazu kommt ein DIALOG, den du schließen musst, aber nie in einem Hintergrund-Tab: die schluckt der Browser, ohne sie zu zeigen, also wartet er, bis du zurückkommst. Ton gibt es keinen: der Browser spielt auf dieser Seite keinen ab, siehe Skript-Informationen. Dieses Kästchen aus- und wieder einzuschalten VERGISST alles bereits Markierte, die Warnungen kommen also zurück.',
+            tipAlert: 'Drei Warnungen: dreißig Minuten vor Tagesende, wenn vom Tag noch etwas offen ist; SECHS Stunden vor Ende der Steam-Woche, wenn dort etwas offen ist —die erledigt man durch Spielen, nicht durch Klicken—; und wenn der neue Tag beginnt, zum Loslegen — die begrüßt dich, WANN IMMER du hereinschaust, nicht nur um Mitternacht, und schweigt nur in der letzten halben Stunde, wo sie der anderen widersprechen würde. Jede markiert den Tab —ein 👽 im Titel und im Favicon— und hinterlässt ein Band im Panel; beide bleiben, bis du sie als gesehen markierst. Dazu kommt ein DIALOG, den du schließen musst, aber nie in einem Hintergrund-Tab: die schluckt der Browser, ohne sie zu zeigen, also wartet er, bis du zurückkommst. Ton gibt es keinen: der Browser spielt auf dieser Seite keinen ab, siehe Skript-Informationen. Dieses Kästchen aus- und wieder einzuschalten VERGISST alles bereits Markierte, die Warnungen kommen also zurück. Und noch eine, nur am Saisonende: sechs Stunden bevor der Battle Store schließt, wenn du noch Marken hast.',
             tipLang: 'Automatisch folgt der Sprache, die du auf Alienware Arena gewählt hast.',
             tipNoData: 'Die Tageszähler stehen im Control Center. Scheitert die Abfrage, sagt das Panel es — statt Nullen zu zeigen, die wie «nichts offen» aussehen.',
             tipTag: 'Kostet {p} ARP, du hast {b}.',
@@ -252,7 +255,7 @@
             infoTitle: 'Skript-Informationen', infoName: 'Name:', infoVersion: 'Version:',
             infoAuthor: 'Autor:', infoGitHub: 'GitHub:', infoDescription: 'Beschreibung:',
             infoPrivacy: 'Datenschutz:', accept: 'Akzeptieren', info: 'Informationen',
-            infoDescriptionText: 'Zeigt, was verfällt und wann: Zeit auf der Seite und Twitch werden um 00:00 UTC zurückgesetzt, Tagesquests sind einmalig und kommen nicht zurück, Steam-Quests laufen von Montag zu Montag, und im Kampagnenkalender wartet vielleicht ein Tag. Gibt es zwei Steam-Quests und taucht das Spiel der festen in der Auswahl der frei wählbaren auf, dann zählt dieselbe Stunde für beide, wenn du es wählst. Und ist es ein kostenloses Spiel, das du nicht hast, kann es genügen, es der Steam-Bibliothek hinzuzufügen, damit es in dieser Auswahl erscheint. Discord zahlt nur von Montag bis Freitag, am Wochenende schweigt diese Zeile also, und ein Klick darauf öffnet den Kanal «Arena Connect», in dem über die Umfragen abgestimmt wird. Und die Marken des Battle Pass werden beim Saisonende gelöscht, deshalb sagt das Panel, wie viel ARP deine gerade wert sind. Jede Zeile nennt in ihrem Tooltip die zuständige Uhr, und zwei Countdowns —der Tag und die Steam-Woche— aktualisieren sich selbst. Die Zeilen, die im Control Center erledigt werden, bringen dich direkt zu ihrem Abschnitt und heben ihn hervor, auch wenn du schon dort bist. Auf einer Gewinnspielseite liest es den Bestand nach Land und Stufe und sagt, ob es Keys für dich gibt, bevor du etwas anklickst. Im Marketplace und im Vault markiert es jede Karte: leistbar, höhere Stufe nötig oder ausverkauft. Trägst du ein Artefakt mit Marketplace-Rabatt, rechnet es mit dem reduzierten Preis, den du tatsächlich zahlst. Es kann dich außerdem dreimal warnen —vor Tagesende, sechs Stunden vor Ende der Steam-Woche und wenn der neue Tag beginnt— mit einem Dialog, den du schließen musst. Ton gibt es keinen: auf dieser Seite wurde es dreimal versucht und der Browser blockiert ihn jedes Mal, während derselbe Code auf anderen Seiten sehr wohl klingt; von der Seite aus lässt sich nichts mehr richten. Ein Dialog, die 👽-Markierung im Tab und ein Band im Panel erreichen dich, und keines davon braucht eine Erlaubnis, die wir nicht haben. Es liest sich alle 15 Minuten von selbst neu ein, und die Schaltfläche ⟳ liest sofort alles neu. Es liest nur: es holt nichts ab, bietet nicht und nimmt an nichts teil, denn das läuft alles über ein Captcha.',
+            infoDescriptionText: 'Zeigt, was verfällt und wann: Zeit auf der Seite und Twitch werden um 00:00 UTC zurückgesetzt, Tagesquests sind einmalig und kommen nicht zurück, Steam-Quests laufen von Montag zu Montag, und im Kampagnenkalender wartet vielleicht ein Tag. Gibt es zwei Steam-Quests und taucht das Spiel der festen in der Auswahl der frei wählbaren auf, dann zählt dieselbe Stunde für beide, wenn du es wählst. Und ist es ein kostenloses Spiel, das du nicht hast, kann es genügen, es der Steam-Bibliothek hinzuzufügen, damit es in dieser Auswahl erscheint. Discord zahlt nur von Montag bis Freitag, am Wochenende schweigt diese Zeile also, und ein Klick darauf öffnet den Kanal «Arena Connect», in dem über die Umfragen abgestimmt wird. Die Battle-Pass-Zeile zeigt, wie weit du im aktuellen Meilenstein bist, und eine Uhr zählt bis zum Ende des Pass; seine Marken werden gelöscht, wenn der Battle Store ein paar Tage später schließt, deshalb sagt das Panel, wie viel ARP deine wert sind, und warnt dich sechs Stunden vor dem Schließen, wenn du noch welche hast. Auf der Store-Seite kann dich, solange er noch zu ist, eine Glocke wie die des Vault beim Öffnen warnen: die Spiele dort sind in Minuten weg. Jede Zeile nennt in ihrem Tooltip die zuständige Uhr, und zwei Countdowns —der Tag und die Steam-Woche— aktualisieren sich selbst. Die Zeilen, die im Control Center erledigt werden, bringen dich direkt zu ihrem Abschnitt und heben ihn hervor, auch wenn du schon dort bist. Auf einer Gewinnspielseite liest es den Bestand nach Land und Stufe und sagt, ob es Keys für dich gibt, bevor du etwas anklickst. Im Marketplace und im Vault markiert es jede Karte: leistbar, höhere Stufe nötig oder ausverkauft. Trägst du ein Artefakt mit Marketplace-Rabatt, rechnet es mit dem reduzierten Preis, den du tatsächlich zahlst. Es kann dich außerdem dreimal warnen —vor Tagesende, sechs Stunden vor Ende der Steam-Woche und wenn der neue Tag beginnt— mit einem Dialog, den du schließen musst. Ton gibt es keinen: auf dieser Seite wurde es dreimal versucht und der Browser blockiert ihn jedes Mal, während derselbe Code auf anderen Seiten sehr wohl klingt; von der Seite aus lässt sich nichts mehr richten. Ein Dialog, die 👽-Markierung im Tab und ein Band im Panel erreichen dich, und keines davon braucht eine Erlaubnis, die wir nicht haben. Es liest sich alle 15 Minuten von selbst neu ein, und die Schaltfläche ⟳ liest sofort alles neu. Es liest nur: es holt nichts ab, bietet nicht und nimmt an nichts teil, denn das läuft alles über ein Captcha.',
             infoPrivacyText: 'Deine Einstellungen —Sprache, Panel-Ecke, die Warnung— bleiben nur in deinem Browser. Das Skript liest die Seite, auf der du bist, und fragt höchstens einmal dein eigenes Control Center ab, mit deiner bestehenden Sitzung. Keine Dritten, und an den Autor des Skripts wird nichts gesendet.',
         },
         fr: {
@@ -267,10 +270,10 @@
             langLabel: 'Langue', auto: 'Automatique (site)', move: 'Déplacer le panneau',
             refresh: 'Actualiser maintenant', tipRefresh: 'Relit tout, sans passer par le cache. Tout seul, il ne se rafraîchit que toutes les 15 minutes, uniquement si cet onglet est visible, et une seule fois pour tout le navigateur.',
             alertOn: 'M’avertir avant la réinitialisation', tipTos: 'Rester sur le site rapporte déjà de l’ARP, jusqu’à un plafond quotidien. Remise à zéro à 00:00 UTC.',
-            tipTwitch: 'Le site annonce lui-même ce plafond, dans sa FAQ : jusqu’à 15 ARP par jour. Versés 1 par 1.',
-            tipTwitchZero: 'Regarder ne suffit pas : le widget AWA doit être actif sur une chaîne Hive ou Nexus, avec ton compte Twitch lié.',
-            tipTwitchBonus: 'Aujourd’hui ton plafond est de {c}, pas 15 : l’un de tes artefacts équipés le relève. Le bonus arrive à part, une fois les 15 du visionnage acquis.',
-            tipTwitchPend: 'Tu as les 15, mais le site dit qu’il reste de l’ARP Twitch à gagner : l’un de tes artefacts équipés relève le plafond, et son bonus arrive à part une fois les 15 acquis. Le site ne dit pas combien, d’où le « + ».',
+            tipTwitch: 'Le site annonce lui-même ce plafond, dans sa FAQ : jusqu’à 15 ARP par jour. Versés 1 par 1 : d’après les mesures de septembre 2026, un toutes les 2,5 min sur les chaînes Hive et Nexus, et un toutes les 5 min sur le reste de la liste.',
+            tipTwitchZero: 'Regarder ne suffit pas : le widget AWA doit être actif sur l’une des chaînes listées dans le Centre de contrôle, avec ton compte Twitch lié.',
+            tipTwitchBonus: 'Aujourd’hui ton plafond est de {c}, pas 15 : l’un de tes artefacts équipés le relève. Le bonus se gagne en regardant, au même rythme, une fois les 15 acquis.',
+            tipTwitchPend: 'Tu as les 15, mais le site dit qu’il reste de l’ARP Twitch à gagner : l’un de tes artefacts équipés relève le plafond, et son bonus se gagne en regardant, au même rythme, maintenant que les 15 sont acquis. Le Centre de contrôle ne dit pas combien — le widget Twitch, si —, d’où le « + ».',
             tipDaily: 'Usage unique : une quête du jour ne revient pas. Sa fenêtre terminée, elle disparaît, faite ou non.',
             tipSteam: 'Celles-ci vont de lundi à lundi, pas au jour, et le site met jusqu’à une heure à voir ton temps de jeu — ou un jeu ajouté à l’instant. Si le jeu de la quête imposée apparaît dans le sélecteur de celle au choix, choisis-le : la même heure compte pour les deux. Et si ce jeu est gratuit et que tu ne l’as pas, ajoute-le à ta bibliothèque Steam et regarde s’il apparaît dans le sélecteur : si oui, une heure couvre les deux.',
             tipCalendar: 'C’est le calendrier de CAMPAGNE, celui avec un bouton «Obtenir l’objet» par jour. Il se récupère depuis l’ICÔNE DE LA CAMPAGNE EN HAUT DANS LA BARRE, juste à gauche de la cloche de notifications —son image change à chaque campagne, ce n’est donc pas toujours le même logo— et un clic sur cette ligne l’ouvre. Ce n’est pas celui de la connexion quotidienne : la série de 7 jours et le calendrier de 28 jours se paient tout seuls à l’arrivée, et les deux s’affichent à côté de ton niveau. La récupération passe par un captcha : le script ne la fait jamais à ta place.',
@@ -286,18 +289,19 @@
             mTitle: 'Ce que lit ce panneau', mIntro: 'Tout ici est lu depuis la page. Le script ne récupère rien, n’enchérit pas et ne participe à rien : tout cela passe par un captcha, et le faire par script est ce qui fait bannir des comptes.',
             mDaily: 'Réinitialisation à 00:00 UTC : temps sur le site, Twitch, le jour du calendrier et la série de connexions. Cette heure vient du code du site, pas d’une supposition.',
             mQuests: 'Les quêtes ne se réinitialisent pas. Chacune est à usage unique avec sa fenêtre : celles du jour disparaissent à la fin, celles de Steam vont de lundi à lundi.',
-            mTwitch: 'L’ARP Twitch exige le widget AWA actif sur une chaîne Hive ou Nexus. Un zéro ne prouve pas qu’il est éteint : il affiche zéro aussi avant que tu ne regardes quoi que ce soit. Certains artefacts relèvent le plafond quotidien au-delà de 15 : le bonus arrive à part une fois les 15 acquis, et la ligne compte alors sur le nouveau plafond.',
+            mTwitch: 'L’ARP Twitch exige le widget AWA actif sur l’une des chaînes listées dans le Centre de contrôle. D’après les mesures de septembre 2026, il verse un ARP toutes les 2,5 min sur Hive et Nexus, que le site annonce à vitesse double, et un toutes les 5 min sur le reste ; le site peut le changer. Un zéro ne prouve pas qu’il est éteint : il affiche zéro aussi avant que tu ne regardes quoi que ce soit. Certains artefacts relèvent le plafond quotidien au-delà de 15 : le bonus se gagne en regardant, au même rythme, une fois les 15 acquis, et la ligne compte alors sur le nouveau plafond.',
             mLate: 'Steam est lent par conception : le temps de jeu et la possession d’un jeu mettent jusqu’à une heure à être pris en compte, un état rouge peut n’être qu’une donnée périmée.',
             mVersion: 'Version {v}',
             discord: 'Discord', tipDiscord: 'Le site dit que Discord paie pour deux choses — les sondages et les «Arena Adventures» — et n’annonce le montant d’aucune. Le 5 ici est ce qu’une journée a rapporté jusqu’ici ; si une journée rapporte plus, la ligne l’affiche. Il n’y a de compteur pour ça nulle part sur le site, donc c’est lu depuis ton propre journal d’ARP, filtré sur aujourd’hui. Ça ne paie que du LUNDI AU VENDREDI : le week-end, la ligne se tait au lieu de te demander l’impossible.',
             store: 'Boutique de combat', storePack: '{a} ARP pour {f}', storeShort: 'il manque {n} jetons', qPass: 'Pass de combat', passNone: 'pas démarré', passClosed: 'saison terminée', passClaim: '{n} à récupérer',
+            tipPassStep: 'Palier {n} sur {t} : tu as {v} des {c} ARP qu’il demande.', tipPassLeft: 'Pour terminer tout le pass, il manque {f} ARP.', passEnds: 'Pass de combat : {v}', storeEnds: 'Boutique de combat : {v}', tipPassEnds: 'La fin du pass de combat. Jusque-là, l’ARP compte pour ses paliers. Tes jetons ne sont PAS effacés à ce moment : c’est là que la boutique de combat ouvre, pour quelques jours.', tipStoreEnds: 'La fermeture de la boutique de combat : les jetons non dépensés sont alors effacés.', tipStoreHave: 'Tu as {n} jetons.', avistore: 'La boutique de combat ferme et il te reste des jetons', storeAll: 'les trois achetés', tipRemindStore: 'Te prévient quand la boutique de combat ouvre, sur N’IMPORTE QUELLE page où le script tourne. C’est la même alerte que les autres : une boîte de dialogue à fermer, un 👽 sur l’onglet et un bandeau dans le panneau. C’est pour les jeux : lors de la Saison 0, ils sont tous partis en moins de seize minutes. Les lots d’ARP ne s’épuisent pas, et le panneau t’avertit déjà des jetons restants avant la fermeture. Il n’achète rien à ta place. Clique à nouveau pour annuler.', avistoreopen: 'La boutique de combat est ouverte',
             evento: "Événement communautaire", evJoin: "non rejoint", evOwn: "jeu manquant", evMin: "{v}/{c} min", evAll: "tous les paliers", evEnds: "Événement : {v}", evNamed: "Événement : {n}", goEvento: "Cliquez sur cette ligne pour aller à la page de l’événement.", tipEv: "Les événements communautaires Steam paient de l’ARP pour le temps de jeu, par paliers qui exigent DEUX choses à la fois : que toute la communauté atteigne un total d’heures et que vous atteigniez les vôtres. Votre progression est en MINUTES parce que le site arrondit aux heures : en dessous d’une heure il affiche 0, impossible à distinguer de rien du tout.", tipEvJoin: "L’événement est en cours et vous n’y êtes PAS. Rejoindre est un bouton sur la page de l’événement, et tant que vous ne l’avez pas pressé rien ne compte : le temps joué avant de rejoindre est perdu — c’est mesuré, pas supposé. Rejoindre est sans retour : il n’y a pas de bouton pour quitter.", tipEvOwn: "L’événement demande le jeu et le site ne pense pas que vous l’ayez. Si le jeu est Free to Play, c’est normal : Steam ne signale les jeux gratuits que si vous y avez vraiment JOUÉ. Ouvrez-le quelques minutes puis fermez-le. Le site met ensuite jusqu’à une heure à s’en apercevoir. Le bouton « synchroniser les jeux » est limité à une fois par heure et ne règle pas ça à lui seul.",
             evOn: "en cours",
             mEvento: "Les événements communautaires Steam paient le temps de jeu par paliers, et chacun exige que toute la communauté atteigne un total d’heures ET que vous atteigniez le vôtre. Rien ne compte tant que vous n’avez pas cliqué sur « rejoindre » sur la page de l’événement, et le temps joué avant est perdu — c’est pourquoi le panneau vous prévient quand un événement est en cours et que vous n’y êtes pas. S'il y en a plusieurs en cours, chacun a sa propre ligne, celui qui se termine le plus tôt en premier. Sur la page d’un événement que vous avez rejoint, le carrousel des paliers se place sur celui où vous en êtes —ou, si vous les avez tous, sur le premier qui manque encore à la communauté—, le met en évidence, et la page descend jusqu’à lui. Sur un événement que vous n’avez pas rejoint, il va au premier palier qui manque encore à la communauté, sans faire descendre la page loin du bouton pour rejoindre.",
-            tipPass: 'Le pass avance avec l’ARP de n’importe quelle source, palier par palier, et il faut le DÉMARRER à la main quand une saison ouvre. Les paliers non récupérés sont remis à la fin, mais les jetons de combat sont effacés : ce sont eux qui pressent.',
-            tipStore: 'La Boutique de combat échange des jetons contre des ARP à prix fixe — 25 jetons pour 100 ARP, 45 pour 200, 90 pour 500 — et cette ligne montre le meilleur lot que tes jetons atteignent déjà. C’est important parce que les jetons sont EFFACÉS à la fin de la saison : ce sont des ARP avec une date de péremption. Volontairement pas en jaune : ça n’expire pas aujourd’hui, donc ça n’alimente jamais l’alerte de fin de journée.',
+            tipPass: 'Le pass avance avec l’ARP de n’importe quelle source, palier par palier, et il faut le DÉMARRER à la main quand une saison ouvre. Les paliers non récupérés sont remis à la fin, mais les jetons de combat sont effacés à la fermeture de la boutique de combat, quelques jours après le pass : ce sont eux qui pressent.',
+            tipStore: 'La Boutique de combat vend contre des jetons trois lots d’ARP à prix fixe — 25 jetons pour 100 ARP, 45 pour 200, 90 pour 500 —, chacun une seule fois, et cette ligne montre le maximum d’ARP que tes jetons atteignent déjà en combinant ceux que tu n’as pas encore achetés. Elle vend aussi des jeux et des fragments, mais seul l’ARP a une valeur fixe et ne s’épuise pas : lors de la Saison 0, les cinq jeux étaient déjà épuisés seize minutes après l’ouverture. C’est important parce que la boutique n’ouvre qu’à la fin du pass, et pour quelques jours seulement —sept lors de la Saison 0— ; à sa fermeture, les jetons restants sont EFFACÉS : ce sont des ARP avec une date de péremption. Volontairement pas en jaune : ça n’alimente jamais l’alerte de fin de journée. La boutique a la sienne, six heures avant de fermer, s’il te reste des jetons.',
             fold: 'Replier le panneau', tipAcct: 'Ton solde, ton niveau et les deux compteurs de connexion. La série de 7 et le calendrier de 28 ne sont PAS le même nombre, et aucun des deux n’est le jour du mois : la série se casse si tu sautes un jour, tandis que le calendrier compte les jours où tu t’es connecté, quels qu’ils soient. Le site le dit lui-même : ses récompenses suivent le total de jours de connexion, pas la date. Tu peux donc être au jour 1 de série avec 8 jours connectés. Les deux n’existent que dans le Centre de contrôle ; ailleurs ils arrivent un instant plus tard.',
-            tipAlert: 'Trois alertes : trente minutes avant la fin du jour s’il reste quelque chose du jour ; SIX heures avant la fin de la semaine Steam s’il en reste une —celles-là se font en jouant, pas en cliquant— ; et au début du nouveau jour, pour s’y mettre — celle-là te salue QUAND QUE TU ARRIVES, pas seulement à minuit, et ne se tait que la dernière demi-heure, où elle dirait le contraire de l’autre. Chacune marque l’onglet —un 👽 dans le titre et dans le favicon— et laisse un bandeau dans le panneau ; ceux-là restent jusqu’à ce que tu les marques comme vus. Il y a aussi une BOÎTE DE DIALOGUE à fermer, mais jamais dans un onglet en arrière-plan : celles-là, le navigateur les avale sans les montrer, donc elle attend ton retour. Il n’y a pas de son : le navigateur refuse d’en jouer sur ce site, voir les informations du script. Décocher puis recocher cette case OUBLIE tout ce qui est déjà marqué, donc les alertes reviennent.',
+            tipAlert: 'Trois alertes : trente minutes avant la fin du jour s’il reste quelque chose du jour ; SIX heures avant la fin de la semaine Steam s’il en reste une —celles-là se font en jouant, pas en cliquant— ; et au début du nouveau jour, pour s’y mettre — celle-là te salue QUAND QUE TU ARRIVES, pas seulement à minuit, et ne se tait que la dernière demi-heure, où elle dirait le contraire de l’autre. Chacune marque l’onglet —un 👽 dans le titre et dans le favicon— et laisse un bandeau dans le panneau ; ceux-là restent jusqu’à ce que tu les marques comme vus. Il y a aussi une BOÎTE DE DIALOGUE à fermer, mais jamais dans un onglet en arrière-plan : celles-là, le navigateur les avale sans les montrer, donc elle attend ton retour. Il n’y a pas de son : le navigateur refuse d’en jouer sur ce site, voir les informations du script. Décocher puis recocher cette case OUBLIE tout ce qui est déjà marqué, donc les alertes reviennent. Et une de plus, seulement en fin de saison : six heures avant la fermeture de la boutique de combat, s’il te reste des jetons.',
             tipLang: 'Automatique suit la langue choisie sur Alienware Arena.',
             tipNoData: 'Les compteurs du jour vivent dans le Centre de contrôle. Si la requête échoue, le panneau le dit au lieu d’afficher des zéros qui se liraient «rien à faire».',
             tipTag: 'Coûte {p} ARP et tu en as {b}.',
@@ -305,7 +309,7 @@
             infoTitle: 'Informations du script', infoName: 'Nom :', infoVersion: 'Version :',
             infoAuthor: 'Auteur :', infoGitHub: 'GitHub :', infoDescription: 'Description :',
             infoPrivacy: 'Confidentialité :', accept: 'Accepter', info: 'Informations',
-            infoDescriptionText: 'Montre ce qui expire et quand : le temps sur le site et Twitch se réinitialisent à 00:00 UTC, les quêtes du jour sont à usage unique et ne reviennent pas, celles de Steam vont de lundi à lundi, et le calendrier de campagne peut avoir un jour en attente. Quand il y a deux quêtes Steam et que le jeu de la quête imposée figure dans le sélecteur de celle au choix, le choisir fait compter la même heure pour les deux. Et s’il s’agit d’un jeu gratuit que tu n’as pas, l’ajouter à ta bibliothèque Steam peut suffire à le faire apparaître dans ce sélecteur. Discord ne paie que du lundi au vendredi : le week-end, cette ligne se tait au lieu de réclamer, et un clic dessus ouvre le salon «Arena Connect», où l’on vote aux sondages. Et les jetons du Pass de combat sont effacés à la fin de la saison, donc le panneau dit ce que les tiens valent en ARP maintenant. Chaque ligne indique dans son infobulle l’horloge dont elle dépend, et deux comptes à rebours —le jour et la semaine Steam— se rafraîchissent seuls. Les lignes qui se font dans le Centre de contrôle t’amènent directement à leur section et la mettent en évidence, même si tu y es déjà. Sur la page d’un tirage, il lit le stock par pays et par niveau du tirage lui-même et dit s’il y a des clés pour toi avant de cliquer. Dans le Marketplace et le Vault, il marque chaque carte : à ta portée, niveau insuffisant ou épuisé. Si tu portes un artefact de remise sur le Marketplace, il compte le prix réduit, celui que tu paies vraiment. Il peut aussi t’avertir trois fois —avant la fin du jour, six heures avant la fin de la semaine Steam, et au début du nouveau jour— avec une boîte de dialogue à fermer. Il n’y a pas de son : trois approches ont été essayées sur ce site et le navigateur le bloque à chaque fois, alors que le même code fonctionne sur d’autres sites ; depuis la page, il n’y a plus rien à corriger. Une boîte de dialogue, la marque 👽 sur l’onglet et un bandeau dans le panneau, eux, te parviennent, et aucun ne dépend d’une permission que nous n’avons pas. Il se relit tout seul toutes les 15 minutes, et le bouton ⟳ relit tout immédiatement. Il ne fait que lire : il ne récupère rien, n’enchérit pas et ne participe à rien, car tout cela passe par un captcha.',
+            infoDescriptionText: 'Montre ce qui expire et quand : le temps sur le site et Twitch se réinitialisent à 00:00 UTC, les quêtes du jour sont à usage unique et ne reviennent pas, celles de Steam vont de lundi à lundi, et le calendrier de campagne peut avoir un jour en attente. Quand il y a deux quêtes Steam et que le jeu de la quête imposée figure dans le sélecteur de celle au choix, le choisir fait compter la même heure pour les deux. Et s’il s’agit d’un jeu gratuit que tu n’as pas, l’ajouter à ta bibliothèque Steam peut suffire à le faire apparaître dans ce sélecteur. Discord ne paie que du lundi au vendredi : le week-end, cette ligne se tait au lieu de réclamer, et un clic dessus ouvre le salon «Arena Connect», où l’on vote aux sondages. La ligne du Pass de combat dit où tu en es du palier en cours, et une horloge décompte la fin du pass ; ses jetons sont effacés à la fermeture de la boutique de combat, quelques jours plus tard, donc le panneau dit ce que les tiens valent en ARP et t’avertit six heures avant la fermeture s’il t’en reste. Sur la page de la boutique, tant qu’elle est fermée, une cloche comme celle du Vault peut t’avertir à l’ouverture : ses jeux partent en quelques minutes. Chaque ligne indique dans son infobulle l’horloge dont elle dépend, et deux comptes à rebours —le jour et la semaine Steam— se rafraîchissent seuls. Les lignes qui se font dans le Centre de contrôle t’amènent directement à leur section et la mettent en évidence, même si tu y es déjà. Sur la page d’un tirage, il lit le stock par pays et par niveau du tirage lui-même et dit s’il y a des clés pour toi avant de cliquer. Dans le Marketplace et le Vault, il marque chaque carte : à ta portée, niveau insuffisant ou épuisé. Si tu portes un artefact de remise sur le Marketplace, il compte le prix réduit, celui que tu paies vraiment. Il peut aussi t’avertir trois fois —avant la fin du jour, six heures avant la fin de la semaine Steam, et au début du nouveau jour— avec une boîte de dialogue à fermer. Il n’y a pas de son : trois approches ont été essayées sur ce site et le navigateur le bloque à chaque fois, alors que le même code fonctionne sur d’autres sites ; depuis la page, il n’y a plus rien à corriger. Une boîte de dialogue, la marque 👽 sur l’onglet et un bandeau dans le panneau, eux, te parviennent, et aucun ne dépend d’une permission que nous n’avons pas. Il se relit tout seul toutes les 15 minutes, et le bouton ⟳ relit tout immédiatement. Il ne fait que lire : il ne récupère rien, n’enchérit pas et ne participe à rien, car tout cela passe par un captcha.',
             infoPrivacyText: 'Tes réglages —langue, coin du panneau, l’alerte— restent uniquement dans ton navigateur. Le script lit la page où tu es et, au plus, demande une fois ton propre Centre de contrôle au site, en réutilisant ta session. Aucun tiers, et rien n’est envoyé à l’auteur du script.',
         },
         pt: {
@@ -320,10 +324,10 @@
             langLabel: 'Idioma', auto: 'Automático (do site)', move: 'Mover o painel',
             refresh: 'Atualizar agora', tipRefresh: 'Volta a ler tudo, ignorando a cache. Sozinho só se atualiza a cada 15 minutos, apenas enquanto olhas para este separador, e uma vez para todo o navegador.',
             alertOn: 'Avisar-me antes do reinício', tipTos: 'Estar no site já dá ARP, até um limite diário. Reinicia às 00:00 UTC.',
-            tipTwitch: 'O limite está na FAQ do próprio site: até 15 ARP por dia. São pagos 1 a 1.',
-            tipTwitchZero: 'Ver não basta: o widget da AWA tem de estar ativo num canal Hive ou Nexus, com a tua conta Twitch ligada.',
-            tipTwitchBonus: 'Hoje o teu limite é {c}, não 15: um dos teus artefactos equipados aumenta-o. O extra chega à parte, quando já tens os 15 de ver.',
-            tipTwitchPend: 'Já tens os 15, mas o site diz que ainda há ARP da Twitch por ganhar: um dos teus artefactos equipados sobe o limite, e o extra chega à parte quando já tens os 15. O site não diz quanto, daí o «+».',
+            tipTwitch: 'O limite está na FAQ do próprio site: até 15 ARP por dia. São pagos 1 a 1: segundo o medido em setembro de 2026, um a cada 2,5 min nos canais Hive e Nexus e um a cada 5 min no resto da lista.',
+            tipTwitchZero: 'Ver não basta: o widget da AWA tem de estar ativo num dos canais da lista do Centro de controlo, com a tua conta Twitch ligada.',
+            tipTwitchBonus: 'Hoje o teu limite é {c}, não 15: um dos teus artefactos equipados aumenta-o. O extra ganha-se a ver, ao mesmo ritmo, quando já tens os 15.',
+            tipTwitchPend: 'Já tens os 15, mas o site diz que ainda há ARP da Twitch por ganhar: um dos teus artefactos equipados sobe o limite, e o extra ganha-se a ver, ao mesmo ritmo, agora que já tens os 15. O Centro de controlo não diz quanto — o widget da Twitch diz —, daí o «+».',
             tipDaily: 'Uso único: uma missão diária não volta. Terminada a sua janela desaparece, feita ou não.',
             tipSteam: 'Estas vão de segunda a segunda, não por dias, e o site leva até uma hora a ver o que jogaste — e a ver um jogo que acabaste de adicionar. Se o jogo da missão fixa aparecer no seletor da que te deixa escolher, escolhe-o: a mesma hora conta para as duas. E se esse jogo for gratuito e não o tiveres, adiciona-o à tua biblioteca Steam e vê se aparece no seletor: se aparecer, uma hora conta para as duas.',
             tipCalendar: 'Este é o calendário de CAMPANHA, o que tem um botão «Obter artigo» por dia. Reclama-se no ÍCONE DA CAMPANHA LÁ EM CIMA NA BARRA, mesmo à esquerda da campainha de avisos —o seu desenho muda com cada campanha, por isso nem sempre é o mesmo logótipo— e premir esta linha abre-o. Não é o de entrar todos os dias: a sequência de 7 e o calendário de 28 pagam-se sozinhos ao entrares, e ambos aparecem ao lado do teu nível. Reclamar passa por um captcha, portanto o script nunca o faz por ti.',
@@ -339,18 +343,19 @@
             mTitle: 'O que este painel lê', mIntro: 'Tudo aqui é lido da página. O script não reclama, não licita e não participa em nada: isso passa todo por um captcha, e fazê-lo por script é o que faz banir contas.',
             mDaily: 'Reiniciam às 00:00 UTC: o tempo no site, o Twitch, o dia do calendário e a sequência de login. Essa hora vem do código do próprio site, não de um palpite.',
             mQuests: 'As missões não reiniciam. Cada uma é de uso único com a sua janela: as diárias desaparecem no fim, e as de Steam vão de segunda a segunda.',
-            mTwitch: 'O ARP do Twitch precisa do widget da AWA ativo num canal Hive ou Nexus. Um zero aqui não prova que esteja desligado: também marca zero antes de veres algo. Alguns artefactos sobem o limite diário acima de 15: o extra chega à parte quando já tens os 15, e a linha passa a contar sobre o novo limite.',
+            mTwitch: 'O ARP do Twitch precisa do widget da AWA ativo num dos canais da lista do Centro de controlo. Segundo o medido em setembro de 2026, paga um ARP a cada 2,5 min em Hive e Nexus, que o site anuncia a velocidade dupla, e um a cada 5 min no resto; o site pode mudá-lo. Um zero aqui não prova que esteja desligado: também marca zero antes de veres algo. Alguns artefactos sobem o limite diário acima de 15: o extra ganha-se a ver, ao mesmo ritmo, quando já tens os 15, e a linha passa a contar sobre o novo limite.',
             mLate: 'O Steam é lento por desenho: o tempo jogado e a posse de um jogo levam até uma hora a registar, logo um estado vermelho pode ser só um dado velho.',
             mVersion: 'Versão {v}',
             discord: 'Discord', tipDiscord: 'O site diz que o Discord paga por duas coisas —os inquéritos e as «Arena Adventures»— e não publica o valor de nenhuma. Os 5 daqui são o que se viu um dia pagar; se um dia pagar mais, a linha mostra-o. Não há contador para isto em lado nenhum do site, por isso lê-se do teu próprio registo de ARP, filtrado a hoje. Só paga de SEGUNDA A SEXTA: ao fim de semana a linha cala-se em vez de te pedir algo que não dá para fazer.',
             store: 'Loja de batalha', storePack: '{a} ARP por {f}', storeShort: 'faltam {n} fichas', qPass: 'Passe de batalha', passNone: 'por começar', passClosed: 'temporada fechada', passClaim: '{n} a reclamar',
+            tipPassStep: 'Marco {n} de {t}: levas {v} dos {c} ARP que pede.', tipPassLeft: 'Para completar o passe inteiro faltam {f} ARP.', passEnds: 'Passe de batalha: {v}', storeEnds: 'Loja de batalha: {v}', tipPassEnds: 'Quando acaba o passe de batalha. Até lá o ARP conta para os seus marcos. As fichas NÃO são apagadas nesse momento: é quando abre a loja de batalha, por alguns dias.', tipStoreEnds: 'Quando fecha a loja de batalha: as fichas que não gastaste são apagadas nessa altura.', tipStoreHave: 'Tens {n} fichas.', avistore: 'A loja de batalha vai fechar e ainda tens fichas', storeAll: 'os três comprados', tipRemindStore: 'Avisa-te quando a loja de batalha abrir, em QUALQUER página onde o script corra. É o mesmo aviso que os outros: uma caixa de diálogo que tens de fechar, um 👽 no separador e uma faixa no painel. Importa pelos jogos: na Temporada 0 esgotaram todos em menos de dezasseis minutos. Os pacotes de ARP não esgotam, e das fichas que sobrarem o painel já avisa antes de a loja fechar. Não compra nada por ti. Prime outra vez para cancelar.', avistoreopen: 'A loja de batalha está aberta',
             evento: "Evento da comunidade", evJoin: "sem participar", evOwn: "falta o jogo", evMin: "{v}/{c} min", evAll: "todos os marcos", evEnds: "Evento: {v}", evNamed: "Evento: {n}", goEvento: "Clica nesta linha para ir à página do evento.", tipEv: "Os eventos da comunidade de Steam pagam ARP por tempo de jogo, em marcos que exigem DUAS coisas ao mesmo tempo: que toda a comunidade chegue a um total de horas e que chegues tu às tuas. O teu progresso vai em MINUTOS porque o site arredonda para horas, por isso abaixo de uma hora mostra 0 e não se distingue de não teres jogado nada.", tipEvJoin: "O evento está a decorrer e NÃO estás dentro. Participar é um botão na página do evento, e até o carregares nada conta: o tempo jogado antes de participares é deitado fora — está medido, não suposto. Participar é só de ida: não há botão para sair.", tipEvOwn: "O evento pede o jogo e o site não acha que o tenhas. Se o jogo for Free to Play é o esperado: a Steam só reporta jogos gratuitos que tenhas mesmo JOGADO, por isso abre-o uns minutos e fecha-o. O site demora depois até uma hora a dar por isso. O botão de «sincronizar jogos» está limitado a uma vez por hora e por si só não resolve isto.",
             evOn: "a decorrer",
             mEvento: "Os eventos da comunidade de Steam pagam por tempo de jogo em marcos, e cada um exige que toda a comunidade chegue a um total de horas E que chegues tu aos teus. Nada conta até carregares em «participar» na página do evento, e o tempo jogado antes é deitado fora — por isso o painel avisa quando há um evento a decorrer e não estás dentro. Se houver mais do que um a decorrer, cada um tem a sua linha, primeiro o que acaba mais cedo. Na página de um evento em que participas, o carrossel de marcos vai para aquele em que estás —ou, se já os tens todos, para o primeiro que ainda falta à comunidade—, destaca-o e a página desce até ele. Num evento em que não participas, vai para o primeiro marco que ainda falta à comunidade, sem descer a página para não te tirar da frente o botão de participar.",
-            tipPass: 'O passe avança com ARP de qualquer fonte, marco a marco, e tem de ser INICIADO à mão quando abre uma temporada. Os marcos por reclamar são entregues no fim, mas as fichas de batalha são apagadas: essas é que têm pressa.',
-            tipStore: 'A Loja de Batalha troca fichas por ARP a preço fixo —25 fichas por 100 ARP, 45 por 200, 90 por 500— e esta linha mostra o melhor pacote que as tuas fichas já alcançam. Importa porque as fichas SÃO APAGADAS ao fechar a temporada, por isso são ARP com prazo. De propósito não fica amarela: não vence hoje, logo nunca alimenta o aviso de fim de dia.',
+            tipPass: 'O passe avança com ARP de qualquer fonte, marco a marco, e tem de ser INICIADO à mão quando abre uma temporada. Os marcos por reclamar são entregues no fim, mas as fichas de batalha são apagadas quando fecha a loja de batalha, alguns dias depois do passe: essas é que têm pressa.',
+            tipStore: 'A Loja de Batalha vende por fichas três pacotes de ARP a preço fixo —25 fichas por 100 ARP, 45 por 200, 90 por 500—, cada um só uma vez, e esta linha mostra o máximo de ARP que as tuas fichas já alcançam juntando os que ainda não compraste. Também vende jogos e fragmentos, mas só o ARP tem valor fixo e não esgota: na Temporada 0 os cinco jogos já estavam esgotados dezasseis minutos depois de a loja abrir. Importa porque a loja só abre quando acaba o passe, e por poucos dias —sete na Temporada 0—; ao fechar, as fichas que sobrarem SÃO APAGADAS, por isso são ARP com prazo. De propósito não fica amarela: nunca alimenta o aviso de fim de dia. A loja tem o seu, seis horas antes de fechar, se ainda tiveres fichas.',
             fold: 'Recolher o painel', tipAcct: 'O teu saldo, o teu nível e as duas contagens de login. A sequência de 7 e o calendário de 28 NÃO são o mesmo número, e nenhum deles é o dia do mês: a sequência quebra se falhares um dia, enquanto o calendário conta os dias em que entraste, caiam quando caírem. O próprio site o diz: as suas recompensas seguem o total de dias de ligação, não a data. Por isso podes ir no dia 1 de sequência com 8 dias entrados. Ambos só existem no Centro de controlo; noutras páginas chegam um momento depois.',
-            tipAlert: 'Três avisos: meia hora antes de acabar o dia se ficar algo do dia por fazer; SEIS horas antes de acabar a semana de Steam se ficar alguma —essas cumprem-se a jogar, não a premir—; e ao começar o dia novo, para arrancar —esse cumprimenta-te ENTRES QUANDO ENTRARES, não só à meia-noite, e só se cala na última meia hora, quando diria o contrário do outro—. Cada um marca o separador —um 👽 no título e no favicon— e deixa uma faixa no painel; essas ficam até as marcares como vistas. Há ainda uma CAIXA DE DIÁLOGO que tens de fechar, mas nunca num separador em segundo plano: essas o navegador engole-as sem as mostrar, por isso espera que voltes. Não há som: o navegador recusa-se a tocá-lo neste site, di-lo a informação do script. Desligar e voltar a ligar esta caixa ESQUECE tudo o que já marcaste, portanto os avisos voltam.',
+            tipAlert: 'Três avisos: meia hora antes de acabar o dia se ficar algo do dia por fazer; SEIS horas antes de acabar a semana de Steam se ficar alguma —essas cumprem-se a jogar, não a premir—; e ao começar o dia novo, para arrancar —esse cumprimenta-te ENTRES QUANDO ENTRARES, não só à meia-noite, e só se cala na última meia hora, quando diria o contrário do outro—. Cada um marca o separador —um 👽 no título e no favicon— e deixa uma faixa no painel; essas ficam até as marcares como vistas. Há ainda uma CAIXA DE DIÁLOGO que tens de fechar, mas nunca num separador em segundo plano: essas o navegador engole-as sem as mostrar, por isso espera que voltes. Não há som: o navegador recusa-se a tocá-lo neste site, di-lo a informação do script. Desligar e voltar a ligar esta caixa ESQUECE tudo o que já marcaste, portanto os avisos voltam. E mais um, só no fim de uma temporada: seis horas antes de fechar a loja de batalha, se ainda tiveres fichas.',
             tipLang: 'O automático segue o idioma que escolheste na Alienware Arena.',
             tipNoData: 'Os contadores do dia vivem no Centro de controlo. Se o pedido falhar, o painel di-lo em vez de mostrar zeros, que se leriam como «não falta nada».',
             tipTag: 'Custa {p} ARP e tens {b}.',
@@ -358,7 +363,7 @@
             infoTitle: 'Informação do script', infoName: 'Nome:', infoVersion: 'Versão:',
             infoAuthor: 'Autor:', infoGitHub: 'GitHub:', infoDescription: 'Descrição:',
             infoPrivacy: 'Privacidade:', accept: 'Aceitar', info: 'Informação',
-            infoDescriptionText: 'Mostra o que caduca e quando: o tempo no site e o Twitch reiniciam às 00:00 UTC, as missões diárias são de uso único e não voltam, as de Steam vão de segunda a segunda, e o calendário de campanha pode ter um dia à espera. Quando há duas missões de Steam e o jogo da fixa aparece no seletor da que te deixa escolher, escolhê-lo faz a mesma hora contar para as duas. E se for um jogo gratuito que não tens, adicioná-lo à tua biblioteca Steam pode bastar para que apareça nesse seletor. O Discord só paga de segunda a sexta, por isso ao fim de semana essa linha cala-se em vez de pedir, e ao premi-la abre o canal «Arena Connect», onde se vota nos inquéritos. E as fichas do passe são apagadas ao fechar a temporada, por isso o painel diz quanto ARP valem as tuas agora. Cada linha diz na sua dica a que relógio responde, e duas contagens decrescentes —o dia e a semana de Steam— atualizam-se sozinhas. As linhas que se cumprem no Centro de controlo levam-te diretamente à sua secção e destacam-na, mesmo que já lá estejas. Na página de um sorteio lê o stock por país e por nível do próprio sorteio e diz se há chaves para ti antes de premires nada. No Marketplace e no Cofre marca cada cartão: dá para ti, pede nível superior ou está esgotado. Se tiveres equipado um artefacto de desconto do Marketplace, conta com o preço reduzido, que é o que se paga. Também te pode avisar três vezes —antes de acabar o dia, seis horas antes de acabar a semana de Steam, e ao começar o dia novo— com uma caixa de diálogo que tens de fechar. Não há som: tentou-se de três maneiras neste site e o navegador bloqueia-o sempre, enquanto o mesmo código toca noutros sites; de dentro da página não resta nada por arranjar. Uma caixa de diálogo, a marca 👽 no separador e uma faixa no painel chegam até ti, e nenhuma depende de uma permissão que não temos. Relê-se sozinho a cada 15 minutos, e o botão ⟳ volta a ler tudo na hora. Só lê: não reclama, não licita e não participa em nada, porque isso passa todo por um captcha.',
+            infoDescriptionText: 'Mostra o que caduca e quando: o tempo no site e o Twitch reiniciam às 00:00 UTC, as missões diárias são de uso único e não voltam, as de Steam vão de segunda a segunda, e o calendário de campanha pode ter um dia à espera. Quando há duas missões de Steam e o jogo da fixa aparece no seletor da que te deixa escolher, escolhê-lo faz a mesma hora contar para as duas. E se for um jogo gratuito que não tens, adicioná-lo à tua biblioteca Steam pode bastar para que apareça nesse seletor. O Discord só paga de segunda a sexta, por isso ao fim de semana essa linha cala-se em vez de pedir, e ao premi-la abre o canal «Arena Connect», onde se vota nos inquéritos. A linha do passe de batalha diz quanto levas do marco em que vais, e um relógio conta o que falta para o passe acabar; as suas fichas são apagadas quando fecha a loja de batalha, alguns dias depois, por isso o painel diz quanto ARP valem as tuas e avisa-te seis horas antes de fechar se ainda tiveres. Na página da loja, enquanto não abre, uma campainha como a do Cofre pode avisar-te quando abrir: os jogos de lá esgotam em minutos. Cada linha diz na sua dica a que relógio responde, e duas contagens decrescentes —o dia e a semana de Steam— atualizam-se sozinhas. As linhas que se cumprem no Centro de controlo levam-te diretamente à sua secção e destacam-na, mesmo que já lá estejas. Na página de um sorteio lê o stock por país e por nível do próprio sorteio e diz se há chaves para ti antes de premires nada. No Marketplace e no Cofre marca cada cartão: dá para ti, pede nível superior ou está esgotado. Se tiveres equipado um artefacto de desconto do Marketplace, conta com o preço reduzido, que é o que se paga. Também te pode avisar três vezes —antes de acabar o dia, seis horas antes de acabar a semana de Steam, e ao começar o dia novo— com uma caixa de diálogo que tens de fechar. Não há som: tentou-se de três maneiras neste site e o navegador bloqueia-o sempre, enquanto o mesmo código toca noutros sites; de dentro da página não resta nada por arranjar. Uma caixa de diálogo, a marca 👽 no separador e uma faixa no painel chegam até ti, e nenhuma depende de uma permissão que não temos. Relê-se sozinho a cada 15 minutos, e o botão ⟳ volta a ler tudo na hora. Só lê: não reclama, não licita e não participa em nada, porque isso passa todo por um captcha.',
             infoPrivacyText: 'As tuas preferências —idioma, canto do painel, o aviso— ficam só no teu navegador. O script lê a página onde estás e, no máximo, pede uma vez ao site o teu próprio Centro de controlo, reusando a tua sessão. Sem terceiros, e nada é enviado ao autor do script.',
         },
         br: {
@@ -373,10 +378,10 @@
             langLabel: 'Idioma', auto: 'Automático (do site)', move: 'Mover o painel',
             refresh: 'Atualizar agora', tipRefresh: 'Lê tudo de novo, ignorando o cache. Sozinho só se atualiza a cada 15 minutos, apenas enquanto você olha para esta aba, e uma vez para o navegador inteiro.',
             alertOn: 'Me avisar antes do reset', tipTos: 'Só ficar no site já rende ARP, até um limite diário. Reseta às 00:00 UTC.',
-            tipTwitch: 'O limite está no FAQ do próprio site: até 15 ARP por dia. São pagos de 1 em 1.',
-            tipTwitchZero: 'Assistir não basta: o widget da AWA precisa estar ativo num canal Hive ou Nexus, com sua conta da Twitch vinculada.',
-            tipTwitchBonus: 'Hoje seu limite é {c}, não 15: um dos seus artefatos equipados aumenta ele. O extra chega à parte, quando você já tem os 15 de assistir.',
-            tipTwitchPend: 'Você já tem os 15, mas o site diz que ainda há ARP da Twitch para ganhar: um dos seus artefatos equipados aumenta o limite, e o extra chega à parte quando você já tem os 15. O site não diz quanto, por isso o «+».',
+            tipTwitch: 'O limite está no FAQ do próprio site: até 15 ARP por dia. São pagos de 1 em 1: segundo o medido em setembro de 2026, um a cada 2,5 min nos canais Hive e Nexus e um a cada 5 min no resto da lista.',
+            tipTwitchZero: 'Assistir não basta: o widget da AWA precisa estar ativo num dos canais da lista do Centro de controle, com sua conta da Twitch vinculada.',
+            tipTwitchBonus: 'Hoje seu limite é {c}, não 15: um dos seus artefatos equipados aumenta ele. O extra se ganha assistindo, no mesmo ritmo, quando você já tem os 15.',
+            tipTwitchPend: 'Você já tem os 15, mas o site diz que ainda há ARP da Twitch para ganhar: um dos seus artefatos equipados aumenta o limite, e o extra se ganha assistindo, no mesmo ritmo, agora que você já tem os 15. O Centro de controle não diz quanto — o widget da Twitch diz —, por isso o «+».',
             tipDaily: 'Uso único: uma missão diária não volta. Quando a janela dela acaba, ela desaparece, feita ou não.',
             tipSteam: 'Estas vão de segunda a segunda, não por dia, e o site leva até uma hora para ver o que você jogou — e para ver um jogo que você acabou de adicionar. Se o jogo da missão fixa aparecer no seletor da que deixa você escolher, escolha ele: a mesma hora conta para as duas. E se esse jogo for gratuito e você não tiver, adicione ele à sua biblioteca da Steam e veja se aparece no seletor: se aparecer, uma hora cobre as duas.',
             tipCalendar: 'Este é o calendário de CAMPANHA, o que tem um botão «Obter item» por dia. Ele é resgatado no ÍCONE DA CAMPANHA LÁ EM CIMA NA BARRA, logo à esquerda do sininho de avisos —o desenho dele muda a cada campanha, então nem sempre é a mesma logo— e clicar nesta linha abre ele. Não é o de entrar todo dia: a sequência de 7 e o calendário de 28 se pagam sozinhos quando você entra, e os dois aparecem ao lado do seu nível. O resgate passa por um captcha, então o script nunca faz isso por você.',
@@ -392,18 +397,19 @@
             mTitle: 'O que este painel lê', mIntro: 'Tudo aqui é lido da página. O script não resgata, não dá lances e não participa de nada: isso tudo passa por captcha, e fazer por script é o que faz banir contas.',
             mDaily: 'Resetam às 00:00 UTC: tempo no site, Twitch, o dia do calendário e a sequência de login. Esse horário vem do código do próprio site, não de um chute.',
             mQuests: 'As missões não resetam. Cada uma é de uso único com a sua janela: as diárias desaparecem no fim, e as da Steam vão de segunda a segunda.',
-            mTwitch: 'O ARP da Twitch precisa do widget da AWA ativo num canal Hive ou Nexus. Um zero aqui não prova que ele está desligado: também marca zero antes de você assistir nada. Alguns artefatos aumentam o limite diário acima de 15: o extra chega à parte quando você já tem os 15, e a linha passa a contar sobre o novo limite.',
+            mTwitch: 'O ARP da Twitch precisa do widget da AWA ativo num dos canais da lista do Centro de controle. Segundo o medido em setembro de 2026, paga um ARP a cada 2,5 min em Hive e Nexus, que o site anuncia com velocidade dobrada, e um a cada 5 min no resto; o site pode mudar isso. Um zero aqui não prova que ele está desligado: também marca zero antes de você assistir nada. Alguns artefatos aumentam o limite diário acima de 15: o extra se ganha assistindo, no mesmo ritmo, quando você já tem os 15, e a linha passa a contar sobre o novo limite.',
             mLate: 'A Steam é lenta de propósito: tempo jogado e posse de um jogo levam até uma hora para registrar, então um estado vermelho pode ser só um dado velho.',
             mVersion: 'Versão {v}',
             discord: 'Discord', tipDiscord: 'O site diz que o Discord paga por duas coisas —as enquetes e as «Arena Adventures»— e não informa o valor de nenhuma. Os 5 daqui são o que já se viu um dia pagar; se um dia pagar mais, a linha mostra. Não existe contador para isso em lugar nenhum do site, então é lido do seu próprio registro de ARP, filtrado para hoje. Só paga de SEGUNDA A SEXTA: no fim de semana a linha se cala em vez de pedir algo que não dá para fazer.',
             store: 'Loja de batalha', storePack: '{a} ARP por {f}', storeShort: 'faltam {n} fichas', qPass: 'Passe de batalha', passNone: 'não iniciado', passClosed: 'temporada encerrada', passClaim: '{n} para resgatar',
+            tipPassStep: 'Marco {n} de {t}: você tem {v} dos {c} ARP que ele pede.', tipPassLeft: 'Para completar o passe inteiro faltam {f} ARP.', passEnds: 'Passe de batalha: {v}', storeEnds: 'Loja de batalha: {v}', tipPassEnds: 'Quando o passe de batalha acaba. Até lá o ARP conta para os marcos dele. As fichas NÃO são apagadas nesse momento: é quando a loja de batalha abre, por alguns dias.', tipStoreEnds: 'Quando a loja de batalha fecha: as fichas que você não gastou são apagadas nessa hora.', tipStoreHave: 'Você tem {n} fichas.', avistore: 'A loja de batalha vai fechar e você ainda tem fichas', storeAll: 'os três comprados', tipRemindStore: 'Te avisa quando a loja de batalha abrir, em QUALQUER página onde o script rodar. É o mesmo aviso dos outros: uma caixa de diálogo que você precisa fechar, um 👽 na aba e uma faixa no painel. Importa por causa dos jogos: na Temporada 0 esgotaram todos em menos de dezesseis minutos. Os pacotes de ARP não esgotam, e das fichas que sobrarem o painel já avisa antes de a loja fechar. Ele não compra nada por você. Clique de novo para cancelar.', avistoreopen: 'A loja de batalha está aberta',
             evento: "Evento da comunidade", evJoin: "sem entrar", evOwn: "falta o jogo", evMin: "{v}/{c} min", evAll: "todos os marcos", evEnds: "Evento: {v}", evNamed: "Evento: {n}", goEvento: "Clique nesta linha para ir à página do evento.", tipEv: "Os eventos da comunidade da Steam pagam ARP por tempo de jogo, em marcos que exigem DUAS coisas ao mesmo tempo: a comunidade inteira chegar a um total de horas e você chegar às suas. Seu progresso aparece em MINUTOS porque o site arredonda para horas, então abaixo de uma hora ele mostra 0 e não dá para diferenciar de não ter jogado nada.", tipEvJoin: "O evento está no ar e você NÃO está dentro. Entrar é um botão na página do evento, e até você clicar nada conta: o tempo jogado antes de entrar é descartado — isso está medido, não suposto. Entrar é só de ida: não existe botão para sair.", tipEvOwn: "O evento pede o jogo e o site não acha que você tem. Se o jogo for Free to Play, isso é o esperado: a Steam só informa jogos gratuitos que você realmente JOGOU, então abra por alguns minutos e feche. Depois disso o site leva até uma hora para perceber. O botão «sincronizar jogos» é limitado a uma vez por hora e sozinho não resolve.",
             evOn: "em andamento",
             mEvento: "Os eventos da comunidade da Steam pagam por tempo de jogo em marcos, e cada um exige que a comunidade inteira chegue a um total de horas E que você chegue aos seus. Nada conta até você clicar em «entrar» na página do evento, e o tempo jogado antes é descartado — por isso o painel avisa quando há um evento no ar e você não está dentro. Se houver mais de um no ar, cada um ganha sua própria linha, primeiro o que acaba antes. Na página de um evento em que você entrou, o carrossel de marcos vai para aquele em que você está —ou, se você já tem todos, para o primeiro que ainda falta para a comunidade—, destaca ele e a página desce até lá. Em um evento em que você não entrou, ele vai para o primeiro marco que ainda falta para a comunidade, sem descer a página para não tirar da frente o botão de entrar.",
-            tipPass: 'O passe avança com ARP de qualquer fonte, marco a marco, e precisa ser INICIADO na mão quando abre uma temporada. Os marcos não resgatados são entregues no fim, mas as fichas de batalha são apagadas: essas é que têm prazo.',
-            tipStore: 'A Loja de Batalha troca fichas por ARP a preço fixo —25 fichas por 100 ARP, 45 por 200, 90 por 500— e esta linha mostra o melhor pacote que suas fichas já alcançam. Importa porque as fichas SÃO APAGADAS quando a temporada fecha, então são ARP com prazo de validade. De propósito ela não fica amarela: não vence hoje, então nunca alimenta o aviso de fim de dia.',
+            tipPass: 'O passe avança com ARP de qualquer fonte, marco a marco, e precisa ser INICIADO na mão quando abre uma temporada. Os marcos não resgatados são entregues no fim, mas as fichas de batalha são apagadas quando a loja de batalha fecha, alguns dias depois do passe: essas é que têm prazo.',
+            tipStore: 'A Loja de Batalha vende por fichas três pacotes de ARP a preço fixo —25 fichas por 100 ARP, 45 por 200, 90 por 500—, cada um só uma vez, e esta linha mostra o máximo de ARP que suas fichas já alcançam juntando os que você ainda não comprou. Também vende jogos e fragmentos, mas só o ARP tem valor fixo e não esgota: na Temporada 0 os cinco jogos já estavam esgotados dezesseis minutos depois de a loja abrir. Importa porque a loja só abre quando o passe acaba, e por poucos dias —sete na Temporada 0—; quando ela fecha, as fichas que sobrarem SÃO APAGADAS, então são ARP com prazo de validade. De propósito ela não fica amarela: nunca alimenta o aviso de fim de dia. A loja tem o dela, seis horas antes de fechar, se você ainda tiver fichas.',
             fold: 'Recolher o painel', tipAcct: 'Seu saldo, seu nível e as duas contagens de login. A sequência de 7 e o calendário de 28 NÃO são o mesmo número, e nenhum dos dois é o dia do mês: a sequência quebra se você falhar um dia, enquanto o calendário conta os dias em que você entrou, caiam quando caírem. O próprio site diz isso: as recompensas dele seguem o total de dias de login, não a data. Então você pode estar no dia 1 de sequência com 8 dias entrados. Os dois só existem no Centro de controle; em outras páginas chegam um instante depois.',
-            tipAlert: 'Três avisos: meia hora antes de acabar o dia se ainda faltar algo do dia; SEIS horas antes de acabar a semana da Steam se faltar alguma —essas se cumprem jogando, não clicando—; e quando o dia novo começa, para você emendar —esse te cumprimenta SEMPRE QUE VOCÊ ENTRAR, não só à meia-noite, e só fica quieto na última meia hora, quando diria o contrário do outro—. Cada um marca a aba —um 👽 no título e no favicon— e deixa uma faixa no painel; essas ficam até você marcar como visto. Tem ainda uma CAIXA DE DIÁLOGO que você precisa fechar, mas nunca numa aba em segundo plano: essas o navegador engole sem mostrar, então ela espera você voltar. Não tem som: o navegador se recusa a tocar um neste site, as informações do script explicam. Desligar e ligar de novo esta caixa ESQUECE tudo o que já foi marcado, então os avisos voltam.',
+            tipAlert: 'Três avisos: meia hora antes de acabar o dia se ainda faltar algo do dia; SEIS horas antes de acabar a semana da Steam se faltar alguma —essas se cumprem jogando, não clicando—; e quando o dia novo começa, para você emendar —esse te cumprimenta SEMPRE QUE VOCÊ ENTRAR, não só à meia-noite, e só fica quieto na última meia hora, quando diria o contrário do outro—. Cada um marca a aba —um 👽 no título e no favicon— e deixa uma faixa no painel; essas ficam até você marcar como visto. Tem ainda uma CAIXA DE DIÁLOGO que você precisa fechar, mas nunca numa aba em segundo plano: essas o navegador engole sem mostrar, então ela espera você voltar. Não tem som: o navegador se recusa a tocar um neste site, as informações do script explicam. Desligar e ligar de novo esta caixa ESQUECE tudo o que já foi marcado, então os avisos voltam. E mais um, só no fim de uma temporada: seis horas antes de a loja de batalha fechar, se você ainda tiver fichas.',
             tipLang: 'O automático segue o idioma que você escolheu na Alienware Arena.',
             tipNoData: 'Os contadores do dia ficam no Centro de controle. Se a requisição falhar, o painel avisa em vez de mostrar zeros, que pareceriam «não falta nada».',
             tipTag: 'Custa {p} ARP e você tem {b}.',
@@ -411,7 +417,7 @@
             infoTitle: 'Informações do script', infoName: 'Nome:', infoVersion: 'Versão:',
             infoAuthor: 'Autor:', infoGitHub: 'GitHub:', infoDescription: 'Descrição:',
             infoPrivacy: 'Privacidade:', accept: 'Aceitar', info: 'Informações',
-            infoDescriptionText: 'Mostra o que expira e quando: o tempo no site e a Twitch resetam às 00:00 UTC, as missões diárias são de uso único e não voltam, as da Steam vão de segunda a segunda, e o calendário de campanha pode ter um dia esperando. Quando há duas missões da Steam e o jogo da fixa aparece no seletor da que deixa você escolher, escolher ele faz a mesma hora contar para as duas. E se for um jogo gratuito que você não tem, adicionar ele à sua biblioteca da Steam pode bastar para que apareça nesse seletor. O Discord só paga de segunda a sexta, então no fim de semana essa linha se cala em vez de pedir, e ao clicar nela abre o canal «Arena Connect», onde se vota nas enquetes. E as fichas do passe são apagadas quando a temporada fecha, então o painel diz quanto ARP as suas valem agora. Cada linha diz na dica a qual relógio responde, e duas contagens —o dia e a semana da Steam— se atualizam sozinhas. As linhas que se cumprem no Centro de controle levam você direto à seção delas e a destacam, mesmo que você já esteja lá. Na página de um sorteio ele lê o estoque por país e por nível do próprio sorteio e diz se tem chaves para você antes de clicar em nada. No Marketplace e no Cofre marca cada card: dá para você, exige nível maior ou está esgotado. Se você tiver um artefato de desconto do Marketplace equipado, ele conta o preço com desconto, que é o que você paga. Também pode te avisar três vezes —antes de acabar o dia, seis horas antes de acabar a semana da Steam, e quando o dia novo começa— com uma caixa de diálogo que você precisa fechar. Não tem som: foi tentado de três formas neste site e o navegador bloqueia sempre, enquanto o mesmo código toca em outros sites; de dentro da página não sobra nada para consertar. Uma caixa de diálogo, a marca 👽 na aba e uma faixa no painel chegam até você, e nenhuma depende de uma permissão que não temos. Ele se relê sozinho a cada 15 minutos, e o botão ⟳ lê tudo de novo na hora. Só lê: não resgata, não dá lances e não participa de nada, porque isso tudo passa por captcha.',
+            infoDescriptionText: 'Mostra o que expira e quando: o tempo no site e a Twitch resetam às 00:00 UTC, as missões diárias são de uso único e não voltam, as da Steam vão de segunda a segunda, e o calendário de campanha pode ter um dia esperando. Quando há duas missões da Steam e o jogo da fixa aparece no seletor da que deixa você escolher, escolher ele faz a mesma hora contar para as duas. E se for um jogo gratuito que você não tem, adicionar ele à sua biblioteca da Steam pode bastar para que apareça nesse seletor. O Discord só paga de segunda a sexta, então no fim de semana essa linha se cala em vez de pedir, e ao clicar nela abre o canal «Arena Connect», onde se vota nas enquetes. A linha do passe de batalha diz quanto você já tem do marco atual, e um relógio conta quanto falta para o passe acabar; as fichas dele são apagadas quando a loja de batalha fecha, alguns dias depois, então o painel diz quanto ARP as suas valem e avisa seis horas antes de fechar se ainda sobrarem. Na página da loja, enquanto ela não abre, um sino como o do Cofre pode te avisar quando abrir: os jogos de lá esgotam em minutos. Cada linha diz na dica a qual relógio responde, e duas contagens —o dia e a semana da Steam— se atualizam sozinhas. As linhas que se cumprem no Centro de controle levam você direto à seção delas e a destacam, mesmo que você já esteja lá. Na página de um sorteio ele lê o estoque por país e por nível do próprio sorteio e diz se tem chaves para você antes de clicar em nada. No Marketplace e no Cofre marca cada card: dá para você, exige nível maior ou está esgotado. Se você tiver um artefato de desconto do Marketplace equipado, ele conta o preço com desconto, que é o que você paga. Também pode te avisar três vezes —antes de acabar o dia, seis horas antes de acabar a semana da Steam, e quando o dia novo começa— com uma caixa de diálogo que você precisa fechar. Não tem som: foi tentado de três formas neste site e o navegador bloqueia sempre, enquanto o mesmo código toca em outros sites; de dentro da página não sobra nada para consertar. Uma caixa de diálogo, a marca 👽 na aba e uma faixa no painel chegam até você, e nenhuma depende de uma permissão que não temos. Ele se relê sozinho a cada 15 minutos, e o botão ⟳ lê tudo de novo na hora. Só lê: não resgata, não dá lances e não participa de nada, porque isso tudo passa por captcha.',
             infoPrivacyText: 'Suas configurações —idioma, canto do painel, o aviso— ficam só no seu navegador. O script lê a página em que você está e, no máximo, pede uma vez ao site o seu próprio Centro de controle, reusando sua sessão. Sem terceiros, e nada é enviado ao autor do script.',
         },
         zh: {
@@ -426,10 +432,10 @@
             langLabel: '语言', auto: '自动（跟随站点）', move: '移动面板',
             refresh: '立即刷新', tipRefresh: '忽略缓存，重新读取全部数据。它自己只在这个标签页可见时每 15 分钟刷新一次，且整个浏览器只刷新一次。',
             alertOn: '重置前提醒我', tipTos: '仅停留在站点就能获得 ARP，但有每日上限，于 UTC 00:00 重置。',
-            tipTwitch: '站点在常见问题里写明了这个上限：每天最多 15 ARP。每次只给 1 点。',
-            tipTwitchZero: '光看不算：必须在 Hive 或 Nexus 频道上启用 AWA 小组件，并且已绑定 Twitch 账号。',
-            tipTwitchBonus: '今天你的上限是 {c}，不是 15：你装备的某个神器提高了它。额外部分在看满 15 之后单独发放。',
-            tipTwitchPend: '你已拿到 15，但站点显示还有 Twitch ARP 可拿：你装备的某个神器提高了上限，额外部分在拿满 15 之后单独发放。站点没说具体多少，所以显示「+」。',
+            tipTwitch: '站点在常见问题里写明了这个上限：每天最多 15 ARP。每次只给 1 点：按 2026 年 9 月的实测，Hive 和 Nexus 频道每 2.5 分钟 1 点，列表里的其他频道每 5 分钟 1 点。',
+            tipTwitchZero: '光看不算：必须在控制中心列出的某个频道上启用 AWA 小组件，并且已绑定 Twitch 账号。',
+            tipTwitchBonus: '今天你的上限是 {c}，不是 15：你装备的某个神器提高了它。额外部分在看满 15 之后继续靠观看获得，速度不变。',
+            tipTwitchPend: '你已拿到 15，但站点显示还有 Twitch ARP 可拿：你装备的某个神器提高了上限，额外部分现在继续靠观看获得，速度不变。控制中心没说具体多少（Twitch 小组件会显示），所以显示「+」。',
             tipDaily: '一次性任务：每日任务不会回来。窗口结束就消失，无论是否完成。',
             tipSteam: '这些任务按周计算，从周一到周一，而且站点最多需要一小时才能看到你的游戏时长，或你刚入库的游戏。如果固定任务的游戏出现在可自选任务的下拉列表里，就选它：同一个小时对两个任务都算数。如果那个游戏是免费的而你还没有，先把它加进 Steam 库，再看它有没有出现在下拉列表里：出现了，一小时就能覆盖两个任务。',
             tipCalendar: '这是活动日历，就是每天带一个「领取物品」按钮的那个。它要在顶部导航栏的活动图标上领取，就在通知铃铛的左边——图标的图案会随每期活动更换，所以并不总是同一个标志——点击本行就能打开它。它不是每日登录的那个：7 天连续奖励和 28 天日历都会在你进来时自动到账，两者都显示在你的等级旁边。领取要过验证码，所以脚本绝不会替你领。',
@@ -445,18 +451,19 @@
             mTitle: '这个面板读取什么', mIntro: '这里的一切都从页面读取。脚本不会领取、不会出价、也不会参与任何活动：这些都要过验证码，用脚本去做正是账号被封的原因。',
             mDaily: 'UTC 00:00 重置：在站时间、Twitch、日历当天和登录连续天数。这个时间点来自站点自己的代码，不是猜测。',
             mQuests: '任务不会重置。每个任务都是一次性的，各有窗口：每日任务结束即消失，Steam 任务从周一到周一。',
-            mTwitch: 'Twitch 的 ARP 需要在 Hive 或 Nexus 频道启用 AWA 小组件。这里显示 0 并不证明小组件关闭 — 你还没看任何直播时也是 0。某些神器会把每日上限提高到 15 以上：额外部分在拿满 15 之后单独发放，之后这一行按新的上限计算。',
+            mTwitch: 'Twitch 的 ARP 需要在控制中心列出的某个频道上启用 AWA 小组件。按 2026 年 9 月的实测，Hive 和 Nexus（站点标明双倍速度）每 2.5 分钟 1 点，其他频道每 5 分钟 1 点；站点可能会调整。这里显示 0 并不证明小组件关闭 — 你还没看任何直播时也是 0。某些神器会把每日上限提高到 15 以上：额外部分在拿满 15 之后继续靠观看获得，速度不变，之后这一行按新的上限计算。',
             mLate: 'Steam 的延迟是设计使然：游戏时长和游戏归属最多需要一小时才登记，所以红色状态可能只是数据过期。',
             mVersion: '版本 {v}',
             discord: 'Discord', tipDiscord: '站点说 Discord 有两件事给 ARP——投票和「Arena Adventures」——但两者都没公布金额。这里的 5 是目前见过的一天所得；若某天给得更多，这一行会照实显示。站点上任何地方都没有它的计数器，所以是从你自己的 ARP 记录里读的，按今天过滤。它只在周一至周五发放：周末这一行会安静下来，而不是要求你做不到的事。',
             store: '战斗商店', storePack: '{f} 换 {a} ARP', storeShort: '还差 {n} 代币', qPass: '战斗通行证', passNone: '尚未开始', passClosed: '赛季已结束', passClaim: '{n} 待领取',
+            tipPassStep: '里程碑 {n}/{t}：已有 {v} ARP，需要 {c} ARP。', tipPassLeft: '要完成整个通行证还差 {f} ARP。', passEnds: '战斗通行证：{v}', storeEnds: '战斗商店：{v}', tipPassEnds: '战斗通行证结束的时间。在此之前 ARP 计入它的里程碑。代币不会在这时清空：战斗商店正是这时开放，持续几天。', tipStoreEnds: '战斗商店关闭的时间：届时未花掉的代币会被清空。', tipStoreHave: '你有 {n} 个代币。', avistore: '战斗商店即将关闭，你还有代币没花', storeAll: '三个都已购买', tipRemindStore: '战斗商店开放时会提醒你，在脚本运行的任何页面上都可以。提醒方式和其他的一样：一个必须关闭的对话框、标签页上的 👽，以及面板上的一条横幅。这是为了游戏：第 0 赛季的游戏在十六分钟内就全部售完了。ARP 礼包不会售罄，剩余代币的事面板会在商店关闭前提醒你。它不会替你购买。再点一次即可取消。', avistoreopen: '战斗商店已开放',
             evento: "社区活动", evJoin: "未参加", evOwn: "缺少游戏", evMin: "{v}/{c} 分钟", evAll: "全部里程碑", evEnds: "活动：{v}", evNamed: "活动：{n}", goEvento: "点击此行前往活动页面。", tipEv: "Steam 社区活动按游戏时长发放 ARP，分为若干里程碑，每个都需要同时满足两个条件：整个社区达到总时长，以及你自己达到个人时长。这里用分钟显示你的进度，因为站点会向下取整到小时——不足一小时它显示 0，和完全没玩无法区分。", tipEvJoin: "活动正在进行，而你并未加入。加入是活动页面上的一个按钮，在你按下之前一切都不计数：加入之前的游戏时长会被丢弃——这是实测结果，不是猜测。加入是单向的，没有退出按钮。", tipEvOwn: "活动需要该游戏，而站点认为你没有。如果是免费游戏，这是正常的：Steam 只会报告你真正玩过的免费游戏，所以打开它玩几分钟再关掉。之后站点最多需要一小时才会察觉。「同步游戏」按钮每小时只能用一次，单靠它解决不了这个问题。",
             evOn: "进行中",
             mEvento: "Steam 社区活动按游戏时长分里程碑发放奖励，每个里程碑都要求整个社区达到总时长，并且你自己也要达到个人时长。在活动页面点击「加入」之前一切都不计数，加入之前的游戏时长会被丢弃——所以当活动正在进行而你尚未加入时，面板会提醒你。如果同时有多个活动进行，每个活动各占一行，最先结束的排在最前。在你已加入的活动页面上，里程碑轮播会跳到你当前所在的那一个——如果你的都已完成，则跳到社区还差的第一个——并将其高亮，页面也会滚动到那里。在你尚未加入的活动中，它会跳到社区还差的第一个里程碑，但页面不会滚动，以免把「加入」按钮移出视线。",
-            tipPass: '通行证靠任何来源的 ARP 逐个里程碑推进，赛季开始时必须手动「开始」。未领取的里程碑会在赛季结束时发放，但战斗代币会被清空——有时限的是代币。',
-            tipStore: '战斗商店以固定价格把代币换成 ARP——25 代币换 100 ARP，45 换 200，90 换 500——这一行显示你的代币已经够得着的最划算的一档。它重要是因为赛季结束时代币会被清空：这是有保质期的 ARP。这里刻意不用黄色：它今天不会过期，所以永远不会触发当日提醒。',
+            tipPass: '通行证靠任何来源的 ARP 逐个里程碑推进，赛季开始时必须手动「开始」。未领取的里程碑会在赛季结束时发放，但战斗代币会在战斗商店关闭时（通行证结束几天后）被清空——有时限的是代币。',
+            tipStore: '战斗商店用代币以固定价格出售三个 ARP 礼包——25 代币换 100 ARP，45 换 200，90 换 500——每个只能买一次，这一行显示把还没买的礼包组合起来，你的代币现在最多能换多少 ARP。它也卖游戏和碎片，但只有 ARP 价值固定、不会售罄：第 0 赛季那五款游戏在商店开放十六分钟后就已全部售完。它重要是因为商店只在通行证结束后才开放，而且只开几天（第 0 赛季是七天）；商店关闭时剩下的代币会被清空：这是有保质期的 ARP。这里刻意不用黄色：它永远不会触发当日提醒。商店有自己的提醒：如果你还有代币，会在关闭前六小时提醒你。',
             fold: '折叠面板', tipAcct: '你的余额、等级，以及两个登录计数。7 天连续和 28 天日历不是同一个数字，两者都不是当月的日期：漏一天连续就断，而日历统计的是你登录过的天数，无论它们落在哪一天。网站自己也这么说——奖励看的是累计登录天数，不是日期。所以你可能连续第 1 天，却已登录 8 天。两者只存在于控制中心，在别的页面上会晚一点才到。',
-            tipAlert: '三种提醒：距当天结束还有三十分钟且当天还有未完成项时；距 Steam 周期结束还有六小时且还有未完成的 Steam 任务时——那些要靠玩，不是点一下就行；以及新的一天开始时，提醒你开工——这一条无论你什么时候进来都会打招呼，不只在午夜，只有当天最后半小时才不出声，因为那时它会和另一条自相矛盾。每一种都会标记标签页——标题和网站图标上各一个 👽——并在面板上留下一条横幅，这些会一直留到你标记为已看。另外还有一个必须关闭的对话框，但绝不会在后台标签页弹出：那种浏览器会直接吞掉、根本不显示，所以它会等你回来。没有声音：浏览器在这个站点上拒绝播放，脚本信息里有说明。把这个复选框关掉再打开会忘记所有已标记的内容，提醒因此会重新出现。',
+            tipAlert: '三种提醒：距当天结束还有三十分钟且当天还有未完成项时；距 Steam 周期结束还有六小时且还有未完成的 Steam 任务时——那些要靠玩，不是点一下就行；以及新的一天开始时，提醒你开工——这一条无论你什么时候进来都会打招呼，不只在午夜，只有当天最后半小时才不出声，因为那时它会和另一条自相矛盾。每一种都会标记标签页——标题和网站图标上各一个 👽——并在面板上留下一条横幅，这些会一直留到你标记为已看。另外还有一个必须关闭的对话框，但绝不会在后台标签页弹出：那种浏览器会直接吞掉、根本不显示，所以它会等你回来。没有声音：浏览器在这个站点上拒绝播放，脚本信息里有说明。把这个复选框关掉再打开会忘记所有已标记的内容，提醒因此会重新出现。另外还有一种，只在赛季末出现：如果你还有代币，会在战斗商店关闭前六小时提醒。',
             tipLang: '自动模式会跟随你在 Alienware Arena 上选择的语言。',
             tipNoData: '当天的计数器在控制中心里。如果请求失败，面板会直接说明，而不是显示 0——那看起来像「什么都不缺」。',
             tipTag: '需要 {p} ARP，你有 {b}。',
@@ -464,7 +471,7 @@
             infoTitle: '脚本信息', infoName: '名称：', infoVersion: '版本：',
             infoAuthor: '作者：', infoGitHub: 'GitHub：', infoDescription: '说明：',
             infoPrivacy: '隐私：', accept: '确定', info: '信息',
-            infoDescriptionText: '显示什么会过期、什么时候过期：在站时间和 Twitch 于 UTC 00:00 重置，每日任务是一次性的、不会回来，Steam 任务从周一到周一，活动日历可能还有一天等你领取。当同时有两个 Steam 任务、而固定那个的游戏又出现在可自选任务的列表里时，选它就能让同一个小时对两个都算数。如果那是一款你还没有的免费游戏，把它加进 Steam 库可能就足以让它出现在那个列表里。Discord 只在周一至周五发放，周末那一行会安静下来而不是催你，点击它会打开「Arena Connect」频道，也就是投票的地方。战斗通行证的代币在赛季结束时会被清空，所以面板会告诉你它们现在值多少 ARP。每一行的提示都会说明它归哪个时钟管，另外两个倒计时——当天和 Steam 周期——会自动刷新。在控制中心完成的那几行会直接带你到对应的部分并将其高亮，即使你已经在那里。在赠品页面上，它会读取该赠品按国家和等级的库存，在你点击任何按钮之前就告诉你是否有属于你的密钥。在 Marketplace 和宝库中，它会标注每张卡片：买得起、需要更高等级，或者已售完。如果你装备了 Marketplace 折扣神器，它会按折后价计算，也就是你实际要付的价格。它还能提醒你三次——当天结束前、Steam 周期结束前六小时，以及新的一天开始时——用一个必须关闭的对话框。没有声音：在这个站点上试了三种办法，浏览器每次都拦截，而同样的代码在别的站点却能响；从页面里已经没有可修的了。对话框、标签页上的 👽 标记和面板上的横幅都能传到你这里，而且都不需要我们拿不到的许可。它每 15 分钟会自行重新读取一次，⟳ 按钮则立刻重读全部数据。它只读取：不领取、不出价、不参与任何活动，因为这些都要过验证码。',
+            infoDescriptionText: '显示什么会过期、什么时候过期：在站时间和 Twitch 于 UTC 00:00 重置，每日任务是一次性的、不会回来，Steam 任务从周一到周一，活动日历可能还有一天等你领取。当同时有两个 Steam 任务、而固定那个的游戏又出现在可自选任务的列表里时，选它就能让同一个小时对两个都算数。如果那是一款你还没有的免费游戏，把它加进 Steam 库可能就足以让它出现在那个列表里。Discord 只在周一至周五发放，周末那一行会安静下来而不是催你，点击它会打开「Arena Connect」频道，也就是投票的地方。战斗通行证那一行会显示你当前里程碑的进度，还有一个倒计时显示通行证还剩多久；它的代币会在几天后战斗商店关闭时被清空，所以面板会告诉你它们值多少 ARP，并在商店关闭前六小时提醒你还有代币没花。在商店页面上，商店还没开放时，可以像宝库那样用铃铛在开放时提醒你：那里的游戏几分钟就会售完。每一行的提示都会说明它归哪个时钟管，另外两个倒计时——当天和 Steam 周期——会自动刷新。在控制中心完成的那几行会直接带你到对应的部分并将其高亮，即使你已经在那里。在赠品页面上，它会读取该赠品按国家和等级的库存，在你点击任何按钮之前就告诉你是否有属于你的密钥。在 Marketplace 和宝库中，它会标注每张卡片：买得起、需要更高等级，或者已售完。如果你装备了 Marketplace 折扣神器，它会按折后价计算，也就是你实际要付的价格。它还能提醒你三次——当天结束前、Steam 周期结束前六小时，以及新的一天开始时——用一个必须关闭的对话框。没有声音：在这个站点上试了三种办法，浏览器每次都拦截，而同样的代码在别的站点却能响；从页面里已经没有可修的了。对话框、标签页上的 👽 标记和面板上的横幅都能传到你这里，而且都不需要我们拿不到的许可。它每 15 分钟会自行重新读取一次，⟳ 按钮则立刻重读全部数据。它只读取：不领取、不出价、不参与任何活动，因为这些都要过验证码。',
             infoPrivacyText: '你的设置——语言、面板位置、提醒——只保存在你的浏览器里。脚本读取你当前所在的页面，最多复用你的会话向站点请求一次你自己的控制中心。不涉及任何第三方，也不会向脚本作者发送任何内容。',
         },
         hi: {
@@ -479,10 +486,10 @@
             langLabel: 'भाषा', auto: 'स्वचालित (साइट के अनुसार)', move: 'पैनल हटाएँ',
             refresh: 'अभी ताज़ा करें', tipRefresh: 'कैश को छोड़कर सब कुछ दोबारा पढ़ता है। अपने आप यह हर 15 मिनट में ही ताज़ा होता है, वह भी तभी जब यह टैब सामने हो, और पूरे ब्राउज़र के लिए एक ही बार।',
             alertOn: 'रीसेट से पहले सूचित करें', tipTos: 'साइट पर बने रहने से ही ARP मिलता है, एक दैनिक सीमा तक। यह 00:00 UTC पर रीसेट होता है।',
-            tipTwitch: 'यह सीमा साइट अपने FAQ में खुद बताती है: रोज़ अधिकतम 15 ARP। यह एक-एक करके मिलता है।',
-            tipTwitchZero: 'सिर्फ़ देखने से कुछ नहीं मिलता: Hive या Nexus चैनल पर AWA विजेट चालू होना चाहिए, और Twitch खाता जुड़ा होना चाहिए।',
-            tipTwitchBonus: 'आज आपकी सीमा {c} है, 15 नहीं: आपके लगाए किसी आर्टिफ़ैक्ट ने इसे बढ़ाया है। अतिरिक्त ARP अलग से मिलता है, देखकर 15 पूरे होने के बाद।',
-            tipTwitchPend: 'आपके 15 पूरे हैं, पर साइट कहती है कि Twitch का ARP अभी बाकी है: आपके लगाए किसी आर्टिफ़ैक्ट ने सीमा बढ़ाई है, और उसका अतिरिक्त हिस्सा 15 पूरे होने के बाद अलग से मिलता है। कितना, यह साइट नहीं बताती, इसलिए «+»।',
+            tipTwitch: 'यह सीमा साइट अपने FAQ में खुद बताती है: रोज़ अधिकतम 15 ARP। यह एक-एक करके मिलता है: सितंबर 2026 के माप के अनुसार Hive और Nexus चैनलों पर हर 2.5 मिनट में एक, और सूची के बाकी चैनलों पर हर 5 मिनट में एक।',
+            tipTwitchZero: 'सिर्फ़ देखने से कुछ नहीं मिलता: कंट्रोल सेंटर की सूची के किसी चैनल पर AWA विजेट चालू होना चाहिए, और Twitch खाता जुड़ा होना चाहिए।',
+            tipTwitchBonus: 'आज आपकी सीमा {c} है, 15 नहीं: आपके लगाए किसी आर्टिफ़ैक्ट ने इसे बढ़ाया है। अतिरिक्त ARP 15 पूरे होने के बाद देखते रहने से उसी रफ़्तार से मिलता है।',
+            tipTwitchPend: 'आपके 15 पूरे हैं, पर साइट कहती है कि Twitch का ARP अभी बाकी है: आपके लगाए किसी आर्टिफ़ैक्ट ने सीमा बढ़ाई है, और उसका अतिरिक्त हिस्सा अब देखते रहने से उसी रफ़्तार से मिलता है। कितना, यह कंट्रोल सेंटर नहीं बताता — Twitch विजेट बताता है —, इसलिए «+»।',
             tipDaily: 'एक बार की चीज़: दैनिक क्वेस्ट वापस नहीं आती। समय-सीमा खत्म होने पर वह गायब हो जाती है, पूरी हो या न हो।',
             tipSteam: 'ये सोमवार से सोमवार चलती हैं, रोज़ाना नहीं, और साइट को आपका खेलने का समय — या अभी जोड़ा गया गेम — देखने में एक घंटा लग सकता है। अगर तय क्वेस्ट का गेम उस क्वेस्ट की सूची में दिखे जिसमें आप खुद चुन सकते हैं, तो उसे ही चुनें: वही एक घंटा दोनों में गिना जाता है। और अगर वह गेम मुफ़्त है और आपके पास नहीं है, तो उसे अपनी Steam लाइब्रेरी में जोड़ें और देखें कि वह सूची में आता है या नहीं: अगर आ गया, तो एक घंटा दोनों के लिए काफ़ी है।',
             tipCalendar: 'यह कैंपेन कैलेंडर है, वही जिसमें हर दिन «आइटम लें» बटन होता है। इसे ऊपर बार में मौजूद कैंपेन आइकॉन से लिया जाता है, सूचना घंटी के ठीक बाईं ओर — उसकी तस्वीर हर कैंपेन के साथ बदलती है, इसलिए वह हमेशा एक ही लोगो नहीं होता — और इस पंक्ति पर क्लिक करने से वह खुल जाता है। यह रोज़ लॉगिन वाला नहीं है: 7 दिन की लगातार गिनती और 28 दिन का कैलेंडर आपके आते ही अपने आप मिल जाते हैं, और दोनों आपके स्तर के बगल में दिखते हैं। लेने के लिए कैप्चा पार करना पड़ता है, इसलिए स्क्रिप्ट यह कभी आपके लिए नहीं करती।',
@@ -498,18 +505,19 @@
             mTitle: 'यह पैनल क्या पढ़ता है', mIntro: 'यहाँ सब कुछ पेज से पढ़ा जाता है। यह स्क्रिप्ट कुछ नहीं लेती, बोली नहीं लगाती और किसी चीज़ में भाग नहीं लेती: वह सब कैप्चा से होकर जाता है, और स्क्रिप्ट से करना ही खाते बैन होने की वजह है।',
             mDaily: '00:00 UTC पर रीसेट: साइट पर समय, Twitch, कैलेंडर का दिन और लॉगिन की लगातार गिनती। यह समय साइट के ही कोड से आता है, अनुमान से नहीं।',
             mQuests: 'क्वेस्ट रीसेट नहीं होतीं। हर एक अपनी समय-सीमा वाली, एक बार की चीज़ है: दैनिक वाली खत्म होते ही गायब, Steam वाली सोमवार से सोमवार।',
-            mTwitch: 'Twitch का ARP पाने के लिए Hive या Nexus चैनल पर AWA विजेट चालू चाहिए। यहाँ शून्य होने से यह साबित नहीं होता कि विजेट बंद है — कुछ देखने से पहले भी शून्य ही रहता है। कुछ आर्टिफ़ैक्ट रोज़ की सीमा 15 से ऊपर कर देते हैं: अतिरिक्त ARP 15 पूरे होने के बाद अलग से मिलता है, और फिर यह पंक्ति नई सीमा के हिसाब से गिनती है।',
+            mTwitch: 'Twitch का ARP पाने के लिए कंट्रोल सेंटर की सूची के किसी चैनल पर AWA विजेट चालू चाहिए। सितंबर 2026 के माप के अनुसार Hive और Nexus पर, जिन्हें साइट दोगुनी रफ़्तार वाला बताती है, हर 2.5 मिनट में एक ARP मिलता है, और बाकी पर हर 5 मिनट में एक; साइट इसे बदल सकती है। यहाँ शून्य होने से यह साबित नहीं होता कि विजेट बंद है — कुछ देखने से पहले भी शून्य ही रहता है। कुछ आर्टिफ़ैक्ट रोज़ की सीमा 15 से ऊपर कर देते हैं: अतिरिक्त ARP 15 पूरे होने के बाद देखते रहने से उसी रफ़्तार से मिलता है, और फिर यह पंक्ति नई सीमा के हिसाब से गिनती है।',
             mLate: 'Steam जान-बूझकर धीमा है: खेलने का समय और गेम का मालिक होना दर्ज होने में एक घंटा लग सकता है, इसलिए लाल स्थिति सिर्फ़ पुराना डेटा हो सकती है।',
             mVersion: 'संस्करण {v}',
             discord: 'Discord', tipDiscord: 'साइट कहती है कि Discord दो चीज़ों के लिए ARP देता है — पोल और «Arena Adventures» — और दोनों की रकम नहीं बताती। यहाँ का 5 वह है जो एक दिन में मिलते देखा गया है; किसी दिन ज़्यादा मिले तो यह पंक्ति वही दिखाएगी। साइट पर इसका काउंटर कहीं नहीं है, इसलिए यह आपके ही ARP रजिस्टर से पढ़ी जाती है, आज पर फ़िल्टर करके। यह सिर्फ़ सोमवार से शुक्रवार तक देता है: सप्ताहांत में यह पंक्ति चुप रहती है, बजाय ऐसा कुछ माँगने के जो किया ही नहीं जा सकता।',
             store: 'बैटल स्टोर', storePack: '{f} में {a} ARP', storeShort: '{n} टोकन कम हैं', qPass: 'बैटल पास', passNone: 'शुरू नहीं किया', passClosed: 'सीज़न खत्म', passClaim: '{n} लेना बाकी',
+            tipPassStep: 'पड़ाव {n} / {t}: इसके लिए चाहिए {c} ARP में से आपके पास {v} हैं।', tipPassLeft: 'पूरा पास पूरा करने के लिए {f} ARP और चाहिए।', passEnds: 'बैटल पास: {v}', storeEnds: 'बैटल स्टोर: {v}', tipPassEnds: 'बैटल पास कब खत्म होता है। तब तक ARP उसके पड़ावों में गिना जाता है। टोकन उस समय नहीं मिटते: तभी बैटल स्टोर कुछ दिनों के लिए खुलता है।', tipStoreEnds: 'बैटल स्टोर कब बंद होता है: जो टोकन खर्च नहीं हुए, वे तब मिटा दिए जाते हैं।', tipStoreHave: 'आपके पास {n} टोकन हैं।', avistore: 'बैटल स्टोर बंद हो रहा है और आपके टोकन बचे हैं', storeAll: 'तीनों खरीदे', tipRemindStore: 'बैटल स्टोर खुलते ही आपको बता देगा, हर उस पेज पर जहाँ स्क्रिप्ट चलती है। चेतावनी बाकियों जैसी ही है: एक डायलॉग जिसे बंद करना पड़ता है, टैब पर 👽, और पैनल में एक पट्टी। यह गेम के लिए है: सीज़न 0 में सारे गेम सोलह मिनट से कम में खत्म हो गए थे। ARP पैक खत्म नहीं होते, और बचे टोकन के बारे में पैनल स्टोर बंद होने से पहले ही बता देता है। यह आपकी ओर से कुछ नहीं खरीदता। रद्द करने के लिए फिर से दबाएँ।', avistoreopen: 'बैटल स्टोर खुल गया है',
             evento: "कम्युनिटी इवेंट", evJoin: "शामिल नहीं हुए", evOwn: "गेम नहीं है", evMin: "{v}/{c} मिनट", evAll: "सभी माइलस्टोन", evEnds: "इवेंट: {v}", evNamed: "इवेंट: {n}", goEvento: "इवेंट पेज पर जाने के लिए इस पंक्ति पर क्लिक करें।", tipEv: "Steam के कम्युनिटी इवेंट खेले गए समय के बदले ARP देते हैं, माइलस्टोन के रूप में, जिनमें एक साथ दो शर्तें पूरी करनी होती हैं: पूरी कम्युनिटी का कुल घंटों तक पहुँचना, और आपका अपने घंटों तक पहुँचना। आपकी प्रगति मिनटों में दिखती है क्योंकि साइट घंटों में पूर्णांकित करती है — एक घंटे से कम पर वह 0 दिखाती है, जो बिलकुल न खेलने से अलग नहीं लगता।", tipEvJoin: "इवेंट चल रहा है और आप उसमें शामिल नहीं हैं। शामिल होना इवेंट पेज का एक बटन है, और जब तक आप उसे नहीं दबाते कुछ नहीं गिना जाता: शामिल होने से पहले खेला गया समय बेकार चला जाता है — यह मापा गया है, अनुमान नहीं। शामिल होना एकतरफ़ा है: बाहर निकलने का कोई बटन नहीं है।", tipEvOwn: "इवेंट को गेम चाहिए और साइट को नहीं लगता कि वह आपके पास है। अगर गेम Free to Play है तो यही अपेक्षित है: Steam केवल वही मुफ़्त गेम बताता है जिन्हें आपने सचमुच खेला हो, इसलिए उसे कुछ मिनट खोलें और बंद करें। इसके बाद साइट को समझने में एक घंटे तक लग सकता है। «गेम सिंक करें» बटन घंटे में एक बार तक सीमित है और अकेले यह इसे ठीक नहीं करता।",
             evOn: "चल रहा है",
             mEvento: "Steam के कम्युनिटी इवेंट खेले गए समय के बदले माइलस्टोन में भुगतान करते हैं, और हर माइलस्टोन के लिए पूरी कम्युनिटी को कुल घंटों तक पहुँचना होता है और आपको अपने घंटों तक। इवेंट पेज पर «शामिल हों» दबाने तक कुछ नहीं गिना जाता, और उससे पहले खेला गया समय बेकार चला जाता है — इसीलिए जब कोई इवेंट चल रहा हो और आप उसमें न हों तो पैनल चेतावनी देता है। अगर एक साथ कई इवेंट चल रहे हों, तो हर एक की अपनी लाइन होती है, सबसे पहले ख़त्म होने वाला सबसे ऊपर। जिस इवेंट में आप शामिल हैं उसके पेज पर, माइलस्टोन का कैरोसेल उस पर पहुँच जाता है जिस पर आप हैं —या, अगर आपके सारे पूरे हो चुके हैं, तो उस पहले पर जो कम्युनिटी के लिए अभी बाकी है—, उसे हाइलाइट करता है, और पेज नीचे उस तक स्क्रॉल होता है। जिस इवेंट में आप शामिल नहीं हैं, उसमें यह उस पहले माइलस्टोन पर जाता है जो कम्युनिटी के लिए अभी बाकी है, पर पेज नीचे नहीं जाता ताकि «शामिल हों» बटन सामने से न हटे।",
-            tipPass: 'पास किसी भी स्रोत के ARP से, एक-एक पड़ाव करके आगे बढ़ता है, और सीज़न खुलने पर उसे हाथ से शुरू करना पड़ता है। बिना लिए पड़ाव सीज़न के अंत में मिल जाते हैं, पर बैटल टोकन मिट जाते हैं — जल्दी उन्हीं की है।',
-            tipStore: 'बैटल स्टोर तय दाम पर टोकन को ARP में बदलता है — 25 टोकन के 100 ARP, 45 के 200, 90 के 500 — और यह पंक्ति वह सबसे अच्छा पैक दिखाती है जिस तक आपके टोकन पहले से पहुँचते हैं। यह मायने रखता है क्योंकि सीज़न बंद होते ही टोकन मिटा दिए जाते हैं: ये समय-सीमा वाले ARP हैं। इसे जानबूझकर पीला नहीं रखा गया: यह आज ख़त्म नहीं होता, इसलिए दिन-के-अंत की चेतावनी में कभी नहीं जुड़ता।',
+            tipPass: 'पास किसी भी स्रोत के ARP से, एक-एक पड़ाव करके आगे बढ़ता है, और सीज़न खुलने पर उसे हाथ से शुरू करना पड़ता है। बिना लिए पड़ाव सीज़न के अंत में मिल जाते हैं, पर बैटल टोकन बैटल स्टोर बंद होने पर — पास खत्म होने के कुछ दिन बाद — मिट जाते हैं: जल्दी उन्हीं की है।',
+            tipStore: 'बैटल स्टोर टोकन के बदले तय दाम पर तीन ARP पैक बेचता है — 25 टोकन के 100 ARP, 45 के 200, 90 के 500 —, हर एक सिर्फ़ एक बार, और यह पंक्ति बताती है कि जो पैक आपने अभी नहीं खरीदे उन्हें मिलाकर आपके टोकन से अभी अधिकतम कितना ARP मिल सकता है। यह गेम और फ़्रैगमेंट भी बेचता है, पर सिर्फ़ ARP की कीमत तय है और वह खत्म नहीं होता: सीज़न 0 में पाँचों गेम स्टोर खुलने के सोलह मिनट बाद ही खत्म हो चुके थे। यह मायने रखता है क्योंकि स्टोर पास खत्म होने के बाद ही खुलता है, और कुछ ही दिनों के लिए — सीज़न 0 में सात —; उसके बंद होते ही बचे टोकन मिटा दिए जाते हैं: ये समय-सीमा वाले ARP हैं। इसे जानबूझकर पीला नहीं रखा गया: यह दिन-के-अंत की चेतावनी में कभी नहीं जुड़ता। स्टोर की अपनी चेतावनी है, बंद होने से छह घंटे पहले, अगर आपके टोकन बचे हों।',
             fold: 'पैनल समेटें', tipAcct: 'आपका बैलेंस, स्तर और लॉगिन की दो गिनतियाँ। 7 दिन की लगातार गिनती और 28 दिन का कैलेंडर एक ही संख्या नहीं हैं, और इनमें से कोई भी महीने की तारीख़ नहीं है: एक दिन चूकने पर लगातार गिनती टूट जाती है, जबकि कैलेंडर उन दिनों को गिनता है जिनमें आपने लॉगिन किया, चाहे वे कभी भी पड़ें। साइट ख़ुद यही कहती है — उसके इनाम कुल लॉगिन दिनों से चलते हैं, तारीख़ से नहीं। इसलिए आप लगातार दिन 1 पर हो सकते हैं और 8 दिन लॉगिन कर चुके हों। ये दोनों सिर्फ़ कंट्रोल सेंटर में हैं, बाकी पेजों पर थोड़ी देर बाद आते हैं।',
-            tipAlert: 'तीन चेतावनियाँ: दिन खत्म होने से आधा घंटा पहले, अगर दिन का कुछ बाकी हो; Steam का हफ़्ता खत्म होने से छह घंटे पहले, अगर उनमें से कोई बाकी हो — वे खेलकर पूरी होती हैं, दबाकर नहीं; और नया दिन शुरू होने पर, शुरुआत के लिए — वह आपको जब भी आएँ तब स्वागत करती है, सिर्फ़ आधी रात को नहीं, और सिर्फ़ दिन के आखिरी आधे घंटे चुप रहती है, जब वह दूसरी के उलट बात कहती। हर एक टैब पर निशान लगाती है — शीर्षक पर और फ़ेविकॉन पर एक 👽 — और पैनल में एक पट्टी छोड़ जाती है; ये तब तक रहते हैं जब तक आप उन्हें देखा हुआ चिह्नित न करें। एक डायलॉग भी आता है जिसे बंद करना पड़ता है, पर पृष्ठभूमि वाले टैब में कभी नहीं: उन्हें ब्राउज़र बिना दिखाए निगल जाता है, इसलिए वह आपके लौटने का इंतज़ार करता है। आवाज़ नहीं है: ब्राउज़र इस साइट पर बजाने से मना करता है, स्क्रिप्ट की जानकारी में यह लिखा है। इस बॉक्स को बंद करके फिर चालू करने पर पहले से चिह्नित सब कुछ भूल जाता है, तो चेतावनियाँ लौट आती हैं।',
+            tipAlert: 'तीन चेतावनियाँ: दिन खत्म होने से आधा घंटा पहले, अगर दिन का कुछ बाकी हो; Steam का हफ़्ता खत्म होने से छह घंटे पहले, अगर उनमें से कोई बाकी हो — वे खेलकर पूरी होती हैं, दबाकर नहीं; और नया दिन शुरू होने पर, शुरुआत के लिए — वह आपको जब भी आएँ तब स्वागत करती है, सिर्फ़ आधी रात को नहीं, और सिर्फ़ दिन के आखिरी आधे घंटे चुप रहती है, जब वह दूसरी के उलट बात कहती। हर एक टैब पर निशान लगाती है — शीर्षक पर और फ़ेविकॉन पर एक 👽 — और पैनल में एक पट्टी छोड़ जाती है; ये तब तक रहते हैं जब तक आप उन्हें देखा हुआ चिह्नित न करें। एक डायलॉग भी आता है जिसे बंद करना पड़ता है, पर पृष्ठभूमि वाले टैब में कभी नहीं: उन्हें ब्राउज़र बिना दिखाए निगल जाता है, इसलिए वह आपके लौटने का इंतज़ार करता है। आवाज़ नहीं है: ब्राउज़र इस साइट पर बजाने से मना करता है, स्क्रिप्ट की जानकारी में यह लिखा है। इस बॉक्स को बंद करके फिर चालू करने पर पहले से चिह्नित सब कुछ भूल जाता है, तो चेतावनियाँ लौट आती हैं। और एक और, सिर्फ़ सीज़न के अंत में: बैटल स्टोर बंद होने से छह घंटे पहले, अगर आपके टोकन बचे हों।',
             tipLang: 'स्वचालित वही भाषा लेता है जो आपने Alienware Arena पर चुनी है।',
             tipNoData: 'दिन के काउंटर कंट्रोल सेंटर में रहते हैं। अनुरोध विफल हो तो पैनल यही कहता है, शून्य दिखाने के बजाय — वह «कुछ बाकी नहीं» जैसा पढ़ा जाता।',
             tipTag: 'इसकी कीमत {p} ARP है और आपके पास {b} हैं।',
@@ -517,7 +525,7 @@
             infoTitle: 'स्क्रिप्ट की जानकारी', infoName: 'नाम:', infoVersion: 'संस्करण:',
             infoAuthor: 'लेखक:', infoGitHub: 'GitHub:', infoDescription: 'विवरण:',
             infoPrivacy: 'निजता:', accept: 'ठीक है', info: 'जानकारी',
-            infoDescriptionText: 'यह दिखाता है कि क्या खत्म हो रहा है और कब: साइट पर समय और Twitch 00:00 UTC पर रीसेट होते हैं, दैनिक क्वेस्ट एक बार की होती हैं और वापस नहीं आतीं, Steam वाली सोमवार से सोमवार चलती हैं, और कैंपेन कैलेंडर में कोई दिन बाकी हो सकता है। जब दो Steam क्वेस्ट हों और तय वाली का गेम चुनने वाली की सूची में दिखे, तो उसे चुनने से वही एक घंटा दोनों में गिना जाता है। और अगर वह कोई मुफ़्त गेम है जो आपके पास नहीं है, तो उसे Steam लाइब्रेरी में जोड़ना ही उसे उस सूची में लाने के लिए काफ़ी हो सकता है। Discord सिर्फ़ सोमवार से शुक्रवार तक देता है, इसलिए सप्ताहांत में वह पंक्ति माँगने के बजाय चुप रहती है, और उस पर क्लिक करने से «Arena Connect» चैनल खुलता है, जहाँ पोल में वोट किया जाता है। और बैटल पास के टोकन सीज़न बंद होते ही मिटा दिए जाते हैं, इसलिए पैनल बताता है कि आपके टोकन अभी कितने ARP के बराबर हैं। हर पंक्ति अपनी टूलटिप में बताती है कि वह किस घड़ी से चलती है, और दो उलटी गिनती —दिन और Steam सप्ताह— अपने आप ताज़ा होती हैं। जो पंक्तियाँ कंट्रोल सेंटर में पूरी होती हैं, वे आपको सीधे उनके हिस्से पर ले जाती हैं और उसे हाइलाइट करती हैं, भले ही आप पहले से वहीं हों। किसी गिववे के पेज पर यह उसी गिववे के देश-और-स्तर वाले स्टॉक को पढ़ता है और कुछ दबाने से पहले बता देता है कि आपके लिए कुंजियाँ हैं या नहीं। Marketplace और वॉल्ट में यह हर कार्ड पर निशान लगाता है: आप ले सकते हैं, ऊँचा स्तर चाहिए, या खत्म। अगर आपने Marketplace की छूट वाला आर्टिफ़ैक्ट लगाया है, तो यह छूट वाली कीमत गिनता है, जो आप असल में चुकाते हैं। यह तीन बार सूचित भी कर सकता है — दिन खत्म होने से पहले, Steam का हफ़्ता खत्म होने से छह घंटे पहले, और नया दिन शुरू होने पर — एक डायलॉग से, जिसे बंद करना पड़ता है। आवाज़ नहीं है: इस साइट पर तीन तरीके आज़माए गए और ब्राउज़र हर बार रोक देता है, जबकि वही कोड दूसरी साइटों पर बजता है; पेज के भीतर से अब कुछ ठीक करने को नहीं बचा। डायलॉग, टैब पर 👽 का निशान और पैनल की पट्टी आप तक पहुँचते हैं, और इनमें से किसी को भी ऐसी अनुमति नहीं चाहिए जो हमारे पास नहीं है। यह हर 15 मिनट में खुद दोबारा पढ़ता है, और ⟳ बटन तुरंत सब कुछ फिर से पढ़ लेता है। यह सिर्फ़ पढ़ता है: कुछ नहीं लेता, बोली नहीं लगाता, किसी चीज़ में भाग नहीं लेता — क्योंकि वह सब कैप्चा से होकर जाता है।',
+            infoDescriptionText: 'यह दिखाता है कि क्या खत्म हो रहा है और कब: साइट पर समय और Twitch 00:00 UTC पर रीसेट होते हैं, दैनिक क्वेस्ट एक बार की होती हैं और वापस नहीं आतीं, Steam वाली सोमवार से सोमवार चलती हैं, और कैंपेन कैलेंडर में कोई दिन बाकी हो सकता है। जब दो Steam क्वेस्ट हों और तय वाली का गेम चुनने वाली की सूची में दिखे, तो उसे चुनने से वही एक घंटा दोनों में गिना जाता है। और अगर वह कोई मुफ़्त गेम है जो आपके पास नहीं है, तो उसे Steam लाइब्रेरी में जोड़ना ही उसे उस सूची में लाने के लिए काफ़ी हो सकता है। Discord सिर्फ़ सोमवार से शुक्रवार तक देता है, इसलिए सप्ताहांत में वह पंक्ति माँगने के बजाय चुप रहती है, और उस पर क्लिक करने से «Arena Connect» चैनल खुलता है, जहाँ पोल में वोट किया जाता है। बैटल पास की पंक्ति बताती है कि मौजूदा पड़ाव में आप कितना आगे हैं, और एक घड़ी पास खत्म होने तक का समय गिनती है; इसके टोकन कुछ दिन बाद बैटल स्टोर बंद होने पर मिटते हैं, इसलिए पैनल बताता है कि आपके टोकन कितने ARP के हैं और टोकन बचे हों तो स्टोर बंद होने से छह घंटे पहले चेतावनी देता है। स्टोर के पेज पर, जब तक वह बंद है, वॉल्ट जैसी एक घंटी उसके खुलते ही आपको बता सकती है: वहाँ के गेम मिनटों में खत्म हो जाते हैं। हर पंक्ति अपनी टूलटिप में बताती है कि वह किस घड़ी से चलती है, और दो उलटी गिनती —दिन और Steam सप्ताह— अपने आप ताज़ा होती हैं। जो पंक्तियाँ कंट्रोल सेंटर में पूरी होती हैं, वे आपको सीधे उनके हिस्से पर ले जाती हैं और उसे हाइलाइट करती हैं, भले ही आप पहले से वहीं हों। किसी गिववे के पेज पर यह उसी गिववे के देश-और-स्तर वाले स्टॉक को पढ़ता है और कुछ दबाने से पहले बता देता है कि आपके लिए कुंजियाँ हैं या नहीं। Marketplace और वॉल्ट में यह हर कार्ड पर निशान लगाता है: आप ले सकते हैं, ऊँचा स्तर चाहिए, या खत्म। अगर आपने Marketplace की छूट वाला आर्टिफ़ैक्ट लगाया है, तो यह छूट वाली कीमत गिनता है, जो आप असल में चुकाते हैं। यह तीन बार सूचित भी कर सकता है — दिन खत्म होने से पहले, Steam का हफ़्ता खत्म होने से छह घंटे पहले, और नया दिन शुरू होने पर — एक डायलॉग से, जिसे बंद करना पड़ता है। आवाज़ नहीं है: इस साइट पर तीन तरीके आज़माए गए और ब्राउज़र हर बार रोक देता है, जबकि वही कोड दूसरी साइटों पर बजता है; पेज के भीतर से अब कुछ ठीक करने को नहीं बचा। डायलॉग, टैब पर 👽 का निशान और पैनल की पट्टी आप तक पहुँचते हैं, और इनमें से किसी को भी ऐसी अनुमति नहीं चाहिए जो हमारे पास नहीं है। यह हर 15 मिनट में खुद दोबारा पढ़ता है, और ⟳ बटन तुरंत सब कुछ फिर से पढ़ लेता है। यह सिर्फ़ पढ़ता है: कुछ नहीं लेता, बोली नहीं लगाता, किसी चीज़ में भाग नहीं लेता — क्योंकि वह सब कैप्चा से होकर जाता है।',
             infoPrivacyText: 'आपकी सेटिंग्स —भाषा, पैनल का कोना, चेतावनी— सिर्फ़ आपके ब्राउज़र में रहती हैं। स्क्रिप्ट उस पेज को पढ़ती है जिस पर आप हैं और, ज़्यादा से ज़्यादा, आपके ही सत्र से साइट से एक बार आपका कंट्रोल सेंटर मांगती है। कोई तीसरा पक्ष नहीं, और स्क्रिप्ट के लेखक को कुछ नहीं भेजा जाता।',
         },
     };
@@ -557,9 +565,47 @@
         // calendario de arriba y tampoco son la misma cosa entre sí (ver readRejilla).
         rachaDias: '#streak-days [data-day]',
         mesDias: '[id^="monthly-days-"] [data-day]',
+        // Las fichas, en dos formas. La Temporada 0 las pintaba en UN `<strong>` con «0/135»
+        // dentro; el Pase de aniversario (2026-09-30) en DOS —`token-count` con las tuyas y
+        // `token-total` con el tope—, y con la forma vieja el script leía solo el «150», no
+        // encontraba la barra y se quedaba sin fichas (ver readPass).
         passTokens: '.bp-header__token-total',
+        passTokenCount: '.bp-header__token-count',
+        // El enlace al pase EN CURSO. Lo llevan el menú lateral de la página del pase y el
+        // botón «Ver todas las recompensas» del banner de la portada, y nada más: el menú del
+        // Centro de control lo traía en agosto pero ya no (usuario, 2026-09-30).
+        passLink: 'a[href^="/control-center/battle-pass/"]',
         passStarted: '.bp-header__started',
         passStart: '.bp-header__start-btn, .bp-widget__start-form, .bp-widget__recap--start',
+        // La cabecera de acción de la página del pase. Empezado, trae `.bp-header__started` y
+        // NINGÚN control —comprobado en los tres volcados que hay, de las dos temporadas—; sin
+        // empezar, el botón «Iniciar» va ahí. Ver readPass.
+        passAction: '.bp-header__action',
+        passActionCtl: 'a, button, form',
+        // Los hitos. Cada uno es un `.bp-marker` con su estado en `data-state` —`locked`,
+        // `in_progress`, `unlockable`, `claimed`— y una ventana que trae el avance como «1/40» en
+        // `.bp-popup__progress-text`. Lo pinta el servidor, así que llega igual con fetch. Solo
+        // vale el del hito EN CURSO: en el Pase de aniversario los bloqueados también traen el
+        // suyo («0/40»), y en la Temporada 0 no lo traían.
+        passMarker: '.bp-marker[data-milestone-id]',
+        passCurrent: '.bp-marker[data-state="in_progress"]',
+        passStepText: '.bp-popup__progress-text',
+        // La cuenta atrás de la Tienda de Batalla. Es UNA y cambia de sentido: con el pase en
+        // curso dice cuándo ABRE la tienda (a la misma hora que cierra el pase), y con el pase
+        // cerrado, cuándo CIERRA, que es cuando se borran las fichas. Comprobado con los dos
+        // volcados de agosto: 2026-08-25 01:00 antes y 2026-09-01 01:00 después.
+        storeTimer: '#bp-store-timer[data-countdown]',
+        // Un paquete de ARP ya comprado. Se compran UNA vez cada uno: tras comprar el de 200 en
+        // agosto su tarjeta pasó a `--purchased`, con la insignia `--owned`, «COMPRADO» y el botón
+        // de comprar cambiado por «Más información» (dom-battle-store-purchased-2026-08.html).
+        storeBought: '.bp-store__card--purchased',
+        storeArp: '.bp-store__default-arp-amount',
+        // Lo que distingue la tienda ABIERTA de la cerrada sin leer un texto: abierta, cada artículo
+        // que se puede comprar va dentro de su `<form action="/battle-store/purchase/N">`; cerrada no
+        // hay ninguno (los cuatro volcados de la tienda, de las dos temporadas). El banner es donde se
+        // cuelga la campana, como el de la Bóveda.
+        storeBuyForm: 'form[action^="/battle-store/purchase/"]',
+        storeBanner: '.token-store-banner',
         passClaimable: '[data-state="unlockable"]',
         passCountdown: '.bp-header__countdown[data-countdown], .bp-widget__countdown[data-countdown]',
         logRow: '.card-table-row',
@@ -625,7 +671,13 @@
     const WIDGET_ID = 'awa-arp-widget';
     const CACHE_KEY = 'awa-arp-daily';
     const PASS_KEY = 'awa-arp-pass';
+    // El de la Temporada 0, y solo como último recurso: cada temporada tiene su número
+    // —`/1` fue la Beta, `/2` el Pase de aniversario— y hasta 1.3.8 iba fijo aquí, así que con
+    // la temporada nueva el panel seguía leyendo la cerrada. La URL buena se aprende del sitio
+    // (ver urlPase) y se guarda en PASS_URL_KEY.
     const PASS_URL = '/control-center/battle-pass/1';
+    const PASS_URL_KEY = 'awa-arp-pase-url';
+    const HOME_URL = '/';
     // El indice de eventos comunitarios. Se lee UNA VEZ AL DIA, como el pase, y por
     // la misma razon: su dato cambia despacio (un evento dura una o dos semanas) y
     // cada peticion de mas es una peticion de mas en todas las paginas del sitio.
@@ -655,6 +707,16 @@
     // `.product-price` las fichas. Van aquí y no se leen en vivo porque la línea
     // tiene que funcionar en CUALQUIER página, no solo en /battle-store, y
     // porque abrir la tienda sería una petición más (regla de §14.7).
+    //
+    // Y NO es lo único que vende: también juegos, fragmentos y artefactos (en la Temporada 0, dos
+    // artefactos a 100 fichas y cinco juegos a 45; en la de aniversario, 10 fragmentos por 20 y
+    // veintidós juegos a 100). Solo se cuentan los paquetes de ARP porque son lo único con valor
+    // fijo y que no se agota: los cinco juegos de la Temporada 0 ya estaban agotados a los dieciséis
+    // minutos de abrir la tienda (dom-battle-store-open-2026-08.html, 01:16 UTC).
+    //
+    // Cada paquete se compra una sola vez (ver SEL.storeBought), así que lo que valen las fichas es
+    // la mejor COMBINACIÓN de los que queden, no el mejor paquete suelto: con 135 fichas son 700 ARP
+    // (90 + 45), no 500. Ver mejorCompra.
     const STORE_PACKS = [{ fichas: 90, arp: 500 }, { fichas: 45, arp: 200 }, { fichas: 25, arp: 100 }];
     const CC_URL = '/control-center';
     // El servidor de Discord de Alienware, DIRECTO y no por su invitación.
@@ -699,6 +761,9 @@
     const VISTO_DIA_KEY = 'awa-arp-visto-dia';
     const VISTO_DAWN_KEY = 'awa-arp-visto-amanecer';
     const VISTO_SEMANA_KEY = 'awa-arp-visto-semana';
+    // El aviso de la tienda guarda la fecha de cierre que ya viste, no un día: es un aviso por
+    // temporada, y la siguiente traerá otra fecha.
+    const VISTO_TIENDA_KEY = 'awa-arp-visto-tienda';
     const CLAVES_VIEJAS = ['awa-arp-alert-done', 'awa-arp-alert-dawn', 'awa-arp-alert-week'];
     // La campana del Game Vault. Guarda el INSTANTE de apertura, no un booleano: asi
     // el aviso lo decide el reloj y no hace falta recordar aparte cuando tocaba. Un
@@ -706,10 +771,25 @@
     // toda la seccion — cuando abre, abren todas. No es una marca de «visto» como las
     // tres de arriba: esas las pone el usuario al marcar, y esta se BORRA al marcar.
     const VAULT_ALERT_KEY = 'awa-arp-vault-aviso';
+    // La campana de la Tienda de Batalla, calcada de la del Game Vault y por lo mismo: lo que se
+    // agota por orden de llegada son los juegos, que en la Temporada 0 ya no quedaban a los
+    // dieciséis minutos de abrir. Guarda el instante de apertura.
+    const STORE_ALERT_KEY = 'awa-arp-tienda-aviso';
     // Publicado por el propio sitio en `/faq-contact` («You can earn a total of 15
     // ARP a day») y en `/whatisarena` («up to 15 ARPs… every day»). Hasta el
     // 2026-08-25 esto iba comentado —y dicho en el tooltip— como «observado, no
     // publicado», que era falso: nadie había leído la FAQ.
+    //
+    // El RITMO no lo publica, y por eso los tooltips lo dan como «lo medido en
+    // septiembre de 2026». Sale de `/twitch/extensions/track`, que la extensión de
+    // Twitch llama cada minuto: `extraInfo.points` es 0.4 por minuto en Colmena y Nexus
+    // —los que el Centro de control rotula «al doble de la velocidad normal»— y 0.2 en
+    // Socios (`kalamazi_247`, 2026-09-30). Cuadra con los volcados: 15 a los 38 min y
+    // 15+1 a los 40. Y no hace falta Hive ni Nexus: Socios también paga, y la FAQ habla
+    // de «los canales de Twitch participantes». El extra de un artefacto sale del mismo
+    // contador y al mismo ritmo, después de los 15.
+    // `track` trae además el tope real (`userMaxArp`), pero el script NO lo llama: es el
+    // latido que acredita los minutos, y llamarlo sería ganar ARP sin ver el directo.
     const TWITCH_CAP = 15;
     // Discord es la ÚNICA fuente cuyo importe el sitio no publica: la FAQ dice
     // «earn daily ARP from Discord Adventures» y `/whatisarena` habla de votar en
@@ -952,6 +1032,42 @@
         // Insiste cada media hora, como el de la semana de Steam.
         return [{ tipo: 'auction', etiquetas: [], hasta: abre + 24 * 60 * 60 * 1000,
             cada: ALERT_REPEAT_WEEK_MS }];
+    }
+
+    // -------- La campana de la Tienda de Batalla --------
+    // La misma mecánica que la de la Bóveda (ver arriba), con su propia clave: son dos
+    // recordatorios distintos y uno no puede desarmar el otro.
+    function tiendaArmada() {
+        const v = Number(recall(STORE_ALERT_KEY));
+        if (!Number.isFinite(v) || !v) return null;
+        if (Date.now() - v > 7 * 24 * 60 * 60 * 1000) { store(STORE_ALERT_KEY, null); return null; }
+        return v;
+    }
+
+    function armarTienda(ms) { store(STORE_ALERT_KEY, String(ms)); }
+    function desarmarTienda() { store(STORE_ALERT_KEY, null); }
+
+    function avisoTienda(now) {
+        const abre = tiendaArmada();
+        if (abre === null || now.getTime() < abre) return [];
+        return [{ tipo: 'storeopen', etiquetas: [], hasta: abre + 24 * 60 * 60 * 1000,
+            cada: ALERT_REPEAT_WEEK_MS }];
+    }
+
+    // Cuándo abre la tienda, en ms, o null si esta página no lo dice o la tienda ya está abierta.
+    // La cuenta atrás es una sola y cambia de sentido (ver SEL.storeTimer), así que solo vale como
+    // apertura si NO hay formularios de compra; y por si un día la tienda abierta no ofreciera
+    // nada que comprar, también se descarta si el pase guardado ya cerró.
+    function tiendaAbreMs() {
+        if (!yaEstoyEn(STORE_URL) || document.querySelector(SEL.storeBuyForm)) return null;
+        const n = document.querySelector(SEL.storeTimer);
+        const ms = n ? Date.parse(n.getAttribute('data-countdown')) : NaN;
+        if (!Number.isFinite(ms) || ms <= Date.now()) return null;
+        try {
+            const p = JSON.parse(recall(PASS_KEY) || 'null');
+            if (p && p.endsAt && p.endsAt <= Date.now()) return null;
+        } catch (e) { /* caché ilegible: decide el formulario */ }
+        return ms;
     }
 
     // El filtro del registro va en YYYY-MM-DD y por el día del SITIO, que es UTC.
@@ -1317,41 +1433,191 @@
     // pero las fichas sí se borran, y para empezar el pase hay que pulsar a mano.
     function readPass(doc) {
         const tok = doc.querySelector(SEL.passTokens);
+        const cnt = doc.querySelector(SEL.passTokenCount);
         const started = doc.querySelector(SEL.passStarted);
         const startBtn = doc.querySelector(SEL.passStart);
         const cd = doc.querySelector(SEL.passCountdown);
-        if (!tok && !started && !startBtn) return null;
-        const partes = tok ? String(tok.textContent).split('/') : [];
+        const accion = doc.querySelector(SEL.passAction);
+        if (!tok && !started && !startBtn && !accion) return null;
+        // La forma nueva primero, y la vieja de respaldo (ver SEL.passTokens). Con dos
+        // `<strong>` el total va solo en el suyo; con uno, «hechas/total» en el mismo.
+        let tokens = null, tokensMax = null;
+        if (cnt && tok) {
+            tokens = num(cnt.textContent);
+            tokensMax = num(tok.textContent);
+        } else if (tok) {
+            const partes = String(tok.textContent).split('/');
+            if (partes.length === 2) { tokens = num(partes[0]); tokensMax = num(partes[1]); }
+        }
+        // El hito en curso y cuánto ARP le falta al pase entero. Lo que queda se suma de las
+        // ventanas de los hitos que faltan, así que solo se da si TODAS traen su «x/y»: con una
+        // sin leer, la suma diría menos de lo que es.
+        const marcas = doc.querySelectorAll(SEL.passMarker);
+        const enCurso = doc.querySelector(SEL.passCurrent);
+        const partesDe = (m) => {
+            const n = m && m.querySelector(SEL.passStepText);
+            const p = n ? String(n.textContent).split('/') : [];
+            return p.length === 2 && num(p[0]) !== null && num(p[1]) !== null ? [num(p[0]), num(p[1])] : null;
+        };
+        const paso = partesDe(enCurso);
+        let falta = paso ? 0 : null;
+        marcas.forEach((m) => {
+            if (falta === null) return;
+            const estado = m.getAttribute('data-state');
+            if (estado !== 'locked' && estado !== 'in_progress') return;
+            const p = partesDe(m);
+            falta = p ? falta + Math.max(0, p[1] - p[0]) : null;
+        });
+        const indice = enCurso ? num(enCurso.getAttribute('data-index')) : null;
         return {
-            tokens: partes.length === 2 ? num(partes[0]) : null,
-            tokensMax: partes.length === 2 ? num(partes[1]) : null,
+            tokens: tokens,
+            tokensMax: tokensMax,
+            hito: paso && indice !== null ? indice + 1 : null,
+            hitos: marcas.length || null,
+            hitoArp: paso ? paso[0] : null,
+            hitoMeta: paso ? paso[1] : null,
+            hitoFalta: falta,
+            // Todos cobrados: no queda nada en curso ni por reclamar.
+            hitosTodos: marcas.length > 0
+                && Array.prototype.every.call(marcas, (m) => m.getAttribute('data-state') === 'claimed'),
             claimable: doc.querySelectorAll(SEL.passClaimable).length,
-            // El de «sin empezar» solo se ha visto en el widget de la portada; en
-            // la página del pase la clase existe en su CSS pero no se ha llegado a
-            // observar, así que se acepta cualquiera de las dos.
-            started: !startBtn,
+            // En la página del pase, lo que dice su propia regla: «si no ves el botón
+            // Iniciar, tu pase ya ha comenzado». Empezado es que esté el aviso de que ha
+            // comenzado y que en la cabecera de acción no haya NADA que pulsar; un botón o un
+            // enlace ahí es el de empezar, se llame su clase como se llame. Ningún volcado
+            // trae ese botón —el usuario lo pulsó antes de guardar el del Pase de aniversario,
+            // 2026-09-30—, y por eso no se depende de su clase ni de su texto, que además
+            // traduce Weglot (la regla con «Iniciar» sale igual con el pase empezado).
+            // Fuera de esa página —el widget de la portada— queda la clase de siempre.
+            started: accion
+                ? !!started && !startBtn && !accion.querySelector(SEL.passActionCtl)
+                : !startBtn,
             endsAt: cd ? Date.parse(cd.getAttribute('data-countdown')) : null,
             at: Date.now(),
         };
     }
 
-    function getPass(forzar) {
-        if (!forzar) {
-            const now = new Date();
-            const aqui = readPass(document);
-            if (aqui) { store(PASS_KEY, JSON.stringify(aqui)); return Promise.resolve(aqui); }
-            try {
-                const guardado = JSON.parse(recall(PASS_KEY) || 'null');
-                if (guardado && utcStamp(guardado.at) === utcStamp(now.getTime())) return Promise.resolve(guardado);
-            } catch (e) { /* caché ilegible */ }
+    // La ruta del pase que enlaza este documento, o null si no enlaza ninguno. Se valida la
+    // forma: el mismo prefijo lo llevaría un enlace a una subpágina del pase, y esa no es la
+    // página que se lee.
+    function enlacePase(doc) {
+        const enlaces = doc.querySelectorAll(SEL.passLink);
+        for (let i = 0; i < enlaces.length; i++) {
+            const ruta = String(enlaces[i].getAttribute('href') || '').replace(/\/+$/, '');
+            if (/^\/control-center\/battle-pass\/\d+$/.test(ruta)) return ruta;
         }
-        return pedir(PASS_URL)
+        return null;
+    }
+
+    function urlGuardada() {
+        try {
+            const d = JSON.parse(recall(PASS_URL_KEY) || 'null');
+            return d && typeof d.url === 'string' && typeof d.at === 'number' ? d : null;
+        } catch (e) { return null; }
+    }
+
+    function guardarUrl(ruta) { store(PASS_URL_KEY, JSON.stringify({ url: ruta, at: Date.now() })); }
+
+    // Qué pase leer. El sitio solo lo enlaza en la página del pase y en la portada (ver
+    // SEL.passLink), así que se aprende de la página en la que estés si es una de esas, y si
+    // no, de la portada: se pide UNA VEZ AL DÍA, que es el ritmo del pase, y cuesta una petición
+    // más en el día y no una por carga. Si la portada no enlaza ninguno —entre temporadas no hay
+    // banner— se queda el último que se supo, que es lo que había: una temporada cerrada se
+    // sigue leyendo como cerrada.
+    function urlPase(forzar) {
+        const aqui = enlacePase(document);
+        if (aqui) { guardarUrl(aqui); return Promise.resolve(aqui); }
+        const g = urlGuardada();
+        if (!forzar && g && utcStamp(g.at) === utcStamp(Date.now())) return Promise.resolve(g.url);
+        return pedir(HOME_URL)
             .then((html) => {
-                const data = readPass(new DOMParser().parseFromString(html, 'text/html'));
-                if (data) store(PASS_KEY, JSON.stringify(data));
-                return data;
+                const ruta = enlacePase(new DOMParser().parseFromString(html, 'text/html'));
+                if (ruta) { guardarUrl(ruta); return ruta; }
+                // Sin enlace se apunta que hoy ya se miró, para no volver a pedir la portada en
+                // cada carga, y se sigue con la de antes.
+                const antes = g ? g.url : PASS_URL;
+                guardarUrl(antes);
+                return antes;
             })
-            .catch(() => null);
+            .catch(() => (g ? g.url : PASS_URL));
+    }
+
+    // Cuándo se borran las fichas, que NO es cuando cierra el pase: la tienda abre en ese momento
+    // y dura unos días más —siete en la Temporada 0— (ver SEL.storeTimer). Solo se pregunta
+    // cuando el pase ya cerró y quedan fichas, porque antes la cuenta atrás de la tienda es la de
+    // abrir; y una vez al día como mucho, aunque no se pueda leer. La fecha tiene que ser
+    // POSTERIOR al cierre del pase: si no lo es, lo leído es la apertura y no vale.
+    function leerTienda(doc) {
+        const n = doc.querySelector(SEL.storeTimer);
+        const ms = n ? Date.parse(n.getAttribute('data-countdown')) : NaN;
+        const comprados = [];
+        doc.querySelectorAll(SEL.storeBought).forEach((c) => {
+            const a = num((c.querySelector(SEL.storeArp) || {}).textContent);
+            if (a !== null) comprados.push(a);
+        });
+        return { cierre: Number.isFinite(ms) ? ms : null, comprados: comprados };
+    }
+
+    function anotarTienda(data, leido, ahora) {
+        data.storeAt = ahora;
+        if (leido.cierre !== null && data.endsAt && leido.cierre > data.endsAt) data.storeClosesAt = leido.cierre;
+        data.storeBought = leido.comprados;
+        store(PASS_KEY, JSON.stringify(data));
+        return data;
+    }
+
+    // En la propia tienda se lee siempre, que es gratis y es donde se compra: así el panel deja
+    // de ofrecer un paquete en cuanto lo compras. Fuera de ella, solo con el pase cerrado.
+    function conTienda(data) {
+        const ahora = Date.now();
+        if (!data) return Promise.resolve(data);
+        if (yaEstoyEn(STORE_URL)) return Promise.resolve(anotarTienda(data, leerTienda(document), ahora));
+        if (!data.endsAt || data.endsAt > ahora || data.tokens === 0) return Promise.resolve(data);
+        if (data.storeAt && utcStamp(data.storeAt) === utcStamp(ahora)) return Promise.resolve(data);
+        return pedir(STORE_URL)
+            .then((h) => anotarTienda(data, leerTienda(new DOMParser().parseFromString(h, 'text/html')), ahora))
+            .catch(() => data);
+    }
+
+    // Lo más que dan las fichas juntando los paquetes que aún no has comprado. Son tres, así que
+    // se prueban las siete combinaciones. `libres` vacío es que ya los tienes todos.
+    function mejorCompra(fichas, comprados) {
+        const libres = STORE_PACKS.filter((q) => (comprados || []).indexOf(q.arp) < 0);
+        let mejor = null;
+        for (let m = 1; m < (1 << libres.length); m++) {
+            let f = 0, a = 0;
+            libres.forEach((q, i) => { if (m & (1 << i)) { f += q.fichas; a += q.arp; } });
+            if (f <= fichas && (!mejor || a > mejor.arp)) mejor = { fichas: f, arp: a };
+        }
+        return { mejor: mejor, libres: libres };
+    }
+
+    // La caché del pase lleva su `url`, y solo vale para ESA. Una guardada por 1.3.8 no la
+    // lleva —y era de la Temporada 0—, así que no vale: sin esto, el día de actualizar el
+    // panel seguía enseñando la temporada cerrada hasta las 00:00 UTC (ver «una caché con TTL
+    // congela el bug»).
+    function getPass(forzar) {
+        return urlPase(forzar).then((url) => {
+            if (!forzar) {
+                const aqui = readPass(document);
+                if (aqui && yaEstoyEn(url)) {
+                    aqui.url = url;
+                    store(PASS_KEY, JSON.stringify(aqui));
+                    return aqui;
+                }
+                try {
+                    const guardado = JSON.parse(recall(PASS_KEY) || 'null');
+                    if (guardado && guardado.url === url && utcStamp(guardado.at) === utcStamp(Date.now())) return guardado;
+                } catch (e) { /* caché ilegible */ }
+            }
+            return pedir(url)
+                .then((html) => {
+                    const data = readPass(new DOMParser().parseFromString(html, 'text/html'));
+                    if (data) { data.url = url; store(PASS_KEY, JSON.stringify(data)); }
+                    return data;
+                })
+                .catch(() => null);
+        }).then(conTienda);
     }
 
     // ------------------------------------------------------------------
@@ -2121,10 +2387,12 @@
                 if (x.tipo === 'dawn') store(VISTO_DAWN_KEY, utcStamp(now.getTime()));
                 else if (x.tipo === 'day') store(VISTO_DIA_KEY, utcStamp(now.getTime()));
                 else if (x.tipo === 'week') store(VISTO_SEMANA_KEY, utcDate(now.getTime() + msToWeekReset(now)));
+                else if (x.tipo === 'store') store(VISTO_TIENDA_KEY, String(x.hasta));
                 // La boveda no lleva marca de «visto»: se DESARMA. El recordatorio
                 // era para un instante concreto y ese instante ya pasó, asi que
                 // guardarlo como visto seria dejar basura que nadie vuelve a mirar.
                 else if (x.tipo === 'auction') desarmarVault();
+                else if (x.tipo === 'storeopen') desarmarTienda();
             });
         }
         store(AVISO_KEY, null);
@@ -2143,6 +2411,7 @@
         store(VISTO_DAWN_KEY, null);
         store(VISTO_DIA_KEY, null);
         store(VISTO_SEMANA_KEY, null);
+        store(VISTO_TIENDA_KEY, null);
         store(AVISO_KEY, null);
         limpiarTitulo();
         // Y se suelta la memoria de qué tanda ya abrió diálogo aquí: si no, tras
@@ -2195,6 +2464,15 @@
                 cada: reciente ? ALERT_REPEAT_MS : ALERT_REPEAT_WEEK_MS });
         }
 
+        // 1b. Las seis horas antes de que cierre la Tienda de Batalla, si quedan fichas. Es la
+        //     única fecha en que se pierden (ver conTienda), y como gastarlas es un clic y no una
+        //     partida, seis horas sobran. No pide datos del día: solo el pase.
+        const cierraTienda = pass && pass.storeClosesAt ? pass.storeClosesAt - now.getTime() : null;
+        if (cierraTienda !== null && cierraTienda > 0 && cierraTienda <= ALERT_WEEK_HOURS * 60 * 60 * 1000
+            && pass.tokens && recall(VISTO_TIENDA_KEY) !== String(pass.storeClosesAt)) {
+            vivos.push({ tipo: 'store', etiquetas: [], hasta: pass.storeClosesAt, cada: ALERT_REPEAT_WEEK_MS });
+        }
+
         if (!daily) return vivos;
 
         // 2. Las seis horas antes de que acabe la semana de Steam.
@@ -2217,12 +2495,11 @@
             // el mismo aviso cada noche durante ocho dias por algo que no corre
             // prisa hoy — que es exactamente lo que se evito con `qSteam`.
             const delDia = pendientes.filter((k) => k !== 'qSteam' && k !== 'evento');
-            // La única cosa que urge sin salir en amarillo: los hitos del pase se
-            // entregan solos al cerrar, pero las FICHAS se borran. Si la temporada
-            // cierra esta noche y quedan sin gastar, son 100, 200 o 500 ARP.
-            const temporadaAcaba = !!(pass && pass.endsAt
-                && pass.endsAt > now.getTime() && pass.endsAt - now.getTime() <= left);
-            if (delDia.length || (temporadaAcaba && !!(pass && pass.tokens))) {
+            // Las fichas del pase ya NO entran aquí. Hasta 1.3.8 se avisaba de ellas la noche en
+            // que cerraba el pase, que es justo cuando la tienda ABRE: avisaba de gastar algo que
+            // todavía no se podía gastar, y callaba el día en que de verdad se borraban. Tienen
+            // su propio aviso, arriba, con la fecha de cierre de la tienda.
+            if (delDia.length) {
                 vivos.push({ tipo: 'day', etiquetas: delDia.map((k) => t(k)),
                     hasta: now.getTime() + left, cada: ALERT_REPEAT_MS });
             }
@@ -2261,7 +2538,7 @@
         // haria que armar la campana no sirviera de nada con la casilla apagada,
         // que es justo lo contrario de lo que armarla significa.
         const vivos = (alertsOn() ? avisosVivos(daily, pass, pendientes, now) : [])
-            .concat(avisoVault(now));
+            .concat(avisoVault(now)).concat(avisoTienda(now));
         const guardado = leerAviso();
 
         if (!vivos.length) {
@@ -2741,7 +3018,7 @@
             const ir = irASeccion(clave);
             return { ir: ir, tip: ir ? (yaEstoyEn(CC_URL) ? 'goHere' : 'goCC') : null };
         };
-        const aPase = irA(PASS_URL);
+        const aPase = irA((pass && pass.url) || PASS_URL);
         const pinta = (clave, label, value, tipText, tone) => {
             if (tone === 'todo') pendientes.push(clave);
             return list.appendChild(line(label, value, tipText, tone));
@@ -2772,13 +3049,16 @@
                 //
                 // No se pinta estando YA en la boveda: prometer un salto que no mueve
                 // nada es lo que `yaEstoyEn` existe para evitar.
-                const enlazable = a.tipo === 'auction' && !yaEstoyEn(VAULT_URL);
+                // La de la tienda es la otra, y por lo mismo: las dos son campanas con un sitio
+                // concreto al que ir.
+                const destino = a.tipo === 'auction' ? VAULT_URL : a.tipo === 'storeopen' ? STORE_URL : null;
+                const enlazable = !!destino && !yaEstoyEn(destino);
                 const fila = el(enlazable ? 'a' : 'div', null, textoAviso(a));
                 if (enlazable) {
-                    fila.href = VAULT_URL;
+                    fila.href = destino;
                     fila.classList.add('awa-w__alert-go');
                     fila.appendChild(el('span', 'awa-w__go', ' ↗'));
-                    tip(fila, t('goVault'));
+                    tip(fila, t(a.tipo === 'auction' ? 'goVault' : 'goStore'));
                     fila.addEventListener('click', (e) => {
                         // stopPropagation, pero NO preventDefault: la navegacion la
                         // hace el <a> por su cuenta, incluidos el clic central y el
@@ -2843,8 +3123,10 @@
                 // «15/15 ✅» con el sitio diciendo «Incomplete» y el bonus por
                 // cobrar. La comparación con 15 queda solo para cuando el sitio no
                 // dijo nada. El tope que se enseña es 15 más el bonus ya cobrado;
-                // el pendiente no se sabe —el sitio no manda el tope en ningún
-                // campo—, así que se pinta «15/15+» en vez de inventar un 16.
+                // el pendiente no se sabe —el Centro de control no manda el tope
+                // en ningún campo, y el único que lo trae es `track`, que no se
+                // llama (ver TWITCH_CAP)—, así que se pinta «15/15+» en vez de
+                // inventar un 16.
                 // Sin el booleano, lo de 1.3.5 tal cual: el texto o el 15.
                 const hecho = daily.twitchKnown ? daily.twitchDone
                     : daily.twitchDone || daily.twitch >= TWITCH_CAP;
@@ -2942,31 +3224,51 @@
             if (!pass.started) { valor = t('passNone'); tono = 'todo'; }
             else if (pass.claimable > 0) { valor = t('passClaim', { n: pass.claimable }); tono = 'todo'; }
             else if (cerrada) { valor = t('passClosed') + OK_MARK; tono = 'done'; }
-            // Las fichas del pase van a su propio ritmo —la temporada—, así que
-            // aquí la cuenta NO lleva marca aunque esté llena: no es una tarea
-            // del día que se pueda dar por cerrada.
-            else if (pass.tokens !== null) { valor = cuenta(pass.tokens, pass.tokensMax, false); tono = 'done'; }
+            // El avance del hito en curso, como lo enseña el sitio en su ventana («1/40»). Es lo
+            // que se mueve día a día; las fichas pasan a la línea de la tienda, que es donde se
+            // gastan. Hasta 1.3.8 esta línea enseñaba las fichas, y con el pase recién empezado
+            // decía «0/150», que se leía como avance del pase y no lo era.
+            else if (pass.hitoMeta !== null && pass.hitoMeta !== undefined) {
+                valor = cuenta(pass.hitoArp, pass.hitoMeta, false) + ' ARP'; tono = 'done';
+            }
+            else if (pass.hitosTodos) { valor = t('evAll') + OK_MARK; tono = 'done'; }
+            // Sin hitos legibles, las fichas como antes. Van a su propio ritmo —la temporada—,
+            // así que la cuenta NO lleva marca aunque esté llena.
+            else if (pass.tokens !== null && pass.tokens !== undefined) { valor = cuenta(pass.tokens, pass.tokensMax, false); tono = 'done'; }
             else { valor = t('done') + OK_MARK; tono = 'done'; }
+            const delHito = pass.hito && pass.hitos && pass.hitoMeta
+                ? ' ' + t('tipPassStep', {
+                    n: nf.format(pass.hito), t: nf.format(pass.hitos),
+                    v: nf.format(pass.hitoArp), c: nf.format(pass.hitoMeta)
+                })
+                + (pass.hitoFalta !== null && pass.hitoFalta !== undefined
+                    ? ' ' + t('tipPassLeft', { f: nf.format(pass.hitoFalta) }) : '')
+                : '';
             enlazar(pinta('qPass', t('qPass'), valor,
-                tipMas(t('tipPass'), aPase && 'goPass'), tono), aPase);
+                tipMas(t('tipPass') + delHito, aPase && 'goPass'), tono), aPase);
 
-            // Las fichas caducan con la temporada, así que lo que valen ahora es
-            // información con fecha. Se enseña el MEJOR paquete que alcanzan, que
-            // es también el de mejor cambio (90→500 sale a 5,6 ARP por ficha;
-            // 25→100, a 4).
+            // Las fichas caducan cuando cierra la tienda, así que lo que valen ahora es
+            // información con fecha. Se enseña la mejor COMBINACIÓN de paquetes que aún
+            // puedes comprar (ver mejorCompra), y «los tres comprados» cuando ya no queda
+            // ninguno.
             //
             // El tono NUNCA es 'todo', y no es un descuido: lo amarillo alimenta
             // el aviso de fin de día, y esto no vence hoy sino al cerrar la
-            // temporada. Ponerlo en amarillo sería avisar cada noche durante
-            // semanas de algo que no corre prisa.
+            // tienda, que tiene su propio aviso. Ponerlo en amarillo sería avisar
+            // cada noche durante semanas de algo que no corre prisa.
             if (pass.tokens !== null) {
-                const paquete = STORE_PACKS.find((q) => pass.tokens >= q.fichas) || null;
-                const falta = STORE_PACKS[STORE_PACKS.length - 1].fichas - pass.tokens;
+                const compra = mejorCompra(pass.tokens, pass.storeBought);
+                const paquete = compra.mejor;
+                const todos = !compra.libres.length;
+                const falta = todos ? 0
+                    : Math.min.apply(null, compra.libres.map((q) => q.fichas)) - pass.tokens;
                 enlazar(pinta('store', t('store'),
-                    paquete ? t('storePack', { a: nf.format(paquete.arp), f: nf.format(paquete.fichas) })
-                        : t('storeShort', { n: nf.format(falta) }),
-                    tipMas(t('tipStore'), irA(STORE_URL) && 'goStore'),
-                    paquete ? 'done' : 'off'), irA(STORE_URL));
+                    todos ? t('storeAll') + OK_MARK
+                        : paquete ? t('storePack', { a: nf.format(paquete.arp), f: nf.format(paquete.fichas) })
+                            : t('storeShort', { n: nf.format(falta) }),
+                    tipMas(t('tipStore') + ' ' + t('tipStoreHave', { n: nf.format(pass.tokens) }),
+                        irA(STORE_URL) && 'goStore'),
+                    paquete || todos ? 'done' : 'off'), irA(STORE_URL));
             }
         }
 
@@ -3050,6 +3352,19 @@
             relojes.appendChild(tip(el('div', 'awa-w__clock',
                 t('evEnds', { v: corto ? corto + ' ' + quedan : quedan })), t('tipEv')));
         });
+        // El del pase, como el de los eventos: hasta cuándo cuenta el ARP para sus hitos. Cuando
+        // el pase cierra, su sitio lo toma el de la tienda, que es cuando se borran las fichas —y
+        // solo si quedan—. Sin fecha de cierre leída no se pinta: no se inventa la semana.
+        if (pass && pass.endsAt) {
+            const ya = now.getTime();
+            if (pass.endsAt > ya) {
+                relojes.appendChild(tip(el('div', 'awa-w__clock',
+                    t('passEnds', { v: fmtCountdown(pass.endsAt - ya) })), t('tipPassEnds')));
+            } else if (pass.storeClosesAt && pass.storeClosesAt > ya && pass.tokens) {
+                relojes.appendChild(tip(el('div', 'awa-w__clock',
+                    t('storeEnds', { v: fmtCountdown(pass.storeClosesAt - ya) })), t('tipStoreEnds')));
+            }
+        }
         // La edad del dato, que es lo único que distingue una caché de una
         // lectura fresca cuando no hay consola —la lección de bing-rewards—. Sin
         // esto, el botón de actualizar no se puede comprobar: repinta lo mismo y
@@ -3070,10 +3385,14 @@
     // llega: un cartel que dice «abre el jueves a las 12:00» con la boveda ya
     // abierta es informacion caducada, y quien habla a partir de ahi es la campana.
     function refreshVaultBanner() {
-        const box = document.querySelector('.awa-vault');
-        if (!box) return;
-        const abre = vaultUnlockMs();
-        if (abre === null || abre <= Date.now()) box.remove();
+        const box = document.querySelector('.awa-vault:not(.awa-tienda)');
+        if (box) {
+            const abre = vaultUnlockMs();
+            if (abre === null || abre <= Date.now()) box.remove();
+        }
+        // El cartel de la tienda, lo mismo y con su propia fecha.
+        const caja = document.querySelector('.awa-tienda');
+        if (caja && tiendaAbreMs() === null) caja.remove();
     }
 
     function refreshClocks(relojes) {
@@ -3424,6 +3743,47 @@
         host.insertAdjacentElement('afterend', box);
     }
 
+    // El cartel de la Tienda de Batalla mientras no abre: la fecha de apertura en tu reloj y la
+    // campana. Mismo molde que el de la Bóveda —y su misma clase, para heredar el aspecto—, con
+    // `awa-tienda` para que cada uno se retire por su fecha.
+    function paintStoreBanner() {
+        const abre = tiendaAbreMs();
+        if (abre === null) return;
+        const host = document.querySelector(SEL.storeBanner);
+        if (!host || document.querySelector('.awa-tienda')) return;
+
+        const box = noTraducir(el('div', 'awa-vault'));
+        const txt = el('div', 'awa-vault__txt');
+        txt.appendChild(el('span', 'awa-vault__when', t('vaultOpens', { d: fechaLocal(abre) })));
+        box.appendChild(txt);
+
+        const campana = el('button', 'awa-vault__bell');
+        const pintarCampana = () => {
+            const on = tiendaArmada() !== null;
+            campana.textContent = on ? t('bidUnremind') : t('bidRemind');
+            campana.classList.toggle('awa-vault__bell--on', on);
+            campana.setAttribute('title', t('tipRemindStore'));
+        };
+        campana.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (tiendaArmada() !== null) desarmarTienda(); else armarTienda(abre);
+            hideTip();
+            pintarCampana();
+        });
+        pintarCampana();
+        tip(campana, t('tipRemindStore'));
+        box.appendChild(campana);
+        // El banner de la tienda es una COLUMNA (`col-lg-8 …`) dentro de una fila flex de
+        // Bootstrap, no una caja suelta como el de la Bóveda: colgado detrás tal cual, el cartel
+        // entraba en la misma fila y se quedaba a su lado, encogiéndolo (captura del usuario,
+        // 2026-09-30). Va dentro de una columna con las mismas clases que el banner, que no cabe en
+        // la misma línea y baja debajo de él, centrada y con su mismo ancho.
+        const col = el('div', String(host.className).replace(/\b(token-store-banner|full)\b/g, '').trim() + ' awa-tienda');
+        col.appendChild(box);
+        host.insertAdjacentElement('afterend', col);
+    }
+
     function paintVault(acc) {
         // Una sola lectura para todas las tarjetas: el contador es de la seccion.
         const unlockMs = vaultUnlockMs();
@@ -3661,6 +4021,7 @@
         // linea dejaria de salir sin que nada lo dijera.
         paintQuest();
         if (/^\/marketplace\/game-vault/.test(path)) paintVault(acc);
+        else if (yaEstoyEn(STORE_URL)) paintStoreBanner();
         else if (/^\/marketplace/.test(path)) paintMarketplace(acc);
 
         let { box, list, relojes, refrescar } = buildWidget(acc, alCambiarAlerta);
@@ -3751,7 +4112,10 @@
         // coordinación: una pide y las demás se enteran por localStorage.
         function pintarDeAlmacen() {
             const d = leerAlmacen(CACHE_KEY);
-            const pa = leerAlmacen(PASS_KEY);
+            // El pase de otra pestaña solo si es el de la temporada que se conoce (ver getPass).
+            const conocida = urlGuardada();
+            const paCrudo = leerAlmacen(PASS_KEY);
+            const pa = paCrudo && conocida && paCrudo.url === conocida.url ? paCrudo : null;
             const lo = leerAlmacen(LOG_KEY);
             if (!d && !pa && !lo) return false;
             ultimo.daily = fusionar(ultimo.daily, d);
