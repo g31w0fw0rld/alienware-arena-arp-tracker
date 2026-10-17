@@ -87,3 +87,8 @@
 # la del Pase de aniversario sin abrir (su cuenta atras es la apertura). Las abre §67.
 !dom-battle-store-purchased-2026-08.html
 !dom-battle-store-anniversary-unopened-2026-09-30.html
+# El Pase de aniversario COMPLETO (2026-10-16), con los 21 hitos cobrados: la cabecera cambia el aviso
+# de empezado por `.bp-header__completed` y 1.3.10 lo leia como «sin empezar». Lo abre §69.
+!dom-battle-pass-anniversary-completed-2026-10-16.html
+# Y su captura, con la linea del pase en verde: la ensena el README junto a las otras dos del pase.
+!screenshot-battle-pass-completed.png

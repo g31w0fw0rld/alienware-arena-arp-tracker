@@ -3943,6 +3943,58 @@ console.log('\n=== 68. La campana de la Tienda de Batalla, como la de la Bóveda
   }
 }
 
+console.log('\n=== 69. El pase completado no es un pase sin empezar ===');
+// 2026-10-16: con los 21 hitos cobrados, 1.3.10 decía «sin empezar». La cabecera del pase completo
+// no trae `.bp-header__started`: en su sitio va `.bp-header__completed` («PASE DE BATALLA
+// COMPLETADO»), y las fichas vuelven a un solo strong con «150/150».
+{
+  const FC = 'dom-battle-pass-anniversary-completed-2026-10-16.html';
+  const P2 = '/control-center/battle-pass/2';
+  const crudo = leer(FC);
+  // El saneado cita las clases en su cabecera: se cuenta sobre el marcado sin comentarios.
+  const marcado = crudo.replace(/<!--[\s\S]*?-->/g, '');
+  check('control: el volcado completo no trae el aviso de empezado y sí el de completado',
+    marcado.indexOf('bp-header__started') < 0 && /<div class="bp-header__completed">/.test(marcado), '');
+  check('control: y sus 21 hitos están cobrados', (marcado.match(/data-state="claimed"/g) || []).length === 21
+    && !/data-state="(unlockable|in_progress|locked)"/.test(marcado), '');
+  const montarHtml = (html) => {
+    const f = 'tmp-prueba-69.html';
+    fs.writeFileSync(path.join(DOCS, f), html);
+    try { return mount(f, P2); } finally { fs.unlinkSync(path.join(DOCS, f)); }
+  };
+  {
+    const w = mount(FC, P2); await tick();
+    const p = lines(w).find((l) => /[Pp]ase|Pass/.test(l[0]));
+    check('completado y todo cobrado: «todos los hitos ✅», en verde',
+      !!p && /todos los hitos|all milestones/.test(p[1]) && !/sin empezar|not started/.test(p[1]) && !/--todo/.test(p[2]),
+      p && p.join(' | '));
+    const gp = JSON.parse(w.localStorage.getItem('awa-arp-pass') || 'null');
+    check('y las 150/150 fichas se leen del strong único', !!gp && gp.started === true && gp.tokens === 150 && gp.tokensMax === 150,
+      JSON.stringify(gp));
+  }
+  {
+    // El otro estado que vio el usuario, el último hito aún por reclamar. No hay volcado de él:
+    // se fabrica del completo devolviendo ese hito a `unlockable`.
+    const ultimo = /(data-milestone-id="60"\s+data-state=")claimed"/;
+    const porReclamar = crudo.replace(ultimo, '$1unlockable"');
+    check('control: el último hito quedó por reclamar', porReclamar !== crudo
+      && (porReclamar.match(/data-state="unlockable"/g) || []).length === 1, '');
+    const w = montarHtml(porReclamar); await tick();
+    const p = lines(w).find((l) => /[Pp]ase|Pass/.test(l[0]));
+    check('con el último por reclamar: «1 por reclamar», no «sin empezar»',
+      !!p && /1 por reclamar|1 to claim/.test(p[1]) && /--todo/.test(p[2]), p && p.join(' | '));
+  }
+  {
+    // Control negativo: sin el aviso de completado (y sin el de empezado) vuelve a «sin empezar».
+    // Si este pasara a decir otra cosa, la prueba de arriba no estaría midiendo el arreglo.
+    const sinAviso = crudo.replace(/<div class="bp-header__completed">[\s\S]*?<\/div>/, '');
+    check('control: el aviso de completado se quitó', sinAviso.replace(/<!--[\s\S]*?-->/g, '').indexOf('bp-header__completed') < 0, '');
+    const w = montarHtml(sinAviso); await tick();
+    const p = lines(w).find((l) => /[Pp]ase|Pass/.test(l[0]));
+    check('sin ningún aviso en la cabecera sí es «sin empezar»', !!p && /sin empezar|not started/.test(p[1]), p && p.join(' | '));
+  }
+}
+
 console.log('\n' + (fail ? '✗ ' : '✓ ') + ok + ' comprobaciones pasadas, ' + fail + ' fallidas\n');
 process.exit(fail ? 1 : 0);
 }
