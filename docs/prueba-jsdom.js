@@ -128,6 +128,22 @@ function relojEnDia(win, iso) {
 
 function leer(nombre) { return fs.readFileSync(path.join(DOCS, nombre), 'utf8'); }
 
+// Los volcados del Pase de aniversario cierran el 2026-10-26, y desde ese día salen como
+// «temporada cerrada»: tres pruebas de §65 y §69 que medían otra cosa empezaron a fallar con el
+// código bueno y con el viejo por igual. Las que no miden el cierre lo mueven a diez días de hoy,
+// como ya hacía §66.
+function sinCaducar(html) {
+  const iso = new Date(Date.now() + 10 * 864e5).toISOString().replace(/\.\d{3}Z$/, '+00:00');
+  return html.split('data-countdown="2026-10-26T20:00:00+00:00"').join('data-countdown="' + iso + '"');
+}
+
+// Monta un HTML que no está en docs/: `mount` lee de ahí, así que se escribe un instante y se borra.
+function montarTmp(html, ruta, tweak) {
+  const f = 'tmp-prueba-montar.html';
+  fs.writeFileSync(path.join(DOCS, f), html);
+  try { return mount(f, ruta, tweak); } finally { fs.unlinkSync(path.join(DOCS, f)); }
+}
+
 // Devuelve el volcado con los contadores del día VACÍOS, que es como llegó la
 // respuesta del servidor el 2026-08-25 al pulsar ⟳ en el sitio real. Se hace con
 // el DOM y no partiendo el HTML a mano: contar o recortar marcado con regex ya
@@ -225,9 +241,10 @@ console.log('\n=== 1. Centro de control con Twitch completado (24 ago) ===');
   check('sin aviso de widget cuando ya está completo', !w.document.querySelector('.awa-w__note'));
   // Lo del día se lee del propio documento; el pase y el índice de eventos viven
   // en otra página, así que esas sí se piden —una vez al día cada una, no por
-  // carga: ver la prueba de la caché—.
-  check('estando en el Centro de control se piden el pase, el registro y los eventos',
-    w.fetched.length === 3 && w.fetched.some((u) => /battle-pass/.test(u))
+  // carga: ver la prueba de la caché—. Y la portada, también una vez al día: el
+  // menú lateral enlaza un pase, pero va atrasado y no dice cuál está en curso (§70).
+  check('estando en el Centro de control se piden la portada, el pase, el registro y los eventos',
+    w.fetched.length === 4 && w.fetched.indexOf('/') >= 0 && w.fetched.some((u) => /battle-pass/.test(u))
       && w.fetched.some((u) => /arp-log/.test(u))
       && w.fetched.some((u) => /\/steam\/events$/.test(u)), JSON.stringify(w.fetched));
 }
@@ -3646,7 +3663,7 @@ console.log('\n=== 65. El Pase de aniversario: otra URL y las fichas en dos stro
   const F2 = 'dom-battle-pass-anniversary-started-2026-09-30.html';
   const P2 = '/control-center/battle-pass/2';
   {
-    const w = mount(F2, P2); await tick();
+    const w = montarTmp(sinCaducar(leer(F2)), P2); await tick();
     const p = lines(w).find((l) => /[Pp]ase|Pass/.test(l[0]));
     // Desde §66 la línea enseña el hito en curso; las fichas se comprueban en lo que se guarda.
     const gp = JSON.parse(w.localStorage.getItem('awa-arp-pass') || 'null');
@@ -3654,17 +3671,18 @@ console.log('\n=== 65. El Pase de aniversario: otra URL y las fichas en dos stro
       !!gp && gp.tokens === 0 && gp.tokensMax === 150 && !!p && p[1] === '0/40 ARP', JSON.stringify(gp) + ' ' + (p && p.join(' | ')));
     const st = lines(w).find((l) => /[Tt]ienda|Store/.test(l[0]));
     check('y la tienda vuelve a salir, con lo que falta para el primer paquete', !!st && /25/.test(st[1]), st && st.join(' | '));
-    check('sin pedir ningún pase ni la portada: ya estamos en él',
-      !w.fetched.some((u) => /battle-pass/.test(u) || u === '/'), JSON.stringify(w.fetched));
+    // La portada sí, una vez al día: estar en un pase no dice que sea el que está en curso (§70).
+    check('sin pedir ningún pase: ya estamos en él',
+      !w.fetched.some((u) => /battle-pass/.test(u)) && w.fetched.filter((u) => u === '/').length <= 1, JSON.stringify(w.fetched));
     const g = JSON.parse(w.localStorage.getItem('awa-arp-pase-url') || 'null');
-    check('y se apunta su URL, sacada del menú lateral', !!g && g.url === P2, JSON.stringify(g));
+    check('y se apunta su URL', !!g && g.url === P2, JSON.stringify(g));
   }
   // La portada de verdad del 2026-09-30, con el banner del pase nuevo. El enlace es un <a> con
   // `href`, y es lo que hay que comprobar: si fuera un botón con JS, el script no lo vería.
   const portada2 = leer('dom-homepage-battle-pass-anniversary-2026-09-30.html');
   check('control: la portada nueva enlaza el pase en un <a href>',
     /<a class="bp-widget__rewards-btn" href="\/control-center\/battle-pass\/2">/.test(portada2), '');
-  const pase2 = leer(F2);
+  const pase2 = sinCaducar(leer(F2));
   {
     // Desde una página que no enlaza el pase y sin URL aprendida: se pide la portada para
     // sacarla de su banner, y luego ESE pase, no el `/1`.
@@ -3678,9 +3696,10 @@ console.log('\n=== 65. El Pase de aniversario: otra URL y las fichas en dos stro
     check('la línea sale del pase nuevo', !!p && p[1] === '0/40 ARP', p && p.join(' | '));
   }
   {
-    // Con la URL aprendida hoy, la portada no se vuelve a pedir: es una petición al día.
+    // Con la URL aprendida hoy, la portada no se vuelve a pedir: es una petición al día. Con el
+    // esquema de 1.3.12 (`v: 2`); la forma de antes sí la vuelve a pedir, ver §70.
     const w = mount('dom-steam-quest-fixed-unstarted-2026-08.html', '/steam/quest/prueba', (win) => {
-      win.localStorage.setItem('awa-arp-pase-url', JSON.stringify({ url: P2, at: Date.now() }));
+      win.localStorage.setItem('awa-arp-pase-url', JSON.stringify({ url: P2, at: Date.now(), v: 2 }));
       win.__respuestas = { '/': portada2, 'battle-pass/2': pase2 };
     }); await tick(); await tick();
     check('con la URL de hoy no se pide la portada', w.fetched.indexOf('/') < 0 && w.fetched.indexOf(P2) >= 0,
@@ -3950,7 +3969,7 @@ console.log('\n=== 69. El pase completado no es un pase sin empezar ===');
 {
   const FC = 'dom-battle-pass-anniversary-completed-2026-10-16.html';
   const P2 = '/control-center/battle-pass/2';
-  const crudo = leer(FC);
+  const crudo = sinCaducar(leer(FC));
   // El saneado cita las clases en su cabecera: se cuenta sobre el marcado sin comentarios.
   const marcado = crudo.replace(/<!--[\s\S]*?-->/g, '');
   check('control: el volcado completo no trae el aviso de empezado y sí el de completado',
@@ -3963,7 +3982,7 @@ console.log('\n=== 69. El pase completado no es un pase sin empezar ===');
     try { return mount(f, P2); } finally { fs.unlinkSync(path.join(DOCS, f)); }
   };
   {
-    const w = mount(FC, P2); await tick();
+    const w = montarHtml(crudo); await tick();
     const p = lines(w).find((l) => /[Pp]ase|Pass/.test(l[0]));
     check('completado y todo cobrado: «todos los hitos ✅», en verde',
       !!p && /todos los hitos|all milestones/.test(p[1]) && !/sin empezar|not started/.test(p[1]) && !/--todo/.test(p[2]),
@@ -3992,6 +4011,92 @@ console.log('\n=== 69. El pase completado no es un pase sin empezar ===');
     const w = montarHtml(sinAviso); await tick();
     const p = lines(w).find((l) => /[Pp]ase|Pass/.test(l[0]));
     check('sin ningún aviso en la cabecera sí es «sin empezar»', !!p && /sin empezar|not started/.test(p[1]), p && p.join(' | '));
+  }
+}
+
+console.log('\n=== 70. El menú lateral va atrasado: el pase en curso lo dice la portada ===');
+// El 2026-10-31 abrió la tercera temporada en `/control-center/battle-pass/3`, y 1.3.11 seguía con
+// el `/2`. Visto en el navegador ese día: el banner de la portada enlaza el `/3`, pero el menú
+// lateral (`a.um-nav-link`), que sale en todo el Centro de control, sigue enlazando el `/2`, y
+// también DENTRO de la página del `/3`. 1.3.11 tomaba el primer enlace de la página en la que
+// estuvieras, lo apuntaba como mirado hoy y ya no pedía la portada. No hay volcados de ese día:
+// se fabrican de los del aniversario cambiando solo el número del banner y la fecha de cierre.
+{
+  const montarHtml = (html, ruta, tweak) => {
+    const f = 'tmp-prueba-70.html';
+    fs.writeFileSync(path.join(DOCS, f), html);
+    try { return mount(f, ruta, tweak); } finally { fs.unlinkSync(path.join(DOCS, f)); }
+  };
+  const P2 = '/control-center/battle-pass/2';
+  const P3 = '/control-center/battle-pass/3';
+  const portada3 = leer('dom-homepage-battle-pass-anniversary-2026-09-30.html')
+    .split('class="bp-widget__rewards-btn" href="/control-center/battle-pass/2"')
+    .join('class="bp-widget__rewards-btn" href="/control-center/battle-pass/3"');
+  // El `/3` es el aniversario con el cierre a diez días, para que no salga «temporada cerrada».
+  // Su menú lateral se deja como está, en el `/2`: así lo sirve el sitio.
+  const pase3 = sinCaducar(leer('dom-battle-pass-anniversary-started-2026-09-30.html'));
+  // Una página cualquiera del Centro de control, con el menú lateral en el `/2`.
+  const centro = leer('dom-control-center-2026-08.html')
+    .split('class="um-nav-link " href="/control-center/battle-pass/1"').join('class="um-nav-link " href="/control-center/battle-pass/2"');
+  check('control: el banner de la portada enlaza el /3 y el menú del pase /3 sigue en el /2',
+    portada3.indexOf('rewards-btn" href="/control-center/battle-pass/3"') > 0
+      && pase3.indexOf('<a class="um-nav-link active" href="/control-center/battle-pass/2">') > 0
+      && pase3.indexOf('data-countdown="2026-10-26') < 0, '');
+  check('control: el Centro de control solo enlaza el /2, en el menú',
+    centro.indexOf('href="/control-center/battle-pass/2"') > 0 && !/battle-pass\/[13]"/.test(centro), '');
+  const paseUrl = (w) => JSON.parse(w.localStorage.getItem('awa-arp-pase-url') || 'null');
+  const linea = (w) => lines(w).find((l) => /[Pp]ase|Pass/.test(l[0]));
+  {
+    // El estado en que lo dejó 1.3.11 el 2026-10-31: el `/2` apuntado hoy, sin esquema.
+    const w = montarHtml(centro, '/control-center', (win) => {
+      win.localStorage.setItem('awa-arp-pase-url', JSON.stringify({ url: P2, at: Date.now() }));
+      win.__respuestas = { '/': portada3, 'battle-pass/3': pase3 };
+    }); await tick(); await tick(); await tick();
+    check('con el /2 apuntado hoy por 1.3.11, se vuelve a pedir la portada',
+      w.fetched.indexOf('/') >= 0, JSON.stringify(w.fetched));
+    check('y después el /3, nunca el /2 del menú',
+      w.fetched.indexOf(P3) > w.fetched.indexOf('/') && w.fetched.indexOf(P2) < 0, JSON.stringify(w.fetched));
+    const g = paseUrl(w);
+    check('se apunta el /3, con el esquema nuevo', !!g && g.url === P3 && g.v === 2, JSON.stringify(g));
+    const p = linea(w);
+    check('la línea sale del pase en curso, no de una temporada cerrada', !!p && p[1] === '0/40 ARP', p && p.join(' | '));
+  }
+  {
+    // Ya en la página del `/3`, cuyo menú dice `/2`: vale su propia ruta. Sin nada apuntado.
+    const w = montarHtml(pase3, P3, (win) => { win.__respuestas = { '/': portada3 }; }); await tick(); await tick();
+    check('en la página del /3 no se pide ningún pase: se lee la propia',
+      !w.fetched.some((u) => /battle-pass/.test(u)), JSON.stringify(w.fetched));
+    const g = paseUrl(w);
+    check('y se apunta el /3 aunque su menú enlace el /2', !!g && g.url === P3, JSON.stringify(g));
+    const p = linea(w);
+    check('con la línea del pase en curso', !!p && p[1] === '0/40 ARP', p && p.join(' | '));
+  }
+  {
+    // Ya sabido el `/3` y mirada hoy la portada, el menú en el `/2` no lo hace retroceder.
+    const w = montarHtml(centro, '/control-center', (win) => {
+      win.localStorage.setItem('awa-arp-pase-url', JSON.stringify({ url: P3, at: Date.now(), v: 2 }));
+      win.__respuestas = { '/': portada3, 'battle-pass/3': pase3 };
+    }); await tick(); await tick();
+    check('con el /3 de hoy: ni portada ni /2, solo el /3',
+      w.fetched.indexOf('/') < 0 && w.fetched.indexOf(P2) < 0 && w.fetched.indexOf(P3) >= 0, JSON.stringify(w.fetched));
+    check('y sigue apuntado el /3', (paseUrl(w) || {}).url === P3, JSON.stringify(paseUrl(w)));
+  }
+  {
+    // En la propia portada no se pide la portada. Una de las de agosto, además, traía el enlace con
+    // el dominio delante, y con `^=` no se veía. Esa no lleva las globales de sesión —el panel no
+    // arranca con ella—, así que se le pone su forma de enlace a la otra.
+    check('control: la portada de agosto enlaza el pase con el dominio delante',
+      /rewards-btn" href="https:\/\/www\.alienwarearena\.com\/control-center\/battle-pass\/1"/.test(leer('dom-homepage-2026-08.html')), '');
+    const conDominio = leer('dom-homepage-src-2026-08.html')
+      .split('href="/control-center/battle-pass/1"').join('href="https://www.alienwarearena.com/control-center/battle-pass/1"');
+    check('control: la otra portada ya solo lo enlaza con dominio',
+      conDominio.indexOf('href="https://www.alienwarearena.com/control-center/battle-pass/1"') > 0
+        && conDominio.indexOf('href="/control-center/battle-pass/') < 0, '');
+    const w = montarHtml(conDominio, '/'); await tick();
+    check('en la portada no se pide la portada', w.fetched.indexOf('/') < 0, JSON.stringify(w.fetched));
+    const g = paseUrl(w);
+    check('y se aprende el enlace con dominio, sin él y fechado hoy',
+      !!g && g.url === '/control-center/battle-pass/1' && g.v === 2 && Date.now() - g.at < 6e4, JSON.stringify(g));
   }
 }
 
