@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Alienware Arena ARP Tracker
 // @namespace    http://tampermonkey.net/
-// @version      1.3.12
+// @version      1.3.14
 // @description  ARP panel for Alienware Arena. Almost everything you earn there expires —at 00:00 UTC, on Monday, when the season closes, when an event ends— and the site never says it in one place. This panel does: on any page, what you have left to do, how long you have and a warning before you lose it. It only reads, it never claims. Every line is explained in "Learn more", inside the panel, and the rest is in the repository. Eight languages.
 // @icon         data:image/png;base64,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
 // @match        https://www.alienwarearena.com/*
@@ -16,7 +16,7 @@
 (function () {
     'use strict';
 
-    const SCRIPT_VERSION = '1.3.12';
+    const SCRIPT_VERSION = '1.3.14';
 
     // ------------------------------------------------------------------
     // Idiomas
@@ -571,13 +571,13 @@
         // encontraba la barra y se quedaba sin fichas (ver readPass).
         passTokens: '.bp-header__token-total',
         passTokenCount: '.bp-header__token-count',
-        // Los enlaces a un pase. El único que dice cuál está EN CURSO es el botón «Ver todas las
-        // recompensas» del banner de la portada (`a.bp-widget__rewards-btn`): el menú lateral
-        // (`a.um-nav-link`), que sale en todo el Centro de control, se queda atrás. El
-        // 2026-10-31, con la tercera temporada abierta en `/3`, seguía apuntando al `/2`, incluso
-        // dentro de la propia página del `/3`. Por eso se leen todos y gana el número más alto
-        // (ver urlPase). `*=` y no `^=`: la portada de agosto lo traía con el dominio delante.
-        passLink: 'a[href*="/control-center/battle-pass/"]',
+        // El enlace al pase EN CURSO: el botón «Ver todas las recompensas» del banner de la
+        // portada, y solo ese. El menú lateral (`a.um-nav-link`), que sale en todo el Centro de
+        // control, se queda atrás: el 2026-10-31, con la tercera temporada abierta en `/3`, seguía
+        // apuntando al `/2`, incluso dentro de la propia página del `/3`. Y un selector por `href`
+        // a secas (1.3.12) recogía también los enlaces que cualquiera pone en un post o un
+        // comentario. `*=` y no `^=`: la portada de agosto lo traía con el dominio delante.
+        passLink: 'a.bp-widget__rewards-btn[href*="/control-center/battle-pass/"]',
         passStarted: '.bp-header__started',
         // Con el pase COMPLETO el aviso de empezado desaparece y en su sitio sale este, con
         // «PASE DE BATALLA COMPLETADO»; sin contarlo, 1.3.10 decía «sin empezar» de un pase
@@ -1506,8 +1506,10 @@
 
     // La ruta de un pase, `/control-center/battle-pass/N`, o null. Se valida la forma: el mismo
     // prefijo lo llevaría un enlace a una subpágina del pase, y esa no es la página que se lee.
+    // Con dominio delante, solo si es el del sitio: quitárselo sin mirarlo convertía en ruta
+    // propia un enlace a cualquier otra web.
     function rutaPase(href) {
-        const ruta = String(href || '').replace(/^https?:\/\/[^/]+/, '').replace(/\/+$/, '');
+        const ruta = String(href || '').replace(/^https?:\/\/(www\.)?alienwarearena\.com(?=\/)/, '').replace(/\/+$/, '');
         return /^\/control-center\/battle-pass\/\d+$/.test(ruta) ? ruta : null;
     }
 
@@ -1518,20 +1520,18 @@
         return n(b) > n(a) ? b : a;
     }
 
-    // La temporada más nueva que enlaza este documento, o null si no enlaza ninguna. Todos los
-    // enlaces y no el primero: el primero suele ser el del menú lateral, que va atrasado (ver
-    // SEL.passLink).
+    // El pase que enlaza el banner de este documento, o null si no lo trae (ver SEL.passLink).
     function enlacePase(doc) {
-        let mejor = null;
-        doc.querySelectorAll(SEL.passLink).forEach((a) => { mejor = masNuevo(mejor, rutaPase(a.getAttribute('href'))); });
-        return mejor;
+        const a = doc.querySelector(SEL.passLink);
+        return a ? rutaPase(a.getAttribute('href')) : null;
     }
 
     // `v` es el esquema. Las guardadas por 1.3.10 y 1.3.11 no lo llevan, y su `at` no vale:
     // podían haber apuntado como mirado hoy el `/2` del menú sin pedir la portada, y entonces
-    // el `/3` no se descubría hasta las 00:00 UTC (ver «una caché con TTL congela el bug»). Su
-    // `url` sí sirve, como una candidata más.
-    const PASS_URL_V = 2;
+    // el `/3` no se descubría hasta las 00:00 UTC (ver «una caché con TTL congela el bug»). Las
+    // de 1.3.12 (`v: 2`) tampoco: tomaba el número más alto de CUALQUIER enlace de la página, y
+    // uno puesto en un post (`/battle-pass/999`) se quedaba como pase hasta el día siguiente.
+    const PASS_URL_V = 3;
 
     function urlGuardada() {
         try {
@@ -1544,23 +1544,32 @@
 
     // Qué pase leer. Solo la portada sabe cuál está en curso (ver SEL.passLink), así que se le
     // pregunta UNA VEZ AL DÍA, que es el ritmo del pase: una petición más en el día y no una por
-    // carga. Lo que enlace la página en la que estés —y su propia ruta, si es un pase— solo
-    // puede ADELANTAR la URL, nunca ahorrarse esa pregunta: hasta 1.3.11 el `/2` del menú
-    // lateral contaba como respuesta y la portada no se pedía nunca. `at` es cuándo se miró la
-    // portada, no cuándo cambió la URL. Si la portada no enlaza ninguno —entre temporadas no hay
-    // banner— se queda el último que se supo: una temporada cerrada se sigue leyendo como cerrada.
+    // carga; y lo que conteste MANDA, aunque sea un número más bajo que el guardado. Entre una
+    // pregunta y otra, la URL solo la adelanta la página en la que estés si es de verdad un pase
+    // (su propia ruta, y que se lea como tal): un enlace no basta, que hasta 1.3.11 el `/2` del
+    // menú lateral contaba como respuesta y la portada no se pedía nunca. `at` es cuándo se miró
+    // la portada, no cuándo cambió la URL. Si la portada no enlaza ninguno —entre temporadas no
+    // hay banner— se queda el último que se supo: una temporada cerrada se sigue leyendo como
+    // cerrada.
     function urlPase(forzar) {
         const g = urlGuardada();
         const vigente = g && g.v === PASS_URL_V ? g.at : 0;
-        const sabida = masNuevo(masNuevo(g ? g.url : null, enlacePase(document)), rutaPase(location.pathname));
-        // En la propia portada la pregunta ya está contestada (sus enlaces van en `sabida`), y
-        // pedirla otra vez sería pedir la página en la que estás.
-        if (yaEstoyEn(HOME_URL)) { guardarUrl(sabida || PASS_URL, Date.now()); return Promise.resolve(sabida || PASS_URL); }
+        const aqui = readPass(document) ? rutaPase(location.pathname) : null;
+        const sabida = masNuevo(g ? g.url : null, aqui);
+        // En la propia portada la pregunta ya está contestada, y pedirla otra vez sería pedir la
+        // página en la que estás.
+        if (yaEstoyEn(HOME_URL)) {
+            const ruta = enlacePase(document) || sabida || PASS_URL;
+            guardarUrl(ruta, Date.now());
+            return Promise.resolve(ruta);
+        }
         if (sabida && (!g || sabida !== g.url)) guardarUrl(sabida, vigente);
         if (!forzar && vigente && utcStamp(vigente) === utcStamp(Date.now())) return Promise.resolve(sabida);
         return pedir(HOME_URL)
             .then((html) => {
-                const ruta = masNuevo(sabida, enlacePase(new DOMParser().parseFromString(html, 'text/html'))) || PASS_URL;
+                // La página del pase en la que estás sí puede ir por delante del banner: es la
+                // temporada que el sitio te está sirviendo.
+                const ruta = masNuevo(enlacePase(new DOMParser().parseFromString(html, 'text/html')), aqui) || sabida || PASS_URL;
                 // Con o sin enlace se apunta que hoy ya se miró, para no volver a pedir la
                 // portada en cada carga.
                 guardarUrl(ruta, Date.now());

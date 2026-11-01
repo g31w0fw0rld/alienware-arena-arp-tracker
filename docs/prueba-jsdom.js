@@ -3697,9 +3697,9 @@ console.log('\n=== 65. El Pase de aniversario: otra URL y las fichas en dos stro
   }
   {
     // Con la URL aprendida hoy, la portada no se vuelve a pedir: es una petición al día. Con el
-    // esquema de 1.3.12 (`v: 2`); la forma de antes sí la vuelve a pedir, ver §70.
+    // esquema de 1.3.14 (`v: 3`); la forma de antes sí la vuelve a pedir, ver §70.
     const w = mount('dom-steam-quest-fixed-unstarted-2026-08.html', '/steam/quest/prueba', (win) => {
-      win.localStorage.setItem('awa-arp-pase-url', JSON.stringify({ url: P2, at: Date.now(), v: 2 }));
+      win.localStorage.setItem('awa-arp-pase-url', JSON.stringify({ url: P2, at: Date.now(), v: 3 }));
       win.__respuestas = { '/': portada2, 'battle-pass/2': pase2 };
     }); await tick(); await tick();
     check('con la URL de hoy no se pide la portada', w.fetched.indexOf('/') < 0 && w.fetched.indexOf(P2) >= 0,
@@ -4057,7 +4057,7 @@ console.log('\n=== 70. El menú lateral va atrasado: el pase en curso lo dice la
     check('y después el /3, nunca el /2 del menú',
       w.fetched.indexOf(P3) > w.fetched.indexOf('/') && w.fetched.indexOf(P2) < 0, JSON.stringify(w.fetched));
     const g = paseUrl(w);
-    check('se apunta el /3, con el esquema nuevo', !!g && g.url === P3 && g.v === 2, JSON.stringify(g));
+    check('se apunta el /3, con el esquema nuevo', !!g && g.url === P3 && g.v === 3, JSON.stringify(g));
     const p = linea(w);
     check('la línea sale del pase en curso, no de una temporada cerrada', !!p && p[1] === '0/40 ARP', p && p.join(' | '));
   }
@@ -4074,7 +4074,7 @@ console.log('\n=== 70. El menú lateral va atrasado: el pase en curso lo dice la
   {
     // Ya sabido el `/3` y mirada hoy la portada, el menú en el `/2` no lo hace retroceder.
     const w = montarHtml(centro, '/control-center', (win) => {
-      win.localStorage.setItem('awa-arp-pase-url', JSON.stringify({ url: P3, at: Date.now(), v: 2 }));
+      win.localStorage.setItem('awa-arp-pase-url', JSON.stringify({ url: P3, at: Date.now(), v: 3 }));
       win.__respuestas = { '/': portada3, 'battle-pass/3': pase3 };
     }); await tick(); await tick();
     check('con el /3 de hoy: ni portada ni /2, solo el /3',
@@ -4096,7 +4096,70 @@ console.log('\n=== 70. El menú lateral va atrasado: el pase en curso lo dice la
     check('en la portada no se pide la portada', w.fetched.indexOf('/') < 0, JSON.stringify(w.fetched));
     const g = paseUrl(w);
     check('y se aprende el enlace con dominio, sin él y fechado hoy',
-      !!g && g.url === '/control-center/battle-pass/1' && g.v === 2 && Date.now() - g.at < 6e4, JSON.stringify(g));
+      !!g && g.url === '/control-center/battle-pass/1' && g.v === 3 && Date.now() - g.at < 6e4, JSON.stringify(g));
+  }
+
+  console.log('\n=== 71. Un enlace de un post no decide el pase ===');
+  // 1.3.12 tomaba el número más alto de CUALQUIER enlace a un pase de la página, y nunca bajaba:
+  // un `/battle-pass/999` puesto en un post o un comentario dejaba la línea pidiendo un pase que
+  // no existe, y ni la portada lo corregía. Señalado por la revisión de seguridad automática
+  // tras publicar 1.3.12. Ahora solo cuentan el banner de la portada, que manda, y la ruta de la
+  // página en la que estés si se lee como un pase.
+  const P999 = '/control-center/battle-pass/999';
+  const conPost = centro.replace('</body>',
+    '<div class="post"><a href="' + P999 + '">mirad</a>'
+    + '<a class="bp-widget__rewards-btn" href="https://otra-web.example' + P999 + '">y esto</a></div></body>');
+  check('control: la página trae el enlace del post, y uno con la clase del banner pero de otra web',
+    conPost.indexOf('href="' + P999 + '"') > 0 && conPost.indexOf('otra-web.example' + P999) > 0, '');
+  {
+    const w = montarHtml(conPost, '/control-center', (win) => {
+      win.__respuestas = { '/': portada3, 'battle-pass/3': pase3 };
+    }); await tick(); await tick(); await tick();
+    check('con un /999 en un post: se pide el /3 que dice la portada, nunca el /999',
+      w.fetched.indexOf(P3) >= 0 && !w.fetched.some((u) => /battle-pass\/999/.test(u)), JSON.stringify(w.fetched));
+    check('y se apunta el /3', (paseUrl(w) || {}).url === P3, JSON.stringify(paseUrl(w)));
+  }
+  {
+    // El estado que pudo dejar 1.3.12: el /999 apuntado hoy con su esquema. Se vuelve a preguntar
+    // a la portada, y su respuesta manda aunque sea un número más bajo.
+    const w = montarHtml(centro, '/control-center', (win) => {
+      win.localStorage.setItem('awa-arp-pase-url', JSON.stringify({ url: P999, at: Date.now(), v: 2 }));
+      win.__respuestas = { '/': portada3, 'battle-pass/3': pase3 };
+    }); await tick(); await tick(); await tick();
+    check('con el /999 que pudo guardar 1.3.12: portada, y el /3 en su lugar',
+      w.fetched.indexOf('/') >= 0 && w.fetched.indexOf(P3) >= 0 && w.fetched.indexOf(P999) < 0, JSON.stringify(w.fetched));
+    check('y se apunta el /3, más bajo que el que había', (paseUrl(w) || {}).url === P3, JSON.stringify(paseUrl(w)));
+  }
+  {
+    // Un banner que apunte a otra web no cuenta: se queda el último pase que se supo.
+    const portadaAjena = portada3.split('rewards-btn" href="/control-center/battle-pass/3"')
+      .join('rewards-btn" href="https://otra-web.example/control-center/battle-pass/7"');
+    check('control: el banner de esta portada apunta a otra web',
+      portadaAjena.indexOf('otra-web.example/control-center/battle-pass/7') > 0 && portadaAjena.indexOf('battle-pass/3"') < 0, '');
+    const w = montarHtml(centro, '/control-center', (win) => {
+      win.localStorage.setItem('awa-arp-pase-url', JSON.stringify({ url: P3, at: Date.now() - 2 * 864e5, v: 3 }));
+      win.__respuestas = { '/': portadaAjena, 'battle-pass/3': pase3 };
+    }); await tick(); await tick(); await tick();
+    check('con el banner hacia otra web se sigue con el /3',
+      (paseUrl(w) || {}).url === P3 && !w.fetched.some((u) => /battle-pass\/7/.test(u)), JSON.stringify(w.fetched) + ' ' + JSON.stringify(paseUrl(w)));
+  }
+  {
+    // La página del pase en la que estás sí va por delante del banner: el día que abre una
+    // temporada, la portada puede seguir en la anterior. Aquí el /3 con la portada del /2.
+    const portada2 = leer('dom-homepage-battle-pass-anniversary-2026-09-30.html');
+    const w = montarHtml(pase3, P3, (win) => { win.__respuestas = { '/': portada2 }; }); await tick(); await tick();
+    check('en la página del /3 con la portada aún en el /2, gana el /3',
+      (paseUrl(w) || {}).url === P3 && !w.fetched.some((u) => /battle-pass/.test(u)), JSON.stringify(w.fetched) + ' ' + JSON.stringify(paseUrl(w)));
+  }
+  {
+    // Una ruta con forma de pase que no se lee como pase (una página de error, por ejemplo) no
+    // adelanta nada.
+    const w = montarHtml(centro, P999, (win) => {
+      win.localStorage.setItem('awa-arp-pase-url', JSON.stringify({ url: P3, at: Date.now(), v: 3 }));
+      win.__respuestas = { 'battle-pass/3': pase3 };
+    }); await tick(); await tick();
+    check('en /999 sin cabecera de pase, sigue el /3', (paseUrl(w) || {}).url === P3 && w.fetched.indexOf(P3) >= 0,
+      JSON.stringify(w.fetched) + ' ' + JSON.stringify(paseUrl(w)));
   }
 }
 
