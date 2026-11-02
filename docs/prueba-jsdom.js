@@ -2095,12 +2095,15 @@ console.log('\n=== 42. La tarjeta de subasta no se etiqueta como una compra ==='
 
 console.log('\n=== 43. La Tienda de Batalla: fichas que caducan ===');
 {
-  // El pase abierto trae 0/135 fichas: no alcanzan ni el paquete más barato.
-  const w = mount('dom-battle-pass-2026-08.html', '/control-center/battle-pass/1'); await tick();
+  // El pase abierto trae 0/135 fichas: no alcanzan ni el paquete más barato. Su cierre (agosto)
+  // ya pasó, así que se mueve al futuro: con el pase cerrado la línea ya no dice lo que falta (§72).
+  const w = mount('dom-battle-pass-2026-08.html', '/control-center/battle-pass/1', (win) => {
+    win.document.querySelectorAll('[data-countdown]').forEach((n) => n.setAttribute('data-countdown', new Date(Date.now() + 864e5).toISOString()));
+  }); await tick();
   const l = lines(w).find((x) => /[Tt]ienda|Store|Boutique|Loja|商店|स्टोर/.test(x[0]));
   check('sale la línea de la tienda', !!l, lines(w).map((x) => x[0]).join(' / '));
-  check('con 0 fichas dice cuántas faltan para el primer paquete',
-    l && /25/.test(l[1]), l && l.join(' | '));
+  check('con 0 fichas dice cuántas faltan para el primer paquete (el de 15 ARP, 5 fichas)',
+    l && /faltan 5 fichas|5 tokens short/.test(l[1]), l && l.join(' | '));
   check('y no la da por buena', l && !/--done/.test(l[2]), l && l[2]);
 }
 {
@@ -3670,7 +3673,7 @@ console.log('\n=== 65. El Pase de aniversario: otra URL y las fichas en dos stro
     check('en la página del pase nuevo: 0/150 fichas, leídas de los dos strong',
       !!gp && gp.tokens === 0 && gp.tokensMax === 150 && !!p && p[1] === '0/40 ARP', JSON.stringify(gp) + ' ' + (p && p.join(' | ')));
     const st = lines(w).find((l) => /[Tt]ienda|Store/.test(l[0]));
-    check('y la tienda vuelve a salir, con lo que falta para el primer paquete', !!st && /25/.test(st[1]), st && st.join(' | '));
+    check('y la tienda vuelve a salir, con lo que falta para el primer paquete', !!st && /faltan 5 fichas|5 tokens short/.test(st[1]), st && st.join(' | '));
     // La portada sí, una vez al día: estar en un pase no dice que sea el que está en curso (§70).
     check('sin pedir ningún pase: ya estamos en él',
       !w.fetched.some((u) => /battle-pass/.test(u)) && w.fetched.filter((u) => u === '/').length <= 1, JSON.stringify(w.fetched));
@@ -3852,7 +3855,11 @@ console.log('\n=== 67. La tienda: cada paquete una vez, y no solo vende ARP ==='
   {
     // En la propia tienda, el volcado de después de comprar el de 200: con 70 fichas quedan el de
     // 500 (90, no alcanza) y el de 100 (25), así que la línea ofrece 100 y NO el de 200 comprado.
-    const w = mount('dom-battle-store-purchased-2026-08.html', '/battle-store', (win) => sembrar(win, pase1({ tokens: 70 })));
+    // El saldo de la tienda manda sobre el del pase desde 1.3.15, y el volcado trae 0: se pone a 70.
+    const w = mount('dom-battle-store-purchased-2026-08.html', '/battle-store', (win) => {
+      sembrar(win, pase1({ tokens: 70 }));
+      win.document.querySelector('.bp-store__balance strong').textContent = '70';
+    });
     await tick(); await tick();
     const l = tiendaLinea(w);
     const g = JSON.parse(w.localStorage.getItem('awa-arp-pass') || 'null');
@@ -3860,10 +3867,15 @@ console.log('\n=== 67. La tienda: cada paquete una vez, y no solo vende ARP ==='
     check('y el de 200 ya no se ofrece: con 70 fichas, 100 ARP', !!l && /100 ARP/.test(l[1]) && !/200/.test(l[1]), l && l.join(' | '));
   }
   {
-    const w = mount(QUEST, '/steam/quest/prueba', (win) => sembrar(win, pase1({ tokens: 70, storeBought: [500, 200, 100] })));
+    // Con los paquetes de la Temporada 0 leídos de su tienda: comprados los tres, no queda ninguno.
+    const w = mount(QUEST, '/steam/quest/prueba', (win) => {
+      sembrar(win, pase1({ tokens: 70, storeBought: [500, 200, 100] }));
+      win.localStorage.setItem('awa-arp-tienda-paquetes', JSON.stringify({ at: Date.now(),
+        packs: [{ fichas: 90, arp: 500 }, { fichas: 45, arp: 200 }, { fichas: 25, arp: 100 }] }));
+    });
     await tick(); await tick();
     const l = tiendaLinea(w);
-    check('con los tres comprados lo dice, en verde', !!l && /los tres comprados|all three bought/.test(l[1]) && /--done/.test(l[2]), l && l.join(' | '));
+    check('con todos comprados lo dice, en verde', !!l && /todos comprados|all bought/.test(l[1]) && /--done/.test(l[2]), l && l.join(' | '));
   }
   {
     // La tienda del Pase de aniversario, sin abrir: su cuenta atrás es la APERTURA, igual al cierre
@@ -4160,6 +4172,124 @@ console.log('\n=== 70. El menú lateral va atrasado: el pase en curso lo dice la
     }); await tick(); await tick();
     check('en /999 sin cabecera de pase, sigue el /3', (paseUrl(w) || {}).url === P3 && w.fetched.indexOf(P3) >= 0,
       JSON.stringify(w.fetched) + ' ' + JSON.stringify(paseUrl(w)));
+  }
+}
+
+console.log('\n=== 72. La tienda de la Temporada de la Paz: seis paquetes, y sin «faltan» con el pase cerrado ===');
+// La de la Paz vende tres paquetes más pequeños (50, 25 y 15 ARP) que no traen el ARP en
+// `.bp-store__default-arp-amount`: son una imagen. Hasta 1.3.14 la lista iba fija con los tres de
+// siempre, así que con 20 fichas decía «faltan 5 fichas» pudiendo comprar 65 ARP. Y con el pase
+// cerrado —cuando abre la tienda— ya no se gana ninguna ficha, así que «faltan N» pedía un imposible.
+//
+// No hay volcado de esta tienda todavía: las tres tarjetas son el marcado de la página en vivo del
+// 2026-11-01 (la de 15 copiada tal cual; la de 50 y la de 25 con sus atributos leídos de la misma
+// página), metido en la tienda de aniversario sin abrir, que es la misma plantilla.
+{
+  const tarjeta = (arp, coste, desc, comprado) => `<div class="product-card bp-store__card" title="Paquete de ${arp} ARP" style="filter: brightness(1)">
+    <div class="product-image-container"><div class="product-image"><img src="MEDIA/36ae5f2ce5b5a1dc9acefeaccfed485f.png" alt="Paquete de ${arp} ARP"></div></div>
+    <div class="product-info"><div class="product-title">Paquete de ${arp} ARP</div>
+      <div class="product-price">${coste}<img class="product-price-arp bp-store__price-token" src="MEDIA/f583f9595fc9d6b869930b005747b7af.png" alt="Fichas de batalla"></div></div>
+    <form method="post" data-buy-form="" data-preview-only="true" data-purchased="${comprado ? '1' : ''}" data-product-title="${arp} ARP Bundle" data-product-cost="${coste}" data-product-description="${desc}" data-product-image="MEDIA/36ae5f2ce5b5a1dc9acefeaccfed485f.png">
+      <button type="submit" class="bp-store__buy-btn">MÁS INFORMACIÓN</button></form></div>`;
+  const PAZ = (comprado15) => tarjeta(50, 15, 'Get 50 ARP instantly') + tarjeta(25, 10, 'Get 25 ARP instantly')
+    + tarjeta(15, 5, 'Get 10 ARP instantly', comprado15);
+  const F = 'dom-battle-store-anniversary-unopened-2026-09-30.html';
+  const QUEST = 'dom-steam-quest-fixed-unstarted-2026-08.html';
+  const tiendaLinea = (w) => lines(w).find((x) => /[Tt]ienda|Store/.test(x[0]));
+  const tipDe = (w) => { const n = Array.from(w.document.querySelectorAll('#awa-arp-widget .awa-w__line'))
+    .find((l) => /[Tt]ienda|Store/.test(l.querySelector('.awa-w__k').textContent));
+    return n ? n.getAttribute('title') || n.getAttribute('data-awa-tip') || '' : ''; };
+  const pase = (extra) => Object.assign({ url: '/control-center/battle-pass/3', tokens: 20, tokensMax: 150,
+    claimable: 0, started: true, endsAt: Date.now() + 30 * 864e5, at: Date.now(), storeAt: Date.now() }, extra || {});
+  const sembrar = (win, p, packs) => {
+    win.localStorage.setItem('awa-arp-pase-url', JSON.stringify({ url: '/control-center/battle-pass/3', at: Date.now(), v: 3 }));
+    win.localStorage.setItem('awa-arp-pass', JSON.stringify(p));
+    if (packs) win.localStorage.setItem('awa-arp-tienda-paquetes', JSON.stringify({ at: Date.now(), packs: packs }));
+  };
+  const SEIS = [{ fichas: 90, arp: 500 }, { fichas: 45, arp: 200 }, { fichas: 25, arp: 100 },
+    { fichas: 15, arp: 50 }, { fichas: 10, arp: 25 }, { fichas: 5, arp: 15 }];
+  const enTienda = (comprado15, saldo) => mount(F, '/battle-store', (win) => {
+    sembrar(win, pase({ endsAt: Date.parse('2026-10-26T20:00:00+00:00') + 90 * 864e5 }));
+    const cien = win.document.querySelector('form[data-product-title="100 ARP Bundle"]').closest('.bp-store__card');
+    cien.insertAdjacentHTML('afterend', PAZ(comprado15));
+    win.document.querySelector('.bp-store__balance strong').textContent = String(saldo);
+  });
+  {
+    const w = enTienda(false, 20); await tick(); await tick();
+    const g = JSON.parse(w.localStorage.getItem('awa-arp-tienda-paquetes') || 'null');
+    const packs = g && g.packs || [];
+    check('control: la plantilla trae la tarjeta de 100 donde meter las nuevas', /data-product-title="100 ARP Bundle"/.test(leer(F)), '');
+    check('en la tienda se leen los seis paquetes, también los que no pintan su ARP',
+      packs.length === 6 && [[15, 50], [10, 25], [5, 15]].every(([f, a]) => packs.some((q) => q.fichas === f && q.arp === a)), JSON.stringify(packs));
+    check('el de 15 se cuenta por su nombre, no por su descripción («Get 10 ARP»)', !packs.some((q) => q.arp === 10), JSON.stringify(packs));
+    const l = tiendaLinea(w);
+    check('con 20 fichas ofrece 65 ARP (50 + 15), no «faltan 5 fichas»', !!l && /65 ARP/.test(l[1]) && /20/.test(l[1]), l && l.join(' | '));
+    check('y el saldo de la tienda queda guardado con el pase',
+      (JSON.parse(w.localStorage.getItem('awa-arp-pass') || 'null') || {}).storeTokens === 20, '');
+    check('el tooltip lista los paquetes leídos, del más barato al más caro',
+      /15 ARP por 5, 25 ARP por 10, 50 ARP por 15, 100 ARP por 25, 200 ARP por 45, 500 ARP por 90/.test(tipDe(w)), tipDe(w));
+  }
+  {
+    // Un paquete nuevo comprado se ve por `data-purchased`: no lleva el número que leía storeBought.
+    const w = enTienda(true, 15); await tick(); await tick();
+    const g = JSON.parse(w.localStorage.getItem('awa-arp-pass') || 'null');
+    check('el de 15 comprado se apunta como comprado', !!g && JSON.stringify(g.storeBought) === '[15]', JSON.stringify(g && g.storeBought));
+    const l = tiendaLinea(w);
+    check('y con 15 fichas ya no se ofrece: 50 ARP por 15', !!l && /50 ARP/.test(l[1]) && /15/.test(l[1]) && !/65/.test(l[1]), l && l.join(' | '));
+  }
+  // Fuera de la tienda, con los seis guardados.
+  const fuera = async (p) => { const w = mount(QUEST, '/steam/quest/prueba', (win) => sembrar(win, pase(p), SEIS)); await tick(); await tick(); return w; };
+  {
+    const w = await fuera({ tokens: 3 });
+    const l = tiendaLinea(w);
+    check('pase en curso con 3 fichas: aún dice cuántas faltan (2)', !!l && /faltan 2 fichas|2 tokens short/.test(l[1]) && /--off/.test(l[2]), l && l.join(' | '));
+    check('y su tooltip no dice que ya no se ganan', !/ya no se ganan|no more tokens can be earned/.test(tipDe(w)), tipDe(w));
+  }
+  {
+    const w = await fuera({ tokens: 3, endsAt: Date.now() - 864e5 });
+    const l = tiendaLinea(w);
+    check('pase cerrado con 3 fichas: NO dice cuántas faltan', !!l && !/faltan|short/.test(l[1]), l && l.join(' | '));
+    check('dice que no alcanzan para ningún paquete, en gris', !!l && /no alcanza para ningún paquete|not enough for any pack/.test(l[1]) && /--off/.test(l[2]), l && l.join(' | '));
+    check('y el tooltip explica que ya no se ganan', /ya no se ganan más fichas|no more tokens can be earned/.test(tipDe(w)), tipDe(w));
+  }
+  {
+    const w = await fuera({ tokens: 0, endsAt: Date.now() - 864e5 });
+    const l = tiendaLinea(w);
+    check('pase cerrado y 0 fichas: «fichas gastadas», en verde', !!l && /fichas gastadas|tokens spent/.test(l[1]) && /--done/.test(l[2]), l && l.join(' | '));
+  }
+  {
+    // El pase cuenta las fichas GANADAS; lo que queda lo dice la tienda. Con 20 ganadas y 0 de saldo,
+    // están gastadas, y el aviso de las seis horas no salta por unas fichas que ya no existen.
+    const w = mount(QUEST, '/steam/quest/prueba', (win) => {
+      win.localStorage.setItem('awa-arp-alert', '1');
+      sembrar(win, pase({ tokens: 20, storeTokens: 0, endsAt: Date.now() - 864e5, storeClosesAt: Date.now() + 3 * 3600e3 }), SEIS);
+    }); await tick(); await tick();
+    const l = tiendaLinea(w);
+    check('con saldo 0 en la tienda manda el saldo: «fichas gastadas»', !!l && /fichas gastadas|tokens spent/.test(l[1]), l && l.join(' | '));
+    check('y no avisa de que cierra la tienda con fichas', !/Cierra la tienda|Battle Store is closing/.test(txt(w, '.awa-w__alert-txt') || ''), String(txt(w, '.awa-w__alert-txt')));
+  }
+  {
+    // Control positivo del anterior: con saldo 20 sí avisa.
+    const w = mount(QUEST, '/steam/quest/prueba', (win) => {
+      win.localStorage.setItem('awa-arp-alert', '1');
+      sembrar(win, pase({ tokens: 20, storeTokens: 20, endsAt: Date.now() - 864e5, storeClosesAt: Date.now() + 3 * 3600e3 }), SEIS);
+    }); await tick(); await tick();
+    check('control: con saldo 20 sí avisa de que cierra la tienda', /Cierra la tienda|Battle Store is closing/.test(txt(w, '.awa-w__alert-txt') || ''), String(txt(w, '.awa-w__alert-txt')));
+  }
+  {
+    // Las claves y las tres superficies.
+    const n = (k) => SCRIPT.split('\n').filter((l) => new RegExp('^\\s*' + k + ':').test(l));
+    const linea = (k) => SCRIPT.split('\n').filter((l) => new RegExp('\\b' + k + ": '").test(l));
+    check('storeSpent, storeNone y tipStoreNoMore en los ocho',
+      ['storeSpent', 'storeNone', 'tipStoreNoMore'].every((k) => linea(k).length === 8), '');
+    check('tipStore lista los paquetes leídos ({p}) y ya no los da fijos, en los ocho',
+      n('tipStore').length === 8 && n('tipStore').every((l) => l.indexOf('{p}') >= 0 && !/90 (por|for|für|pour|换|के) 500/.test(l)), '');
+    const PAZ_INFO = /Los paquetes cambian|The packs change|Die Pakete ändern|Les lots changent|Os pacotes mudam|礼包每个赛季|पैक हर सीज़न/;
+    check('la ficha «Saber más» lo cuenta en los ocho',
+      n('infoDescriptionText').length === 8 && n('infoDescriptionText').every((l) => PAZ_INFO.test(l)), '');
+    const readme = fs.readFileSync(__dirname + '/../README.md', 'utf8');
+    check('el README lo cuenta en los dos idiomas', /Season of Peace adds 15 for 50/.test(readme) && /Temporada de la Paz añade 15 por 50/.test(readme)
+      && /no more can be earned/.test(readme) && /ya no se gana ninguna/.test(readme) && !/25 fichas compran 100 ARP/.test(readme), '');
   }
 }
 
