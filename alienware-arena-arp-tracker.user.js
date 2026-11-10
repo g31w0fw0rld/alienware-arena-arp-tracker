@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Alienware Arena ARP Tracker
 // @namespace    http://tampermonkey.net/
-// @version      1.3.16
+// @version      1.3.17
 // @description  ARP panel for Alienware Arena. Almost everything you earn there expires —at 00:00 UTC, on Monday, when the season closes, when an event ends— and the site never says it in one place. This panel does: on any page, what you have left to do, how long you have and a warning before you lose it. It only reads, it never claims. Every line is explained in "Learn more", inside the panel, and the rest is in the repository. Eight languages.
 // @icon         data:image/png;base64,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
 // @match        https://www.alienwarearena.com/*
@@ -16,7 +16,7 @@
 (function () {
     'use strict';
 
-    const SCRIPT_VERSION = '1.3.16';
+    const SCRIPT_VERSION = '1.3.17';
 
     // ------------------------------------------------------------------
     // Idiomas
@@ -147,6 +147,7 @@
             tipSimPrize: 'What your log calls «Game Prize»: a prize of varying size that usually drops on the day you complete the daily quest. It is not fixed and it does not always drop.',
             tipSimOther: 'What your log carries that is not a daily source: {n}. It starts unticked because it rarely repeats.',
             mSim: 'The Battle Pass clock opens a simulator. You tick what you do each day and it tells you whether you finish the pass before it closes, or which milestone you stop at and how much ARP a day you are short. What each milestone still needs and the ARP boosts the pass itself still gives come from its page; your pace, from the last 28 days of your ARP log, which is only requested when you open it, and once a day.',
+            mPassPage: 'On the Battle Pass page, the script brings the milestone that matters into view and highlights it: the first one ready to claim, with its popup open so the button is at hand, or, if there is none, the one under way. And when you claim one, it reloads the page: the site marks it as claimed without reloading, but neither the next milestone nor the tokens catch up until the page loads again. Claiming is still up to you.',
             mVersion: 'Version {v}',
             discord: 'Discord', tipDiscord: 'The site says Discord pays for two things — the polls and the «Arena Adventures» — and states no amount for either. The 5 here is what a day has been seen to pay; if a day pays more, this line shows it. There is no counter for it anywhere on the site, so it is read from your own ARP log, filtered to today. It only pays MONDAY TO FRIDAY: at the weekend the line goes quiet instead of asking you for something you cannot do.',
             store: 'Battle Store', storePack: '{a} ARP for {f}', storeShort: '{n} tokens short', qPass: 'Battle Pass', passNone: 'not started', passClosed: 'season over', passClaim: '{n} to claim',
@@ -219,6 +220,7 @@
             tipSimPrize: 'Lo que tu registro llama «Game Prize»: un premio de cantidad variable que suele caer el día que completas la quest diaria. No es fijo y no siempre cae.',
             tipSimOther: 'Lo que tu registro trae sin ser una fuente de cada día: {n}. Va sin marcar porque no suele repetirse.',
             mSim: 'El reloj del pase de batalla abre un simulador. Marcas lo que haces cada día y te dice si completas el pase antes de que cierre, o en qué hito te quedas y cuánto ARP al día te falta. Lo que le falta a cada hito y los aumentos de ARP que aún da el propio pase salen de su página; tu ritmo, de los últimos 28 días de tu registro de ARP, que solo se pide al abrirlo, y una vez al día.',
+            mPassPage: 'En la página del pase, el script lleva la vista al hito que toca y lo resalta: el primero por reclamar, con su ventana abierta para que tengas el botón a mano, o, si no hay ninguno, el que está en curso. Y cuando reclamas uno, recarga la página: el sitio lo marca como cobrado sin recargar, pero ni el hito siguiente ni las fichas se ponen al día hasta que se vuelve a cargar. Reclamar lo sigues haciendo tú.',
             mVersion: 'Versión {v}',
             discord: 'Discord', tipDiscord: 'El sitio dice que Discord paga por dos cosas —las encuestas y las «Arena Adventures»— y no publica el importe de ninguna. Los 5 de aquí son lo que se ha visto pagar en un día; si un día paga más, la línea lo enseña. No hay contador para esto en ninguna parte del sitio, así que se lee de tu propio registro de ARP, filtrado a hoy. Solo paga de LUNES A VIERNES: el fin de semana la línea se calla en vez de pedirte algo que no se puede hacer.',
             store: 'Tienda de batalla', storePack: '{a} ARP por {f}', storeShort: 'faltan {n} fichas', qPass: 'Pase de batalla', passNone: 'sin empezar', passClosed: 'temporada cerrada', passClaim: '{n} por reclamar',
@@ -291,6 +293,7 @@
             tipSimPrize: 'Was dein Log «Game Prize» nennt: ein Preis von wechselnder Höhe, der meist an dem Tag fällt, an dem du die Tagesquest abschließt. Er ist nicht fest und fällt nicht immer.',
             tipSimOther: 'Was dein Log enthält, ohne eine tägliche Quelle zu sein: {n}. Es ist nicht angehakt, weil es sich selten wiederholt.',
             mSim: 'Die Uhr des Battle Pass öffnet einen Simulator. Du hakst ab, was du jeden Tag machst, und er sagt dir, ob du den Pass vor dem Ende abschließt oder bei welchem Meilenstein du stehen bleibst und wie viel ARP pro Tag dir fehlt. Was jedem Meilenstein noch fehlt und die ARP-Boosts, die der Pass selbst noch gibt, kommen von seiner Seite; dein Tempo aus den letzten 28 Tagen deines ARP-Logs, das nur beim Öffnen abgefragt wird, und einmal am Tag.',
+            mPassPage: 'Auf der Battle-Pass-Seite holt das Skript den Meilenstein, auf den es ankommt, ins Bild und hebt ihn hervor: den ersten, der abgeholt werden kann, mit geöffnetem Fenster, damit du den Knopf zur Hand hast, oder, wenn es keinen gibt, den laufenden. Und wenn du einen abholst, lädt es die Seite neu: Die Seite markiert ihn ohne Neuladen als abgeholt, aber weder der nächste Meilenstein noch die Marken werden aktualisiert, bis sie neu geladen wird. Abholen musst du weiterhin selbst.',
             mVersion: 'Version {v}',
             discord: 'Discord', tipDiscord: 'Laut Seite zahlt Discord für zwei Dinge — die Umfragen und die «Arena Adventures» — und nennt für keines einen Betrag. Die 5 hier sind das, was ein Tag bisher gebracht hat; bringt ein Tag mehr, zeigt die Zeile es. Einen Zähler dafür gibt es auf der Seite nirgends, also wird aus deinem eigenen ARP-Log gelesen, auf heute gefiltert. Es zahlt nur von MONTAG BIS FREITAG: am Wochenende schweigt die Zeile, statt dich um etwas Unmögliches zu bitten.',
             store: 'Battle Store', storePack: '{a} ARP für {f}', storeShort: '{n} Marken fehlen', qPass: 'Battle Pass', passNone: 'nicht gestartet', passClosed: 'Saison beendet', passClaim: '{n} abzuholen',
@@ -363,6 +366,7 @@
             tipSimPrize: 'Ce que ton journal appelle «Game Prize» : un prix de montant variable qui tombe d’habitude le jour où tu termines la quête du jour. Il n’est pas fixe et ne tombe pas toujours.',
             tipSimOther: 'Ce que ton journal contient sans être une source quotidienne : {n}. Ce n’est pas coché parce que ça se répète rarement.',
             mSim: 'L’horloge du pass de combat ouvre un simulateur. Tu coches ce que tu fais chaque jour et il te dit si tu termines le pass avant la fin, ou à quel palier tu t’arrêtes et combien d’ARP par jour il te manque. Ce qu’il manque à chaque palier et les boosts d’ARP que le pass donne encore viennent de sa page ; ton rythme, des 28 derniers jours de ton journal d’ARP, demandés seulement quand tu l’ouvres, et une fois par jour.',
+            mPassPage: 'Sur la page du pass de combat, le script amène à l’écran le palier qui compte et le met en évidence : le premier à récupérer, avec sa fenêtre ouverte pour que tu aies le bouton sous la main, ou, s’il n’y en a aucun, celui en cours. Et quand tu en récupères un, il recharge la page : le site le marque comme récupéré sans recharger, mais ni le palier suivant ni les jetons ne se mettent à jour avant le rechargement. Récupérer reste ton affaire.',
             mVersion: 'Version {v}',
             discord: 'Discord', tipDiscord: 'Le site dit que Discord paie pour deux choses — les sondages et les «Arena Adventures» — et n’annonce le montant d’aucune. Le 5 ici est ce qu’une journée a rapporté jusqu’ici ; si une journée rapporte plus, la ligne l’affiche. Il n’y a de compteur pour ça nulle part sur le site, donc c’est lu depuis ton propre journal d’ARP, filtré sur aujourd’hui. Ça ne paie que du LUNDI AU VENDREDI : le week-end, la ligne se tait au lieu de te demander l’impossible.',
             store: 'Boutique de combat', storePack: '{a} ARP pour {f}', storeShort: 'il manque {n} jetons', qPass: 'Pass de combat', passNone: 'pas démarré', passClosed: 'saison terminée', passClaim: '{n} à récupérer',
@@ -435,6 +439,7 @@
             tipSimPrize: 'O que o teu registo chama «Game Prize»: um prémio de valor variável que costuma cair no dia em que completas a missão diária. Não é fixo e nem sempre cai.',
             tipSimOther: 'O que o teu registo traz sem ser uma fonte diária: {n}. Fica por marcar porque raramente se repete.',
             mSim: 'O relógio do passe de batalha abre um simulador. Marcas o que fazes todos os dias e ele diz-te se completas o passe antes de fechar, ou em que marco ficas e quanto ARP por dia te falta. O que falta a cada marco e os aumentos de ARP que o próprio passe ainda dá saem da página dele; o teu ritmo, dos últimos 28 dias do teu registo de ARP, que só é pedido quando o abres, e uma vez por dia.',
+            mPassPage: 'Na página do passe, o script leva a vista ao marco que interessa e destaca-o: o primeiro a reclamar, com a janela aberta para teres o botão à mão, ou, se não houver nenhum, o que está em curso. E quando reclamas um, recarrega a página: o site marca-o como reclamado sem recarregar, mas nem o marco seguinte nem as fichas se atualizam até a página voltar a carregar. Reclamar continua a ser contigo.',
             mVersion: 'Versão {v}',
             discord: 'Discord', tipDiscord: 'O site diz que o Discord paga por duas coisas —os inquéritos e as «Arena Adventures»— e não publica o valor de nenhuma. Os 5 daqui são o que se viu um dia pagar; se um dia pagar mais, a linha mostra-o. Não há contador para isto em lado nenhum do site, por isso lê-se do teu próprio registo de ARP, filtrado a hoje. Só paga de SEGUNDA A SEXTA: ao fim de semana a linha cala-se em vez de te pedir algo que não dá para fazer.',
             store: 'Loja de batalha', storePack: '{a} ARP por {f}', storeShort: 'faltam {n} fichas', qPass: 'Passe de batalha', passNone: 'por começar', passClosed: 'temporada fechada', passClaim: '{n} a reclamar',
@@ -507,6 +512,7 @@
             tipSimPrize: 'O que seu registro chama de «Game Prize»: um prêmio de valor variável que costuma cair no dia em que você completa a missão diária. Não é fixo e nem sempre cai.',
             tipSimOther: 'O que seu registro traz sem ser uma fonte diária: {n}. Fica desmarcado porque raramente se repete.',
             mSim: 'O relógio do passe de batalha abre um simulador. Você marca o que faz todo dia e ele diz se você completa o passe antes de fechar, ou em que marco você para e quanto ARP por dia falta. O que falta em cada marco e os aumentos de ARP que o próprio passe ainda dá saem da página dele; o seu ritmo, dos últimos 28 dias do seu registro de ARP, que só é pedido quando você o abre, e uma vez por dia.',
+            mPassPage: 'Na página do passe, o script leva a tela até o marco que importa e o destaca: o primeiro para resgatar, com a janela aberta para você ter o botão à mão, ou, se não houver nenhum, o que está em andamento. E quando você resgata um, ele recarrega a página: o site o marca como resgatado sem recarregar, mas nem o marco seguinte nem as fichas se atualizam até a página carregar de novo. Resgatar continua sendo com você.',
             mVersion: 'Versão {v}',
             discord: 'Discord', tipDiscord: 'O site diz que o Discord paga por duas coisas —as enquetes e as «Arena Adventures»— e não informa o valor de nenhuma. Os 5 daqui são o que já se viu um dia pagar; se um dia pagar mais, a linha mostra. Não existe contador para isso em lugar nenhum do site, então é lido do seu próprio registro de ARP, filtrado para hoje. Só paga de SEGUNDA A SEXTA: no fim de semana a linha se cala em vez de pedir algo que não dá para fazer.',
             store: 'Loja de batalha', storePack: '{a} ARP por {f}', storeShort: 'faltam {n} fichas', qPass: 'Passe de batalha', passNone: 'não iniciado', passClosed: 'temporada encerrada', passClaim: '{n} para resgatar',
@@ -579,6 +585,7 @@
             tipSimPrize: '你的记录里叫「Game Prize」的东西：数额不定的奖励，通常在你完成每日任务的那天掉落。它不固定，也不是每次都有。',
             tipSimOther: '你的记录里有、但不是每日来源的：{n}。默认不勾选，因为它很少重复。',
             mSim: '战斗通行证的倒计时会打开一个模拟器。勾选你每天做的事，它会告诉你能否在结束前走完通行证，或者会停在哪个里程碑、每天还差多少 ARP。每个里程碑还差多少、通行证本身还会给的 ARP 加成，都来自它的页面；你的节奏来自你 ARP 记录的最近 28 天，只在你打开它时读取，每天一次。',
+            mPassPage: '在通行证页面上，脚本会把该处理的里程碑带到视野中并高亮：第一个待领取的，并打开它的窗口，让领取按钮就在手边；如果没有，就是进行中的那个。你领取一个之后，它会重新加载页面：站点会在不刷新的情况下把它标为已领取，但下一个里程碑和代币要等页面重新加载才会更新。领取仍然由你来点。',
             mVersion: '版本 {v}',
             discord: 'Discord', tipDiscord: '站点说 Discord 有两件事给 ARP——投票和「Arena Adventures」——但两者都没公布金额。这里的 5 是目前见过的一天所得；若某天给得更多，这一行会照实显示。站点上任何地方都没有它的计数器，所以是从你自己的 ARP 记录里读的，按今天过滤。它只在周一至周五发放：周末这一行会安静下来，而不是要求你做不到的事。',
             store: '战斗商店', storePack: '{f} 换 {a} ARP', storeShort: '还差 {n} 代币', qPass: '战斗通行证', passNone: '尚未开始', passClosed: '赛季已结束', passClaim: '{n} 待领取',
@@ -651,6 +658,7 @@
             tipSimPrize: 'जिसे आपका रजिस्टर «Game Prize» कहता है: अलग-अलग रकम का इनाम, जो आम तौर पर उस दिन मिलता है जिस दिन आप दैनिक क्वेस्ट पूरी करते हैं। यह तय नहीं है और हमेशा नहीं मिलता।',
             tipSimOther: 'आपके रजिस्टर में जो है पर रोज़ का स्रोत नहीं है: {n}। यह बिना टिक के है क्योंकि यह कम ही दोहराया जाता है।',
             mSim: 'बैटल पास की घड़ी एक सिम्युलेटर खोलती है। आप जो रोज़ करते हैं उस पर टिक करें, और यह बताता है कि आप बंद होने से पहले पास पूरा करते हैं या नहीं, या आप किस पड़ाव पर रुकेंगे और रोज़ कितना ARP कम है। हर पड़ाव में कितना बाक़ी है और पास ख़ुद जो ARP बूस्ट अभी देगा, वह उसके पेज से आता है; आपकी रफ़्तार आपके ARP रजिस्टर के पिछले 28 दिनों से, जो सिर्फ़ इसे खोलने पर मांगा जाता है, और दिन में एक बार।',
+            mPassPage: 'पास के पेज पर, स्क्रिप्ट उस पड़ाव को नज़र के सामने लाकर हाइलाइट करती है जो अभी मायने रखता है: पहला जिसे लिया जा सकता है, उसकी विंडो खोलकर ताकि बटन हाथ में रहे, या अगर ऐसा कोई नहीं है, तो जो चल रहा है। और जब आप कोई पड़ाव लेते हैं, तो वह पेज फिर से लोड करती है: साइट उसे बिना रीलोड किए लिया हुआ दिखा देती है, लेकिन अगला पड़ाव और टोकन तब तक अपडेट नहीं होते जब तक पेज फिर से लोड न हो। लेना अब भी आपके हाथ में है।',
             mVersion: 'संस्करण {v}',
             discord: 'Discord', tipDiscord: 'साइट कहती है कि Discord दो चीज़ों के लिए ARP देता है — पोल और «Arena Adventures» — और दोनों की रकम नहीं बताती। यहाँ का 5 वह है जो एक दिन में मिलते देखा गया है; किसी दिन ज़्यादा मिले तो यह पंक्ति वही दिखाएगी। साइट पर इसका काउंटर कहीं नहीं है, इसलिए यह आपके ही ARP रजिस्टर से पढ़ी जाती है, आज पर फ़िल्टर करके। यह सिर्फ़ सोमवार से शुक्रवार तक देता है: सप्ताहांत में यह पंक्ति चुप रहती है, बजाय ऐसा कुछ माँगने के जो किया ही नहीं जा सकता।',
             store: 'बैटल स्टोर', storePack: '{f} में {a} ARP', storeShort: '{n} टोकन कम हैं', qPass: 'बैटल पास', passNone: 'शुरू नहीं किया', passClosed: 'सीज़न खत्म', passClaim: '{n} लेना बाकी',
@@ -3070,7 +3078,7 @@
             [t('infoDescription'), [t('infoDescriptionText')]],
             // Los cinco párrafos de «cómo funciona esto» viven aquí, que es donde
             // caben: son lo que no se puede explicar en un tooltip de una línea.
-            [t('title'), [t('mDaily'), t('mQuests'), t('mQuestTime'), t('mEvento'), t('mTwitch'), t('mSim'), t('mLate')]],
+            [t('title'), [t('mDaily'), t('mQuests'), t('mQuestTime'), t('mEvento'), t('mTwitch'), t('mSim'), t('mPassPage'), t('mLate')]],
             [t('infoPrivacy'), [t('infoPrivacyText'), t('mIntro')]],
         ].forEach(([titulo, parrafos], n) => {
             const h = el('div', 'awa-modal__h');
@@ -3575,6 +3583,88 @@
         try { flk.select(i); } catch (e) { return; }
         if (unido) bajarA(celda.closest('.rewards-section') || celda);
         resaltar(celda);
+    }
+
+    // ------------------------------------------------------------------
+    // La página del pase: el hito que toca, y recargar al reclamar
+    // ------------------------------------------------------------------
+    // El sitio abre la página del pase arriba del todo, con el mapa entero y sin decir por dónde
+    // vas; en móvil su carrusel salta al hito en curso, pero no a uno por reclamar. Así que al
+    // entrar se lleva la vista al hito que toca —el primero por reclamar y, si no hay, el que está
+    // en curso— y se resalta. El de reclamar, además, con su ventana abierta, que es donde está el
+    // botón: abrirla es lo mismo que pulsar el hito, y reclamar lo sigue haciendo el usuario.
+    //
+    // Escritorio y móvil a la vez y sin preguntar cuál se ve: el sitio esconde el mapa que no
+    // toca, y `scrollIntoView` sobre algo sin caja no hace nada. En móvil no se abre la ventana: allí
+    // es un modal a pantalla completa, y taparía justo lo que se quería enseñar.
+    function hitoQueToca(doc) {
+        const marcas = Array.prototype.slice.call(doc.querySelectorAll(SEL.passMarker))
+            .sort((a, b) => (num(a.getAttribute('data-index')) || 0) - (num(b.getAttribute('data-index')) || 0));
+        return marcas.find((m) => m.getAttribute('data-state') === 'unlockable')
+            || marcas.find((m) => m.getAttribute('data-state') === 'in_progress') || null;
+    }
+
+    function centrar(nodo) {
+        if (!nodo || typeof nodo.scrollIntoView !== 'function') return;
+        try { nodo.scrollIntoView({ block: 'center', inline: 'nearest' }); } catch (e) { /* sin scroll */ }
+    }
+
+    function enfocarPase(intento) {
+        if (!rutaPase(location.pathname) || !readPass(document)) return;
+        const marca = hitoQueToca(document);
+        if (!marca) return;
+        // El mapa coloca los hitos en % sobre su imagen de fondo, así que hasta que esa imagen carga
+        // el mapa no tiene su altura y el hito no está donde va a estar. Se la espera, con tope.
+        const mapa = marca.closest('.bp-map');
+        const fondo = mapa && mapa.querySelector('.bp-map__background');
+        const n = intento || 0;
+        if (fondo && fondo.complete === false && n < 16) { setTimeout(() => enfocarPase(n + 1), 250); return; }
+        centrar(marca);
+        resaltar(marca);
+        if (marca.getAttribute('data-state') === 'unlockable' && !marca.classList.contains('bp-marker--popup-open')) {
+            marca.click();
+        }
+        // Móvil: el carrusel es Flickity 2.1.2 y el sitio no guarda su instancia, pero
+        // `Flickity.data` la devuelve desde el elemento; `selectCell` busca el slide que contiene
+        // la tarjeta, que con `groupCells: 2` no es su índice.
+        const carrusel = document.getElementById('bp-mobile-carousel');
+        const id = marca.getAttribute('data-milestone-id');
+        const tarjeta = carrusel && id ? carrusel.querySelector('.bp-mobile-card[data-milestone-id="' + id + '"]') : null;
+        if (!tarjeta) return;
+        try {
+            const F = pageWindow().Flickity;
+            const flk = F && typeof F.data === 'function' ? F.data(carrusel) : null;
+            if (flk && typeof flk.selectCell === 'function') flk.selectCell(tarjeta, false, true);
+        } catch (e) { /* sin carrusel: queda donde lo dejó el sitio */ }
+        centrar(carrusel);
+        resaltar(tarjeta);
+    }
+
+    // El sitio reclama con un `fetch` y SIN recargar —«so the user keeps their carousel position»,
+    // dice su propio comentario—: si contesta `success`, cambia la ventana por «CLAIMED» y pone el
+    // hito en `data-state="claimed"` (su `updateMilestoneStateToClaimed`, leída el 2026-11-10). Nada
+    // más: ni el hito siguiente ni las fichas de la cabecera se ponen al día, y el panel seguiría
+    // diciendo «1 por reclamar». Así que ese cambio de estado es la señal, y se recarga la página un
+    // momento después, para que dé tiempo a ver el «CLAIMED». Si el reclamo falla, el sitio no toca
+    // el estado y aquí no pasa nada. Se vigilan los marcadores del mapa de escritorio, que existen
+    // también en móvil (ocultos) y el sitio actualiza siempre, se reclame desde donde se reclame.
+    const RECLAMO_MS = 1200;
+    function vigilarReclamo() {
+        if (!rutaPase(location.pathname) || typeof MutationObserver !== 'function') return;
+        const primera = document.querySelector(SEL.passMarker);
+        const caja = primera && primera.parentNode;
+        if (!caja) return;
+        let hecho = false;
+        const obs = new MutationObserver((cambios) => {
+            if (hecho) return;
+            const cobrado = cambios.some((c) => c.oldValue !== 'claimed'
+                && c.target.getAttribute('data-state') === 'claimed');
+            if (!cobrado) return;
+            hecho = true;
+            obs.disconnect();
+            setTimeout(() => location.reload(), RECLAMO_MS);
+        });
+        obs.observe(caja, { subtree: true, attributes: true, attributeFilter: ['data-state'], attributeOldValue: true });
     }
 
     // El aviso de una línea con enlace lleva pegado a dónde va; sin enlace, no
@@ -4669,6 +4759,9 @@
         enfocarPendiente();
         // Y en la página de un evento, el carrusel al hito que te toca.
         enfocarHito();
+        // Y en la del pase, el hito que toca a la vista, y recargar cuando reclames uno.
+        enfocarPase();
+        vigilarReclamo();
 
         let leyendo = false;
         // Lo último que se leyó BIEN de cada cosa. Una relectura fallida no puede

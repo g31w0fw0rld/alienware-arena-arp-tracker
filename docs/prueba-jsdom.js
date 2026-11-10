@@ -173,6 +173,10 @@ function sinCurrent(html) {
 function mount(file, urlPath, tweak) {
   const html = fs.readFileSync(path.join(DOCS, file), 'utf8');
   const vc = new VirtualConsole();           // silencio: los errores del sitio no son nuestros
+  // Pero se APUNTAN los de jsdom, sin enseñarlos: `location.reload()` no existe aquí y deja un
+  // «Not implemented: navigation…», que es la única forma de ver que el script pidió recargar (§74).
+  const errJsdom = [];
+  vc.on('jsdomError', (e) => errJsdom.push(String(e && e.message)));
   const dom = new JSDOM(html, {
     url: 'https://www.alienwarearena.com' + (urlPath || '/'),
     runScripts: 'outside-only',
@@ -180,6 +184,7 @@ function mount(file, urlPath, tweak) {
     pretendToBeVisual: true,
   });
   const w = dom.window;
+  w.__jsdomErrors = errJsdom;
   // Los `console.warn` del script son diagnóstico DELIBERADO —distinguen «no
   // sonó» de «no le tocaba», y «no hay filas» de «no llegó la respuesta»—, así
   // que son parte de lo que hay que comprobar y no ruido que silenciar.
@@ -4574,6 +4579,112 @@ console.log('\n=== 73. El simulador del pase: el reloj abre una casilla por fuen
     check('el README lo cuenta en los dos idiomas, y la privacidad los 28 días',
       /The Battle Pass clock opens a simulator/.test(readme) && /El reloj del pase de batalla abre un simulador/.test(readme)
         && /last 28 days of `\/account\/arp-log`/.test(readme) && /últimos 28 días de `\/account\/arp-log`/.test(readme), '');
+  }
+}
+
+console.log('\n=== 74. La página del pase: el hito que toca a la vista, y recargar al reclamar ===');
+// El sitio abre la página del pase arriba del todo, y al reclamar un hito no recarga: lo pone en
+// `data-state="claimed"` y nada más (su `updateMilestoneStateToClaimed`). El volcado de la Beta, de
+// agosto, es el único con un hito por reclamar de verdad —`data-state="unlockable"`, la insignia
+// «Ready to claim» y el `form[data-claim-form]`—, además de uno en curso, 28 bloqueados y el carrusel.
+{
+  const BETA = 'dom-battle-pass-2026-08.html';
+  const P1 = '/control-center/battle-pass/1';
+  const html = leer(BETA);
+  check('control: la Beta trae un hito por reclamar (el 1), uno en curso y su tarjeta móvil',
+    (html.match(/data-state="unlockable"/g) || []).length === 1 && (html.match(/data-state="in_progress"/g) || []).length === 1
+      && /bp-mobile-card--unlockable/.test(html) && /id="bp-mobile-carousel"/.test(html), '');
+  // Los dobles. `scrollIntoView` no existe en jsdom y en los navegadores sí; Flickity tampoco, que el
+  // sitio carga de cdnjs (2.1.2: `Flickity.data` y `selectCell`). Y se apuntan los clics en los hitos
+  // y cualquier envío de formulario.
+  const preparar = (win) => {
+    win.__scroll = []; win.__sel = []; win.__clics = []; win.__envios = 0;
+    win.Element.prototype.scrollIntoView = function (o) { win.__scroll.push([this, o]); };
+    win.Flickity = { data: (el) => (el && el.id === 'bp-mobile-carousel'
+      ? { selectCell: (c, envolver, alInstante) => win.__sel.push([c, envolver, alInstante]) } : undefined) };
+    win.document.querySelectorAll('.bp-marker').forEach((m) => m.addEventListener('click', () => win.__clics.push(m.getAttribute('data-milestone-id'))));
+    win.document.addEventListener('submit', () => { win.__envios++; }, true);
+    // Las imágenes no cargan en jsdom (`complete` se queda en false). En el navegador el fondo del mapa
+    // carga enseguida; aquí se da por cargado salvo que la prueba diga lo contrario con `__fondoListo`.
+    win.__fondoListo = true;
+    win.document.querySelectorAll('.bp-map__background').forEach((img) => {
+      Object.defineProperty(img, 'complete', { configurable: true, get: () => win.__fondoListo });
+    });
+  };
+  const recargas = (w) => w.__jsdomErrors.filter((e) => /navigation/i.test(e)).length;
+  const espera = (ms) => new Promise((r) => setTimeout(r, ms));
+  {
+    const w = mount(BETA, P1, preparar); await tick(); await tick();
+    const marca = w.document.querySelector('.bp-marker[data-milestone-id="1"]');
+    const s = w.__scroll.find((x) => x[0] === marca);
+    check('lleva a la vista el hito por reclamar, centrado', !!s && !!s[1] && s[1].block === 'center',
+      JSON.stringify(w.__scroll.map((x) => x[0].id || x[0].getAttribute('data-milestone-id'))));
+    check('y lo resalta', marca.classList.contains('awa-foco'), marca.className);
+    check('y abre su ventana una vez, pulsando el hito', w.__clics.join(',') === '1', w.__clics.join(','));
+    check('sin enviar nada: reclamar sigue siendo cosa del usuario', w.__envios === 0 && !w.fetched.some((u) => /claim/.test(u)), JSON.stringify(w.fetched));
+    const tarjeta = w.document.querySelector('.bp-mobile-card[data-milestone-id="1"]');
+    check('en móvil, el carrusel salta a su tarjeta, sin animar', w.__sel.length === 1 && w.__sel[0][0] === tarjeta && w.__sel[0][2] === true,
+      String(w.__sel.length));
+    check('y el carrusel se centra y la tarjeta se resalta', w.__scroll.some((x) => x[0].id === 'bp-mobile-carousel') && tarjeta.classList.contains('awa-foco'), '');
+  }
+  {
+    // Con el fondo del mapa aún sin cargar, espera: el mapa todavía no tiene su altura y el hito no
+    // está donde va a estar. En cuanto carga, centra.
+    const w = mount(BETA, P1, (win) => { preparar(win); win.__fondoListo = false; }); await tick(); await tick();
+    check('con el fondo del mapa sin cargar todavía no centra', !w.__scroll.length, String(w.__scroll.length));
+    w.__fondoListo = true;
+    await espera(400);
+    check('y en cuanto carga, centra el hito por reclamar',
+      w.__scroll.some((x) => x[0].getAttribute && x[0].getAttribute('data-milestone-id') === '1'), String(w.__scroll.length));
+  }
+  {
+    const sinReclamar = html.replace('data-state="unlockable"', 'data-state="claimed"');
+    check('control: la copia ya no tiene hitos por reclamar', !/data-state="unlockable"/.test(sinReclamar), '');
+    const w = montarTmp(sinReclamar, P1, preparar); await tick(); await tick();
+    const enCurso = w.document.querySelector('.bp-marker[data-state="in_progress"]');
+    check('sin nada por reclamar, va al hito en curso y lo resalta',
+      !!enCurso && w.__scroll.some((x) => x[0] === enCurso) && enCurso.classList.contains('awa-foco'), '');
+    check('y no abre ninguna ventana', !w.__clics.length, w.__clics.join(','));
+  }
+  {
+    const w = mount('dom-battle-pass-anniversary-completed-2026-10-16.html', '/control-center/battle-pass/2', preparar); await tick(); await tick();
+    check('con todos los hitos cobrados no se mueve nada', !w.__scroll.length && !w.__clics.length, String(w.__scroll.length));
+    const q = mount('dom-steam-quest-fixed-unstarted-2026-08.html', '/steam/quest/prueba', preparar); await tick(); await tick();
+    check('y fuera de la página del pase, tampoco', !q.__scroll.length, '');
+  }
+  {
+    const w = mount(BETA, P1, preparar); await tick(); await tick();
+    check('control: sin reclamar no se recarga', recargas(w) === 0, w.__jsdomErrors.join(' | '));
+    const marca = w.document.querySelector('.bp-marker[data-milestone-id="1"]');
+    // Cambiar solo la clase —la primera línea de lo que hace el sitio— no es la señal.
+    marca.className = marca.className.replace(/bp-marker--\w+/g, 'bp-marker--claimed');
+    await espera(1400);
+    check('cambiar solo la clase no recarga', recargas(w) === 0, '');
+    // El reclamo con éxito: el sitio pone el estado en `claimed`.
+    marca.setAttribute('data-state', 'claimed');
+    await tick();
+    check('no recarga al instante: deja ver el «CLAIMED»', recargas(w) === 0, '');
+    await espera(1400);
+    check('reclamado con éxito, recarga la página, una vez', recargas(w) === 1, w.__jsdomErrors.join(' | '));
+  }
+  {
+    // Otro cambio de estado que no es un reclamo —el hito en curso que pasa a por reclamar— no recarga.
+    const w = mount(BETA, P1, preparar); await tick(); await tick();
+    w.document.querySelector('.bp-marker[data-state="in_progress"]').setAttribute('data-state', 'unlockable');
+    await espera(1400);
+    check('pasar a «por reclamar» no recarga', recargas(w) === 0, w.__jsdomErrors.join(' | '));
+  }
+  {
+    const valores = SCRIPT.split('\n').filter((l) => /^\s*mPassPage: '/.test(l));
+    check('mPassPage en los ocho idiomas, distinto en cada uno, y «Saber más» lo pinta',
+      valores.length === 8 && new Set(valores.map((l) => l.trim())).size === 8 && /t\('mPassPage'\)/.test(SCRIPT), String(valores.length));
+    const w = mount('dom-steam-quest-fixed-unstarted-2026-08.html', '/steam/quest/prueba', (win) => win.localStorage.setItem('awa-arp-lang', 'es'));
+    await tick(); await tick();
+    const info = w.document.querySelector('#awa-arp-widget .awa-w__btn--info'); if (info) info.click(); await tick();
+    check('«Saber más» lo cuenta', /En la página del pase, el script lleva la vista al hito que toca/.test(txt(w, '#awa-arp-modal') || ''), '');
+    const readme = fs.readFileSync(__dirname + '/../README.md', 'utf8');
+    check('y el README, en los dos idiomas', /\*\*On the Battle Pass page\*\*, the view goes to the milestone that matters/.test(readme)
+      && /\*\*En la página del pase\*\*, la vista va al hito que toca/.test(readme), '');
   }
 }
 
