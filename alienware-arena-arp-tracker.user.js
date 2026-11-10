@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Alienware Arena ARP Tracker
 // @namespace    http://tampermonkey.net/
-// @version      1.3.15
+// @version      1.3.16
 // @description  ARP panel for Alienware Arena. Almost everything you earn there expires —at 00:00 UTC, on Monday, when the season closes, when an event ends— and the site never says it in one place. This panel does: on any page, what you have left to do, how long you have and a warning before you lose it. It only reads, it never claims. Every line is explained in "Learn more", inside the panel, and the rest is in the repository. Eight languages.
 // @icon         data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAAAAXNSR0IArs4c6QAACn9JREFUWIWlmVusXVUVhv//H3OtfW69AB56ihbFArXaCBargle84QOS4CWaGI3x8uCDGsX7PSaA6INKFOMDGhNNbNSgqDFi1aBYLVQUUFJAkEu5WECkUGw5e43hw5xz7bUBK8LMzj77rLPPXt/5xz/GmHMcLi4uYbiCAAESQohIRCuMhBlxVpxPnJcWjHPiTLKR1IqNaIQQjGAEwiMciIiI6BAeiHrFgQADEQAYERFAAMhXkHoQgADAKD9GEBEIRAQ86IAjPBgIB52Mgk+QJEUoHBH5ahQyIBjw/FEAIhwAyMJEIt8kX0kFb8g0rRjgQCA8Y0V0QQeif5CQMpVARmSmCEfWKxhgvhIgwICDQHlnAMxagZwoNFhE+VMQRAx+0bM2iC7QAQ4GWRQSRaqKk6MH9wAivH4CA94HpwSuRA0gGRGPBDStUCAAj2wEdlmhCC/KZYGzSBShHsgJZlP1Dw/AgyQBr1hkRDYcSB4cKPqoZVsGPNBFdIgusl8QZBBBUiIhUhEMRqbxqm6VmfCAAmCvUAlM9RDrjTmFMbkSAQe6CA90Dld0UR7jiC48a9YBIkVCUhAinE6EM4J0BOGecyVqmhEROdeYfWLz8ws5zwcQkwfLCxFEGCKRRiQyEZavE8Tw98tSdhWpkoXl03vX5d/q74V88SEh41CeybsjAg4uhzfuTnaOcefLkIlad/Ti2iMOs9T86+79u2/cOx6PzVqpJZOZkUHQKaDLCRbZeR45JyLgHgSDgShZxkGkeojMN/k24I5l+JjouuiefeJRb37HKS955TMXVsz2f8SB/cuX/u6mC7detXP7bdDIRDMjwS4IEp0Hq5+c5S4hIaIQcXFx7bRpMpz6Yg0IYQgBid7SZ9YsPumcc993yqnPPUg6XHHZ7s9/8td7bj+QNBNh4fDOu67zceedh0e4l2TNGeYl+21+bsW0dTBsHajPRGI0jLRh4zEXXPTl40849iA0AJaeuPKU05521eW33vmPB0wmGsvHApGdhGo+Vv8QoM3PrRxwlDDlxlRpDGGMxEhr1qz94UXnrT3iCQenyasdpRe9Yv3vfnXD/fcum6Xs7sgQ0d8vZ0CfE9QgWEAuKFOJVmLHMKL53Bc/sLT2UdHkNb/Qfvisk8ExGWaWUjIzM6MkiZJUUpL9q4GLBxAxuBIlaptP2PSqU1/46GnyOvbpi89/2ZEBN5OllFIyS7JMMOEoWCwK1ZxCHyxmX6M0K0Okt7z99P+XJq9TX78x0ElIyVJqLCUz01CevnCJqQqDKZ0yTWlMZKhp2scgT16bNi8trEjL+0OmlFtal8IjAqUE5FwDiEnIxBCLKhoGjjCEbXz60StXLTw2IDNt2nx4wClKZpYsmVnKNuLARxMPcVIAhzS5AhmgTc/c8Nho8lq/4VDACUgyyWT5S/b2wEZM/4WmSEWUUnTU+ic9HqC161bmukeRylQOORwuZwjueUuZHpGGE6aMq/8r2x++Djt8rm4vKeaEF2QhCAjvN9Bl+zEVqUGNzr42gqsPWfF4gFasHJW9et4yTbYECsDpwbKPTQ+jsUHHICLlRJuZGT0eoHZkWYC+TYgMiR6TWl225YPCSNh0SbT8TJj74+Hpg9IToVco05TtUb8tr/7tHV2eFYlIRLpv7wN/u3b3pz94/i037nn0HPfc/cD5526/cuet+/Yt146EClBoCtN06xCgQWM3RhJaRUuMGC0xuu3mu8Pxza/+/KXHnfGlMy8Yj7v/IUngwq1/eeurv7v1/CsOHOjuvGNfbq65K7C2916nvnKrWoeFJhLQECPFjDCnmDXMWrRXX3nzk5+6NDc7N17muWdd+LbTv7zvvv3/jWa83J3zsV99/Qs7fdykNHrK0YfdcM09lGGyj53wAFNkwyQXoyFaixnDjNgaG1NjbKT0+4t3NcleddpzzZpk7Y7fXP/O1523/98PPpym6/zMD//ykm23tu2clJ5x/NLimvk/7bhDSlWkXIsrSv4yUCiH1hStMFKMiIZM6h9KYrrzjr3bL776/Z967cpV82ZNSqOr/njbp977vYcDfePcHTsuvi2lFoAs3vG+Lbtv2vv3a/dmoClLV6X6PitJhLJjiJZIookm2BQTk5S+9bVtRx51+Ne3vnv1oQtmSqn5xY+v/sn3/jSk+fOlu7//rSskuXeWxmd89qQNmxZ/vHWX1PRAg2Y+cHdRSLZi5olEy2jEJFZtlIxNT0MmIt18w50vfPmmzc9bf9obtuy778CN19/lzqsuv+U1b9rSjhKA8dg/+q4f7r13uWl00snrPnL2izc9a2nP7fd/5azLTLMptYSQm3s/7qhH0VKnAa5dtYVohEQ2QhKbnOdCU45gkchcLXnclqO+87MzJAJ4YN+BSy+54Zq/3v6cF6x/1nOeDODv19217ae7jnnams0nrlu5aiZrdvZHLt7523+ORguylkHvHBHuXXQRnYfXR+fuERE8YtWJYiIaMUMkoeGAjDAxAaVQfeyc177xbc8/eM73a8dvbznrQ9tnRiubNEOmfBwfQES4w93dy1EkQqIRJpqY6nMylWdTMjViMjVJbbL2K2f+fPdN/3w0NPfde+C8sy9r02xKrZT6WpwLI1C2itXgykdcMbuYRhhV00oluQqlkqkxa5LaB/fz0+/5ftf971by1c/94f570TQzpobU5NwzbBo9Uz1w2+q59cP0Li7OEaxXrLxozBpT2nP7/QROOOkpB6G56EfXXfDt60ajhaaZJVMtPGWxr5BAIBAskwfADpmtQGzEhmzERsrfDkBlWTZTktKVO3dv2LR05FMPfUSaa/961+c/vj3ZfNPMmrWqKFNTB3JyOqtvCMAOmTtGTMaGTFZ9IzZSUzj6INJUvUXYJdv+tvH4tUccufohNNfvuvsz7/11Nx617ZylNu9QJzR9xyAHhbrqRdph8xuyGJa1YSM2pmHIrEplQ4d5x20/uUbixuOWzATAu/jpD3Z94RPbxw+2bTOX0kgyUUMa8SFgE4/ncQuPXjzN2IqN5QEvmhq7JNRpEEzsa7dJiTISeXi3+gkzJ5y0zpL95fI999w1btrZtplNaWTWSMqRqH20CBF15doT3q/gsYefXlDYWu+hUpbKYCq3FNJySpqSZJRJqgkCmZk1qRml1Jq1ZslklPq0mrJLxIDJK5m7e+4MpQhNNICx1ifSCOXhYRm1Ik+CTUyqB3WZWUo5DSUr6dxvx2pqFZ3IqMNZkRFBep6GpumSaEKh6bFKiYJhglIHdaAymazU0kwfJaGp4b5nmPAIIKOUgWP5pqYPmViDQuRRgNV7TxSqJwbVUWH57FLxJlNyMCCSkVWZBItlQgSxFiGUQWxmG3AUMfKk0khlVTg5uYgw0gbDmsrk+c4BR5kjsg7cWYfv+YSMqIYqB42+XuTGn3KMJpGa+MaqJPm5N9PUySryzDkP5AuNBxmdR//fBzEAUlBJsqm+Vn2WX2SFkgZeIUwTjhIylSm9pioHQLD888EjEA4HKHgY3HPsgk6KedBKU0yc/ZDdWTH1IKWLEvnsUdMKFKtak9j1e9/SjaL+2yLcHYiAFIqI/P4Q5ZDgQWM547OeNszqxEj/AUg44ksrXGkmAAAAAElFTkSuQmCC
 // @match        https://www.alienwarearena.com/*
@@ -16,7 +16,7 @@
 (function () {
     'use strict';
 
-    const SCRIPT_VERSION = '1.3.15';
+    const SCRIPT_VERSION = '1.3.16';
 
     // ------------------------------------------------------------------
     // Idiomas
@@ -129,6 +129,24 @@
             mQuests: 'Quests do not reset. Each one is single use with its own window: the daily ones vanish when it ends, and the Steam ones run Monday to Monday.',
             mTwitch: 'Twitch ARP needs the AWA widget active on one of the channels listed in the Control Center. As measured in September 2026, it pays one ARP every 2.5 min on Hive and Nexus, which the site advertises at double speed, and one every 5 min on the rest; the site may change it. A zero here does not prove the widget is off — it also reads zero before you watch anything. Some artifacts raise the daily cap above 15: the extra is earned by watching, at the same pace, once the 15 are in, and the line then counts against the new cap.',
             mLate: 'Steam is slow on purpose: playtime and game ownership can take up to an hour to register, so a red state may just be out of date.',
+            simGo: 'Click this clock to simulate whether you reach the end of the pass: you tick what you do each day and it tells you where you end up.',
+            simTitle: 'Will you finish the pass?', simLeftK: 'Still to go:', simLeftV: '{f} ARP · you are on milestone {n} of {t}', simBoostK: 'From the pass:', simBoostV: '+{v} ARP in boosts', simBoostUnk: '{n} with no amount, not counted',
+            simEndK: 'Closes:', simEndV: '{d} · in {v}', simNeedK: 'You need:', simPerDay: '{v} ARP/day', simSources: 'What you do each day', simLoading: 'Reading your ARP log…',
+            simNoLog: 'Your ARP log could not be read: every figure is the typical one.',
+            simNoSteps: 'What each milestone still needs could not be read. Open the pass page and try again.',
+            simNotStarted: 'Your pass has not started: until you press «Start» on its page, nothing you earn counts.',
+            simYes: '✅ With what is ticked, {v} ARP/day: you finish the pass around {d}, {n} days before it closes.',
+            simNo: '❌ With what is ticked, {v} ARP/day: you stop at milestone {h}, with {p} of {c} ARP. You are {f} ARP/day short.',
+            simDone: '✅ You already have every milestone of the pass.',
+            simNote: 'Each figure is your daily average over the last {d} days, taken from your ARP log; Twitch and time on site count your best day for every day you did them. Figures marked ≈ are not in your log: they are what it usually pays someone who does it. It is a projection: real ARP goes up and down from one day to the next.',
+            simOwn: 'Your log: {s} ARP over the last {d} days.',
+            simOwnCap: 'You did it {n} of the last {d} days, and your best day paid {c}: that is what counts for every day you did it, because it is what it pays once it reaches the cap.',
+            simTypical: 'Not in your log for the last {d} days. It is what it pays someone who does it, measured on an active account in October and November 2026.',
+            simTypicalCap: 'Not in your log for the last {d} days. The daily cap, {c}, is counted.',
+            simStreak: '7-day streak', simMonth: '28-day calendar', simPrize: 'Game prize', simEvents: 'Community events', simOther: 'Other',
+            tipSimPrize: 'What your log calls «Game Prize»: a prize of varying size that usually drops on the day you complete the daily quest. It is not fixed and it does not always drop.',
+            tipSimOther: 'What your log carries that is not a daily source: {n}. It starts unticked because it rarely repeats.',
+            mSim: 'The Battle Pass clock opens a simulator. You tick what you do each day and it tells you whether you finish the pass before it closes, or which milestone you stop at and how much ARP a day you are short. What each milestone still needs and the ARP boosts the pass itself still gives come from its page; your pace, from the last 28 days of your ARP log, which is only requested when you open it, and once a day.',
             mVersion: 'Version {v}',
             discord: 'Discord', tipDiscord: 'The site says Discord pays for two things — the polls and the «Arena Adventures» — and states no amount for either. The 5 here is what a day has been seen to pay; if a day pays more, this line shows it. There is no counter for it anywhere on the site, so it is read from your own ARP log, filtered to today. It only pays MONDAY TO FRIDAY: at the weekend the line goes quiet instead of asking you for something you cannot do.',
             store: 'Battle Store', storePack: '{a} ARP for {f}', storeShort: '{n} tokens short', qPass: 'Battle Pass', passNone: 'not started', passClosed: 'season over', passClaim: '{n} to claim',
@@ -148,7 +166,7 @@
             infoAuthor: 'Author:', infoGitHub: 'GitHub:', infoDescription: 'Description:',
             infoPrivacy: 'Privacy:', accept: 'Accept', info: 'Information',
             infoDescriptionText: 'Shows what expires and when: time on site and Twitch reset at 00:00 UTC, daily quests are single use and never come back, Steam quests run Monday to Monday, and the campaign calendar has a day waiting. When there are two Steam quests and the game of the fixed one is in the picker of the one that lets you choose, picking it makes the same hour count for both. If it is a free game you don’t own, adding it to your Steam library may be enough to get it into that picker. Discord only pays Monday to Friday, so at the weekend that line goes quiet instead of asking, and clicking it opens the «Arena Connect» channel, where the polls are voted. The Battle Pass line says how far you are into the milestone you are on, and a clock counts down to the end of the pass; its tokens are wiped when the Battle Store closes, a few days later, so the panel says what yours are worth in ARP and warns you six hours before the store closes if you have any left. The packs change from one season to the next, so it reads them from the store itself every time you pass by it; and once the pass is over it stops saying how many tokens you are short, because no more can be earned. On the store page, while it is still closed, a bell like the Vault one can warn you when it opens: the games there run out in minutes. Each line says in its tooltip which clock it answers to, and two countdowns —the day and the Steam week— are redrawn on their own. The lines you complete in the Control Center take you straight to their section of it and highlight it, even if you are already there. On a giveaway page it reads the giveaway’s own per-country, per-tier stock and says whether there are keys for you before you press anything. In the Marketplace and the Vault it marks every card with what you can afford, what needs a higher tier and what is sold out. With a Marketplace discount artifact equipped, it counts the discounted price, which is what you actually pay. It can also warn you three times —before the day ends, six hours before the Steam week ends, and when the new day starts— with a dialog you have to close. There is no sound: it was tried three ways on this site and the browser blocks it every time, while the very same code does play on other sites; from inside the page there is nothing left to fix. A dialog, the 👽 mark on the tab and a band in the panel do reach you, and none of them needs a permission we do not have. It re-reads on its own every 15 minutes, and the ⟳ button re-reads everything right away. It only reads: it never claims, bids or enters anything, because all of that goes through a captcha.',
-            infoPrivacyText: 'Your settings —language, panel corner, the warning— stay in your browser only. The script reads the page you are on and, at most, asks the site once for your own Control Center, reusing your session. No third parties, and nothing is sent to the script author.',
+            infoPrivacyText: 'Your settings —language, panel corner, the warning— stay in your browser only. The script reads the page you are on and asks the site, with your session, only for pages of your own: the Control Center, your ARP log, the Battle Pass and its store, the home page and the Steam events; the pass simulator also reads the last 28 days of your log, only when you open it, and keeps nothing but each source’s total. No third parties, and nothing is sent to the script author.',
         },
         es: {
             goCC: 'Pulsa esta línea para ir a su sección del Centro de control.', goHere: 'Pulsa esta línea para bajar a su sección y resaltarla.', goPass: 'Pulsa esta línea para ir al pase de batalla.', goStore: 'Pulsa esta línea para ir a la tienda de batalla.', goVault: 'Pulsa esta línea para ir a la Bóveda y pujar. Además marca el aviso como visto.',
@@ -183,6 +201,24 @@
             mQuests: 'Las quests no se reinician. Cada una es de un solo uso con su ventana: las diarias desaparecen al acabarla, y las de Steam van de lunes a lunes.',
             mTwitch: 'El ARP de Twitch necesita el widget de AWA activo en uno de los canales de la lista del Centro de control. Según lo medido en septiembre de 2026, paga un ARP cada 2,5 min en Colmena (Hive) y Nexus, que el sitio anuncia al doble de velocidad, y uno cada 5 min en el resto; el sitio puede cambiarlo. Un cero aquí no demuestra que esté apagado: también marca cero antes de que veas nada. Algunos artefactos suben el tope diario por encima de 15: el extra se gana viendo, al mismo ritmo, cuando ya tienes los 15, y la línea pasa a contar contra el tope nuevo.',
             mLate: 'Steam va con retraso por diseño: el tiempo jugado y la propiedad de un juego tardan hasta una hora en registrarse, así que un estado en rojo puede ser solo un dato viejo.',
+            simGo: 'Pulsa este reloj para simular si llegas al final del pase: marcas lo que haces cada día y te dice dónde acabas.',
+            simTitle: '¿Llegas al final del pase?', simLeftK: 'Te falta:', simLeftV: '{f} ARP · vas por el hito {n} de {t}', simBoostK: 'Lo pone el pase:', simBoostV: '+{v} ARP en aumentos', simBoostUnk: '{n} sin cifra, no se cuentan',
+            simEndK: 'Cierra:', simEndV: '{d} · dentro de {v}', simNeedK: 'Necesitas:', simPerDay: '{v} ARP/día', simSources: 'Lo que haces cada día', simLoading: 'Leyendo tu registro de ARP…',
+            simNoLog: 'No se pudo leer tu registro de ARP: todas las cifras son las típicas.',
+            simNoSteps: 'No se pudo leer lo que le falta a cada hito. Abre la página del pase y vuelve a probar.',
+            simNotStarted: 'Tu pase está sin empezar: hasta que pulses «Iniciar» en su página no cuenta nada de lo que ganes.',
+            simYes: '✅ Con lo marcado, {v} ARP/día: completas el pase hacia el {d}, {n} días antes de que cierre.',
+            simNo: '❌ Con lo marcado, {v} ARP/día: te quedas en el hito {h}, con {p} de {c} ARP. Te faltan {f} ARP/día.',
+            simDone: '✅ Ya tienes todos los hitos del pase.',
+            simNote: 'Cada cifra es tu media diaria de los últimos {d} días, sacada de tu registro de ARP; Twitch y el tiempo en el sitio cuentan tu mejor día por cada día que los hiciste. Las cifras con ≈ no salen en tu registro: son lo que suele dar a quien lo hace. Es una proyección: el ARP de verdad sube y baja de un día a otro.',
+            simOwn: 'Tu registro: {s} ARP en los últimos {d} días.',
+            simOwnCap: 'Lo hiciste {n} de los últimos {d} días, y tu mejor día dio {c}: eso es lo que cuenta por cada día que lo hiciste, porque es lo que da en cuanto llega al tope.',
+            simTypical: 'No sale en tu registro de los últimos {d} días. Es lo que da a quien lo hace, medido en una cuenta activa en octubre y noviembre de 2026.',
+            simTypicalCap: 'No sale en tu registro de los últimos {d} días. Se cuenta el tope diario, {c}.',
+            simStreak: 'Racha de 7 días', simMonth: 'Calendario de 28 días', simPrize: 'Premio del juego', simEvents: 'Eventos comunitarios', simOther: 'Otros',
+            tipSimPrize: 'Lo que tu registro llama «Game Prize»: un premio de cantidad variable que suele caer el día que completas la quest diaria. No es fijo y no siempre cae.',
+            tipSimOther: 'Lo que tu registro trae sin ser una fuente de cada día: {n}. Va sin marcar porque no suele repetirse.',
+            mSim: 'El reloj del pase de batalla abre un simulador. Marcas lo que haces cada día y te dice si completas el pase antes de que cierre, o en qué hito te quedas y cuánto ARP al día te falta. Lo que le falta a cada hito y los aumentos de ARP que aún da el propio pase salen de su página; tu ritmo, de los últimos 28 días de tu registro de ARP, que solo se pide al abrirlo, y una vez al día.',
             mVersion: 'Versión {v}',
             discord: 'Discord', tipDiscord: 'El sitio dice que Discord paga por dos cosas —las encuestas y las «Arena Adventures»— y no publica el importe de ninguna. Los 5 de aquí son lo que se ha visto pagar en un día; si un día paga más, la línea lo enseña. No hay contador para esto en ninguna parte del sitio, así que se lee de tu propio registro de ARP, filtrado a hoy. Solo paga de LUNES A VIERNES: el fin de semana la línea se calla en vez de pedirte algo que no se puede hacer.',
             store: 'Tienda de batalla', storePack: '{a} ARP por {f}', storeShort: 'faltan {n} fichas', qPass: 'Pase de batalla', passNone: 'sin empezar', passClosed: 'temporada cerrada', passClaim: '{n} por reclamar',
@@ -202,7 +238,7 @@
             infoAuthor: 'Autor:', infoGitHub: 'GitHub:', infoDescription: 'Descripción:',
             infoPrivacy: 'Privacidad:', accept: 'Aceptar', info: 'Información',
             infoDescriptionText: 'Enseña qué caduca y cuándo: el tiempo en el sitio y Twitch se reinician a las 00:00 UTC, las quests diarias son de un solo uso y no vuelven, las de Steam van de lunes a lunes, y el calendario de campaña puede tener un día esperando. Cuando hay dos quests de Steam y el juego de la fija sale en el selector de la que te deja elegir, elegirlo hace que la misma hora cuente para las dos. Y si es un juego gratis que no tienes, añadirlo a tu biblioteca de Steam puede bastar para que salga en ese selector. Discord solo paga de lunes a viernes, así que el fin de semana esa línea se calla en vez de pedirlo, y al pulsarla abre el canal «Arena Connect», que es donde se vota en las encuestas. La línea del pase de batalla dice cuánto llevas del hito en el que vas, y un reloj cuenta lo que le queda al pase; sus fichas se borran cuando cierra la tienda de batalla, unos días después, así que el panel dice cuánto ARP valen las tuyas y te avisa seis horas antes de que cierre si te quedan. Los paquetes cambian de una temporada a otra, así que los lee de la propia tienda cada vez que pasas por ella; y en cuanto termina el pase deja de decir cuántas fichas te faltan, porque ya no se gana ninguna. En la página de la tienda, mientras no abre, una campana como la de la Bóveda puede avisarte cuando abra: sus juegos se agotan en minutos. Cada línea dice en su tooltip a qué reloj responde, y dos cuentas atrás —el día y la semana de Steam— se repintan solas. Las líneas que se cumplen en el Centro de control te llevan directo a su sección y la resaltan, aunque ya estés ahí. En la ficha de un sorteo lee el inventario por país y por nivel del propio sorteo y dice si hay claves para ti antes de pulsar nada. En el Marketplace y la Bóveda marca cada tarjeta con lo que te alcanza, lo que pide más nivel y lo que está agotado. Si llevas un artefacto de descuento del Marketplace, cuenta con el precio rebajado, que es el que se paga. También puede avisarte tres veces —antes de que acabe el día, seis horas antes de que acabe la semana de Steam, y al empezar el día nuevo— con un diálogo que hay que cerrar. No hay sonido: se intentó de tres maneras en este sitio y el navegador lo bloquea siempre, mientras que ese mismo código sí suena en otros; desde dentro de la página no queda nada que arreglar. Un diálogo, la marca 👽 en la pestaña y una banda en el panel sí te alcanzan, y ninguno depende de un permiso que no tenemos. Se relee solo cada 15 minutos, y el botón ⟳ vuelve a leerlo todo al instante. Solo lee: no reclama, no puja y no participa en nada, porque todo eso pasa por un captcha.',
-            infoPrivacyText: 'Tus ajustes —idioma, esquina del panel, el aviso— se guardan solo en tu navegador. El script lee la página en la que estás y, como mucho, le pide al sitio una vez tu propio Centro de control, reusando tu sesión. No hay terceros y no se envía nada al autor del script.',
+            infoPrivacyText: 'Tus ajustes —idioma, esquina del panel, el aviso— se guardan solo en tu navegador. El script lee la página en la que estás y le pide al sitio, con tu sesión, solo páginas tuyas: el Centro de control, tu registro de ARP, el pase de batalla y su tienda, la portada y los eventos de Steam; el simulador del pase lee además los últimos 28 días de tu registro, solo al abrirlo, y no guarda más que el total de cada fuente. No hay terceros y no se envía nada al autor del script.',
         },
         de: {
             goCC: 'Klicke auf diese Zeile, um zu ihrem Abschnitt im Control Center zu gehen.', goHere: 'Klicke auf diese Zeile, um zu ihrem Abschnitt zu scrollen und ihn hervorzuheben.', goPass: 'Klicke auf diese Zeile, um zum Battle Pass zu gehen.', goStore: 'Klicke auf diese Zeile, um zum Battle Store zu gehen.', goVault: 'Klicke auf diese Zeile, um zum Game Vault zu gehen und zu bieten. Sie markiert die Warnung außerdem als gesehen.',
@@ -237,6 +273,24 @@
             mQuests: 'Quests werden nicht zurückgesetzt. Jede ist einmalig mit eigenem Zeitfenster: Tagesquests verschwinden am Ende, Steam-Quests laufen von Montag zu Montag.',
             mTwitch: 'Twitch-ARP braucht das aktive AWA-Widget auf einem der im Control Center gelisteten Kanäle. Laut Messung vom September 2026 gibt es ein ARP alle 2,5 Min. auf Hive und Nexus, die die Seite mit doppelter Geschwindigkeit bewirbt, und eines alle 5 Min. auf den übrigen; die Seite kann das ändern. Eine Null beweist nicht, dass es aus ist — sie steht auch da, bevor du etwas ansiehst. Manche Artefakte heben das Tageslimit über 15: das Extra verdienst du durchs Zuschauen, im selben Takt, sobald die 15 da sind, und die Zeile zählt dann gegen das neue Limit.',
             mLate: 'Steam ist absichtlich langsam: Spielzeit und Spielbesitz brauchen bis zu einer Stunde, ein roter Status kann also nur veraltet sein.',
+            simGo: 'Klick auf diese Uhr, um zu simulieren, ob du das Ende des Passes erreichst: Du hakst ab, was du jeden Tag machst, und sie sagt dir, wo du landest.',
+            simTitle: 'Schaffst du den ganzen Pass?', simLeftK: 'Es fehlen:', simLeftV: '{f} ARP · du bist bei Meilenstein {n} von {t}', simBoostK: 'Vom Pass:', simBoostV: '+{v} ARP an Boosts', simBoostUnk: '{n} ohne Betrag, nicht gezählt',
+            simEndK: 'Endet:', simEndV: '{d} · in {v}', simNeedK: 'Du brauchst:', simPerDay: '{v} ARP/Tag', simSources: 'Was du jeden Tag machst', simLoading: 'Dein ARP-Log wird gelesen…',
+            simNoLog: 'Dein ARP-Log konnte nicht gelesen werden: Alle Werte sind die typischen.',
+            simNoSteps: 'Was jedem Meilenstein noch fehlt, konnte nicht gelesen werden. Öffne die Pass-Seite und versuch es noch einmal.',
+            simNotStarted: 'Dein Pass ist nicht gestartet: Bis du auf seiner Seite «Starten» drückst, zählt nichts, was du verdienst.',
+            simYes: '✅ Mit dem Angehakten, {v} ARP/Tag: Du schließt den Pass etwa am {d} ab, {n} Tage vor dem Ende.',
+            simNo: '❌ Mit dem Angehakten, {v} ARP/Tag: Du bleibst bei Meilenstein {h} stehen, mit {p} von {c} ARP. Dir fehlen {f} ARP/Tag.',
+            simDone: '✅ Du hast schon alle Meilensteine des Passes.',
+            simNote: 'Jeder Wert ist dein Tagesschnitt der letzten {d} Tage, aus deinem ARP-Log; Twitch und Zeit auf der Seite zählen deinen besten Tag für jeden Tag, an dem du sie gemacht hast. Werte mit ≈ stehen nicht in deinem Log: Sie sind das, was es jemandem, der es macht, normalerweise bringt. Es ist eine Hochrechnung: Echtes ARP schwankt von Tag zu Tag.',
+            simOwn: 'Dein Log: {s} ARP in den letzten {d} Tagen.',
+            simOwnCap: 'Du hast es an {n} der letzten {d} Tage gemacht, und dein bester Tag brachte {c}: Das zählt für jeden Tag, an dem du es gemacht hast, weil es das ist, was es bringt, sobald es das Limit erreicht.',
+            simTypical: 'Nicht in deinem Log der letzten {d} Tage. Das bringt es jemandem, der es macht, gemessen an einem aktiven Konto im Oktober und November 2026.',
+            simTypicalCap: 'Nicht in deinem Log der letzten {d} Tage. Gezählt wird das Tageslimit, {c}.',
+            simStreak: '7-Tage-Serie', simMonth: '28-Tage-Kalender', simPrize: 'Spielpreis', simEvents: 'Community-Events', simOther: 'Sonstiges',
+            tipSimPrize: 'Was dein Log «Game Prize» nennt: ein Preis von wechselnder Höhe, der meist an dem Tag fällt, an dem du die Tagesquest abschließt. Er ist nicht fest und fällt nicht immer.',
+            tipSimOther: 'Was dein Log enthält, ohne eine tägliche Quelle zu sein: {n}. Es ist nicht angehakt, weil es sich selten wiederholt.',
+            mSim: 'Die Uhr des Battle Pass öffnet einen Simulator. Du hakst ab, was du jeden Tag machst, und er sagt dir, ob du den Pass vor dem Ende abschließt oder bei welchem Meilenstein du stehen bleibst und wie viel ARP pro Tag dir fehlt. Was jedem Meilenstein noch fehlt und die ARP-Boosts, die der Pass selbst noch gibt, kommen von seiner Seite; dein Tempo aus den letzten 28 Tagen deines ARP-Logs, das nur beim Öffnen abgefragt wird, und einmal am Tag.',
             mVersion: 'Version {v}',
             discord: 'Discord', tipDiscord: 'Laut Seite zahlt Discord für zwei Dinge — die Umfragen und die «Arena Adventures» — und nennt für keines einen Betrag. Die 5 hier sind das, was ein Tag bisher gebracht hat; bringt ein Tag mehr, zeigt die Zeile es. Einen Zähler dafür gibt es auf der Seite nirgends, also wird aus deinem eigenen ARP-Log gelesen, auf heute gefiltert. Es zahlt nur von MONTAG BIS FREITAG: am Wochenende schweigt die Zeile, statt dich um etwas Unmögliches zu bitten.',
             store: 'Battle Store', storePack: '{a} ARP für {f}', storeShort: '{n} Marken fehlen', qPass: 'Battle Pass', passNone: 'nicht gestartet', passClosed: 'Saison beendet', passClaim: '{n} abzuholen',
@@ -256,7 +310,7 @@
             infoAuthor: 'Autor:', infoGitHub: 'GitHub:', infoDescription: 'Beschreibung:',
             infoPrivacy: 'Datenschutz:', accept: 'Akzeptieren', info: 'Informationen',
             infoDescriptionText: 'Zeigt, was verfällt und wann: Zeit auf der Seite und Twitch werden um 00:00 UTC zurückgesetzt, Tagesquests sind einmalig und kommen nicht zurück, Steam-Quests laufen von Montag zu Montag, und im Kampagnenkalender wartet vielleicht ein Tag. Gibt es zwei Steam-Quests und taucht das Spiel der festen in der Auswahl der frei wählbaren auf, dann zählt dieselbe Stunde für beide, wenn du es wählst. Und ist es ein kostenloses Spiel, das du nicht hast, kann es genügen, es der Steam-Bibliothek hinzuzufügen, damit es in dieser Auswahl erscheint. Discord zahlt nur von Montag bis Freitag, am Wochenende schweigt diese Zeile also, und ein Klick darauf öffnet den Kanal «Arena Connect», in dem über die Umfragen abgestimmt wird. Die Battle-Pass-Zeile zeigt, wie weit du im aktuellen Meilenstein bist, und eine Uhr zählt bis zum Ende des Pass; seine Marken werden gelöscht, wenn der Battle Store ein paar Tage später schließt, deshalb sagt das Panel, wie viel ARP deine wert sind, und warnt dich sechs Stunden vor dem Schließen, wenn du noch welche hast. Die Pakete ändern sich von Saison zu Saison, deshalb liest es sie bei jedem Besuch aus dem Store selbst; und sobald der Pass vorbei ist, sagt es nicht mehr, wie viele Marken dir fehlen, weil es keine neuen mehr gibt. Auf der Store-Seite kann dich, solange er noch zu ist, eine Glocke wie die des Vault beim Öffnen warnen: die Spiele dort sind in Minuten weg. Jede Zeile nennt in ihrem Tooltip die zuständige Uhr, und zwei Countdowns —der Tag und die Steam-Woche— aktualisieren sich selbst. Die Zeilen, die im Control Center erledigt werden, bringen dich direkt zu ihrem Abschnitt und heben ihn hervor, auch wenn du schon dort bist. Auf einer Gewinnspielseite liest es den Bestand nach Land und Stufe und sagt, ob es Keys für dich gibt, bevor du etwas anklickst. Im Marketplace und im Vault markiert es jede Karte: leistbar, höhere Stufe nötig oder ausverkauft. Trägst du ein Artefakt mit Marketplace-Rabatt, rechnet es mit dem reduzierten Preis, den du tatsächlich zahlst. Es kann dich außerdem dreimal warnen —vor Tagesende, sechs Stunden vor Ende der Steam-Woche und wenn der neue Tag beginnt— mit einem Dialog, den du schließen musst. Ton gibt es keinen: auf dieser Seite wurde es dreimal versucht und der Browser blockiert ihn jedes Mal, während derselbe Code auf anderen Seiten sehr wohl klingt; von der Seite aus lässt sich nichts mehr richten. Ein Dialog, die 👽-Markierung im Tab und ein Band im Panel erreichen dich, und keines davon braucht eine Erlaubnis, die wir nicht haben. Es liest sich alle 15 Minuten von selbst neu ein, und die Schaltfläche ⟳ liest sofort alles neu. Es liest nur: es holt nichts ab, bietet nicht und nimmt an nichts teil, denn das läuft alles über ein Captcha.',
-            infoPrivacyText: 'Deine Einstellungen —Sprache, Panel-Ecke, die Warnung— bleiben nur in deinem Browser. Das Skript liest die Seite, auf der du bist, und fragt höchstens einmal dein eigenes Control Center ab, mit deiner bestehenden Sitzung. Keine Dritten, und an den Autor des Skripts wird nichts gesendet.',
+            infoPrivacyText: 'Deine Einstellungen —Sprache, Panel-Ecke, die Warnung— bleiben nur in deinem Browser. Das Skript liest die Seite, auf der du bist, und fragt mit deiner Sitzung nur deine eigenen Seiten ab: das Control Center, dein ARP-Log, den Battle Pass und seinen Store, die Startseite und die Steam-Events; der Pass-Simulator liest außerdem die letzten 28 Tage deines Logs, nur wenn du ihn öffnest, und behält nur die Summe jeder Quelle. Keine Dritten, und an den Autor des Skripts wird nichts gesendet.',
         },
         fr: {
             goCC: 'Clique sur cette ligne pour aller à sa section du Centre de contrôle.', goHere: 'Clique sur cette ligne pour descendre jusqu’à sa section et la mettre en évidence.', goPass: 'Clique sur cette ligne pour aller au pass de combat.', goStore: 'Clique sur cette ligne pour aller à la boutique de combat.', goVault: 'Clique sur cette ligne pour aller au Game Vault et enchérir. Elle marque aussi l’alerte comme vue.',
@@ -291,6 +345,24 @@
             mQuests: 'Les quêtes ne se réinitialisent pas. Chacune est à usage unique avec sa fenêtre : celles du jour disparaissent à la fin, celles de Steam vont de lundi à lundi.',
             mTwitch: 'L’ARP Twitch exige le widget AWA actif sur l’une des chaînes listées dans le Centre de contrôle. D’après les mesures de septembre 2026, il verse un ARP toutes les 2,5 min sur Hive et Nexus, que le site annonce à vitesse double, et un toutes les 5 min sur le reste ; le site peut le changer. Un zéro ne prouve pas qu’il est éteint : il affiche zéro aussi avant que tu ne regardes quoi que ce soit. Certains artefacts relèvent le plafond quotidien au-delà de 15 : le bonus se gagne en regardant, au même rythme, une fois les 15 acquis, et la ligne compte alors sur le nouveau plafond.',
             mLate: 'Steam est lent par conception : le temps de jeu et la possession d’un jeu mettent jusqu’à une heure à être pris en compte, un état rouge peut n’être qu’une donnée périmée.',
+            simGo: 'Clique sur cette horloge pour simuler si tu arrives au bout du pass : tu coches ce que tu fais chaque jour et elle te dit où tu finis.',
+            simTitle: 'Arriveras-tu au bout du pass ?', simLeftK: 'Il te manque :', simLeftV: '{f} ARP · tu es au palier {n} sur {t}', simBoostK: 'Donné par le pass :', simBoostV: '+{v} ARP en boosts', simBoostUnk: '{n} sans montant, non comptés',
+            simEndK: 'Se termine :', simEndV: '{d} · dans {v}', simNeedK: 'Il te faut :', simPerDay: '{v} ARP/jour', simSources: 'Ce que tu fais chaque jour', simLoading: 'Lecture de ton journal d’ARP…',
+            simNoLog: 'Ton journal d’ARP n’a pas pu être lu : tous les chiffres sont les chiffres habituels.',
+            simNoSteps: 'Impossible de lire ce qu’il manque à chaque palier. Ouvre la page du pass et réessaie.',
+            simNotStarted: 'Ton pass n’est pas démarré : tant que tu n’appuies pas sur «Démarrer» sur sa page, rien de ce que tu gagnes ne compte.',
+            simYes: '✅ Avec ce qui est coché, {v} ARP/jour : tu termines le pass vers le {d}, {n} jours avant la fin.',
+            simNo: '❌ Avec ce qui est coché, {v} ARP/jour : tu t’arrêtes au palier {h}, avec {p} sur {c} ARP. Il te manque {f} ARP/jour.',
+            simDone: '✅ Tu as déjà tous les paliers du pass.',
+            simNote: 'Chaque chiffre est ta moyenne par jour sur les {d} derniers jours, tirée de ton journal d’ARP ; Twitch et le temps sur le site comptent ta meilleure journée pour chaque jour où tu les as faits. Les chiffres marqués ≈ ne sont pas dans ton journal : c’est ce que ça rapporte d’habitude à qui le fait. C’est une projection : l’ARP réel monte et descend d’un jour à l’autre.',
+            simOwn: 'Ton journal : {s} ARP sur les {d} derniers jours.',
+            simOwnCap: 'Tu l’as fait {n} des {d} derniers jours, et ta meilleure journée a rapporté {c} : c’est ce qui compte pour chaque jour où tu l’as fait, parce que c’est ce que ça rapporte une fois au plafond.',
+            simTypical: 'Absent de ton journal des {d} derniers jours. C’est ce que ça rapporte à qui le fait, mesuré sur un compte actif en octobre et novembre 2026.',
+            simTypicalCap: 'Absent de ton journal des {d} derniers jours. C’est le plafond quotidien, {c}, qui compte.',
+            simStreak: 'Série de 7 jours', simMonth: 'Calendrier de 28 jours', simPrize: 'Prix du jeu', simEvents: 'Événements communautaires', simOther: 'Autres',
+            tipSimPrize: 'Ce que ton journal appelle «Game Prize» : un prix de montant variable qui tombe d’habitude le jour où tu termines la quête du jour. Il n’est pas fixe et ne tombe pas toujours.',
+            tipSimOther: 'Ce que ton journal contient sans être une source quotidienne : {n}. Ce n’est pas coché parce que ça se répète rarement.',
+            mSim: 'L’horloge du pass de combat ouvre un simulateur. Tu coches ce que tu fais chaque jour et il te dit si tu termines le pass avant la fin, ou à quel palier tu t’arrêtes et combien d’ARP par jour il te manque. Ce qu’il manque à chaque palier et les boosts d’ARP que le pass donne encore viennent de sa page ; ton rythme, des 28 derniers jours de ton journal d’ARP, demandés seulement quand tu l’ouvres, et une fois par jour.',
             mVersion: 'Version {v}',
             discord: 'Discord', tipDiscord: 'Le site dit que Discord paie pour deux choses — les sondages et les «Arena Adventures» — et n’annonce le montant d’aucune. Le 5 ici est ce qu’une journée a rapporté jusqu’ici ; si une journée rapporte plus, la ligne l’affiche. Il n’y a de compteur pour ça nulle part sur le site, donc c’est lu depuis ton propre journal d’ARP, filtré sur aujourd’hui. Ça ne paie que du LUNDI AU VENDREDI : le week-end, la ligne se tait au lieu de te demander l’impossible.',
             store: 'Boutique de combat', storePack: '{a} ARP pour {f}', storeShort: 'il manque {n} jetons', qPass: 'Pass de combat', passNone: 'pas démarré', passClosed: 'saison terminée', passClaim: '{n} à récupérer',
@@ -310,7 +382,7 @@
             infoAuthor: 'Auteur :', infoGitHub: 'GitHub :', infoDescription: 'Description :',
             infoPrivacy: 'Confidentialité :', accept: 'Accepter', info: 'Informations',
             infoDescriptionText: 'Montre ce qui expire et quand : le temps sur le site et Twitch se réinitialisent à 00:00 UTC, les quêtes du jour sont à usage unique et ne reviennent pas, celles de Steam vont de lundi à lundi, et le calendrier de campagne peut avoir un jour en attente. Quand il y a deux quêtes Steam et que le jeu de la quête imposée figure dans le sélecteur de celle au choix, le choisir fait compter la même heure pour les deux. Et s’il s’agit d’un jeu gratuit que tu n’as pas, l’ajouter à ta bibliothèque Steam peut suffire à le faire apparaître dans ce sélecteur. Discord ne paie que du lundi au vendredi : le week-end, cette ligne se tait au lieu de réclamer, et un clic dessus ouvre le salon «Arena Connect», où l’on vote aux sondages. La ligne du Pass de combat dit où tu en es du palier en cours, et une horloge décompte la fin du pass ; ses jetons sont effacés à la fermeture de la boutique de combat, quelques jours plus tard, donc le panneau dit ce que les tiens valent en ARP et t’avertit six heures avant la fermeture s’il t’en reste. Les lots changent d’une saison à l’autre, donc il les lit dans la boutique elle-même à chaque passage ; et dès que le pass est terminé, il cesse de dire combien de jetons il te manque, puisqu’on n’en gagne plus. Sur la page de la boutique, tant qu’elle est fermée, une cloche comme celle du Vault peut t’avertir à l’ouverture : ses jeux partent en quelques minutes. Chaque ligne indique dans son infobulle l’horloge dont elle dépend, et deux comptes à rebours —le jour et la semaine Steam— se rafraîchissent seuls. Les lignes qui se font dans le Centre de contrôle t’amènent directement à leur section et la mettent en évidence, même si tu y es déjà. Sur la page d’un tirage, il lit le stock par pays et par niveau du tirage lui-même et dit s’il y a des clés pour toi avant de cliquer. Dans le Marketplace et le Vault, il marque chaque carte : à ta portée, niveau insuffisant ou épuisé. Si tu portes un artefact de remise sur le Marketplace, il compte le prix réduit, celui que tu paies vraiment. Il peut aussi t’avertir trois fois —avant la fin du jour, six heures avant la fin de la semaine Steam, et au début du nouveau jour— avec une boîte de dialogue à fermer. Il n’y a pas de son : trois approches ont été essayées sur ce site et le navigateur le bloque à chaque fois, alors que le même code fonctionne sur d’autres sites ; depuis la page, il n’y a plus rien à corriger. Une boîte de dialogue, la marque 👽 sur l’onglet et un bandeau dans le panneau, eux, te parviennent, et aucun ne dépend d’une permission que nous n’avons pas. Il se relit tout seul toutes les 15 minutes, et le bouton ⟳ relit tout immédiatement. Il ne fait que lire : il ne récupère rien, n’enchérit pas et ne participe à rien, car tout cela passe par un captcha.',
-            infoPrivacyText: 'Tes réglages —langue, coin du panneau, l’alerte— restent uniquement dans ton navigateur. Le script lit la page où tu es et, au plus, demande une fois ton propre Centre de contrôle au site, en réutilisant ta session. Aucun tiers, et rien n’est envoyé à l’auteur du script.',
+            infoPrivacyText: 'Tes réglages —langue, coin du panneau, l’alerte— restent uniquement dans ton navigateur. Le script lit la page où tu es et ne demande au site, avec ta session, que tes propres pages : le Centre de contrôle, ton journal d’ARP, le pass de combat et sa boutique, l’accueil et les événements Steam ; le simulateur du pass lit en plus les 28 derniers jours de ton journal, seulement quand tu l’ouvres, et n’en garde que le total de chaque source. Aucun tiers, et rien n’est envoyé à l’auteur du script.',
         },
         pt: {
             goCC: 'Prime esta linha para ires à sua secção do Centro de controlo.', goHere: 'Prime esta linha para desceres até à sua secção e a destacares.', goPass: 'Prime esta linha para ires ao passe de batalha.', goStore: 'Prime esta linha para ires à loja de batalha.', goVault: 'Prime esta linha para ires ao Cofre e licitar. Marca também o aviso como visto.',
@@ -345,6 +417,24 @@
             mQuests: 'As missões não reiniciam. Cada uma é de uso único com a sua janela: as diárias desaparecem no fim, e as de Steam vão de segunda a segunda.',
             mTwitch: 'O ARP do Twitch precisa do widget da AWA ativo num dos canais da lista do Centro de controlo. Segundo o medido em setembro de 2026, paga um ARP a cada 2,5 min em Hive e Nexus, que o site anuncia a velocidade dupla, e um a cada 5 min no resto; o site pode mudá-lo. Um zero aqui não prova que esteja desligado: também marca zero antes de veres algo. Alguns artefactos sobem o limite diário acima de 15: o extra ganha-se a ver, ao mesmo ritmo, quando já tens os 15, e a linha passa a contar sobre o novo limite.',
             mLate: 'O Steam é lento por desenho: o tempo jogado e a posse de um jogo levam até uma hora a registar, logo um estado vermelho pode ser só um dado velho.',
+            simGo: 'Prime este relógio para simular se chegas ao fim do passe: marcas o que fazes todos os dias e ele diz-te onde acabas.',
+            simTitle: 'Chegas ao fim do passe?', simLeftK: 'Falta-te:', simLeftV: '{f} ARP · vais no marco {n} de {t}', simBoostK: 'Dado pelo passe:', simBoostV: '+{v} ARP em aumentos', simBoostUnk: '{n} sem valor, não contam',
+            simEndK: 'Fecha:', simEndV: '{d} · daqui a {v}', simNeedK: 'Precisas de:', simPerDay: '{v} ARP/dia', simSources: 'O que fazes todos os dias', simLoading: 'A ler o teu registo de ARP…',
+            simNoLog: 'Não foi possível ler o teu registo de ARP: todos os valores são os habituais.',
+            simNoSteps: 'Não foi possível ler o que falta a cada marco. Abre a página do passe e tenta outra vez.',
+            simNotStarted: 'O teu passe está por começar: até premires «Iniciar» na página dele, nada do que ganhes conta.',
+            simYes: '✅ Com o que está marcado, {v} ARP/dia: completas o passe por volta de {d}, {n} dias antes de fechar.',
+            simNo: '❌ Com o que está marcado, {v} ARP/dia: ficas no marco {h}, com {p} de {c} ARP. Faltam-te {f} ARP/dia.',
+            simDone: '✅ Já tens todos os marcos do passe.',
+            simNote: 'Cada valor é a tua média diária dos últimos {d} dias, tirada do teu registo de ARP; o Twitch e o tempo no site contam o teu melhor dia por cada dia em que os fizeste. Os valores com ≈ não aparecem no teu registo: são o que costuma dar a quem o faz. É uma projeção: o ARP real sobe e desce de um dia para o outro.',
+            simOwn: 'O teu registo: {s} ARP nos últimos {d} dias.',
+            simOwnCap: 'Fizeste-o em {n} dos últimos {d} dias, e o teu melhor dia deu {c}: é isso que conta por cada dia em que o fizeste, porque é o que dá quando chega ao limite.',
+            simTypical: 'Não aparece no teu registo dos últimos {d} dias. É o que dá a quem o faz, medido numa conta ativa em outubro e novembro de 2026.',
+            simTypicalCap: 'Não aparece no teu registo dos últimos {d} dias. Conta o limite diário, {c}.',
+            simStreak: 'Sequência de 7 dias', simMonth: 'Calendário de 28 dias', simPrize: 'Prémio do jogo', simEvents: 'Eventos da comunidade', simOther: 'Outros',
+            tipSimPrize: 'O que o teu registo chama «Game Prize»: um prémio de valor variável que costuma cair no dia em que completas a missão diária. Não é fixo e nem sempre cai.',
+            tipSimOther: 'O que o teu registo traz sem ser uma fonte diária: {n}. Fica por marcar porque raramente se repete.',
+            mSim: 'O relógio do passe de batalha abre um simulador. Marcas o que fazes todos os dias e ele diz-te se completas o passe antes de fechar, ou em que marco ficas e quanto ARP por dia te falta. O que falta a cada marco e os aumentos de ARP que o próprio passe ainda dá saem da página dele; o teu ritmo, dos últimos 28 dias do teu registo de ARP, que só é pedido quando o abres, e uma vez por dia.',
             mVersion: 'Versão {v}',
             discord: 'Discord', tipDiscord: 'O site diz que o Discord paga por duas coisas —os inquéritos e as «Arena Adventures»— e não publica o valor de nenhuma. Os 5 daqui são o que se viu um dia pagar; se um dia pagar mais, a linha mostra-o. Não há contador para isto em lado nenhum do site, por isso lê-se do teu próprio registo de ARP, filtrado a hoje. Só paga de SEGUNDA A SEXTA: ao fim de semana a linha cala-se em vez de te pedir algo que não dá para fazer.',
             store: 'Loja de batalha', storePack: '{a} ARP por {f}', storeShort: 'faltam {n} fichas', qPass: 'Passe de batalha', passNone: 'por começar', passClosed: 'temporada fechada', passClaim: '{n} a reclamar',
@@ -364,7 +454,7 @@
             infoAuthor: 'Autor:', infoGitHub: 'GitHub:', infoDescription: 'Descrição:',
             infoPrivacy: 'Privacidade:', accept: 'Aceitar', info: 'Informação',
             infoDescriptionText: 'Mostra o que caduca e quando: o tempo no site e o Twitch reiniciam às 00:00 UTC, as missões diárias são de uso único e não voltam, as de Steam vão de segunda a segunda, e o calendário de campanha pode ter um dia à espera. Quando há duas missões de Steam e o jogo da fixa aparece no seletor da que te deixa escolher, escolhê-lo faz a mesma hora contar para as duas. E se for um jogo gratuito que não tens, adicioná-lo à tua biblioteca Steam pode bastar para que apareça nesse seletor. O Discord só paga de segunda a sexta, por isso ao fim de semana essa linha cala-se em vez de pedir, e ao premi-la abre o canal «Arena Connect», onde se vota nos inquéritos. A linha do passe de batalha diz quanto levas do marco em que vais, e um relógio conta o que falta para o passe acabar; as suas fichas são apagadas quando fecha a loja de batalha, alguns dias depois, por isso o painel diz quanto ARP valem as tuas e avisa-te seis horas antes de fechar se ainda tiveres. Os pacotes mudam de uma temporada para outra, por isso lê-os da própria loja sempre que lá passas; e assim que o passe acaba deixa de dizer quantas fichas te faltam, porque já não se ganha nenhuma. Na página da loja, enquanto não abre, uma campainha como a do Cofre pode avisar-te quando abrir: os jogos de lá esgotam em minutos. Cada linha diz na sua dica a que relógio responde, e duas contagens decrescentes —o dia e a semana de Steam— atualizam-se sozinhas. As linhas que se cumprem no Centro de controlo levam-te diretamente à sua secção e destacam-na, mesmo que já lá estejas. Na página de um sorteio lê o stock por país e por nível do próprio sorteio e diz se há chaves para ti antes de premires nada. No Marketplace e no Cofre marca cada cartão: dá para ti, pede nível superior ou está esgotado. Se tiveres equipado um artefacto de desconto do Marketplace, conta com o preço reduzido, que é o que se paga. Também te pode avisar três vezes —antes de acabar o dia, seis horas antes de acabar a semana de Steam, e ao começar o dia novo— com uma caixa de diálogo que tens de fechar. Não há som: tentou-se de três maneiras neste site e o navegador bloqueia-o sempre, enquanto o mesmo código toca noutros sites; de dentro da página não resta nada por arranjar. Uma caixa de diálogo, a marca 👽 no separador e uma faixa no painel chegam até ti, e nenhuma depende de uma permissão que não temos. Relê-se sozinho a cada 15 minutos, e o botão ⟳ volta a ler tudo na hora. Só lê: não reclama, não licita e não participa em nada, porque isso passa todo por um captcha.',
-            infoPrivacyText: 'As tuas preferências —idioma, canto do painel, o aviso— ficam só no teu navegador. O script lê a página onde estás e, no máximo, pede uma vez ao site o teu próprio Centro de controlo, reusando a tua sessão. Sem terceiros, e nada é enviado ao autor do script.',
+            infoPrivacyText: 'As tuas preferências —idioma, canto do painel, o aviso— ficam só no teu navegador. O script lê a página onde estás e pede ao site, com a tua sessão, apenas páginas tuas: o Centro de controlo, o teu registo de ARP, o passe de batalha e a sua loja, a página inicial e os eventos da Steam; o simulador do passe lê ainda os últimos 28 dias do teu registo, só quando o abres, e não guarda mais do que o total de cada fonte. Sem terceiros, e nada é enviado ao autor do script.',
         },
         br: {
             goCC: 'Clique nesta linha para ir à seção dela no Centro de controle.', goHere: 'Clique nesta linha para descer até a seção dela e destacá-la.', goPass: 'Clique nesta linha para ir ao passe de batalha.', goStore: 'Clique nesta linha para ir à loja de batalha.', goVault: 'Clique nesta linha para ir ao Cofre e dar lance. Também marca o aviso como visto.',
@@ -399,6 +489,24 @@
             mQuests: 'As missões não resetam. Cada uma é de uso único com a sua janela: as diárias desaparecem no fim, e as da Steam vão de segunda a segunda.',
             mTwitch: 'O ARP da Twitch precisa do widget da AWA ativo num dos canais da lista do Centro de controle. Segundo o medido em setembro de 2026, paga um ARP a cada 2,5 min em Hive e Nexus, que o site anuncia com velocidade dobrada, e um a cada 5 min no resto; o site pode mudar isso. Um zero aqui não prova que ele está desligado: também marca zero antes de você assistir nada. Alguns artefatos aumentam o limite diário acima de 15: o extra se ganha assistindo, no mesmo ritmo, quando você já tem os 15, e a linha passa a contar sobre o novo limite.',
             mLate: 'A Steam é lenta de propósito: tempo jogado e posse de um jogo levam até uma hora para registrar, então um estado vermelho pode ser só um dado velho.',
+            simGo: 'Clique neste relógio para simular se você chega ao fim do passe: você marca o que faz todo dia e ele diz onde você termina.',
+            simTitle: 'Você chega ao fim do passe?', simLeftK: 'Falta:', simLeftV: '{f} ARP · você está no marco {n} de {t}', simBoostK: 'Dado pelo passe:', simBoostV: '+{v} ARP em aumentos', simBoostUnk: '{n} sem valor, não contam',
+            simEndK: 'Fecha:', simEndV: '{d} · em {v}', simNeedK: 'Você precisa de:', simPerDay: '{v} ARP/dia', simSources: 'O que você faz todo dia', simLoading: 'Lendo seu registro de ARP…',
+            simNoLog: 'Não deu para ler seu registro de ARP: todos os valores são os típicos.',
+            simNoSteps: 'Não deu para ler o que falta em cada marco. Abra a página do passe e tente de novo.',
+            simNotStarted: 'Seu passe não foi iniciado: até você clicar em «Iniciar» na página dele, nada do que você ganhar conta.',
+            simYes: '✅ Com o que está marcado, {v} ARP/dia: você completa o passe por volta de {d}, {n} dias antes de fechar.',
+            simNo: '❌ Com o que está marcado, {v} ARP/dia: você para no marco {h}, com {p} de {c} ARP. Faltam {f} ARP/dia.',
+            simDone: '✅ Você já tem todos os marcos do passe.',
+            simNote: 'Cada valor é a sua média diária dos últimos {d} dias, tirada do seu registro de ARP; Twitch e tempo no site contam o seu melhor dia para cada dia em que você os fez. Os valores com ≈ não aparecem no seu registro: são o que costuma render para quem faz. É uma projeção: o ARP de verdade sobe e desce de um dia para o outro.',
+            simOwn: 'Seu registro: {s} ARP nos últimos {d} dias.',
+            simOwnCap: 'Você fez isso em {n} dos últimos {d} dias, e seu melhor dia rendeu {c}: é isso que conta para cada dia em que você fez, porque é o que rende quando chega ao limite.',
+            simTypical: 'Não aparece no seu registro dos últimos {d} dias. É o que rende para quem faz, medido numa conta ativa em outubro e novembro de 2026.',
+            simTypicalCap: 'Não aparece no seu registro dos últimos {d} dias. Conta o limite diário, {c}.',
+            simStreak: 'Sequência de 7 dias', simMonth: 'Calendário de 28 dias', simPrize: 'Prêmio do jogo', simEvents: 'Eventos da comunidade', simOther: 'Outros',
+            tipSimPrize: 'O que seu registro chama de «Game Prize»: um prêmio de valor variável que costuma cair no dia em que você completa a missão diária. Não é fixo e nem sempre cai.',
+            tipSimOther: 'O que seu registro traz sem ser uma fonte diária: {n}. Fica desmarcado porque raramente se repete.',
+            mSim: 'O relógio do passe de batalha abre um simulador. Você marca o que faz todo dia e ele diz se você completa o passe antes de fechar, ou em que marco você para e quanto ARP por dia falta. O que falta em cada marco e os aumentos de ARP que o próprio passe ainda dá saem da página dele; o seu ritmo, dos últimos 28 dias do seu registro de ARP, que só é pedido quando você o abre, e uma vez por dia.',
             mVersion: 'Versão {v}',
             discord: 'Discord', tipDiscord: 'O site diz que o Discord paga por duas coisas —as enquetes e as «Arena Adventures»— e não informa o valor de nenhuma. Os 5 daqui são o que já se viu um dia pagar; se um dia pagar mais, a linha mostra. Não existe contador para isso em lugar nenhum do site, então é lido do seu próprio registro de ARP, filtrado para hoje. Só paga de SEGUNDA A SEXTA: no fim de semana a linha se cala em vez de pedir algo que não dá para fazer.',
             store: 'Loja de batalha', storePack: '{a} ARP por {f}', storeShort: 'faltam {n} fichas', qPass: 'Passe de batalha', passNone: 'não iniciado', passClosed: 'temporada encerrada', passClaim: '{n} para resgatar',
@@ -418,7 +526,7 @@
             infoAuthor: 'Autor:', infoGitHub: 'GitHub:', infoDescription: 'Descrição:',
             infoPrivacy: 'Privacidade:', accept: 'Aceitar', info: 'Informações',
             infoDescriptionText: 'Mostra o que expira e quando: o tempo no site e a Twitch resetam às 00:00 UTC, as missões diárias são de uso único e não voltam, as da Steam vão de segunda a segunda, e o calendário de campanha pode ter um dia esperando. Quando há duas missões da Steam e o jogo da fixa aparece no seletor da que deixa você escolher, escolher ele faz a mesma hora contar para as duas. E se for um jogo gratuito que você não tem, adicionar ele à sua biblioteca da Steam pode bastar para que apareça nesse seletor. O Discord só paga de segunda a sexta, então no fim de semana essa linha se cala em vez de pedir, e ao clicar nela abre o canal «Arena Connect», onde se vota nas enquetes. A linha do passe de batalha diz quanto você já tem do marco atual, e um relógio conta quanto falta para o passe acabar; as fichas dele são apagadas quando a loja de batalha fecha, alguns dias depois, então o painel diz quanto ARP as suas valem e avisa seis horas antes de fechar se ainda sobrarem. Os pacotes mudam de uma temporada para a outra, então ele lê da própria loja toda vez que você passa por lá; e assim que o passe acaba ele para de dizer quantas fichas faltam, porque não dá mais para ganhar nenhuma. Na página da loja, enquanto ela não abre, um sino como o do Cofre pode te avisar quando abrir: os jogos de lá esgotam em minutos. Cada linha diz na dica a qual relógio responde, e duas contagens —o dia e a semana da Steam— se atualizam sozinhas. As linhas que se cumprem no Centro de controle levam você direto à seção delas e a destacam, mesmo que você já esteja lá. Na página de um sorteio ele lê o estoque por país e por nível do próprio sorteio e diz se tem chaves para você antes de clicar em nada. No Marketplace e no Cofre marca cada card: dá para você, exige nível maior ou está esgotado. Se você tiver um artefato de desconto do Marketplace equipado, ele conta o preço com desconto, que é o que você paga. Também pode te avisar três vezes —antes de acabar o dia, seis horas antes de acabar a semana da Steam, e quando o dia novo começa— com uma caixa de diálogo que você precisa fechar. Não tem som: foi tentado de três formas neste site e o navegador bloqueia sempre, enquanto o mesmo código toca em outros sites; de dentro da página não sobra nada para consertar. Uma caixa de diálogo, a marca 👽 na aba e uma faixa no painel chegam até você, e nenhuma depende de uma permissão que não temos. Ele se relê sozinho a cada 15 minutos, e o botão ⟳ lê tudo de novo na hora. Só lê: não resgata, não dá lances e não participa de nada, porque isso tudo passa por captcha.',
-            infoPrivacyText: 'Suas configurações —idioma, canto do painel, o aviso— ficam só no seu navegador. O script lê a página em que você está e, no máximo, pede uma vez ao site o seu próprio Centro de controle, reusando sua sessão. Sem terceiros, e nada é enviado ao autor do script.',
+            infoPrivacyText: 'Suas configurações —idioma, canto do painel, o aviso— ficam só no seu navegador. O script lê a página em que você está e pede ao site, com sua sessão, apenas páginas suas: o Centro de controle, seu registro de ARP, o passe de batalha e a loja dele, a página inicial e os eventos da Steam; o simulador do passe lê também os últimos 28 dias do seu registro, só quando você o abre, e guarda apenas o total de cada fonte. Sem terceiros, e nada é enviado ao autor do script.',
         },
         zh: {
             goCC: '点击本行前往控制中心里对应的部分。', goHere: '点击本行即可滚动到对应的部分并将其高亮。', goPass: '点击本行前往战斗通行证。', goStore: '点击本行前往战斗商店。', goVault: '点击本行前往宝库出价。同时会把该提醒标记为已看。',
@@ -453,6 +561,24 @@
             mQuests: '任务不会重置。每个任务都是一次性的，各有窗口：每日任务结束即消失，Steam 任务从周一到周一。',
             mTwitch: 'Twitch 的 ARP 需要在控制中心列出的某个频道上启用 AWA 小组件。按 2026 年 9 月的实测，Hive 和 Nexus（站点标明双倍速度）每 2.5 分钟 1 点，其他频道每 5 分钟 1 点；站点可能会调整。这里显示 0 并不证明小组件关闭 — 你还没看任何直播时也是 0。某些神器会把每日上限提高到 15 以上：额外部分在拿满 15 之后继续靠观看获得，速度不变，之后这一行按新的上限计算。',
             mLate: 'Steam 的延迟是设计使然：游戏时长和游戏归属最多需要一小时才登记，所以红色状态可能只是数据过期。',
+            simGo: '点击这个倒计时，模拟你能否走完通行证：勾选你每天做的事，它会告诉你最后停在哪里。',
+            simTitle: '你能走完通行证吗？', simLeftK: '还差：', simLeftV: '{f} ARP · 你在第 {n}/{t} 个里程碑', simBoostK: '通行证给的：', simBoostV: '+{v} ARP 加成', simBoostUnk: '{n} 个未写数额，不计入',
+            simEndK: '结束：', simEndV: '{d} · 还有 {v}', simNeedK: '你需要：', simPerDay: '每天 {v} ARP', simSources: '你每天做的事', simLoading: '正在读取你的 ARP 记录…',
+            simNoLog: '无法读取你的 ARP 记录：所有数字都是典型值。',
+            simNoSteps: '无法读取每个里程碑还差多少。请打开通行证页面后再试。',
+            simNotStarted: '你的通行证尚未开始：在它的页面上点击「开始」之前，你赚的一切都不计入。',
+            simYes: '✅ 按勾选的项目，每天 {v} ARP：你会在 {d} 左右走完通行证，比结束早 {n} 天。',
+            simNo: '❌ 按勾选的项目，每天 {v} ARP：你会停在第 {h} 个里程碑，{c} ARP 中已有 {p}。每天还差 {f} ARP。',
+            simDone: '✅ 你已经拿到通行证的所有里程碑。',
+            simNote: '每个数字都是你最近 {d} 天的日均值，取自你的 ARP 记录；Twitch 和在站时间按你最好的一天计算，每个做过的日子都算一次。带 ≈ 的数字不在你的记录里：那是做这件事的人通常能拿到的。这只是预测：真实的 ARP 每天都有起伏。',
+            simOwn: '你的记录：最近 {d} 天共 {s} ARP。',
+            simOwnCap: '最近 {d} 天里你做了 {n} 天，最好的一天拿到 {c}：每个做过的日子都按这个数计算，因为达到上限时就是这么多。',
+            simTypical: '最近 {d} 天的记录里没有它。这是做这件事的人能拿到的数，于 2026 年 10 月和 11 月在一个活跃账号上测得。',
+            simTypicalCap: '最近 {d} 天的记录里没有它。按每日上限 {c} 计算。',
+            simStreak: '7 天连续', simMonth: '28 天日历', simPrize: '游戏奖励', simEvents: '社区活动', simOther: '其他',
+            tipSimPrize: '你的记录里叫「Game Prize」的东西：数额不定的奖励，通常在你完成每日任务的那天掉落。它不固定，也不是每次都有。',
+            tipSimOther: '你的记录里有、但不是每日来源的：{n}。默认不勾选，因为它很少重复。',
+            mSim: '战斗通行证的倒计时会打开一个模拟器。勾选你每天做的事，它会告诉你能否在结束前走完通行证，或者会停在哪个里程碑、每天还差多少 ARP。每个里程碑还差多少、通行证本身还会给的 ARP 加成，都来自它的页面；你的节奏来自你 ARP 记录的最近 28 天，只在你打开它时读取，每天一次。',
             mVersion: '版本 {v}',
             discord: 'Discord', tipDiscord: '站点说 Discord 有两件事给 ARP——投票和「Arena Adventures」——但两者都没公布金额。这里的 5 是目前见过的一天所得；若某天给得更多，这一行会照实显示。站点上任何地方都没有它的计数器，所以是从你自己的 ARP 记录里读的，按今天过滤。它只在周一至周五发放：周末这一行会安静下来，而不是要求你做不到的事。',
             store: '战斗商店', storePack: '{f} 换 {a} ARP', storeShort: '还差 {n} 代币', qPass: '战斗通行证', passNone: '尚未开始', passClosed: '赛季已结束', passClaim: '{n} 待领取',
@@ -472,7 +598,7 @@
             infoAuthor: '作者：', infoGitHub: 'GitHub：', infoDescription: '说明：',
             infoPrivacy: '隐私：', accept: '确定', info: '信息',
             infoDescriptionText: '显示什么会过期、什么时候过期：在站时间和 Twitch 于 UTC 00:00 重置，每日任务是一次性的、不会回来，Steam 任务从周一到周一，活动日历可能还有一天等你领取。当同时有两个 Steam 任务、而固定那个的游戏又出现在可自选任务的列表里时，选它就能让同一个小时对两个都算数。如果那是一款你还没有的免费游戏，把它加进 Steam 库可能就足以让它出现在那个列表里。Discord 只在周一至周五发放，周末那一行会安静下来而不是催你，点击它会打开「Arena Connect」频道，也就是投票的地方。战斗通行证那一行会显示你当前里程碑的进度，还有一个倒计时显示通行证还剩多久；它的代币会在几天后战斗商店关闭时被清空，所以面板会告诉你它们值多少 ARP，并在商店关闭前六小时提醒你还有代币没花。礼包每个赛季都可能不同，所以每次你经过商店时它都会从商店本身读取；通行证一结束，它就不再显示还差多少代币，因为已经无法再获得。在商店页面上，商店还没开放时，可以像宝库那样用铃铛在开放时提醒你：那里的游戏几分钟就会售完。每一行的提示都会说明它归哪个时钟管，另外两个倒计时——当天和 Steam 周期——会自动刷新。在控制中心完成的那几行会直接带你到对应的部分并将其高亮，即使你已经在那里。在赠品页面上，它会读取该赠品按国家和等级的库存，在你点击任何按钮之前就告诉你是否有属于你的密钥。在 Marketplace 和宝库中，它会标注每张卡片：买得起、需要更高等级，或者已售完。如果你装备了 Marketplace 折扣神器，它会按折后价计算，也就是你实际要付的价格。它还能提醒你三次——当天结束前、Steam 周期结束前六小时，以及新的一天开始时——用一个必须关闭的对话框。没有声音：在这个站点上试了三种办法，浏览器每次都拦截，而同样的代码在别的站点却能响；从页面里已经没有可修的了。对话框、标签页上的 👽 标记和面板上的横幅都能传到你这里，而且都不需要我们拿不到的许可。它每 15 分钟会自行重新读取一次，⟳ 按钮则立刻重读全部数据。它只读取：不领取、不出价、不参与任何活动，因为这些都要过验证码。',
-            infoPrivacyText: '你的设置——语言、面板位置、提醒——只保存在你的浏览器里。脚本读取你当前所在的页面，最多复用你的会话向站点请求一次你自己的控制中心。不涉及任何第三方，也不会向脚本作者发送任何内容。',
+            infoPrivacyText: '你的设置——语言、面板位置、提醒——只保存在你的浏览器里。脚本读取你当前所在的页面，并只用你的会话向站点请求你自己的页面：控制中心、你的 ARP 记录、战斗通行证及其商店、首页和 Steam 活动；通行证模拟器还会读取你记录中最近 28 天的内容，只在你打开它时读取，并且只保留每个来源的合计。不涉及任何第三方，也不会向脚本作者发送任何内容。',
         },
         hi: {
             goCC: 'कंट्रोल सेंटर में इसके हिस्से पर जाने के लिए इस पंक्ति पर क्लिक करें।', goHere: 'इसके हिस्से तक नीचे जाने और उसे हाइलाइट करने के लिए इस पंक्ति पर क्लिक करें।', goPass: 'बैटल पास पर जाने के लिए इस पंक्ति पर क्लिक करें।', goStore: 'बैटल स्टोर पर जाने के लिए इस पंक्ति पर क्लिक करें।', goVault: 'Game Vault पर जाकर बोली लगाने के लिए इस पंक्ति पर क्लिक करें। यह चेतावनी को देखा हुआ भी चिह्नित कर देता है।',
@@ -507,6 +633,24 @@
             mQuests: 'क्वेस्ट रीसेट नहीं होतीं। हर एक अपनी समय-सीमा वाली, एक बार की चीज़ है: दैनिक वाली खत्म होते ही गायब, Steam वाली सोमवार से सोमवार।',
             mTwitch: 'Twitch का ARP पाने के लिए कंट्रोल सेंटर की सूची के किसी चैनल पर AWA विजेट चालू चाहिए। सितंबर 2026 के माप के अनुसार Hive और Nexus पर, जिन्हें साइट दोगुनी रफ़्तार वाला बताती है, हर 2.5 मिनट में एक ARP मिलता है, और बाकी पर हर 5 मिनट में एक; साइट इसे बदल सकती है। यहाँ शून्य होने से यह साबित नहीं होता कि विजेट बंद है — कुछ देखने से पहले भी शून्य ही रहता है। कुछ आर्टिफ़ैक्ट रोज़ की सीमा 15 से ऊपर कर देते हैं: अतिरिक्त ARP 15 पूरे होने के बाद देखते रहने से उसी रफ़्तार से मिलता है, और फिर यह पंक्ति नई सीमा के हिसाब से गिनती है।',
             mLate: 'Steam जान-बूझकर धीमा है: खेलने का समय और गेम का मालिक होना दर्ज होने में एक घंटा लग सकता है, इसलिए लाल स्थिति सिर्फ़ पुराना डेटा हो सकती है।',
+            simGo: 'यह घड़ी दबाकर देखें कि आप पास के आख़िर तक पहुँचते हैं या नहीं: आप जो रोज़ करते हैं उस पर टिक करें, और यह बताएगी कि आप कहाँ तक पहुँचेंगे।',
+            simTitle: 'क्या आप पूरा पास कर पाएँगे?', simLeftK: 'बाक़ी:', simLeftV: '{f} ARP · आप {t} में से पड़ाव {n} पर हैं', simBoostK: 'पास से मिलेगा:', simBoostV: '+{v} ARP बूस्ट में', simBoostUnk: '{n} बिना रकम के, गिने नहीं गए',
+            simEndK: 'ख़त्म:', simEndV: '{d} · {v} में', simNeedK: 'आपको चाहिए:', simPerDay: '{v} ARP/दिन', simSources: 'आप रोज़ क्या करते हैं', simLoading: 'आपका ARP रजिस्टर पढ़ा जा रहा है…',
+            simNoLog: 'आपका ARP रजिस्टर पढ़ा नहीं जा सका: सारे आंकड़े सामान्य वाले हैं।',
+            simNoSteps: 'हर पड़ाव में कितना बाक़ी है, यह पढ़ा नहीं जा सका। पास का पेज खोलें और फिर से कोशिश करें।',
+            simNotStarted: 'आपका पास शुरू नहीं हुआ है: जब तक आप उसके पेज पर «शुरू करें» नहीं दबाते, आपकी कोई कमाई नहीं गिनी जाती।',
+            simYes: '✅ टिक किए गए कामों से, {v} ARP/दिन: आप लगभग {d} तक पास पूरा कर लेंगे, बंद होने से {n} दिन पहले।',
+            simNo: '❌ टिक किए गए कामों से, {v} ARP/दिन: आप पड़ाव {h} पर रुकेंगे, {c} में से {p} ARP के साथ। आपको {f} ARP/दिन और चाहिए।',
+            simDone: '✅ आपके पास पास के सारे पड़ाव पहले से हैं।',
+            simNote: 'हर आंकड़ा पिछले {d} दिनों का आपका रोज़ का औसत है, आपके ARP रजिस्टर से; Twitch और साइट पर समय में, जिस भी दिन आपने इन्हें किया, उसके लिए आपका सबसे अच्छा दिन गिना जाता है। ≈ वाले आंकड़े आपके रजिस्टर में नहीं हैं: ये वे हैं जो इसे करने वाले को आम तौर पर मिलते हैं। यह एक अनुमान है: असली ARP दिन-ब-दिन ऊपर-नीचे होता है।',
+            simOwn: 'आपका रजिस्टर: पिछले {d} दिनों में {s} ARP।',
+            simOwnCap: 'आपने इसे पिछले {d} दिनों में से {n} दिन किया, और आपके सबसे अच्छे दिन {c} मिले: जिस भी दिन आपने इसे किया, वही गिना जाता है, क्योंकि सीमा तक पहुँचने पर यही मिलता है।',
+            simTypical: 'पिछले {d} दिनों के आपके रजिस्टर में यह नहीं है। यह वह है जो इसे करने वाले को मिलता है, अक्टूबर और नवंबर 2026 में एक सक्रिय खाते पर मापा गया।',
+            simTypicalCap: 'पिछले {d} दिनों के आपके रजिस्टर में यह नहीं है। रोज़ की सीमा, {c}, गिनी जाती है।',
+            simStreak: '7 दिन की लगातार गिनती', simMonth: '28 दिन का कैलेंडर', simPrize: 'गेम इनाम', simEvents: 'कम्युनिटी इवेंट', simOther: 'अन्य',
+            tipSimPrize: 'जिसे आपका रजिस्टर «Game Prize» कहता है: अलग-अलग रकम का इनाम, जो आम तौर पर उस दिन मिलता है जिस दिन आप दैनिक क्वेस्ट पूरी करते हैं। यह तय नहीं है और हमेशा नहीं मिलता।',
+            tipSimOther: 'आपके रजिस्टर में जो है पर रोज़ का स्रोत नहीं है: {n}। यह बिना टिक के है क्योंकि यह कम ही दोहराया जाता है।',
+            mSim: 'बैटल पास की घड़ी एक सिम्युलेटर खोलती है। आप जो रोज़ करते हैं उस पर टिक करें, और यह बताता है कि आप बंद होने से पहले पास पूरा करते हैं या नहीं, या आप किस पड़ाव पर रुकेंगे और रोज़ कितना ARP कम है। हर पड़ाव में कितना बाक़ी है और पास ख़ुद जो ARP बूस्ट अभी देगा, वह उसके पेज से आता है; आपकी रफ़्तार आपके ARP रजिस्टर के पिछले 28 दिनों से, जो सिर्फ़ इसे खोलने पर मांगा जाता है, और दिन में एक बार।',
             mVersion: 'संस्करण {v}',
             discord: 'Discord', tipDiscord: 'साइट कहती है कि Discord दो चीज़ों के लिए ARP देता है — पोल और «Arena Adventures» — और दोनों की रकम नहीं बताती। यहाँ का 5 वह है जो एक दिन में मिलते देखा गया है; किसी दिन ज़्यादा मिले तो यह पंक्ति वही दिखाएगी। साइट पर इसका काउंटर कहीं नहीं है, इसलिए यह आपके ही ARP रजिस्टर से पढ़ी जाती है, आज पर फ़िल्टर करके। यह सिर्फ़ सोमवार से शुक्रवार तक देता है: सप्ताहांत में यह पंक्ति चुप रहती है, बजाय ऐसा कुछ माँगने के जो किया ही नहीं जा सकता।',
             store: 'बैटल स्टोर', storePack: '{f} में {a} ARP', storeShort: '{n} टोकन कम हैं', qPass: 'बैटल पास', passNone: 'शुरू नहीं किया', passClosed: 'सीज़न खत्म', passClaim: '{n} लेना बाकी',
@@ -526,7 +670,7 @@
             infoAuthor: 'लेखक:', infoGitHub: 'GitHub:', infoDescription: 'विवरण:',
             infoPrivacy: 'निजता:', accept: 'ठीक है', info: 'जानकारी',
             infoDescriptionText: 'यह दिखाता है कि क्या खत्म हो रहा है और कब: साइट पर समय और Twitch 00:00 UTC पर रीसेट होते हैं, दैनिक क्वेस्ट एक बार की होती हैं और वापस नहीं आतीं, Steam वाली सोमवार से सोमवार चलती हैं, और कैंपेन कैलेंडर में कोई दिन बाकी हो सकता है। जब दो Steam क्वेस्ट हों और तय वाली का गेम चुनने वाली की सूची में दिखे, तो उसे चुनने से वही एक घंटा दोनों में गिना जाता है। और अगर वह कोई मुफ़्त गेम है जो आपके पास नहीं है, तो उसे Steam लाइब्रेरी में जोड़ना ही उसे उस सूची में लाने के लिए काफ़ी हो सकता है। Discord सिर्फ़ सोमवार से शुक्रवार तक देता है, इसलिए सप्ताहांत में वह पंक्ति माँगने के बजाय चुप रहती है, और उस पर क्लिक करने से «Arena Connect» चैनल खुलता है, जहाँ पोल में वोट किया जाता है। बैटल पास की पंक्ति बताती है कि मौजूदा पड़ाव में आप कितना आगे हैं, और एक घड़ी पास खत्म होने तक का समय गिनती है; इसके टोकन कुछ दिन बाद बैटल स्टोर बंद होने पर मिटते हैं, इसलिए पैनल बताता है कि आपके टोकन कितने ARP के हैं और टोकन बचे हों तो स्टोर बंद होने से छह घंटे पहले चेतावनी देता है। पैक हर सीज़न में बदल सकते हैं, इसलिए जब भी आप स्टोर पर जाते हैं, यह उन्हें स्टोर से ही पढ़ता है; और पास खत्म होते ही यह बताना बंद कर देता है कि कितने टोकन कम हैं, क्योंकि तब और टोकन नहीं मिलते। स्टोर के पेज पर, जब तक वह बंद है, वॉल्ट जैसी एक घंटी उसके खुलते ही आपको बता सकती है: वहाँ के गेम मिनटों में खत्म हो जाते हैं। हर पंक्ति अपनी टूलटिप में बताती है कि वह किस घड़ी से चलती है, और दो उलटी गिनती —दिन और Steam सप्ताह— अपने आप ताज़ा होती हैं। जो पंक्तियाँ कंट्रोल सेंटर में पूरी होती हैं, वे आपको सीधे उनके हिस्से पर ले जाती हैं और उसे हाइलाइट करती हैं, भले ही आप पहले से वहीं हों। किसी गिववे के पेज पर यह उसी गिववे के देश-और-स्तर वाले स्टॉक को पढ़ता है और कुछ दबाने से पहले बता देता है कि आपके लिए कुंजियाँ हैं या नहीं। Marketplace और वॉल्ट में यह हर कार्ड पर निशान लगाता है: आप ले सकते हैं, ऊँचा स्तर चाहिए, या खत्म। अगर आपने Marketplace की छूट वाला आर्टिफ़ैक्ट लगाया है, तो यह छूट वाली कीमत गिनता है, जो आप असल में चुकाते हैं। यह तीन बार सूचित भी कर सकता है — दिन खत्म होने से पहले, Steam का हफ़्ता खत्म होने से छह घंटे पहले, और नया दिन शुरू होने पर — एक डायलॉग से, जिसे बंद करना पड़ता है। आवाज़ नहीं है: इस साइट पर तीन तरीके आज़माए गए और ब्राउज़र हर बार रोक देता है, जबकि वही कोड दूसरी साइटों पर बजता है; पेज के भीतर से अब कुछ ठीक करने को नहीं बचा। डायलॉग, टैब पर 👽 का निशान और पैनल की पट्टी आप तक पहुँचते हैं, और इनमें से किसी को भी ऐसी अनुमति नहीं चाहिए जो हमारे पास नहीं है। यह हर 15 मिनट में खुद दोबारा पढ़ता है, और ⟳ बटन तुरंत सब कुछ फिर से पढ़ लेता है। यह सिर्फ़ पढ़ता है: कुछ नहीं लेता, बोली नहीं लगाता, किसी चीज़ में भाग नहीं लेता — क्योंकि वह सब कैप्चा से होकर जाता है।',
-            infoPrivacyText: 'आपकी सेटिंग्स —भाषा, पैनल का कोना, चेतावनी— सिर्फ़ आपके ब्राउज़र में रहती हैं। स्क्रिप्ट उस पेज को पढ़ती है जिस पर आप हैं और, ज़्यादा से ज़्यादा, आपके ही सत्र से साइट से एक बार आपका कंट्रोल सेंटर मांगती है। कोई तीसरा पक्ष नहीं, और स्क्रिप्ट के लेखक को कुछ नहीं भेजा जाता।',
+            infoPrivacyText: 'आपकी सेटिंग्स —भाषा, पैनल का कोना, चेतावनी— सिर्फ़ आपके ब्राउज़र में रहती हैं। स्क्रिप्ट उस पेज को पढ़ती है जिस पर आप हैं, और आपके ही सत्र से साइट से सिर्फ़ आपके अपने पेज मांगती है: कंट्रोल सेंटर, आपका ARP रजिस्टर, बैटल पास और उसका स्टोर, होम पेज और Steam इवेंट; पास सिम्युलेटर इसके अलावा आपके रजिस्टर के पिछले 28 दिन पढ़ता है, सिर्फ़ जब आप उसे खोलते हैं, और हर स्रोत का सिर्फ़ जोड़ रखता है। कोई तीसरा पक्ष नहीं, और स्क्रिप्ट के लेखक को कुछ नहीं भेजा जाता।',
         },
     };
 
@@ -597,6 +741,10 @@
         passMarker: '.bp-marker[data-milestone-id]',
         passCurrent: '.bp-marker[data-state="in_progress"]',
         passStepText: '.bp-popup__progress-text',
+        // El nombre del hito, que es lo ÚNICO que dice cuánto da un aumento de ARP: la Temporada de
+        // la Paz los titula «25 ARP», «50 ARP Mega Boost», «15 ARP» (servidor, 2026-11-10). El de
+        // aniversario los llamaba «ARP Boost» a secas y la cifra solo iba en la imagen. Ver arpDeHito.
+        passStepTitle: '.bp-popup__title',
         // La cuenta atrás de la Tienda de Batalla. Es UNA y cambia de sentido: con el pase en
         // curso dice cuándo ABRE la tienda (a la misma hora que cierra el pase), y con el pase
         // cerrado, cuándo CIERRA, que es cuando se borran las fichas. Comprobado con los dos
@@ -627,6 +775,11 @@
         logDiscord: '.card-table-row i.fa-discord',
         logArp: '.col-lg-3',
         logDate: '.col-lg-2',
+        // El nombre de la fuente en una fila resumen. Por `fetch` llega en inglés («Twitch Passive»,
+        // «Game Prize»): Weglot traduce en el navegador, no en el servidor —comprobado el 2026-11-10
+        // desde una sesión con el sitio en español—. Las filas de detalle cuelgan de `logDetails`.
+        logName: '.col-lg-5',
+        logDetails: '.card-table-row-details',
         giveawayActions: '#giveaway-actions',
         // --- Pagina de una quest de Steam ----------------------------------
         // El progreso vive SOLO en el `aria-valuenow` de esta barra: no hay un
@@ -1453,6 +1606,21 @@
     // porque el dato cambia despacio: se pide una vez al día como mucho. Los
     // hitos sin reclamar no urgen —el sitio los entrega al cerrar la temporada—,
     // pero las fichas sí se borran, y para empezar el pase hay que pulsar a mano.
+    // Cuánto ARP da un hito: 0 si no es un aumento, y null si lo es pero no dice cuánto. Solo el
+    // nombre lo dice («25 ARP», «50 ARP Mega Boost»); el «20 Battle Tokens» o el «Fragments x5» no
+    // nombran el ARP y valen 0. El del aniversario se titulaba «ARP Boost» —con Weglot, «Aumento de
+    // ARP»— y su cifra solo estaba en la imagen: ese es el null, que el simulador NO suma y declara.
+    // La cifra va delante, como la escribe el sitio; un número suelto en otro sitio del nombre no
+    // es ARP. Ojo: el hito 4 de la Paz pagó 30 en el registro (2026-11-03) y su nombre dice 25; el
+    // 10, 25. Se cuenta lo que dice el nombre, que es lo que se puede leer antes de cobrarlo.
+    function arpDeHito(m) {
+        const tit = m.querySelector(SEL.passStepTitle);
+        const texto = String(m.getAttribute('title') || (tit && tit.textContent) || '');
+        const c = texto.match(/^\s*(\d+)\s*ARP\b/i);
+        if (c) return Number(c[1]);
+        return /\bARP\b/i.test(texto) ? null : 0;
+    }
+
     function readPass(doc) {
         const tok = doc.querySelector(SEL.passTokens);
         const cnt = doc.querySelector(SEL.passTokenCount);
@@ -1491,6 +1659,25 @@
             falta = p ? falta + Math.max(0, p[1] - p[0]) : null;
         });
         const indice = enCurso ? num(enCurso.getAttribute('data-index')) : null;
+        // Los hitos que faltan, UNO A UNO y en orden, para el simulador (ver openSim): cuánto ARP le
+        // queda a cada uno y cuánto ARP DA si es un aumento, que también hace avanzar —probado con la
+        // Beta, ver la nota de `tipPass`—. Van por `data-index` y no por el orden del id: en la Paz el
+        // hito 15 es el id 87 y el 16 el 86. Uno cobrable (`unlockable`) ya está hecho: no pide nada
+        // y su aumento se suma en cuanto lo cobres. Con un solo hito pendiente sin su «x/y» la lista
+        // entera vale null, por lo mismo que `hitoFalta`: una suma a medias diría menos de lo que es.
+        let pasos = marcas.length ? [] : null;
+        Array.prototype.slice.call(marcas)
+            .sort((a, b) => (num(a.getAttribute('data-index')) || 0) - (num(b.getAttribute('data-index')) || 0))
+            .forEach((m) => {
+                if (!pasos) return;
+                const estado = m.getAttribute('data-state');
+                if (estado === 'claimed') return;
+                const n = num(m.getAttribute('data-index'));
+                if (estado === 'unlockable') { pasos.push({ n: n + 1, falta: 0, meta: null, arp: arpDeHito(m) }); return; }
+                const p = partesDe(m);
+                if (!p || n === null) { pasos = null; return; }
+                pasos.push({ n: n + 1, falta: Math.max(0, p[1] - p[0]), meta: p[1], arp: arpDeHito(m) });
+            });
         return {
             tokens: tokens,
             tokensMax: tokensMax,
@@ -1499,6 +1686,7 @@
             hitoArp: paso ? paso[0] : null,
             hitoMeta: paso ? paso[1] : null,
             hitoFalta: falta,
+            pasos: pasos,
             // Todos cobrados: no queda nada en curso ni por reclamar.
             hitosTodos: marcas.length > 0
                 && Array.prototype.every.call(marcas, (m) => m.getAttribute('data-state') === 'claimed'),
@@ -1681,6 +1869,7 @@
     // congela el bug»).
     function getPass(forzar) {
         return urlPase(forzar).then((url) => {
+            let viejo = null;
             if (!forzar) {
                 const aqui = readPass(document);
                 if (aqui && yaEstoyEn(url)) {
@@ -1688,19 +1877,194 @@
                     store(PASS_KEY, JSON.stringify(aqui));
                     return aqui;
                 }
+                // Sin `pasos` es de antes del simulador (1.3.15 o anterior) y se relee, o el reloj del
+                // pase abriría un simulador sin hitos hasta las 00:00 UTC. Si esa relectura falla, se
+                // queda la vieja, que para todo lo demás sigue valiendo. Un `pasos: null` no se relee:
+                // es que no se pudieron leer, y el simulador ya lo intenta él solo (ver openSim).
                 try {
                     const guardado = JSON.parse(recall(PASS_KEY) || 'null');
-                    if (guardado && guardado.url === url && utcStamp(guardado.at) === utcStamp(Date.now())) return guardado;
+                    if (guardado && guardado.url === url && utcStamp(guardado.at) === utcStamp(Date.now())) {
+                        if ('pasos' in guardado) return guardado;
+                        viejo = guardado;
+                    }
                 } catch (e) { /* caché ilegible */ }
             }
             return pedir(url)
                 .then((html) => {
                     const data = readPass(new DOMParser().parseFromString(html, 'text/html'));
                     if (data) { data.url = url; store(PASS_KEY, JSON.stringify(data)); }
-                    return data;
+                    return data || viejo;
                 })
-                .catch(() => null);
+                .catch(() => viejo);
         }).then(conTienda);
+    }
+
+    // ------------------------------------------------------------------
+    // Simulador del pase
+    // ------------------------------------------------------------------
+    // ¿Llegas al final del pase? Se abre pulsando el reloj del pase (ver renderDaily) y junta tres
+    // cosas: lo que le falta a cada hito y lo que dan los aumentos, de la página del pase (`pasos`,
+    // ver readPass); el tiempo, de su cuenta atrás; y tu ritmo, de TU registro de ARP, fuente a
+    // fuente. Cada fuente es una casilla, y la pregunta es «¿y si hago esto y dejo aquello?», como en
+    // la calculadora de misiones de fortnite.gg. Solo lee: no cobra ni toca nada.
+    //
+    // 28 días y no 7 ni 30: cuatro semanas justas, así que la encuesta de Discord (de lunes a viernes),
+    // las quests de Steam (de lunes a lunes) y el calendario de campaña (semanal) caen las mismas veces
+    // que en cualquier otro tramo de cuatro semanas. Y sin el día de hoy, que va a medias.
+    //
+    // El registro se pide UNA vez al día y solo al abrir el simulador: son 1,1 MB (medido el
+    // 2026-11-10: 181 filas resumen y 641 créditos en 28 días, casi todo filas de detalle que aquí no
+    // se usan), y lo que se guarda son solo las sumas por fuente.
+    const SIM_ID = 'awa-arp-sim';
+    const SIM_KEY = 'awa-arp-sim-registro';
+    const SIM_DIAS = 28;
+    // Las fuentes, por el nombre que les da el registro en el servidor (en inglés, ver SEL.logName), y
+    // de respaldo por su icono, que es lo único que no traduce nadie. `etiqueta` es la clave i18n: las
+    // que ya tiene el panel se reutilizan, para que la misma cosa se llame igual en los dos sitios.
+    //
+    // `tipico` es lo que da al día a quien la hace, medido en una cuenta activa del 1 de octubre al 9
+    // de noviembre de 2026, y SOLO se usa cuando la fuente no sale en tu registro: es la cifra del «¿y
+    // si empezara?». Twitch y el tiempo en el sitio no lo llevan: lo suyo es un tope (ver filasSim).
+    const SIM_FUENTES = [
+        { k: 'twitch', etiqueta: 'twitch', log: ['Twitch Passive'], icono: 'fa-twitch', tope: true },
+        { k: 'tos', etiqueta: 'tos', log: ['Time On Site'], icono: 'fa-clock', tope: true },
+        { k: 'discord', etiqueta: 'discord', log: ['Discord Poll'], icono: 'fa-discord', tipico: 3.6 },
+        { k: 'quest', etiqueta: 'qDaily', log: ['Complete Quest'], tipico: 4 },
+        { k: 'premio', etiqueta: 'simPrize', log: ['Game Prize'], tipico: 7, tip: 'tipSimPrize' },
+        { k: 'steam', etiqueta: 'qSteam', log: ['Steam Quest'], tipico: 6 },
+        { k: 'racha', etiqueta: 'simStreak', log: ['Daily Login Streak'], tipico: 2.4 },
+        { k: 'mes', etiqueta: 'simMonth', log: ['Daily Login Calendar'], tipico: 2.8 },
+        { k: 'promo', etiqueta: 'calendar', log: ['Promotional Calendar'], tipico: 1.4 },
+        { k: 'eventos', etiqueta: 'simEvents', log: ['Steam Community Event Reward', 'Community Event Review'], tipico: 2 },
+    ];
+    // Lo que el registro trae y NO es ritmo: los aumentos del pase ya los cuenta el pase (aquí se
+    // sumarían dos veces) y los paquetes de la tienda se pagan con fichas, no se ganan. Lo negativo
+    // —compras en el Marketplace— se descarta aparte: gastar no hace retroceder el pase (−1.000 ARP el
+    // 2026-11-02 y el pase siguió en su sitio).
+    const SIM_FUERA = ['Battle Pass Reward', 'Battle Store Bundle'];
+
+    // Las filas resumen del registro entre `desde` (incluido) y `hasta` (excluido), sumadas por fuente.
+    // Por cada fuente: lo sumado, en cuántos días salió y lo más que dio en uno. Lo que no es de
+    // ninguna va a `otros` por nombre —el «Artifact Salvage» de un día, un premio suelto—, y el
+    // simulador lo enseña sin marcar. `dias` es el tramo que cubre la respuesta: 28, o menos si tu
+    // primer ARP es más reciente, que en una cuenta nueva no es lo mismo que no haber hecho nada.
+    function readFuentes(doc, desde, hasta) {
+        const suma = {}, con = {}, mejor = {}, otros = {};
+        const porDia = {};
+        let primero = null;
+        const texto = (fila, sel) => { const n = fila.querySelector(sel); return n ? String(n.textContent).trim() : ''; };
+        doc.querySelectorAll(SEL.logRow).forEach((fila) => {
+            if (fila.closest(SEL.logDetails)) return;
+            const f = texto(fila, SEL.logDate);
+            if (!/^\d{4}-\d{2}-\d{2}$/.test(f) || f < desde || f >= hasta) return;
+            if (!primero || f < primero) primero = f;
+            const v = num(texto(fila, SEL.logArp));
+            const nombre = texto(fila, SEL.logName);
+            if (v === null || v <= 0 || SIM_FUERA.indexOf(nombre) >= 0) return;
+            const icono = fila.querySelector('i');
+            const fu = SIM_FUENTES.find((x) => x.log.indexOf(nombre) >= 0)
+                || SIM_FUENTES.find((x) => x.icono && icono && icono.classList.contains(x.icono));
+            if (!fu) { otros[nombre || '?'] = (otros[nombre || '?'] || 0) + v; return; }
+            suma[fu.k] = (suma[fu.k] || 0) + v;
+            const dia = (porDia[fu.k] = porDia[fu.k] || {});
+            dia[f] = (dia[f] || 0) + v;
+        });
+        Object.keys(porDia).forEach((k) => {
+            const vals = Object.keys(porDia[k]).map((f) => porDia[k][f]);
+            con[k] = vals.length;
+            mejor[k] = Math.max.apply(null, vals);
+        });
+        const dias = primero ? Math.min(SIM_DIAS, Math.round((Date.parse(hasta) - Date.parse(primero)) / 864e5)) : 0;
+        return { dias: dias, suma: suma, con: con, mejor: mejor, otros: otros, desde: desde, hasta: hasta, at: Date.now() };
+    }
+
+    // El registro, por fuentes, de los últimos 28 días. Se guarda para el resto del día: lo de hoy no
+    // entra, así que hasta las 00:00 UTC la respuesta sería la misma. `to` es EXCLUSIVO en el sitio
+    // (con `to` = hoy devuelve hasta ayer, comprobado el 2026-11-10), y el `max` va alto porque cuenta
+    // créditos, no días: solo Twitch pone quince o más en una jornada.
+    function getFuentes() {
+        const ahora = Date.now();
+        const hasta = utcDate(ahora);
+        const desde = utcDate(ahora - SIM_DIAS * 864e5);
+        try {
+            const g = JSON.parse(recall(SIM_KEY) || 'null');
+            if (g && g.hasta === hasta && g.desde === desde && g.dias > 0) return Promise.resolve(g);
+        } catch (e) { /* caché ilegible */ }
+        return pedir('/account/arp-log?from=' + desde + '&to=' + hasta + '&max=2000')
+            .then((html) => {
+                const data = readFuentes(new DOMParser().parseFromString(html, 'text/html'), desde, hasta);
+                if (data.dias > 0) store(SIM_KEY, JSON.stringify(data));
+                return data.dias > 0 ? data : null;
+            })
+            .catch(() => null);
+    }
+
+    // Una casilla por fuente, con su ARP al día y de dónde sale la cifra. Va marcada si sale en tu
+    // registro: el simulador arranca en «así como vas», y desmarcar o marcar es la pregunta.
+    //
+    // Twitch y el tiempo en el sitio no van por la media, sino por tu MEJOR día del tramo por cada día
+    // que los hiciste: los dos tienen tope, y un artefacto lo sube a mitad de tramo (Scion de 15 a 17,
+    // Ba`li Arches de 5 a 8 en noviembre de 2026). La media mezcla el tope viejo con el nuevo y se
+    // queda corta para lo que viene: con el tiempo en el sitio salía 5,9 cuando ya daba 8 cada día.
+    function filasSim(fu, daily) {
+        const d = fu && fu.dias > 0 ? fu.dias : 0;
+        const filas = SIM_FUENTES.map((x) => {
+            const suma = d ? fu.suma[x.k] || 0 : 0;
+            const con = d ? fu.con[x.k] || 0 : 0;
+            const fila = { k: x.k, etiqueta: t(x.etiqueta), propio: suma > 0, marcado: suma > 0, extra: x.tip ? t(x.tip) : '' };
+            if (suma > 0 && x.tope) {
+                fila.valor = (con / d) * fu.mejor[x.k];
+                fila.tip = t('simOwnCap', { n: nf.format(con), d: nf.format(d), c: nf.format(fu.mejor[x.k]) });
+            } else if (suma > 0) {
+                fila.valor = suma / d;
+                fila.tip = t('simOwn', { s: nf.format(suma), d: nf.format(d) });
+            } else if (x.tope) {
+                const tope = x.k === 'twitch' ? TWITCH_CAP : (daily && daily.tosMax) || 5;
+                fila.valor = tope;
+                fila.tip = t('simTypicalCap', { d: nf.format(d || SIM_DIAS), c: nf.format(tope) });
+            } else {
+                fila.valor = x.tipico;
+                fila.tip = t('simTypical', { d: nf.format(d || SIM_DIAS) });
+            }
+            return fila;
+        });
+        // Sin registro legible, todo es típico; se marca entero para que el resultado diga algo.
+        if (!d) filas.forEach((f) => { f.marcado = true; });
+        const nombres = d ? Object.keys(fu.otros) : [];
+        if (nombres.length) {
+            const suma = nombres.reduce((a, n) => a + fu.otros[n], 0);
+            filas.push({ k: 'otros', etiqueta: t('simOther'), propio: true, marcado: false, valor: suma / d,
+                tip: t('simOwn', { s: nf.format(suma), d: nf.format(d) }), extra: t('tipSimOther', { n: nombres.join(', ') }) });
+        }
+        return filas;
+    }
+
+    // Hasta dónde llegas con `ritmo` ARP al día en `ms`. Los aumentos se cobran al cerrar su hito y
+    // empujan los siguientes, así que lo que hace falta de FUERA para cerrar el hito i es lo que
+    // piden los hitos hasta él menos los aumentos de los anteriores —el mayor de esos prefijos, por si
+    // un aumento grande deja atrás uno caro—. El ritmo es continuo: el ARP real llega a saltos, por
+    // días UTC, y por eso el resultado es una fecha aproximada.
+    function proyectarPase(pasos, ritmo, ms) {
+        const dias = Math.max(0, ms) / 864e5;
+        let acum = 0, bonos = 0, total = 0;
+        const umbral = pasos.map((p) => {
+            acum += p.falta;
+            total = Math.max(total, acum - bonos);
+            bonos += p.arp || 0;
+            return total;
+        });
+        const res = { total: total, necesario: dias > 0 ? total / dias : null, ritmo: ritmo };
+        if (!pasos.length || total <= 0) return Object.assign(res, { completo: true, enDias: 0 });
+        const ganado = ritmo * dias;
+        if (ganado >= total) return Object.assign(res, { completo: true, enDias: ritmo > 0 ? total / ritmo : 0 });
+        const i = umbral.findIndex((u) => u > ganado);
+        let antes = 0, bonAntes = 0;
+        for (let j = 0; j < i; j++) { antes += pasos[j].falta; bonAntes += pasos[j].arp || 0; }
+        const p = pasos[i];
+        const meta = p.meta || p.falta;
+        const dentro = Math.max(0, Math.min(p.falta - 1, Math.floor(ganado + bonAntes - antes)));
+        return Object.assign(res, { completo: false, hito: p.n, lleva: meta - p.falta + dentro, meta: meta,
+            faltaDia: dias > 0 ? (total - ganado) / dias : null });
     }
 
     // ------------------------------------------------------------------
@@ -2706,7 +3070,7 @@
             [t('infoDescription'), [t('infoDescriptionText')]],
             // Los cinco párrafos de «cómo funciona esto» viven aquí, que es donde
             // caben: son lo que no se puede explicar en un tooltip de una línea.
-            [t('title'), [t('mDaily'), t('mQuests'), t('mQuestTime'), t('mEvento'), t('mTwitch'), t('mLate')]],
+            [t('title'), [t('mDaily'), t('mQuests'), t('mQuestTime'), t('mEvento'), t('mTwitch'), t('mSim'), t('mLate')]],
             [t('infoPrivacy'), [t('infoPrivacyText'), t('mIntro')]],
         ].forEach(([titulo, parrafos], n) => {
             const h = el('div', 'awa-modal__h');
@@ -2744,6 +3108,145 @@
         setTimeout(() => overlay.classList.add('awa-modal--on'), 10);
         // Sin esto el foco se queda en el ℹ️ del panel, detrás del overlay.
         setTimeout(() => ok.focus(), 140);
+    }
+
+    // ------------------------------------------------------------------
+    // Simulador del pase: el modal
+    // ------------------------------------------------------------------
+    // La misma caja que la ficha —cabecera fija, cuerpo que scrollea, «Aceptar»—, y en la cabecera
+    // los cuatro datos que no dependen de las casillas: lo que falta, lo que pone el propio pase,
+    // cuándo cierra y cuánto ARP al día hace falta. Abajo, una casilla por fuente y el veredicto, que
+    // se rehace al tocar cualquiera. Las casillas no se guardan: cada vez arranca en «así como vas».
+    function openSim(pass, daily) {
+        if (document.getElementById(SIM_ID)) return;
+
+        const overlay = noTraducir(el('div'));
+        overlay.id = SIM_ID;
+        overlay.className = 'awa-modal awa-sim';
+        const box = el('div', 'awa-modal__box');
+        box.setAttribute('role', 'dialog');
+        box.setAttribute('aria-modal', 'true');
+        box.setAttribute('aria-label', t('simTitle'));
+        const head = el('div', 'awa-modal__head');
+        head.appendChild(el('div', 'awa-modal__title', t('simTitle')));
+        const meta = el('div', 'awa-modal__meta');
+        head.appendChild(meta);
+        box.appendChild(head);
+        box.appendChild(el('div', 'awa-modal__hr'));
+        const body = el('div', 'awa-modal__body');
+        body.appendChild(el('p', 'awa-sim__note', t('simLoading')));
+        box.appendChild(body);
+        box.appendChild(el('div', 'awa-modal__hr'));
+        const foot = el('div', 'awa-modal__foot');
+        const ok = el('button', 'awa-modal__btn', t('accept'));
+        foot.appendChild(ok);
+        box.appendChild(foot);
+        overlay.appendChild(box);
+        document.body.appendChild(overlay);
+
+        const cerrar = () => {
+            hideTip();
+            document.removeEventListener('keydown', esc);
+            overlay.classList.remove('awa-modal--on');
+            setTimeout(() => overlay.remove(), 180);
+        };
+        function esc(e) { if (e.key === 'Escape') cerrar(); }
+        ok.addEventListener('click', cerrar);
+        overlay.addEventListener('click', (e) => { if (e.target === overlay) cerrar(); });
+        document.addEventListener('keydown', esc);
+        setTimeout(() => overlay.classList.add('awa-modal--on'), 10);
+        setTimeout(() => ok.focus(), 140);
+
+        // Sin `pasos` —una caché de antes del simulador, o la página del pase con Weglot convirtiendo
+        // el «5/30» de un hito en «30 de mayo»— se pide la página al servidor, que lo manda sin
+        // traducir. Lo que no llegue se queda como estaba y el simulador lo dice.
+        const conPasos = pass && Array.isArray(pass.pasos) ? Promise.resolve(pass)
+            : pass && pass.url
+                ? pedir(pass.url).then((h) => fusionar(pass, readPass(new DOMParser().parseFromString(h, 'text/html'))))
+                    .catch(() => pass)
+                : Promise.resolve(pass);
+        Promise.all([conPasos, getFuentes()]).then(([p, fu]) => {
+            if (overlay.isConnected) pintarSim(meta, body, p, fu, daily);
+        });
+    }
+
+    function pintarSim(meta, body, pass, fu, daily) {
+        body.textContent = '';
+        const nf1 = new Intl.NumberFormat(LOCALE, { maximumFractionDigits: 1 });
+        const corta = (ms) => {
+            try { return new Intl.DateTimeFormat(LOCALE, { day: 'numeric', month: 'short' }).format(new Date(ms)); }
+            catch (e) { return new Date(ms).toLocaleDateString(); }
+        };
+        const fila = (k, v) => {
+            meta.appendChild(el('div', 'awa-modal__k', k));
+            meta.appendChild(el('div', 'awa-modal__v', v));
+        };
+        const pasos = pass && Array.isArray(pass.pasos) ? pass.pasos : null;
+        if (!pasos || !pass.endsAt) {
+            body.appendChild(el('p', 'awa-sim__warn', t('simNoSteps')));
+            return;
+        }
+        if (!pasos.length) {
+            body.appendChild(el('div', 'awa-sim__res awa-sim__res--ok', t('simDone')));
+            return;
+        }
+
+        const ms = pass.endsAt - Date.now();
+        const falta = pasos.reduce((a, p) => a + p.falta, 0);
+        const bonos = pasos.reduce((a, p) => a + (p.arp || 0), 0);
+        const sinCifra = pasos.filter((p) => p.arp === null).length;
+        const base = proyectarPase(pasos, 0, ms);
+        fila(t('simLeftK'), t('simLeftV', { f: nf.format(falta), n: nf.format(pass.hito || pasos[0].n), t: nf.format(pass.hitos || pasos[pasos.length - 1].n) }));
+        fila(t('simBoostK'), t('simBoostV', { v: nf.format(bonos) }) + (sinCifra ? ' · ' + t('simBoostUnk', { n: nf.format(sinCifra) }) : ''));
+        fila(t('simEndK'), t('simEndV', { d: corta(pass.endsAt), v: fmtCountdown(ms) }));
+        fila(t('simNeedK'), base.necesario === null ? '—' : t('simPerDay', { v: nf1.format(base.necesario) }));
+
+        if (pass.started === false) body.appendChild(el('p', 'awa-sim__warn', t('simNotStarted')));
+        if (!fu) body.appendChild(el('p', 'awa-sim__warn', t('simNoLog')));
+
+        const h = el('div', 'awa-modal__h', t('simSources'));
+        body.appendChild(h);
+        const lista = el('div', 'awa-sim__list');
+        body.appendChild(lista);
+        const res = el('div', 'awa-sim__res');
+        res.setAttribute('aria-live', 'polite');
+
+        const filas = filasSim(fu, daily);
+        const rehacer = () => {
+            const ritmo = filas.reduce((a, f) => a + (f.marcado ? f.valor : 0), 0);
+            const r = proyectarPase(pasos, ritmo, ms);
+            const v = nf1.format(ritmo);
+            if (r.completo) {
+                res.className = 'awa-sim__res awa-sim__res--ok';
+                res.textContent = t('simYes', {
+                    v: v, d: corta(Date.now() + r.enDias * 864e5),
+                    n: nf.format(Math.max(0, Math.floor(ms / 864e5 - r.enDias))),
+                });
+            } else {
+                res.className = 'awa-sim__res awa-sim__res--ko';
+                res.textContent = t('simNo', {
+                    v: v, h: nf.format(r.hito), p: nf.format(r.lleva), c: nf.format(r.meta),
+                    f: nf1.format(r.faltaDia === null ? 0 : r.faltaDia),
+                });
+            }
+        };
+        filas.forEach((f) => {
+            const row = el('label', 'awa-sim__row');
+            const caja = el('input');
+            caja.type = 'checkbox';
+            caja.checked = f.marcado;
+            caja.setAttribute('data-fuente', f.k);
+            caja.addEventListener('change', () => { f.marcado = caja.checked; rehacer(); });
+            row.appendChild(caja);
+            row.appendChild(el('span', 'awa-sim__k', f.etiqueta));
+            row.appendChild(el('span', 'awa-sim__v' + (f.propio ? '' : ' awa-sim__v--tipico'),
+                (f.propio ? '' : '≈') + t('simPerDay', { v: nf1.format(f.valor) })));
+            tip(row, f.tip + (f.extra ? ' ' + f.extra : ''));
+            lista.appendChild(row);
+        });
+        body.appendChild(res);
+        body.appendChild(el('p', 'awa-sim__note', t('simNote', { d: nf.format(fu ? fu.dias : SIM_DIAS) })));
+        rehacer();
     }
 
     // ------------------------------------------------------------------
@@ -3429,7 +3932,7 @@
 
         // Los dos relojes, separados: no caduca lo mismo a la misma hora.
         const now = new Date();
-        relojes.appendChild(tip(el('div', 'awa-w__clock', t('dailyReset', { v: fmtCountdown(msToDailyReset(now)) })), t('tipReset')));
+        relojes.appendChild(tip(el('div', 'awa-w__clock awa-w__clock--day', t('dailyReset', { v: fmtCountdown(msToDailyReset(now)) })), t('tipReset')));
         if (daily && daily.steamPending !== null) {
             relojes.appendChild(tip(el('div', 'awa-w__clock awa-w__clock--week',
                 t('weekReset', { v: fmtCountdown(msToWeekReset(now)) })), t('tipSteam')));
@@ -3453,8 +3956,19 @@
         if (pass && pass.endsAt) {
             const ya = now.getTime();
             if (pass.endsAt > ya) {
-                relojes.appendChild(tip(el('div', 'awa-w__clock',
-                    t('passEnds', { v: fmtCountdown(pass.endsAt - ya) })), t('tipPassEnds')));
+                // Y es la puerta del simulador (ver openSim): el reloj es lo que contesta «¿me da
+                // tiempo?», así que es ahí donde se pregunta. El 🧮 dice que se pulsa, como el ↗ de
+                // las líneas que llevan a algún sitio, y el tooltip dice para qué.
+                const reloj = tip(el('div', 'awa-w__clock awa-w__clock--sim',
+                    t('passEnds', { v: fmtCountdown(pass.endsAt - ya) })), t('tipPassEnds') + ' ' + t('simGo'));
+                reloj.appendChild(el('span', 'awa-w__go', ' 🧮'));
+                reloj.setAttribute('role', 'button');
+                const abrir = () => { hideTip(); openSim(pass, daily); };
+                reloj.addEventListener('click', abrir);
+                reloj.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); abrir(); }
+                });
+                relojes.appendChild(reloj);
             } else if (pass.storeClosesAt && pass.storeClosesAt > ya && fichasDe(pass)) {
                 relojes.appendChild(tip(el('div', 'awa-w__clock',
                     t('storeEnds', { v: fmtCountdown(pass.storeClosesAt - ya) })), t('tipStoreEnds')));
@@ -3490,11 +4004,15 @@
         if (caja && tiendaAbreMs() === null) caja.remove();
     }
 
+    // Cada reloj por SU clase. Hasta 1.3.15 iban por posición —el primero el del día, el segundo el
+    // de la semana—, y el de la semana no se pinta cuando no hay quests de Steam: entonces el segundo
+    // era el del evento o el del pase, y cada 30 s pasaba a decir «Semana de Steam».
     function refreshClocks(relojes) {
         const now = new Date();
-        const nodes = relojes.querySelectorAll('.awa-w__clock');
-        if (nodes[0]) nodes[0].textContent = t('dailyReset', { v: fmtCountdown(msToDailyReset(now)) });
-        if (nodes[1]) nodes[1].textContent = t('weekReset', { v: fmtCountdown(msToWeekReset(now)) });
+        const dia = relojes.querySelector('.awa-w__clock--day');
+        const semana = relojes.querySelector('.awa-w__clock--week');
+        if (dia) dia.textContent = t('dailyReset', { v: fmtCountdown(msToDailyReset(now)) });
+        if (semana) semana.textContent = t('weekReset', { v: fmtCountdown(msToWeekReset(now)) });
         refreshVaultBanner();
         pintarEdad();
     }
@@ -3966,6 +4484,11 @@
             W + ' .awa-w__clocks{margin-top:8px;padding-top:7px;border-top:1px solid #2b3644;}',
             W + ' .awa-w__clock{color:#9aa4b2;padding:1px 0;outline:none;}',
             W + ' .awa-w__clock--week{color:#7f8998;}',
+            // El reloj del pase abre el simulador: se pinta pulsable como las líneas con flecha. Dos
+            // clases y no una, para ganarle al `cursor:help` de todo lo que lleva tooltip en el panel.
+            W + ' .awa-w__clock.awa-w__clock--sim{cursor:pointer;border-radius:4px;margin:0 -4px;padding:1px 4px;}',
+            W + ' .awa-w__clock--sim:hover{color:#01f5ff;background:rgba(1,245,255,.08);}',
+            W + ' .awa-w__clock--sim:focus-visible{outline:1px solid #4b72d4;outline-offset:2px;}',
             // Fila entera y no un icono: es el control que más se pulsa y era el
             // que peor se acertaba de los cuatro que había en la cabecera.
             W + ' .awa-w__refresh{display:flex;align-items:center;gap:6px;width:100%;',
@@ -4037,6 +4560,26 @@
             '.awa-modal__btn{font:inherit;cursor:pointer;padding:5px 18px;border-radius:6px;',
             'border:1px solid #01f5ff;background:rgba(1,245,255,.12);color:#01f5ff;}',
             '.awa-modal__btn:hover{background:rgba(1,245,255,.22);}',
+            // El simulador del pase, dentro de la misma caja. Cada fuente en una rejilla de tres
+            // columnas —casilla, nombre, ARP al día— para que las cifras queden en una columna y se
+            // comparen de un vistazo. Lo típico (lo que no sale en tu registro) va en cursiva y gris:
+            // es una referencia, no un dato tuyo. El veredicto, verde si llegas y ámbar si no.
+            // Las filas son `<label>` y el COLOR va explícito: el sitio pinta todo `label` de gris casi
+            // negro (rgb(40,40,41)), y en la caja oscura las diez filas salían ilegibles —visto en el
+            // navegador el 2026-11-10; jsdom no carga la hoja del sitio y no lo podía ver—.
+            '.awa-sim__list{display:flex;flex-direction:column;gap:2px;margin:0 0 10px;}',
+            '.awa-sim__row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;',
+            'column-gap:9px;padding:3px 5px;border-radius:5px;cursor:pointer;user-select:none;color:#e6e9ee;}',
+            '.awa-sim__row:hover{background:rgba(1,245,255,.06);}',
+            '.awa-sim__row:focus-visible{outline:1px solid #4b72d4;outline-offset:1px;}',
+            '.awa-sim__row input{width:14px;height:14px;margin:0;cursor:pointer;accent-color:#4b72d4;}',
+            '.awa-sim__v{font-weight:600;white-space:nowrap;}',
+            '.awa-sim__v--tipico{font-weight:400;font-style:italic;color:#9aa4b2;}',
+            '.awa-sim__res{margin:4px 0 10px;padding:8px 10px;border-radius:8px;font-weight:600;}',
+            '.awa-sim__res--ok{background:rgba(103,217,139,.12);border:1px solid rgba(103,217,139,.5);color:#67d98b;}',
+            '.awa-sim__res--ko{background:rgba(255,207,102,.10);border:1px solid rgba(255,207,102,.45);color:#ffcf66;}',
+            '.awa-modal__body .awa-sim__note{font-size:12px;color:#9aa4b2;}',
+            '.awa-modal__body .awa-sim__warn{color:#ffcf66;}',
             '.awa-keys{margin:0 auto 10px;padding:7px 12px;border-radius:8px;text-align:center;',
             'font:600 14px/1.3 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;max-width:520px;}',
             '.awa-keys--ok{background:rgba(103,217,139,.12);border:1px solid rgba(103,217,139,.5);color:#67d98b;}',

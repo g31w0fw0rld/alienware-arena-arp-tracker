@@ -374,10 +374,12 @@ console.log('\n=== 12. Fuera, se piden dos cosas y una sola vez cada una ===');
   // la petición extra sea una al día y no una por página.
   // Desde 1.3.9 la caché lleva la `url` del pase y solo vale para ESA: la portada del volcado
   // enlaza el `/1`, así que la caché de `/1` se usa.
+  // Y desde el simulador lleva `pasos`: una sin ellos es de 1.3.15 o anterior y se relee una vez
+  // (§73). Esta es la de la versión en curso, que es la que no debe volver a pedirse.
   const w = mount('dom-homepage-src-2026-08.html', '/', (win) => {
     win.localStorage.setItem('awa-arp-pass', JSON.stringify({
       tokens: 45, tokensMax: 135, claimable: 0, started: true, endsAt: Date.now() + 864e5, at: Date.now(),
-      url: '/control-center/battle-pass/1',
+      url: '/control-center/battle-pass/1', pasos: [{ n: 1, falta: 30, meta: 30, arp: 0 }],
     }));
   }); await tick();
   check('con caché del día no se pide el pase', !w.fetched.some((u) => /battle-pass/.test(u)),
@@ -4290,6 +4292,288 @@ console.log('\n=== 72. La tienda de la Temporada de la Paz: seis paquetes, y sin
     const readme = fs.readFileSync(__dirname + '/../README.md', 'utf8');
     check('el README lo cuenta en los dos idiomas', /Season of Peace adds 15 for 50/.test(readme) && /Temporada de la Paz añade 15 por 50/.test(readme)
       && /no more can be earned/.test(readme) && /ya no se gana ninguna/.test(readme) && !/25 fichas compran 100 ARP/.test(readme), '');
+  }
+}
+
+console.log('\n=== 73. El simulador del pase: el reloj abre una casilla por fuente y dice dónde acabas ===');
+// Pulsar el reloj del pase abre «¿Llegas al final del pase?». Lo que falta y los aumentos salen de la
+// página del pase (`pasos`), el ritmo de 28 días del registro de ARP, fuente a fuente. Los dos fixtures
+// son el pase de la Paz y el registro tal como los mandó el SERVIDOR el 2026-11-10, y el reloj se fija
+// en ese instante para que las cuentas no caduquen con el pase.
+{
+  const AHORA = '2026-11-10T04:31:00Z';
+  const T0 = Date.parse(AHORA);
+  const PAZ = leer('dom-battle-pass-peace-progress-2026-11-10.html');
+  const LOG = leer('dom-account-arp-log-28-days-2026-11-10.html');
+  const QUEST = 'dom-steam-quest-fixed-unstarted-2026-08.html';
+  const P3 = '/control-center/battle-pass/3';
+  const CIERRE = Date.parse('2027-01-17T20:00:00+00:00');
+
+  // Lo esperado se calcula AQUÍ y por otro camino que el script: regex sobre el HTML y una simulación
+  // por pasos de una milésima de día. Si saliera de la misma lectura, la prueba no probaría nada.
+  const filasLog = [...LOG.matchAll(/<!-- Summary Row -->[\s\S]*?<i class="([^"]+)"[\s\S]*?col-lg-5[^>]*>\s*([^<]+?)\s*<\/div>[\s\S]*?col-lg-3[^>]*>\s*(-?\d+)\s*<\/div>[\s\S]*?col-lg-2[^>]*>\s*(\d{4}-\d{2}-\d{2})\s*<\/div>/g)]
+    .map((m) => ({ nombre: m[2], arp: Number(m[3]), fecha: m[4] }));
+  check('control: el registro trae 181 filas resumen en 28 días', filasLog.length === 181
+    && new Set(filasLog.map((f) => f.fecha)).size === 28, String(filasLog.length));
+  const media = (nombres) => filasLog.filter((f) => nombres.includes(f.nombre) && f.arp > 0)
+    .reduce((a, f) => a + f.arp, 0) / 28;
+  const mejorDia = (nombre) => {
+    const d = {};
+    filasLog.filter((f) => f.nombre === nombre).forEach((f) => { d[f.fecha] = (d[f.fecha] || 0) + f.arp; });
+    const v = Object.values(d);
+    return v.length / 28 * Math.max(...v);
+  };
+  const ESPERADO = {
+    twitch: mejorDia('Twitch Passive'), tos: mejorDia('Time On Site'), discord: media(['Discord Poll']),
+    quest: media(['Complete Quest']), premio: media(['Game Prize']), steam: media(['Steam Quest']),
+    racha: media(['Daily Login Streak']), mes: media(['Daily Login Calendar']), promo: media(['Promotional Calendar']),
+    eventos: media(['Steam Community Event Reward', 'Community Event Review']),
+  };
+  // Los hitos que faltan, del HTML del pase con regex: lo que pide menos lo que llevas, y el ARP del nombre.
+  const hitos = [...PAZ.matchAll(/data-index="(\d+)" data-milestone-id="\d+" data-state="(?:locked|in_progress)" title="([^"]*)"[\s\S]*?bp-popup__progress-text">(\d+)\/(\d+)</g)]
+    .map((m) => ({ n: Number(m[1]) + 1, falta: Number(m[4]) - Number(m[3]), meta: Number(m[4]),
+      arp: Number((m[2].match(/^(\d+) ARP/) || [0, 0])[1]) }));
+  check('control: 37 hitos por hacer, 2780 ARP y 260 de aumentos', hitos.length === 37
+    && hitos.reduce((a, h) => a + h.falta, 0) === 2780 && hitos.reduce((a, h) => a + h.arp, 0) === 260, '');
+  const DIAS = (CIERRE - T0) / 864e5;
+  const simular = (ritmo) => {
+    let i = 0, prog = 0;
+    const dt = 0.001;
+    for (let t = 0; t <= DIAS; t += dt) {
+      prog += ritmo * dt;
+      while (i < hitos.length && prog >= hitos[i].falta) { prog += hitos[i].arp - hitos[i].falta; i++; }
+      if (i >= hitos.length) return { completo: true, dia: t };
+    }
+    return { completo: false, hito: hitos[i].n, lleva: hitos[i].meta - hitos[i].falta + Math.floor(prog), meta: hitos[i].meta };
+  };
+  const corta = (dias) => new Intl.DateTimeFormat('es-ES', { day: 'numeric', month: 'short' }).format(new Date(T0 + dias * 864e5));
+  const numDe = (s) => Number(String(s).replace(/[^\d,]/g, '').replace(',', '.'));
+  const tipDe = (n) => (n ? n.getAttribute('title') || n.getAttribute('data-awa-tip') || '' : '');
+
+  const enPagina = (opciones) => mount(QUEST, '/steam/quest/prueba', (win) => {
+    const o = opciones || {};
+    relojEnDia(win, o.ahora || AHORA);
+    if (o.tics) capturarTics(win);
+    win.localStorage.setItem('awa-arp-lang', 'es');
+    win.localStorage.setItem('awa-arp-pase-url', JSON.stringify({ url: o.url || P3, at: Date.parse(o.ahora || AHORA), v: 3 }));
+    win.__respuestas = o.respuestas || { 'battle-pass/3': PAZ, 'arp-log': LOG };
+    if (o.tweak) o.tweak(win);
+  });
+  const reloj = (w) => w.document.querySelector('#awa-arp-widget .awa-w__clock--sim');
+  const modal = (w) => w.document.getElementById('awa-arp-sim');
+  const casillas = (w) => [...w.document.querySelectorAll('#awa-arp-sim .awa-sim__row')].map((r) => ({
+    k: r.querySelector('input').getAttribute('data-fuente'), caja: r.querySelector('input'), nodo: r,
+    on: r.querySelector('input').checked, valor: r.querySelector('.awa-sim__v').textContent,
+    tipico: r.querySelector('.awa-sim__v').classList.contains('awa-sim__v--tipico') }));
+  const veredicto = (w) => txt(w, '#awa-arp-sim .awa-sim__res') || '';
+  const marcar = (w, claves) => casillas(w).forEach((c) => {
+    const on = claves.includes(c.k);
+    if (c.caja.checked !== on) { c.caja.checked = on; c.caja.dispatchEvent(new w.Event('change')); }
+  });
+  const espera = async (n) => { for (let i = 0; i < (n || 4); i++) await tick(); };
+  // Con el código de antes no hay reloj ni modal: cada acceso se protege para que eso sea un ✗ y no
+  // un TypeError que corte la suite antes de medir lo que viene detrás (el control negativo).
+  const pulsar = (w) => { const r = reloj(w); if (r) r.click(); };
+  const claseRes = (w) => ((w.document.querySelector('#awa-arp-sim .awa-sim__res') || {}).className || '');
+  const textoReloj = (w) => (reloj(w) ? reloj(w).textContent : '');
+
+  {
+    const w = enPagina(); await espera();
+    const r = reloj(w);
+    check('el reloj del pase lleva el 🧮 y su tooltip dice que abre el simulador',
+      !!r && /^Pase de batalla: \d+d \d+h/.test(r.textContent) && /🧮/.test(r.textContent)
+        && /Pulsa este reloj para simular si llegas al final del pase/.test(tipDe(r)), r && r.textContent + ' / ' + tipDe(r));
+    check('y se pulsa también con el teclado', !!r && r.getAttribute('role') === 'button' && r.getAttribute('tabindex') === '0', '');
+    const g = JSON.parse(w.localStorage.getItem('awa-arp-pass') || 'null');
+    const pasos = (g && g.pasos) || [];
+    check('el pase guardado trae sus hitos pendientes, en orden y desde el 14',
+      pasos.length === 37 && pasos[0].n === 14 && pasos[0].falta === 40 && pasos.every((p, i) => !i || p.n === pasos[i - 1].n + 1),
+      JSON.stringify(pasos.slice(0, 3)));
+    check('y coinciden uno a uno con el HTML (lo que falta y el ARP de cada uno)',
+      JSON.stringify(pasos.map((p) => [p.n, p.falta, p.arp])) === JSON.stringify(hitos.map((h) => [h.n, h.falta, h.arp])), '');
+    check('los aumentos son los diez del nombre; fichas, fragmentos y avatares valen 0',
+      pasos.filter((p) => p.arp > 0).map((p) => p.n).join(',') === '17,20,26,32,34,36,39,42,47,49'
+        && pasos.every((p) => p.arp !== null), pasos.filter((p) => p.arp).map((p) => p.n + ':' + p.arp).join(' '));
+
+    pulsar(w); await espera();
+    const m = modal(w);
+    check('al pulsarlo se abre el simulador', !!m && /¿Llegas al final del pase\?/.test(m.textContent), '');
+    check('lee 28 días del registro, de ayer hacia atrás', w.fetched.includes('/account/arp-log?from=2026-10-13&to=2026-11-10&max=2000'),
+      JSON.stringify(w.fetched));
+    const meta = txt(w, '#awa-arp-sim .awa-modal__meta') || '';
+    check('la cabecera: 2780 ARP desde el hito 14 de 50, +260 de aumentos y 36,7 ARP al día',
+      /2\.?780 ARP · vas por el hito 14 de 50/.test(meta) && /\+260 ARP en aumentos/.test(meta) && /36,7 ARP\/día/.test(meta)
+        && !/sin cifra/.test(meta), meta);
+    const cs = casillas(w);
+    check('una casilla por fuente, y «Otros» al final', cs.length === 11 && cs[10].k === 'otros', cs.map((c) => c.k).join(','));
+    check('las diez fuentes salen en tu registro: marcadas y sin ≈', cs.length >= 10 && cs.slice(0, 10).every((c) => c.on && !c.tipico && !/≈/.test(c.valor)),
+      cs.map((c) => c.k + (c.on ? '✓' : '·') + c.valor).join(' '));
+    check('«Otros» es el Artifact Salvage, y va sin marcar', !!cs[10] && !cs[10].on && /Artifact Salvage/.test(tipDe(cs[10].nodo)), cs[10] ? tipDe(cs[10].nodo) : '');
+    check('cada cifra es la calculada por fuera, con un decimal',
+      cs.length >= 10 && cs.slice(0, 10).every((c) => Math.abs(numDe(c.valor) - ESPERADO[c.k]) < 0.051),
+      cs.slice(0, 10).map((c) => c.k + ' ' + c.valor + ' vs ' + ESPERADO[c.k].toFixed(2)).join(' | '));
+    check('el tiempo en el sitio cuenta su mejor día, 8, y no la media del tramo (5,5)',
+      numDe((cs.find((c) => c.k === 'tos') || {}).valor) === 8 && Math.abs(media(['Time On Site']) - 5.54) < 0.01, '');
+    const todo = Object.values(ESPERADO).reduce((a, b) => a + b, 0);
+    const e1 = simular(todo);
+    const v1 = veredicto(w);
+    check('con todo marcado completas el pase, en la fecha de la simulación de fuera (±1 día)',
+      e1.completo && /completas el pase hacia el/.test(v1) && [-1, 0, 1].some((d) => v1.includes('hacia el ' + corta(e1.dia + d) + ',')),
+      v1 + ' / esperado ' + corta(e1.dia));
+    check('el ritmo del veredicto es la suma de las casillas: sin aumentos del pase, ni la tienda, ni compras',
+      Math.abs(numDe((v1.match(/([\d,]+) ARP\/día/) || [])[1]) - todo) < 0.051, v1 + ' / ' + todo.toFixed(2));
+    check('y va en verde', /awa-sim__res--ok/.test(claseRes(w)), '');
+
+    marcar(w, ['twitch', 'tos', 'racha', 'mes']);
+    const pasivo = ESPERADO.twitch + ESPERADO.tos + ESPERADO.racha + ESPERADO.mes;
+    const e2 = simular(pasivo);
+    const v2 = veredicto(w);
+    const lleva = (v2.match(/con (\d+) de (\d+) ARP/) || []).slice(1).map(Number);
+    check('solo lo pasivo: te quedas en el hito de la simulación de fuera',
+      !e2.completo && new RegExp('te quedas en el hito ' + e2.hito + ', con ').test(v2), v2 + ' / esperado ' + e2.hito);
+    check('con lo que llevarías de ese hito (±1) y lo que pide', lleva.length === 2 && Math.abs(lleva[0] - e2.lleva) <= 1 && lleva[1] === e2.meta,
+      lleva.join('/') + ' vs ' + e2.lleva + '/' + e2.meta);
+    check('y cuánto ARP al día te falta', Math.abs(numDe((v2.match(/Te faltan ([\d,]+) ARP\/día/) || [])[1]) - (2520 / DIAS - pasivo)) < 0.051, v2);
+    check('y pasa a ámbar', /awa-sim__res--ko/.test(claseRes(w)), '');
+
+    const habia = !!modal(w);
+    w.document.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape' })); await espera(5);
+    check('Escape lo cierra', habia && !modal(w), '');
+    pulsar(w); await espera();
+    check('al reabrirlo no se vuelve a pedir el registro: se guarda para el día',
+      w.fetched.filter((u) => /arp-log\?from=2026-10-13/.test(u)).length === 1
+        && (JSON.parse(w.localStorage.getItem('awa-arp-sim-registro') || '{}').dias === 28), JSON.stringify(w.fetched));
+    check('y arranca otra vez en «así como vas»', casillas(w).length >= 10 && casillas(w).slice(0, 10).every((c) => c.on), '');
+  }
+  {
+    // Una fuente que no está en tu registro: sale con ≈, en cursiva, sin marcar y con la cifra típica.
+    const d = new JSDOM(LOG, { virtualConsole: new VirtualConsole() });
+    d.window.document.querySelectorAll('.card-table-row').forEach((f) => {
+      if (/Steam Quest/.test(f.textContent)) { const det = f.nextElementSibling; f.remove(); if (det) det.remove(); }
+    });
+    const sinSteam = d.serialize();
+    check('control: la copia ya no trae quests de Steam', !/Steam Quest/.test(sinSteam) && /Twitch Passive/.test(sinSteam), '');
+    const w = enPagina({ respuestas: { 'battle-pass/3': PAZ, 'arp-log': sinSteam } }); await espera();
+    pulsar(w); await espera();
+    const st = casillas(w).find((c) => c.k === 'steam');
+    check('sin quests de Steam en el registro: ≈6 al día, en cursiva y sin marcar',
+      !!st && !st.on && st.tipico && /^≈6 ARP\/día$/.test(st.valor) && /No sale en tu registro/.test(tipDe(st.nodo)), st && st.valor);
+    const antes = numDe((veredicto(w).match(/([\d,]+) ARP\/día/) || [])[1]);
+    if (st) { st.caja.checked = true; st.caja.dispatchEvent(new w.Event('change')); }
+    const despues = numDe((veredicto(w).match(/([\d,]+) ARP\/día/) || [])[1]);
+    check('y marcarla suma esos 6 al ritmo', Math.abs(despues - antes - 6) < 0.051, antes + ' → ' + despues);
+  }
+  {
+    // Sin registro legible: todo es típico y va marcado, y lo dice. Y el pase de aniversario, cuyos
+    // aumentos se llamaban «Aumento de ARP» sin cifra: no se suman y la cabecera lo declara.
+    const ANIV = leer('dom-battle-pass-anniversary-progress-2026-09-30.html');
+    const w = enPagina({ ahora: '2026-09-30T20:00:00Z', url: '/control-center/battle-pass/2', respuestas: { 'battle-pass/2': ANIV } });
+    await espera();
+    const g = JSON.parse(w.localStorage.getItem('awa-arp-pass') || 'null');
+    const pasos = (g && g.pasos) || [];
+    check('aniversario: 21 hitos, los seis «Aumento de ARP» sin cifra (null) y el «Borde del 30 aniversario» en 0',
+      pasos.length === 21 && pasos.filter((p) => p.arp === null).map((p) => p.n).join(',') === '1,5,9,13,17,19'
+        && pasos.every((p) => p.arp === null || p.arp === 0), pasos.map((p) => p.n + ':' + p.arp).join(' '));
+    pulsar(w); await espera();
+    const meta = txt(w, '#awa-arp-sim .awa-modal__meta') || '';
+    check('la cabecera dice +0 y que hay seis sin cifra que no se cuentan', /\+0 ARP en aumentos · 6 sin cifra, no se cuentan/.test(meta), meta);
+    const cs = casillas(w);
+    check('sin registro: lo avisa, todo con ≈ y todo marcado', /No se pudo leer tu registro de ARP/.test(txt(w, '#awa-arp-sim') || '')
+      && cs.length === 10 && cs.every((c) => c.on && c.tipico), cs.map((c) => c.k + ' ' + c.valor).join(' | '));
+    check('Twitch cuenta el tope de 15 y el tiempo en el sitio el de 5', cs.length > 1 && /^≈15 ARP\/día$/.test(cs[0].valor) && /^≈5 ARP\/día$/.test(cs[1].valor),
+      cs.length > 1 ? cs[0].valor + ' / ' + cs[1].valor : '');
+  }
+  {
+    // Una caché del pase de 1.3.15 no trae `pasos`: se relee una vez, y si la relectura falla se queda
+    // la vieja para todo lo demás, en vez de dejar el panel sin pase.
+    const vieja = { url: P3, tokens: 40, tokensMax: 170, claimable: 0, started: true, endsAt: CIERRE, at: T0,
+      hito: 14, hitos: 50, hitoArp: 10, hitoMeta: 50, hitoFalta: 2780 };
+    const sinRed = enPagina({ respuestas: {}, tweak: (win) => win.localStorage.setItem('awa-arp-pass', JSON.stringify(vieja)) });
+    await espera();
+    check('caché vieja sin red: se intenta releer el pase', sinRed.fetched.includes(P3), JSON.stringify(sinRed.fetched));
+    check('y la línea del pase sigue con la caché vieja: 10/50 ARP',
+      lines(sinRed).some((l) => /Pase de batalla/.test(l[0]) && l[1] === '10/50 ARP'), JSON.stringify(lines(sinRed)));
+    const conRed = enPagina({ tweak: (win) => win.localStorage.setItem('awa-arp-pass', JSON.stringify(vieja)) });
+    await espera();
+    const g = JSON.parse(conRed.localStorage.getItem('awa-arp-pass') || 'null');
+    check('caché vieja con red: se relee y ya trae sus hitos', !!g && Array.isArray(g.pasos) && g.pasos.length === 37, '');
+  }
+  {
+    // Pase sin empezar: el simulador lo dice antes que nada. Se fabrica quitando el aviso de empezado.
+    const sinEmpezar = PAZ.replace(/<div class="bp-header__started">[^<]*<\/div>/, '');
+    check('control: la copia ya no trae el aviso de empezado', !/bp-header__started/.test(sinEmpezar), '');
+    const w = enPagina({ respuestas: { 'battle-pass/3': sinEmpezar, 'arp-log': LOG } }); await espera();
+    pulsar(w); await espera();
+    check('sin empezar: avisa de que no cuenta nada hasta pulsar «Iniciar»',
+      /hasta que pulses «Iniciar» en su página no cuenta nada/.test(txt(w, '#awa-arp-sim .awa-sim__warn') || ''), txt(w, '#awa-arp-sim'));
+  }
+  {
+    // Las filas son `<label>`, y el sitio pinta todo label de rgb(40,40,41): en el navegador, el
+    // 2026-11-10, las diez filas salían casi negras sobre la caja oscura. Se mete aquí esa regla del
+    // sitio tal cual (jsdom resuelve la cascada en getComputedStyle) y una etiqueta testigo.
+    const w = enPagina({ tweak: (win) => {
+      const s = win.document.createElement('style');
+      s.textContent = 'label{color:rgb(40, 40, 41)}';
+      win.document.head.appendChild(s);
+      const testigo = win.document.createElement('label');
+      testigo.id = 'testigo-label';
+      win.document.body.appendChild(testigo);
+    } });
+    await espera(); pulsar(w); await espera();
+    const color = (sel) => { const n = w.document.querySelector(sel); return n ? w.getComputedStyle(n).color : ''; };
+    check('control: la regla del sitio pinta un label cualquiera de gris casi negro', color('#testigo-label') === 'rgb(40, 40, 41)', color('#testigo-label'));
+    check('las filas del simulador llevan su propio color claro', color('#awa-arp-sim .awa-sim__k') === 'rgb(230, 233, 238)'
+      && color('#awa-arp-sim .awa-sim__v') === 'rgb(230, 233, 238)', color('#awa-arp-sim .awa-sim__k'));
+  }
+  {
+    // El reloj del pase no lo pisa el tic. Sin quests de Steam no hay reloj de la semana, y hasta
+    // 1.3.15 el segundo reloj —este— pasaba a decir «Semana de Steam» cada 30 s.
+    // El reloj se busca por su TEXTO y no por la clase nueva, para que con el código de antes esta
+    // prueba falle por lo que mide —el tic lo pisa— y no porque falte la clase.
+    const w = enPagina({ tics: true }); await espera();
+    const relojes = () => [...w.document.querySelectorAll('#awa-arp-widget .awa-w__clock')];
+    const delPase = relojes().find((n) => /^Pase de batalla: /.test(n.textContent));
+    check('control: sin el Centro de control solo hay dos relojes, el del día y el del pase',
+      relojes().length === 2 && !!delPase && /^El día reinicia en /.test(relojes()[0].textContent), relojes().map((n) => n.textContent).join(' / '));
+    tic(w); tic(w);
+    check('tras el tic, el reloj del pase sigue siendo el del pase',
+      !!delPase && delPase.isConnected && /^Pase de batalla: \d+d \d+h/.test(delPase.textContent), delPase && delPase.textContent);
+    check('y conserva su 🧮', /^Pase de batalla: \d+d \d+h 🧮$/.test(textoReloj(w)), textoReloj(w));
+    check('y el del día se sigue actualizando', /^El día reinicia en /.test(relojes()[0] ? relojes()[0].textContent : ''), '');
+  }
+  {
+    // Las claves nuevas, en los ocho y sin el inglés copiado; «Saber más» y el README lo cuentan.
+    const CLAVES = ['simGo', 'simTitle', 'simLeftK', 'simLeftV', 'simBoostK', 'simBoostV', 'simBoostUnk', 'simEndK',
+      'simEndV', 'simNeedK', 'simPerDay', 'simSources', 'simLoading', 'simNoLog', 'simNoSteps', 'simNotStarted', 'simYes',
+      'simNo', 'simDone', 'simNote', 'simOwn', 'simOwnCap', 'simTypical', 'simTypicalCap', 'simStreak', 'simMonth',
+      'simPrize', 'simEvents', 'simOther', 'tipSimPrize', 'tipSimOther', 'mSim'];
+    const IDIOMAS = ['en', 'es', 'de', 'fr', 'pt', 'br', 'zh', 'hi'];
+    const lineasS = SCRIPT.split('\n');
+    const inicio = IDIOMAS.map((l) => lineasS.findIndex((x) => x === '        ' + l + ': {'));
+    const bloque = (i) => lineasS.slice(inicio[i], i + 1 < inicio.length ? inicio[i + 1] : inicio[i] + 200).join('\n');
+    const valor = (b, k) => { const m = b.match(new RegExp('\\b' + k + ": '((?:[^'\\\\]|\\\\.)*)'")); return m ? m[1] : null; };
+    const en = bloque(0);
+    const faltan = [], copiadas = [];
+    IDIOMAS.forEach((l, i) => {
+      const b = bloque(i);
+      CLAVES.forEach((k) => {
+        const v = valor(b, k);
+        if (v === null) faltan.push(l + '.' + k);
+        // «{d} · in {v}» se dice igual en alemán que en inglés.
+        else if (l !== 'en' && v === valor(en, k) && !(l === 'de' && k === 'simEndV')) copiadas.push(l + '.' + k);
+      });
+    });
+    check('las ' + CLAVES.length + ' claves del simulador están en los ocho idiomas', inicio.every((x) => x >= 0) && !faltan.length, faltan.join(', '));
+    check('y ninguna lleva el inglés copiado', !faltan.length && !copiadas.length, copiadas.join(', '));
+    check('la privacidad de la ficha cuenta los 28 días del registro en los ocho',
+      IDIOMAS.every((l, i) => /28/.test(valor(bloque(i), 'infoPrivacyText') || '')), '');
+    const w = enPagina(); await espera();
+    const info = w.document.querySelector('#awa-arp-widget .awa-w__btn--info'); if (info) info.click(); await espera(2);
+    check('«Saber más» lo cuenta', /El reloj del pase de batalla abre un simulador/.test(txt(w, '#awa-arp-modal') || ''), '');
+    const readme = fs.readFileSync(__dirname + '/../README.md', 'utf8');
+    check('el README lo cuenta en los dos idiomas, y la privacidad los 28 días',
+      /The Battle Pass clock opens a simulator/.test(readme) && /El reloj del pase de batalla abre un simulador/.test(readme)
+        && /last 28 days of `\/account\/arp-log`/.test(readme) && /últimos 28 días de `\/account\/arp-log`/.test(readme), '');
   }
 }
 

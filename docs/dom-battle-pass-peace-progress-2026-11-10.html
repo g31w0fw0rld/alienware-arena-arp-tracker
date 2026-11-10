@@ -1,0 +1,1193 @@
+<!-- Reconstruido de una respuesta de alienwarearena.com con sesion iniciada, 2026-11-10 04:3x UTC.
+     Pase de la Temporada de la Paz (/control-center/battle-pass/3) tal como lo manda el SERVIDOR: fetch con sesion,
+     sin Weglot, asi que los titulos van en ingles. La cabecera, la accion y la plantilla de cada hito son las lineas de
+     esa respuesta copiadas tal cual; los 50 hitos se rellenan con los valores leidos de la misma respuesta (indice, id,
+     estado, titulo, descripcion, x/y y relleno). Hito 14 en curso con 10/50, 40/170 fichas, cierra 2027-01-17T20:00Z.
+     Los aumentos se titulan "25 ARP", "50 ARP Mega Boost" y "15 ARP": es lo unico que dice cuanto dan.
+     Fuera: imagenes (src=MEDIA), los scripts del sitio y el mapa movil. Sin saneador porque no lleva ni globales ni
+     scripts del sitio: solo la marca user_is_logged_in, que pedir() exige a toda respuesta. -->
+<!DOCTYPE html>
+<html lang="en" class="h-100 layout-redesign" translate="no">
+<head>
+<title>Battle Pass | Alienware Arena</title>
+<script>
+    var user_is_logged_in = true;
+</script>
+</head>
+<body>
+<main class="flex-shrink-0">
+<div class="container-fluid account has-fixed-menu bp-landing-container">
+<div class="bp-landing bp-landing--personal">
+<div class="bp-header">
+    <div class="bp-header__inner">
+                <div class="bp-header__left">
+            <div class="bp-header__logos">
+                        <img class="bp-header__partner-logo img-fluid" src="MEDIA" alt="Partner Logo">
+                        <img class="bp-header__season-logo img-fluid" src="MEDIA" alt="Devolver - Season of Peace">
+                        </div>
+                        <div class="bp-header__divider"></div>
+                <div class="bp-header__description">
+                    <p>Welcome to <strong>Season 1: Season of Peace</strong>. We’re teaming up with <strong>Devolver Digital</strong> to showcase an incredible collection of games. Devolver Digital has built a reputation for unforgettable games with unmistakable style. Explore the lineup, discover some favorites, and earn rewards along the way.</p><br>
+<p></p>
+<p>The <strong>Season of Peace</strong> is a simple time. Everyone is content and joyful. Though it would be wise not to rest on one's laurels. This is only the beginning...</p>
+                </div>
+                    </div>
+                <div class="bp-header__right">
+                        <h2 class="bp-header__rules-heading">READ THE RULES FIRST</h2>
+                <ol class="bp-header__rules-list">
+                        <li>To begin the Battle Pass, you must select "Start Battle Pass". If you don't see 'Start' button, then your BP has started.</li>
+                        <li>Progress on the Battle Pass by earning ARP from any source. The More ARP you earn, the farther you progress.</li>
+                        <li>After you complete a milestone, remember to claim the reward. (Don't worry, though. If you forget, all earned rewards will be distributed to you at the end of the Season.)</li>
+                        <li>ARP Boost on the Battle Pass gives you more ARP and progresses you further on the pass.</li>
+                        <li>You may spend your Battle Tokens when the Battle Pass concludes for a limited time.</li>
+                        <li>Battle Tokens are not retained between Seasons.</li>
+                        <li>Last rule: Have fun and always remember that everything on AWA will always be free!</li>
+                        </ol>
+                    </div>
+    </div>
+</div>
+<div class="bp-header__action"> <div class="bp-header__status"> <span class="bp-header__tokens"> BATTLE TOKENS <strong class="bp-header__token-count" data-token-count="">40</strong>/<strong class="bp-header__token-total">170</strong> </span> <span class="bp-header__separator">|</span> <span class="bp-header__countdown-label"> BattlePass ends in <strong class="bp-header__countdown" data-countdown="2027-01-17T20:00:00+00:00"> --:--:--:-- </strong> </span> </div> <div class="bp-header__started"> Your Battle Pass Has Started! </div> </div>
+<div class="bp-map bp-map--desktop" data-template="box">
+            <img class="bp-map__background" src="MEDIA" alt="Battle Pass Map">
+    <div class="bp-map__markers" id="bp-markers">
+            <div class="bp-marker bp-marker--claimed" data-index="0" data-milestone-id="72" data-state="claimed" title="20 Battle Tokens">
+                        <img class="bp-marker__image" src="MEDIA" alt="20 Battle Tokens">
+                        <span class="bp-marker__badge bp-marker__badge--claimed" aria-label="Claimed">
+                        <i class="fa fa-check"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-72" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="72">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">20 Battle Tokens</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="20 Battle Tokens">
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+                    <div class="bp-popup__claimed">COMPLETE</div>
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--claimed" data-index="1" data-milestone-id="73" data-state="claimed" title="Serious Sam: Shatterverse Border">
+                        <img class="bp-marker__image" src="MEDIA" alt="Serious Sam: Shatterverse Border">
+                        <span class="bp-marker__badge bp-marker__badge--claimed" aria-label="Claimed">
+                        <i class="fa fa-check"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-73" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="73">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">Serious Sam: Shatterverse Border</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="Serious Sam: Shatterverse Border">
+        </div>
+            <p class="bp-popup__desc">“Big guns, serious damage.”</p>
+        <div class="bp-popup__action" data-claim-slot="">
+                    <div class="bp-popup__claimed">COMPLETE</div>
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--claimed" data-index="2" data-milestone-id="74" data-state="claimed" title="Serious Sam: Shatterverse Background">
+                        <img class="bp-marker__image" src="MEDIA" alt="Serious Sam: Shatterverse Background">
+                        <span class="bp-marker__badge bp-marker__badge--claimed" aria-label="Claimed">
+                        <i class="fa fa-check"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-74" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="74">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">Serious Sam: Shatterverse Background</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="Serious Sam: Shatterverse Background">
+        </div>
+            <p class="bp-popup__desc">“Fall fast. Come back louder.”</p>
+        <div class="bp-popup__action" data-claim-slot="">
+                    <div class="bp-popup__claimed">COMPLETE</div>
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--claimed" data-index="3" data-milestone-id="75" data-state="claimed" title="25 ARP">
+                        <img class="bp-marker__image" src="MEDIA" alt="25 ARP">
+                        <span class="bp-marker__badge bp-marker__badge--claimed" aria-label="Claimed">
+                        <i class="fa fa-check"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-75" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="75">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">25 ARP</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="25 ARP">
+        </div>
+            <p class="bp-popup__desc">Earn a little extra ARP that helps boost you through the Battle Pass!</p>
+        <div class="bp-popup__action" data-claim-slot="">
+                    <div class="bp-popup__claimed">COMPLETE</div>
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--claimed" data-index="4" data-milestone-id="76" data-state="claimed" title="BallxPit Avatar">
+                        <img class="bp-marker__image" src="MEDIA" alt="BallxPit Avatar">
+                        <span class="bp-marker__badge bp-marker__badge--claimed" aria-label="Claimed">
+                        <i class="fa fa-check"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-76" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="76">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">BallxPit Avatar</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="BallxPit Avatar">
+        </div>
+            <p class="bp-popup__desc">“That’s a lot of balls.”</p>
+        <div class="bp-popup__action" data-claim-slot="">
+                    <div class="bp-popup__claimed">COMPLETE</div>
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--claimed" data-index="5" data-milestone-id="77" data-state="claimed" title="GRIS Border">
+                        <img class="bp-marker__image" src="MEDIA" alt="GRIS Border">
+                        <span class="bp-marker__badge bp-marker__badge--claimed" aria-label="Claimed">
+                        <i class="fa fa-check"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-77" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="77">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">GRIS Border</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="GRIS Border">
+        </div>
+            <p class="bp-popup__desc">“Free of danger, frustration or death.”</p>
+        <div class="bp-popup__action" data-claim-slot="">
+                    <div class="bp-popup__claimed">COMPLETE</div>
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--claimed" data-index="6" data-milestone-id="78" data-state="claimed" title="Shroom and Gloom Avatar">
+                        <img class="bp-marker__image" src="MEDIA" alt="Shroom and Gloom Avatar">
+                        <span class="bp-marker__badge bp-marker__badge--claimed" aria-label="Claimed">
+                        <i class="fa fa-check"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-78" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="78">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">Shroom and Gloom Avatar</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="Shroom and Gloom Avatar">
+        </div>
+            <p class="bp-popup__desc">“EAT YOUR ENEMIES.”</p>
+        <div class="bp-popup__action" data-claim-slot="">
+                    <div class="bp-popup__claimed">COMPLETE</div>
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--claimed" data-index="7" data-milestone-id="79" data-state="claimed" title="20 Battle Tokens">
+                        <img class="bp-marker__image" src="MEDIA" alt="20 Battle Tokens">
+                        <span class="bp-marker__badge bp-marker__badge--claimed" aria-label="Claimed">
+                        <i class="fa fa-check"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-79" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="79">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">20 Battle Tokens</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="20 Battle Tokens">
+        </div>
+            <p class="bp-popup__desc">Spend these in the Token Store when the Battle Pass ends.</p>
+        <div class="bp-popup__action" data-claim-slot="">
+                    <div class="bp-popup__claimed">COMPLETE</div>
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--claimed" data-index="8" data-milestone-id="80" data-state="claimed" title="Hotline Miami Background">
+                        <img class="bp-marker__image" src="MEDIA" alt="Hotline Miami Background">
+                        <span class="bp-marker__badge bp-marker__badge--claimed" aria-label="Claimed">
+                        <i class="fa fa-check"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-80" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="80">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">Hotline Miami Background</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="Hotline Miami Background">
+        </div>
+            <p class="bp-popup__desc">“Do you like hurting other people?”</p>
+        <div class="bp-popup__action" data-claim-slot="">
+                    <div class="bp-popup__claimed">COMPLETE</div>
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--claimed" data-index="9" data-milestone-id="81" data-state="claimed" title="25 ARP">
+                        <img class="bp-marker__image" src="MEDIA" alt="25 ARP">
+                        <span class="bp-marker__badge bp-marker__badge--claimed" aria-label="Claimed">
+                        <i class="fa fa-check"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-81" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="81">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">25 ARP</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="25 ARP">
+        </div>
+            <p class="bp-popup__desc">Earn a little extra ARP that helps boost you through the Battle Pass!</p>
+        <div class="bp-popup__action" data-claim-slot="">
+                    <div class="bp-popup__claimed">COMPLETE</div>
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--claimed" data-index="10" data-milestone-id="82" data-state="claimed" title="Fragments x5">
+                        <img class="bp-marker__image" src="MEDIA" alt="Fragments x5">
+                        <span class="bp-marker__badge bp-marker__badge--claimed" aria-label="Claimed">
+                        <i class="fa fa-check"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-82" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="82">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">Fragments x5</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="Fragments x5">
+        </div>
+            <p class="bp-popup__desc">Rare indeed. Use these to upgrade your Artifacts!</p>
+        <div class="bp-popup__action" data-claim-slot="">
+                    <div class="bp-popup__claimed">COMPLETE</div>
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--claimed" data-index="11" data-milestone-id="83" data-state="claimed" title="Enter the Gungeon Avatar">
+                        <img class="bp-marker__image" src="MEDIA" alt="Enter the Gungeon Avatar">
+                        <span class="bp-marker__badge bp-marker__badge--claimed" aria-label="Claimed">
+                        <i class="fa fa-check"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-83" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="83">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">Enter the Gungeon Avatar</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="Enter the Gungeon Avatar">
+        </div>
+            <p class="bp-popup__desc">“Shoot, loot, dodge roll and table-flip.”</p>
+        <div class="bp-popup__action" data-claim-slot="">
+                    <div class="bp-popup__claimed">COMPLETE</div>
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--claimed" data-index="12" data-milestone-id="84" data-state="claimed" title="Enter the Gungeon Border">
+                        <img class="bp-marker__image" src="MEDIA" alt="Enter the Gungeon Border">
+                        <span class="bp-marker__badge bp-marker__badge--claimed" aria-label="Claimed">
+                        <i class="fa fa-check"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-84" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="84">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">Enter the Gungeon Border</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="Enter the Gungeon Border">
+        </div>
+            <p class="bp-popup__desc">“The gun that can kill the past.”</p>
+        <div class="bp-popup__action" data-claim-slot="">
+                    <div class="bp-popup__claimed">COMPLETE</div>
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--in_progress" data-index="13" data-milestone-id="85" data-state="in_progress" title="The Talos Principle: Reawakened avatar">
+                        <img class="bp-marker__image" src="MEDIA" alt="The Talos Principle: Reawakened avatar">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-85" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="85">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">The Talos Principle: Reawakened avatar</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="The Talos Principle: Reawakened avatar">
+        </div>
+            <p class="bp-popup__desc">“Think deeply about the human condition.”</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 20%"></div>
+            </div>
+            <div class="bp-popup__progress-text">10/50</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="14" data-milestone-id="87" data-state="locked" title="20 Battle Tokens">
+                        <img class="bp-marker__image" src="MEDIA" alt="20 Battle Tokens">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-87" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="87">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">20 Battle Tokens</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="20 Battle Tokens">
+        </div>
+            <p class="bp-popup__desc">Spend these in the Token Store when the Battle Pass ends.</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/50</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="15" data-milestone-id="86" data-state="locked" title="Death's Door Avatar">
+                        <img class="bp-marker__image" src="MEDIA" alt="Death's Door Avatar">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-86" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="86">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">Death's Door Avatar</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="Death's Door Avatar">
+        </div>
+            <p class="bp-popup__desc">“Don’t fear the Reapers.”</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/50</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="16" data-milestone-id="88" data-state="locked" title="25 ARP">
+                        <img class="bp-marker__image" src="MEDIA" alt="25 ARP">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-88" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="88">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">25 ARP</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="25 ARP">
+        </div>
+            <p class="bp-popup__desc">Earn a little extra ARP that helps boost you through the Battle Pass!</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/50</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="17" data-milestone-id="89" data-state="locked" title="Katana ZERO Avatar">
+                        <img class="bp-marker__image" src="MEDIA" alt="Katana ZERO Avatar">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-89" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="89">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">Katana ZERO Avatar</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="Katana ZERO Avatar">
+        </div>
+            <p class="bp-popup__desc">“Slash. Dash. Manipulate time.”</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/60</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="18" data-milestone-id="90" data-state="locked" title="GRIS Background">
+                        <img class="bp-marker__image" src="MEDIA" alt="GRIS Background">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-90" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="90">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">GRIS Background</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="GRIS Background">
+        </div>
+            <p class="bp-popup__desc">“A serene and evocative experience.”</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/60</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="19" data-milestone-id="91" data-state="locked" title="50 ARP Mega Boost">
+                        <img class="bp-marker__image" src="MEDIA" alt="50 ARP Mega Boost">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-91" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="91">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">50 ARP Mega Boost</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="50 ARP Mega Boost">
+        </div>
+            <p class="bp-popup__desc">Earn a large amount of ARP that helps boost you through the Battle Pass!</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/60</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="20" data-milestone-id="92" data-state="locked" title="Enter the Gungeon Avatar">
+                        <img class="bp-marker__image" src="MEDIA" alt="Enter the Gungeon Avatar">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-92" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="92">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">Enter the Gungeon Avatar</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="Enter the Gungeon Avatar">
+        </div>
+            <p class="bp-popup__desc">“The Cult of the Gundead”</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/60</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="21" data-milestone-id="93" data-state="locked" title="20 Battle Tokens">
+                        <img class="bp-marker__image" src="MEDIA" alt="20 Battle Tokens">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-93" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="93">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">20 Battle Tokens</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="20 Battle Tokens">
+        </div>
+            <p class="bp-popup__desc">Spend these in the Token Store when the Battle Pass ends.</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/60</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="22" data-milestone-id="94" data-state="locked" title="Cult of the Lamb Avatar">
+                        <img class="bp-marker__image" src="MEDIA" alt="Cult of the Lamb Avatar">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-94" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="94">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">Cult of the Lamb Avatar</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="Cult of the Lamb Avatar">
+        </div>
+            <p class="bp-popup__desc">“Praise the Lamb.”</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/60</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="23" data-milestone-id="95" data-state="locked" title="Fragments x5">
+                        <img class="bp-marker__image" src="MEDIA" alt="Fragments x5">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-95" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="95">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">Fragments x5</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="Fragments x5">
+        </div>
+            <p class="bp-popup__desc">Rare indeed. Use these to upgrade your Artifacts!</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/60</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="24" data-milestone-id="96" data-state="locked" title="Enter the Gungeon Background">
+                        <img class="bp-marker__image" src="MEDIA" alt="Enter the Gungeon Background">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-96" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="96">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">Enter the Gungeon Background</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="Enter the Gungeon Background">
+        </div>
+            <p class="bp-popup__desc">“Yep, bees.”</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/60</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="25" data-milestone-id="97" data-state="locked" title="25 ARP">
+                        <img class="bp-marker__image" src="MEDIA" alt="25 ARP">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-97" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="97">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">25 ARP</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="25 ARP">
+        </div>
+            <p class="bp-popup__desc">Earn a little extra ARP that helps boost you through the Battle Pass!</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/70</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="26" data-milestone-id="98" data-state="locked" title="Cult of the Lamb Border">
+                        <img class="bp-marker__image" src="MEDIA" alt="Cult of the Lamb Border">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-98" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="98">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">Cult of the Lamb Border</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="Cult of the Lamb Border">
+        </div>
+            <p class="bp-popup__desc">“Start a Cult.”</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/70</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="27" data-milestone-id="99" data-state="locked" title="Inscryption Avatar">
+                        <img class="bp-marker__image" src="MEDIA" alt="Inscryption Avatar">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-99" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="99">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">Inscryption Avatar</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="Inscryption Avatar">
+        </div>
+            <p class="bp-popup__desc">“Darker still are the secrets inscrybed upon the cards...”</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/70</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="28" data-milestone-id="100" data-state="locked" title="20 Battle Tokens">
+                        <img class="bp-marker__image" src="MEDIA" alt="20 Battle Tokens">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-100" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="100">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">20 Battle Tokens</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="20 Battle Tokens">
+        </div>
+            <p class="bp-popup__desc">Spend these in the Token Store when the Battle Pass ends.</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/70</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="29" data-milestone-id="101" data-state="locked" title="Look Outside avatar">
+                        <img class="bp-marker__image" src="MEDIA" alt="Look Outside avatar">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-101" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="101">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">Look Outside avatar</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="Look Outside avatar">
+        </div>
+            <p class="bp-popup__desc">“Something strange is happening outside.”</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/70</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="30" data-milestone-id="102" data-state="locked" title="Cult of the Lamb Background">
+                        <img class="bp-marker__image" src="MEDIA" alt="Cult of the Lamb Background">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-102" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="102">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">Cult of the Lamb Background</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="Cult of the Lamb Background">
+        </div>
+            <p class="bp-popup__desc">“One true cult.”</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/70</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="31" data-milestone-id="103" data-state="locked" title="15 ARP">
+                        <img class="bp-marker__image" src="MEDIA" alt="15 ARP">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-103" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="103">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">15 ARP</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="15 ARP">
+        </div>
+            <p class="bp-popup__desc">Earn a small amount of ARP that helps boost you through the Battle Pass!</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/70</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="32" data-milestone-id="104" data-state="locked" title="Hotline Miami Avatar">
+                        <img class="bp-marker__image" src="MEDIA" alt="Hotline Miami Avatar">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-104" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="104">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">Hotline Miami Avatar</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="Hotline Miami Avatar">
+        </div>
+            <p class="bp-popup__desc">“Neon and bloodshed.”</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/80</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="33" data-milestone-id="105" data-state="locked" title="15 ARP">
+                        <img class="bp-marker__image" src="MEDIA" alt="15 ARP">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-105" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="105">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">15 ARP</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="15 ARP">
+        </div>
+            <p class="bp-popup__desc">Earn a small amount of ARP that helps boost you through the Battle Pass!</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/80</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="34" data-milestone-id="106" data-state="locked" title="Heave Ho Avatar">
+                        <img class="bp-marker__image" src="MEDIA" alt="Heave Ho Avatar">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-106" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="106">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">Heave Ho Avatar</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="Heave Ho Avatar">
+        </div>
+            <p class="bp-popup__desc">“The plummet of doom.”</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/80</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="35" data-milestone-id="107" data-state="locked" title="15 ARP">
+                        <img class="bp-marker__image" src="MEDIA" alt="15 ARP">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-107" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="107">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">15 ARP</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="15 ARP">
+        </div>
+            <p class="bp-popup__desc">Earn a small amount of ARP that helps boost you through the Battle Pass!</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/80</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="36" data-milestone-id="108" data-state="locked" title="GRIS Avatar">
+                        <img class="bp-marker__image" src="MEDIA" alt="GRIS Avatar">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-108" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="108">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">GRIS Avatar</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="GRIS Avatar">
+        </div>
+            <p class="bp-popup__desc">“A serene and evocative experience.”</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/80</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="37" data-milestone-id="109" data-state="locked" title="20 Battle Tokens">
+                        <img class="bp-marker__image" src="MEDIA" alt="20 Battle Tokens">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-109" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="109">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">20 Battle Tokens</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="20 Battle Tokens">
+        </div>
+            <p class="bp-popup__desc">Spend these in the Token Store when the Battle Pass ends.</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/80</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="38" data-milestone-id="110" data-state="locked" title="50 ARP">
+                        <img class="bp-marker__image" src="MEDIA" alt="50 ARP">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-110" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="110">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">50 ARP</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="50 ARP">
+        </div>
+            <p class="bp-popup__desc">Earn a large amount of ARP that helps boost you through the Battle Pass!</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/80</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="39" data-milestone-id="111" data-state="locked" title="Serious Sam: Shatterverse Background 2">
+                        <img class="bp-marker__image" src="MEDIA" alt="Serious Sam: Shatterverse Background 2">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-111" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="111">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">Serious Sam: Shatterverse Background 2</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="Serious Sam: Shatterverse Background 2">
+        </div>
+            <p class="bp-popup__desc">“Multiverse Mayhem.”</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/80</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="40" data-milestone-id="112" data-state="locked" title="BROFORCE Avatar">
+                        <img class="bp-marker__image" src="MEDIA" alt="BROFORCE Avatar">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-112" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="112">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">BROFORCE Avatar</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="BROFORCE Avatar">
+        </div>
+            <p class="bp-popup__desc">“When evil threatens the world, the world calls on Broforce.”</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/90</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="41" data-milestone-id="113" data-state="locked" title="25 ARP">
+                        <img class="bp-marker__image" src="MEDIA" alt="25 ARP">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-113" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="113">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">25 ARP</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="25 ARP">
+        </div>
+            <p class="bp-popup__desc">Earn a little extra ARP that helps boost you through the Battle Pass!</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/90</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="42" data-milestone-id="114" data-state="locked" title="Loop Hero Avatar">
+                        <img class="bp-marker__image" src="MEDIA" alt="Loop Hero Avatar">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-114" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="114">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">Loop Hero Avatar</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="Loop Hero Avatar">
+        </div>
+            <p class="bp-popup__desc">“Break the time loop.”</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/90</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="43" data-milestone-id="115" data-state="locked" title="20 Battle Tokens">
+                        <img class="bp-marker__image" src="MEDIA" alt="20 Battle Tokens">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-115" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="115">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">20 Battle Tokens</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="20 Battle Tokens">
+        </div>
+            <p class="bp-popup__desc">Spend these in the Token Store when the Battle Pass ends.</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/90</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="44" data-milestone-id="116" data-state="locked" title="Serious Sam: Shatterverse Avatar">
+                        <img class="bp-marker__image" src="MEDIA" alt="Serious Sam: Shatterverse Avatar">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-116" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="116">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">Serious Sam: Shatterverse Avatar</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="Serious Sam: Shatterverse Avatar">
+        </div>
+            <p class="bp-popup__desc">“Keep moving. Keep shooting. Don’t stop.”</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/90</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="45" data-milestone-id="117" data-state="locked" title="Devolver Border">
+                        <img class="bp-marker__image" src="MEDIA" alt="Devolver Border">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-117" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="117">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">Devolver Border</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="Devolver Border">
+        </div>
+            <p class="bp-popup__desc">"Purveyors of fine digital entertainment wares from independent artists worldwide."</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/90</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="46" data-milestone-id="118" data-state="locked" title="15 ARP">
+                        <img class="bp-marker__image" src="MEDIA" alt="15 ARP">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-118" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="118">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">15 ARP</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="15 ARP">
+        </div>
+            <p class="bp-popup__desc">Earn a small amount of ARP that helps boost you through the Battle Pass!</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/90</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="47" data-milestone-id="119" data-state="locked" title="Fragments x5">
+                        <img class="bp-marker__image" src="MEDIA" alt="Fragments x5">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-119" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="119">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">Fragments x5</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="Fragments x5">
+        </div>
+            <p class="bp-popup__desc">Rare indeed. Use these to upgrade your Artifacts!</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/100</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="48" data-milestone-id="120" data-state="locked" title="25 ARP">
+                        <img class="bp-marker__image" src="MEDIA" alt="25 ARP">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-120" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="120">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">25 ARP</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="25 ARP">
+        </div>
+            <p class="bp-popup__desc">Earn a little extra ARP that helps boost you through the Battle Pass!</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/100</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            <div class="bp-marker bp-marker--locked" data-index="49" data-milestone-id="121" data-state="locked" title="30 Battle Tokens">
+                        <img class="bp-marker__image" src="MEDIA" alt="30 Battle Tokens">
+                        <span class="bp-marker__badge bp-marker__badge--locked" aria-label="Locked">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                <div class="bp-marker__popup" id="bp-popup-121" style="display:none;">
+                    <div class="bp-popup" data-milestone-id="121">
+    <button class="bp-popup__close" type="button" aria-label="Close" data-popup-close="">×</button>
+    <h3 class="bp-popup__title">30 Battle Tokens</h3>
+            <div class="bp-popup__image-wrap">
+            <img class="bp-popup__image" src="MEDIA" alt="30 Battle Tokens">
+        </div>
+            <p class="bp-popup__desc">Spend these in the Token Store when the Battle Pass ends.</p>
+            <div class="bp-popup__progress">
+            <div class="bp-popup__progress-bar">
+                        <div class="bp-popup__progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="bp-popup__progress-text">0/150</div>
+        </div>
+        <div class="bp-popup__action" data-claim-slot="">
+            </div>
+</div>
+                </div>
+            </div>
+            </div>
+</div>
+</div>
+</div>
+</main>
+</body>
+</html>
